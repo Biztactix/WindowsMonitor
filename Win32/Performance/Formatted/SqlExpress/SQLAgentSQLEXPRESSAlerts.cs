@@ -7,7 +7,7 @@ namespace WindowsMonitor.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class SQLAgentSQLEXPRESS_SQLAgentSQLEXPRESSAlerts
+    public sealed class SqlAgentExpressAlerts
     {
 		public ulong Activatedalerts { get; private set; }
 		public ulong AlertsactivatedPerminute { get; private set; }
@@ -21,7 +21,7 @@ namespace WindowsMonitor.Performance.Formatted
 		public ulong Timestamp_PerfTime { get; private set; }
 		public ulong Timestamp_Sys100NS { get; private set; }
 
-        public static IEnumerable<SQLAgentSQLEXPRESS_SQLAgentSQLEXPRESSAlerts> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SqlAgentExpressAlerts> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -36,20 +36,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SQLAgentSQLEXPRESS_SQLAgentSQLEXPRESSAlerts> Retrieve()
+        public static IEnumerable<SqlAgentExpressAlerts> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SQLAgentSQLEXPRESS_SQLAgentSQLEXPRESSAlerts> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SqlAgentExpressAlerts> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_SQLAgentSQLEXPRESS_SQLAgentSQLEXPRESSAlerts");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SQLAgentSQLEXPRESS_SQLAgentSQLEXPRESSAlerts
+                yield return new SqlAgentExpressAlerts
                 {
                      Activatedalerts = (ulong) (managementObject.Properties["Activatedalerts"]?.Value ?? default(ulong)),
 		 AlertsactivatedPerminute = (ulong) (managementObject.Properties["AlertsactivatedPerminute"]?.Value ?? default(ulong)),

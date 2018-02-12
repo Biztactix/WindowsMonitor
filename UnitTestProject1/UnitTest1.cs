@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Linq;
 using System.Reflection;
 using WindowsMonitor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,16 +11,17 @@ namespace UnitTestProject1
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void BulkTest()
         {
             var types = typeof(__ACE).Assembly.GetTypes();
 
             foreach (var type in types)
             {
-                MethodInfo info = type.GetMethod("Retrieve",
-                    BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+                var info = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+                var method = info.FirstOrDefault(x => x.Name == "Retrieve" && x.GetParameters().Length == 0);
 
-                info.Invoke(null, new object[] {});
+                if (method == null) continue;
+                method.Invoke(null, new object[] { });
             }
         }
     }

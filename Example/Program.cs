@@ -16,10 +16,10 @@ namespace Example
             foreach (var type in types)
             {
                 var info = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
-                var method = info.First(x => x.Name == "Retrieve" && x.GetParameters().Length == 0);
+                var method = info.FirstOrDefault(x => x.Name == "Retrieve" && x.GetParameters().Length == 0);
 
+                if(method == null) continue;
                 var returnValue = method.Invoke(null, new object[] { }) as IEnumerable;
-                var json = Newtonsoft.Json.JsonConvert.SerializeObject(returnValue);
             }
 
             var probes = WindowsMonitor.CIM.Process.Retrieve();
