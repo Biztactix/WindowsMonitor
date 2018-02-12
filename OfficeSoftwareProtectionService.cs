@@ -1,0 +1,92 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management;
+
+namespace WindowsMonitor
+{
+    /// <summary>
+    /// </summary>
+    public sealed class OfficeSoftwareProtectionService
+    {
+		public string ClientMachineID { get; private set; }
+		public uint IsKeyManagementServiceMachine { get; private set; }
+		public bool KeyManagementServiceActivationDisabled { get; private set; }
+		public uint KeyManagementServiceCurrentCount { get; private set; }
+		public bool KeyManagementServiceDnsPublishing { get; private set; }
+		public uint KeyManagementServiceFailedRequests { get; private set; }
+		public bool KeyManagementServiceHostCaching { get; private set; }
+		public uint KeyManagementServiceLicensedRequests { get; private set; }
+		public uint KeyManagementServiceListeningPort { get; private set; }
+		public bool KeyManagementServiceLowPriority { get; private set; }
+		public string KeyManagementServiceMachine { get; private set; }
+		public uint KeyManagementServiceNonGenuineGraceRequests { get; private set; }
+		public uint KeyManagementServiceNotificationRequests { get; private set; }
+		public uint KeyManagementServiceOOBGraceRequests { get; private set; }
+		public uint KeyManagementServiceOOTGraceRequests { get; private set; }
+		public uint KeyManagementServicePort { get; private set; }
+		public uint KeyManagementServiceTotalRequests { get; private set; }
+		public uint KeyManagementServiceUnlicensedRequests { get; private set; }
+		public uint PolicyCacheRefreshRequired { get; private set; }
+		public uint RequiredClientCount { get; private set; }
+		public string Version { get; private set; }
+		public uint VLActivationInterval { get; private set; }
+		public uint VLRenewalInterval { get; private set; }
+
+        public static IEnumerable<OfficeSoftwareProtectionService> Retrieve(string remote, string username, string password)
+        {
+            var options = new ConnectionOptions
+            {
+                Impersonation = ImpersonationLevel.Impersonate,
+                Username = username,
+                Password = password
+            };
+
+            var managementScope = new ManagementScope(new ManagementPath($"\\\\{remote}\\root\\cimv2"), options);
+            managementScope.Connect();
+
+            return Retrieve(managementScope);
+        }
+
+        public static IEnumerable<OfficeSoftwareProtectionService> Retrieve()
+        {
+            var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
+            return Retrieve(managementScope);
+        }
+
+        public static IEnumerable<OfficeSoftwareProtectionService> Retrieve(ManagementScope managementScope)
+        {
+            var objectQuery = new ObjectQuery("SELECT * FROM OfficeSoftwareProtectionService");
+            var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
+            var objectCollection = objectSearcher.Get();
+
+            foreach (ManagementObject managementObject in objectCollection)
+                yield return new OfficeSoftwareProtectionService
+                {
+                     ClientMachineID = (string) (managementObject.Properties["ClientMachineID"]?.Value ?? default(string)),
+		 IsKeyManagementServiceMachine = (uint) (managementObject.Properties["IsKeyManagementServiceMachine"]?.Value ?? default(uint)),
+		 KeyManagementServiceActivationDisabled = (bool) (managementObject.Properties["KeyManagementServiceActivationDisabled"]?.Value ?? default(bool)),
+		 KeyManagementServiceCurrentCount = (uint) (managementObject.Properties["KeyManagementServiceCurrentCount"]?.Value ?? default(uint)),
+		 KeyManagementServiceDnsPublishing = (bool) (managementObject.Properties["KeyManagementServiceDnsPublishing"]?.Value ?? default(bool)),
+		 KeyManagementServiceFailedRequests = (uint) (managementObject.Properties["KeyManagementServiceFailedRequests"]?.Value ?? default(uint)),
+		 KeyManagementServiceHostCaching = (bool) (managementObject.Properties["KeyManagementServiceHostCaching"]?.Value ?? default(bool)),
+		 KeyManagementServiceLicensedRequests = (uint) (managementObject.Properties["KeyManagementServiceLicensedRequests"]?.Value ?? default(uint)),
+		 KeyManagementServiceListeningPort = (uint) (managementObject.Properties["KeyManagementServiceListeningPort"]?.Value ?? default(uint)),
+		 KeyManagementServiceLowPriority = (bool) (managementObject.Properties["KeyManagementServiceLowPriority"]?.Value ?? default(bool)),
+		 KeyManagementServiceMachine = (string) (managementObject.Properties["KeyManagementServiceMachine"]?.Value ?? default(string)),
+		 KeyManagementServiceNonGenuineGraceRequests = (uint) (managementObject.Properties["KeyManagementServiceNonGenuineGraceRequests"]?.Value ?? default(uint)),
+		 KeyManagementServiceNotificationRequests = (uint) (managementObject.Properties["KeyManagementServiceNotificationRequests"]?.Value ?? default(uint)),
+		 KeyManagementServiceOOBGraceRequests = (uint) (managementObject.Properties["KeyManagementServiceOOBGraceRequests"]?.Value ?? default(uint)),
+		 KeyManagementServiceOOTGraceRequests = (uint) (managementObject.Properties["KeyManagementServiceOOTGraceRequests"]?.Value ?? default(uint)),
+		 KeyManagementServicePort = (uint) (managementObject.Properties["KeyManagementServicePort"]?.Value ?? default(uint)),
+		 KeyManagementServiceTotalRequests = (uint) (managementObject.Properties["KeyManagementServiceTotalRequests"]?.Value ?? default(uint)),
+		 KeyManagementServiceUnlicensedRequests = (uint) (managementObject.Properties["KeyManagementServiceUnlicensedRequests"]?.Value ?? default(uint)),
+		 PolicyCacheRefreshRequired = (uint) (managementObject.Properties["PolicyCacheRefreshRequired"]?.Value ?? default(uint)),
+		 RequiredClientCount = (uint) (managementObject.Properties["RequiredClientCount"]?.Value ?? default(uint)),
+		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string)),
+		 VLActivationInterval = (uint) (managementObject.Properties["VLActivationInterval"]?.Value ?? default(uint)),
+		 VLRenewalInterval = (uint) (managementObject.Properties["VLRenewalInterval"]?.Value ?? default(uint))
+                };
+        }
+    }
+}
