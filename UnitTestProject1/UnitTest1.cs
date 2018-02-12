@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Reflection;
 using WindowsMonitor;
+using WindowsMonitor.Win32;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1
@@ -13,7 +14,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void BulkTest()
         {
-            var types = typeof(__ACE).Assembly.GetTypes();
+            var types = typeof(Processor).Assembly.GetTypes();
 
             foreach (var type in types)
             {
