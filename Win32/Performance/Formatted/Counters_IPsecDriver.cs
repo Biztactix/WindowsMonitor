@@ -1,7 +1,9 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Formatted
+namespace WindowsMonitor.Performance.Formatted
 {
     /// <summary>
     /// </summary>
