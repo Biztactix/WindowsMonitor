@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Reflection;
 using WindowsMonitor;
+using WindowsMonitor.Win32;
 using DiskDrive = WindowsMonitor.Win32.DiskDrive;
 
 namespace Example
@@ -11,7 +12,7 @@ namespace Example
     {
         static void Main(string[] args)
         {
-            var types = typeof(__ACE).Assembly.GetTypes();
+            var types = typeof(ACE).Assembly.GetTypes();
 
             foreach (var type in types)
             {

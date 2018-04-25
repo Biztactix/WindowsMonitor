@@ -1,0 +1,78 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management;
+
+namespace WindowsMonitor.Win32
+{
+    /// <summary>
+    /// </summary>
+    public sealed class NTLogEvent
+    {
+		public ushort Category { get; private set; }
+		public string CategoryString { get; private set; }
+		public string ComputerName { get; private set; }
+		public byte[] Data { get; private set; }
+		public ushort EventCode { get; private set; }
+		public uint EventIdentifier { get; private set; }
+		public byte EventType { get; private set; }
+		public string[] InsertionStrings { get; private set; }
+		public string Logfile { get; private set; }
+		public string Message { get; private set; }
+		public uint RecordNumber { get; private set; }
+		public string SourceName { get; private set; }
+		public DateTime TimeGenerated { get; private set; }
+		public DateTime TimeWritten { get; private set; }
+		public string Type { get; private set; }
+		public string User { get; private set; }
+
+        public static IEnumerable<NTLogEvent> Retrieve(string remote, string username, string password)
+        {
+            var options = new ConnectionOptions
+            {
+                Impersonation = ImpersonationLevel.Impersonate,
+                Username = username,
+                Password = password
+            };
+
+            var managementScope = new ManagementScope(new ManagementPath($"\\\\{remote}\\root\\cimv2"), options);
+            managementScope.Connect();
+
+            return Retrieve(managementScope);
+        }
+
+        public static IEnumerable<NTLogEvent> Retrieve()
+        {
+            var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
+            return Retrieve(managementScope);
+        }
+
+        public static IEnumerable<NTLogEvent> Retrieve(ManagementScope managementScope)
+        {
+            var objectQuery = new ObjectQuery("SELECT * FROM Win32_NTLogEvent");
+            var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
+            var objectCollection = objectSearcher.Get();
+
+            foreach (ManagementObject managementObject in objectCollection)
+                yield return new NTLogEvent
+                {
+                     Category = (ushort) (managementObject.Properties["Category"]?.Value ?? default(ushort)),
+		 CategoryString = (string) (managementObject.Properties["CategoryString"]?.Value ?? default(string)),
+		 ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value ?? default(string)),
+		 Data = (byte[]) (managementObject.Properties["Data"]?.Value ?? new byte[0]),
+		 EventCode = (ushort) (managementObject.Properties["EventCode"]?.Value ?? default(ushort)),
+		 EventIdentifier = (uint) (managementObject.Properties["EventIdentifier"]?.Value ?? default(uint)),
+		 EventType = (byte) (managementObject.Properties["EventType"]?.Value ?? default(byte)),
+		 InsertionStrings = (string[]) (managementObject.Properties["InsertionStrings"]?.Value ?? new string[0]),
+		 Logfile = (string) (managementObject.Properties["Logfile"]?.Value ?? default(string)),
+		 Message = (string) (managementObject.Properties["Message"]?.Value ?? default(string)),
+		 RecordNumber = (uint) (managementObject.Properties["RecordNumber"]?.Value ?? default(uint)),
+		 SourceName = (string) (managementObject.Properties["SourceName"]?.Value ?? default(string)),
+		 TimeGenerated = (DateTime) (managementObject.Properties["TimeGenerated"]?.Value ?? default(DateTime)),
+		 TimeWritten = (DateTime) (managementObject.Properties["TimeWritten"]?.Value ?? default(DateTime)),
+		 Type = (string) (managementObject.Properties["Type"]?.Value ?? default(string)),
+		 User = (string) (managementObject.Properties["User"]?.Value ?? default(string))
+                };
+        }
+    }
+}
