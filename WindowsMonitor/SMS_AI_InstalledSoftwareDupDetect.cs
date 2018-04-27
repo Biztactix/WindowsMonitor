@@ -7,13 +7,13 @@ namespace WindowsMonitor
 {
     /// <summary>
     /// </summary>
-    public sealed class SMS_AI_InstalledSoftwareDupDetect
+    public sealed class SmsAiInstalledSoftwareDupDetect
     {
 		public string EntryNameKey { get; private set; }
 		public string Software1 { get; private set; }
 		public string Software2 { get; private set; }
 
-        public static IEnumerable<SMS_AI_InstalledSoftwareDupDetect> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SmsAiInstalledSoftwareDupDetect> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -28,20 +28,20 @@ namespace WindowsMonitor
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMS_AI_InstalledSoftwareDupDetect> Retrieve()
+        public static IEnumerable<SmsAiInstalledSoftwareDupDetect> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMS_AI_InstalledSoftwareDupDetect> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SmsAiInstalledSoftwareDupDetect> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM SMS_AI_InstalledSoftwareDupDetect");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SMS_AI_InstalledSoftwareDupDetect
+                yield return new SmsAiInstalledSoftwareDupDetect
                 {
                      EntryNameKey = (string) (managementObject.Properties["EntryNameKey"]?.Value ?? default(string)),
 		 Software1 = (string) (managementObject.Properties["Software1"]?.Value ?? default(string)),

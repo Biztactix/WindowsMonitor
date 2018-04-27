@@ -7,7 +7,7 @@ namespace WindowsMonitor
 {
     /// <summary>
     /// </summary>
-    public sealed class SMS_RegLookupEntry
+    public sealed class SmsRegLookupEntry
     {
 		public string LookupEntryKey { get; private set; }
 		public string Match { get; private set; }
@@ -16,7 +16,7 @@ namespace WindowsMonitor
 		public string RegRoot { get; private set; }
 		public string RegValue { get; private set; }
 
-        public static IEnumerable<SMS_RegLookupEntry> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SmsRegLookupEntry> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -31,20 +31,20 @@ namespace WindowsMonitor
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMS_RegLookupEntry> Retrieve()
+        public static IEnumerable<SmsRegLookupEntry> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMS_RegLookupEntry> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SmsRegLookupEntry> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM SMS_RegLookupEntry");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SMS_RegLookupEntry
+                yield return new SmsRegLookupEntry
                 {
                      LookupEntryKey = (string) (managementObject.Properties["LookupEntryKey"]?.Value ?? default(string)),
 		 Match = (string) (managementObject.Properties["Match"]?.Value ?? default(string)),

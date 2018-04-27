@@ -10,18 +10,18 @@ namespace WindowsMonitor
     public sealed class Office365ProPlusConfigurations
     {
 		public string AutoUpgrade { get; private set; }
-		public string CCMManaged { get; private set; }
-		public string CDNBaseUrl { get; private set; }
-		public string cfgUpdateChannel { get; private set; }
+		public string CcmManaged { get; private set; }
+		public string CdnBaseUrl { get; private set; }
+		public string CfgUpdateChannel { get; private set; }
 		public string ClientCulture { get; private set; }
 		public string ClientFolder { get; private set; }
-		public string GPOChannel { get; private set; }
-		public string GPOOfficeMgmtCOM { get; private set; }
+		public string GpoChannel { get; private set; }
+		public string GpoOfficeMgmtCom { get; private set; }
 		public string InstallationPath { get; private set; }
 		public string KeyName { get; private set; }
 		public string LastScenario { get; private set; }
 		public string LastScenarioResult { get; private set; }
-		public string OfficeMgmtCOM { get; private set; }
+		public string OfficeMgmtCom { get; private set; }
 		public string Platform { get; private set; }
 		public string SharedComputerLicensing { get; private set; }
 		public string UpdateChannel { get; private set; }
@@ -61,18 +61,18 @@ namespace WindowsMonitor
                 yield return new Office365ProPlusConfigurations
                 {
                      AutoUpgrade = (string) (managementObject.Properties["AutoUpgrade"]?.Value ?? default(string)),
-		 CCMManaged = (string) (managementObject.Properties["CCMManaged"]?.Value ?? default(string)),
-		 CDNBaseUrl = (string) (managementObject.Properties["CDNBaseUrl"]?.Value ?? default(string)),
-		 cfgUpdateChannel = (string) (managementObject.Properties["cfgUpdateChannel"]?.Value ?? default(string)),
+		 CcmManaged = (string) (managementObject.Properties["CCMManaged"]?.Value ?? default(string)),
+		 CdnBaseUrl = (string) (managementObject.Properties["CDNBaseUrl"]?.Value ?? default(string)),
+		 CfgUpdateChannel = (string) (managementObject.Properties["cfgUpdateChannel"]?.Value ?? default(string)),
 		 ClientCulture = (string) (managementObject.Properties["ClientCulture"]?.Value ?? default(string)),
 		 ClientFolder = (string) (managementObject.Properties["ClientFolder"]?.Value ?? default(string)),
-		 GPOChannel = (string) (managementObject.Properties["GPOChannel"]?.Value ?? default(string)),
-		 GPOOfficeMgmtCOM = (string) (managementObject.Properties["GPOOfficeMgmtCOM"]?.Value ?? default(string)),
+		 GpoChannel = (string) (managementObject.Properties["GPOChannel"]?.Value ?? default(string)),
+		 GpoOfficeMgmtCom = (string) (managementObject.Properties["GPOOfficeMgmtCOM"]?.Value ?? default(string)),
 		 InstallationPath = (string) (managementObject.Properties["InstallationPath"]?.Value ?? default(string)),
 		 KeyName = (string) (managementObject.Properties["KeyName"]?.Value ?? default(string)),
 		 LastScenario = (string) (managementObject.Properties["LastScenario"]?.Value ?? default(string)),
 		 LastScenarioResult = (string) (managementObject.Properties["LastScenarioResult"]?.Value ?? default(string)),
-		 OfficeMgmtCOM = (string) (managementObject.Properties["OfficeMgmtCOM"]?.Value ?? default(string)),
+		 OfficeMgmtCom = (string) (managementObject.Properties["OfficeMgmtCOM"]?.Value ?? default(string)),
 		 Platform = (string) (managementObject.Properties["Platform"]?.Value ?? default(string)),
 		 SharedComputerLicensing = (string) (managementObject.Properties["SharedComputerLicensing"]?.Value ?? default(string)),
 		 UpdateChannel = (string) (managementObject.Properties["UpdateChannel"]?.Value ?? default(string)),

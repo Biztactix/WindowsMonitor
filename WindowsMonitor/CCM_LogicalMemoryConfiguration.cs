@@ -7,7 +7,7 @@ namespace WindowsMonitor
 {
     /// <summary>
     /// </summary>
-    public sealed class CCM_LogicalMemoryConfiguration
+    public sealed class CcmLogicalMemoryConfiguration
     {
 		public ulong AvailableVirtualMemory { get; private set; }
 		public string Name { get; private set; }
@@ -15,7 +15,7 @@ namespace WindowsMonitor
 		public ulong TotalPhysicalMemory { get; private set; }
 		public ulong TotalVirtualMemory { get; private set; }
 
-        public static IEnumerable<CCM_LogicalMemoryConfiguration> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CcmLogicalMemoryConfiguration> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,20 +30,20 @@ namespace WindowsMonitor
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CCM_LogicalMemoryConfiguration> Retrieve()
+        public static IEnumerable<CcmLogicalMemoryConfiguration> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CCM_LogicalMemoryConfiguration> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CcmLogicalMemoryConfiguration> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CCM_LogicalMemoryConfiguration");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new CCM_LogicalMemoryConfiguration
+                yield return new CcmLogicalMemoryConfiguration
                 {
                      AvailableVirtualMemory = (ulong) (managementObject.Properties["AvailableVirtualMemory"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),

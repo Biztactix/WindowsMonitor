@@ -7,11 +7,11 @@ namespace WindowsMonitor
 {
     /// <summary>
     /// </summary>
-    public sealed class NTEventlogProviderConfig
+    public sealed class NtEventlogProviderConfig
     {
 		public DateTime LastBootUpTime { get; private set; }
 
-        public static IEnumerable<NTEventlogProviderConfig> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NtEventlogProviderConfig> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -26,20 +26,20 @@ namespace WindowsMonitor
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NTEventlogProviderConfig> Retrieve()
+        public static IEnumerable<NtEventlogProviderConfig> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NTEventlogProviderConfig> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NtEventlogProviderConfig> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM NTEventlogProviderConfig");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NTEventlogProviderConfig
+                yield return new NtEventlogProviderConfig
                 {
                      LastBootUpTime = (DateTime) (managementObject.Properties["LastBootUpTime"]?.Value ?? default(DateTime))
                 };

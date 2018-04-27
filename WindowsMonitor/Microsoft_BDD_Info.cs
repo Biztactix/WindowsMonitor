@@ -7,16 +7,16 @@ namespace WindowsMonitor
 {
     /// <summary>
     /// </summary>
-    public sealed class Microsoft_BDD_Info
+    public sealed class MicrosoftBddInfo
     {
-		public string BuildID { get; private set; }
+		public string BuildId { get; private set; }
 		public string BuildName { get; private set; }
 		public string BuildVersion { get; private set; }
 		public string CaptureMethod { get; private set; }
-		public string CaptureOSDAdvertisementID { get; private set; }
-		public string CaptureOSDPackageID { get; private set; }
-		public string CaptureOSDProgramName { get; private set; }
-		public string CaptureTaskSequenceID { get; private set; }
+		public string CaptureOsdAdvertisementId { get; private set; }
+		public string CaptureOsdPackageId { get; private set; }
+		public string CaptureOsdProgramName { get; private set; }
+		public string CaptureTaskSequenceId { get; private set; }
 		public string CaptureTaskSequenceName { get; private set; }
 		public string CaptureTaskSequenceVersion { get; private set; }
 		public DateTime CaptureTimestamp { get; private set; }
@@ -27,14 +27,14 @@ namespace WindowsMonitor
 		public string DeploymentToolkitVersion { get; private set; }
 		public string DeploymentType { get; private set; }
 		public string InstanceKey { get; private set; }
-		public string OSDAdvertisementID { get; private set; }
-		public string OSDPackageID { get; private set; }
-		public string OSDProgramName { get; private set; }
-		public string TaskSequenceID { get; private set; }
+		public string OsdAdvertisementId { get; private set; }
+		public string OsdPackageId { get; private set; }
+		public string OsdProgramName { get; private set; }
+		public string TaskSequenceId { get; private set; }
 		public string TaskSequenceName { get; private set; }
 		public string TaskSequenceVersion { get; private set; }
 
-        public static IEnumerable<Microsoft_BDD_Info> Retrieve(string remote, string username, string password)
+        public static IEnumerable<MicrosoftBddInfo> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -49,29 +49,29 @@ namespace WindowsMonitor
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Microsoft_BDD_Info> Retrieve()
+        public static IEnumerable<MicrosoftBddInfo> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Microsoft_BDD_Info> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<MicrosoftBddInfo> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Microsoft_BDD_Info");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Microsoft_BDD_Info
+                yield return new MicrosoftBddInfo
                 {
-                     BuildID = (string) (managementObject.Properties["BuildID"]?.Value ?? default(string)),
+                     BuildId = (string) (managementObject.Properties["BuildID"]?.Value ?? default(string)),
 		 BuildName = (string) (managementObject.Properties["BuildName"]?.Value ?? default(string)),
 		 BuildVersion = (string) (managementObject.Properties["BuildVersion"]?.Value ?? default(string)),
 		 CaptureMethod = (string) (managementObject.Properties["CaptureMethod"]?.Value ?? default(string)),
-		 CaptureOSDAdvertisementID = (string) (managementObject.Properties["CaptureOSDAdvertisementID"]?.Value ?? default(string)),
-		 CaptureOSDPackageID = (string) (managementObject.Properties["CaptureOSDPackageID"]?.Value ?? default(string)),
-		 CaptureOSDProgramName = (string) (managementObject.Properties["CaptureOSDProgramName"]?.Value ?? default(string)),
-		 CaptureTaskSequenceID = (string) (managementObject.Properties["CaptureTaskSequenceID"]?.Value ?? default(string)),
+		 CaptureOsdAdvertisementId = (string) (managementObject.Properties["CaptureOSDAdvertisementID"]?.Value ?? default(string)),
+		 CaptureOsdPackageId = (string) (managementObject.Properties["CaptureOSDPackageID"]?.Value ?? default(string)),
+		 CaptureOsdProgramName = (string) (managementObject.Properties["CaptureOSDProgramName"]?.Value ?? default(string)),
+		 CaptureTaskSequenceId = (string) (managementObject.Properties["CaptureTaskSequenceID"]?.Value ?? default(string)),
 		 CaptureTaskSequenceName = (string) (managementObject.Properties["CaptureTaskSequenceName"]?.Value ?? default(string)),
 		 CaptureTaskSequenceVersion = (string) (managementObject.Properties["CaptureTaskSequenceVersion"]?.Value ?? default(string)),
 		 CaptureTimestamp = (DateTime) (managementObject.Properties["CaptureTimestamp"]?.Value ?? default(DateTime)),
@@ -82,10 +82,10 @@ namespace WindowsMonitor
 		 DeploymentToolkitVersion = (string) (managementObject.Properties["DeploymentToolkitVersion"]?.Value ?? default(string)),
 		 DeploymentType = (string) (managementObject.Properties["DeploymentType"]?.Value ?? default(string)),
 		 InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value ?? default(string)),
-		 OSDAdvertisementID = (string) (managementObject.Properties["OSDAdvertisementID"]?.Value ?? default(string)),
-		 OSDPackageID = (string) (managementObject.Properties["OSDPackageID"]?.Value ?? default(string)),
-		 OSDProgramName = (string) (managementObject.Properties["OSDProgramName"]?.Value ?? default(string)),
-		 TaskSequenceID = (string) (managementObject.Properties["TaskSequenceID"]?.Value ?? default(string)),
+		 OsdAdvertisementId = (string) (managementObject.Properties["OSDAdvertisementID"]?.Value ?? default(string)),
+		 OsdPackageId = (string) (managementObject.Properties["OSDPackageID"]?.Value ?? default(string)),
+		 OsdProgramName = (string) (managementObject.Properties["OSDProgramName"]?.Value ?? default(string)),
+		 TaskSequenceId = (string) (managementObject.Properties["TaskSequenceID"]?.Value ?? default(string)),
 		 TaskSequenceName = (string) (managementObject.Properties["TaskSequenceName"]?.Value ?? default(string)),
 		 TaskSequenceVersion = (string) (managementObject.Properties["TaskSequenceVersion"]?.Value ?? default(string))
                 };

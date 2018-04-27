@@ -7,7 +7,7 @@ namespace WindowsMonitor
 {
     /// <summary>
     /// </summary>
-    public sealed class SQL_2008
+    public sealed class Sql2008
     {
 		public bool IsReadOnly { get; private set; }
 		public uint PropertyIndex { get; private set; }
@@ -18,7 +18,7 @@ namespace WindowsMonitor
 		public string ServiceName { get; private set; }
 		public uint SqlServiceType { get; private set; }
 
-        public static IEnumerable<SQL_2008> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Sql2008> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -33,20 +33,20 @@ namespace WindowsMonitor
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SQL_2008> Retrieve()
+        public static IEnumerable<Sql2008> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SQL_2008> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Sql2008> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM SQL_2008");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SQL_2008
+                yield return new Sql2008
                 {
                      IsReadOnly = (bool) (managementObject.Properties["IsReadOnly"]?.Value ?? default(bool)),
 		 PropertyIndex = (uint) (managementObject.Properties["PropertyIndex"]?.Value ?? default(uint)),

@@ -13,9 +13,9 @@ namespace WindowsMonitor
 		public uint AuthorizationStatus { get; private set; }
 		public string Description { get; private set; }
 		public DateTime ExpirationDate { get; private set; }
-		public string ID { get; private set; }
-		public string ILID { get; private set; }
-		public uint ILVID { get; private set; }
+		public string Id { get; private set; }
+		public string Ilid { get; private set; }
+		public uint Ilvid { get; private set; }
 
         public static IEnumerable<OfficeSoftwareProtectionTokenActivationLicense> Retrieve(string remote, string username, string password)
         {
@@ -51,9 +51,9 @@ namespace WindowsMonitor
 		 AuthorizationStatus = (uint) (managementObject.Properties["AuthorizationStatus"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
 		 ExpirationDate = (DateTime) (managementObject.Properties["ExpirationDate"]?.Value ?? default(DateTime)),
-		 ID = (string) (managementObject.Properties["ID"]?.Value ?? default(string)),
-		 ILID = (string) (managementObject.Properties["ILID"]?.Value ?? default(string)),
-		 ILVID = (uint) (managementObject.Properties["ILVID"]?.Value ?? default(uint))
+		 Id = (string) (managementObject.Properties["ID"]?.Value ?? default(string)),
+		 Ilid = (string) (managementObject.Properties["ILID"]?.Value ?? default(string)),
+		 Ilvid = (uint) (managementObject.Properties["ILVID"]?.Value ?? default(uint))
                 };
         }
     }

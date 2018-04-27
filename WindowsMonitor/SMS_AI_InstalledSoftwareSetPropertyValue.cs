@@ -7,7 +7,7 @@ namespace WindowsMonitor
 {
     /// <summary>
     /// </summary>
-    public sealed class SMS_AI_InstalledSoftwareSetPropertyValue
+    public sealed class SmsAiInstalledSoftwareSetPropertyValue
     {
 		public string EntryNameKey { get; private set; }
 		public bool IfRegistryCheckPositive { get; private set; }
@@ -19,7 +19,7 @@ namespace WindowsMonitor
 		public string WhenRegRoot { get; private set; }
 		public string WhenRegSubKey { get; private set; }
 
-        public static IEnumerable<SMS_AI_InstalledSoftwareSetPropertyValue> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SmsAiInstalledSoftwareSetPropertyValue> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -34,20 +34,20 @@ namespace WindowsMonitor
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMS_AI_InstalledSoftwareSetPropertyValue> Retrieve()
+        public static IEnumerable<SmsAiInstalledSoftwareSetPropertyValue> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMS_AI_InstalledSoftwareSetPropertyValue> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SmsAiInstalledSoftwareSetPropertyValue> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM SMS_AI_InstalledSoftwareSetPropertyValue");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SMS_AI_InstalledSoftwareSetPropertyValue
+                yield return new SmsAiInstalledSoftwareSetPropertyValue
                 {
                      EntryNameKey = (string) (managementObject.Properties["EntryNameKey"]?.Value ?? default(string)),
 		 IfRegistryCheckPositive = (bool) (managementObject.Properties["IfRegistryCheckPositive"]?.Value ?? default(bool)),
