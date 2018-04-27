@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class Counters_ReFS
+    public sealed class CountersReFs
     {
 		public ulong BytesCached { get; private set; }
 		public ulong BytesReadfromCachePersec { get; private set; }
@@ -29,10 +27,10 @@ namespace WindowsMonitor.Performance.Formatted
 		public ulong CacheWriteThroughUpdatesBytesPersec { get; private set; }
 		public ulong CacheWriteThroughUpdatesPersec { get; private set; }
 		public string Caption { get; private set; }
-		public ulong Checkpointlatency100ns { get; private set; }
+		public ulong Checkpointlatency100Ns { get; private set; }
 		public ulong CheckpointsPersec { get; private set; }
-		public ulong Compactionreadlatency100ns { get; private set; }
-		public ulong Compactionwritelatency100ns { get; private set; }
+		public ulong Compactionreadlatency100Ns { get; private set; }
+		public ulong Compactionwritelatency100Ns { get; private set; }
 		public ulong ContainerDestagesFromFastTierPersec { get; private set; }
 		public ulong ContainerDestagesFromSlowTierPersec { get; private set; }
 		public ulong DataAllocationsFastTierPersec { get; private set; }
@@ -42,12 +40,12 @@ namespace WindowsMonitor.Performance.Formatted
 		public string Description { get; private set; }
 		public uint Fasttierdatadestagecriteriapercentage { get; private set; }
 		public ulong FastTierDestagedContainerFillRatioPercent { get; private set; }
-		public ulong Fasttierdestagereadlatency100ns { get; private set; }
-		public ulong Fasttierdestagewritelatency100ns { get; private set; }
+		public ulong Fasttierdestagereadlatency100Ns { get; private set; }
+		public ulong Fasttierdestagewritelatency100Ns { get; private set; }
 		public uint Fasttiermetadatadestagecriteriapercentage { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint Logfillpercentage { get; private set; }
 		public ulong LogwritesPersec { get; private set; }
 		public uint MaxTransactionsOutstanding { get; private set; }
@@ -57,20 +55,20 @@ namespace WindowsMonitor.Performance.Formatted
 		public string Name { get; private set; }
 		public uint Slowtierdatadestagecriteriapercentage { get; private set; }
 		public ulong SlowTierDestagedContainerFillRatioPercent { get; private set; }
-		public ulong Slowtierdestagereadlatency100ns { get; private set; }
-		public ulong Slowtierdestagewritelatency100ns { get; private set; }
+		public ulong Slowtierdestagereadlatency100Ns { get; private set; }
+		public ulong Slowtierdestagewritelatency100Ns { get; private set; }
 		public uint Slowtiermetadatadestagecriteriapercentage { get; private set; }
 		public ulong SpeculativeBytesReadtoCachePersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong TotalAllocationsPersec { get; private set; }
 		public uint TransactionsOutstanding { get; private set; }
-		public ulong Treeupdatelatency100ns { get; private set; }
+		public ulong Treeupdatelatency100Ns { get; private set; }
 		public ulong TreeupdatesPersec { get; private set; }
-		public ulong Trimlatency100ns { get; private set; }
+		public ulong Trimlatency100Ns { get; private set; }
 
-        public static IEnumerable<Counters_ReFS> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CountersReFs> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -85,20 +83,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_ReFS> Retrieve()
+        public static IEnumerable<CountersReFs> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_ReFS> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CountersReFs> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_Counters_ReFS");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Counters_ReFS
+                yield return new CountersReFs
                 {
                      BytesCached = (ulong) (managementObject.Properties["BytesCached"]?.Value ?? default(ulong)),
 		 BytesReadfromCachePersec = (ulong) (managementObject.Properties["BytesReadfromCachePersec"]?.Value ?? default(ulong)),
@@ -120,10 +118,10 @@ namespace WindowsMonitor.Performance.Formatted
 		 CacheWriteThroughUpdatesBytesPersec = (ulong) (managementObject.Properties["CacheWriteThroughUpdatesBytesPersec"]?.Value ?? default(ulong)),
 		 CacheWriteThroughUpdatesPersec = (ulong) (managementObject.Properties["CacheWriteThroughUpdatesPersec"]?.Value ?? default(ulong)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Checkpointlatency100ns = (ulong) (managementObject.Properties["Checkpointlatency100ns"]?.Value ?? default(ulong)),
+		 Checkpointlatency100Ns = (ulong) (managementObject.Properties["Checkpointlatency100ns"]?.Value ?? default(ulong)),
 		 CheckpointsPersec = (ulong) (managementObject.Properties["CheckpointsPersec"]?.Value ?? default(ulong)),
-		 Compactionreadlatency100ns = (ulong) (managementObject.Properties["Compactionreadlatency100ns"]?.Value ?? default(ulong)),
-		 Compactionwritelatency100ns = (ulong) (managementObject.Properties["Compactionwritelatency100ns"]?.Value ?? default(ulong)),
+		 Compactionreadlatency100Ns = (ulong) (managementObject.Properties["Compactionreadlatency100ns"]?.Value ?? default(ulong)),
+		 Compactionwritelatency100Ns = (ulong) (managementObject.Properties["Compactionwritelatency100ns"]?.Value ?? default(ulong)),
 		 ContainerDestagesFromFastTierPersec = (ulong) (managementObject.Properties["ContainerDestagesFromFastTierPersec"]?.Value ?? default(ulong)),
 		 ContainerDestagesFromSlowTierPersec = (ulong) (managementObject.Properties["ContainerDestagesFromSlowTierPersec"]?.Value ?? default(ulong)),
 		 DataAllocationsFastTierPersec = (ulong) (managementObject.Properties["DataAllocationsFastTierPersec"]?.Value ?? default(ulong)),
@@ -133,12 +131,12 @@ namespace WindowsMonitor.Performance.Formatted
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
 		 Fasttierdatadestagecriteriapercentage = (uint) (managementObject.Properties["Fasttierdatadestagecriteriapercentage"]?.Value ?? default(uint)),
 		 FastTierDestagedContainerFillRatioPercent = (ulong) (managementObject.Properties["FastTierDestagedContainerFillRatioPercent"]?.Value ?? default(ulong)),
-		 Fasttierdestagereadlatency100ns = (ulong) (managementObject.Properties["Fasttierdestagereadlatency100ns"]?.Value ?? default(ulong)),
-		 Fasttierdestagewritelatency100ns = (ulong) (managementObject.Properties["Fasttierdestagewritelatency100ns"]?.Value ?? default(ulong)),
+		 Fasttierdestagereadlatency100Ns = (ulong) (managementObject.Properties["Fasttierdestagereadlatency100ns"]?.Value ?? default(ulong)),
+		 Fasttierdestagewritelatency100Ns = (ulong) (managementObject.Properties["Fasttierdestagewritelatency100ns"]?.Value ?? default(ulong)),
 		 Fasttiermetadatadestagecriteriapercentage = (uint) (managementObject.Properties["Fasttiermetadatadestagecriteriapercentage"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Logfillpercentage = (uint) (managementObject.Properties["Logfillpercentage"]?.Value ?? default(uint)),
 		 LogwritesPersec = (ulong) (managementObject.Properties["LogwritesPersec"]?.Value ?? default(ulong)),
 		 MaxTransactionsOutstanding = (uint) (managementObject.Properties["MaxTransactionsOutstanding"]?.Value ?? default(uint)),
@@ -148,18 +146,18 @@ namespace WindowsMonitor.Performance.Formatted
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
 		 Slowtierdatadestagecriteriapercentage = (uint) (managementObject.Properties["Slowtierdatadestagecriteriapercentage"]?.Value ?? default(uint)),
 		 SlowTierDestagedContainerFillRatioPercent = (ulong) (managementObject.Properties["SlowTierDestagedContainerFillRatioPercent"]?.Value ?? default(ulong)),
-		 Slowtierdestagereadlatency100ns = (ulong) (managementObject.Properties["Slowtierdestagereadlatency100ns"]?.Value ?? default(ulong)),
-		 Slowtierdestagewritelatency100ns = (ulong) (managementObject.Properties["Slowtierdestagewritelatency100ns"]?.Value ?? default(ulong)),
+		 Slowtierdestagereadlatency100Ns = (ulong) (managementObject.Properties["Slowtierdestagereadlatency100ns"]?.Value ?? default(ulong)),
+		 Slowtierdestagewritelatency100Ns = (ulong) (managementObject.Properties["Slowtierdestagewritelatency100ns"]?.Value ?? default(ulong)),
 		 Slowtiermetadatadestagecriteriapercentage = (uint) (managementObject.Properties["Slowtiermetadatadestagecriteriapercentage"]?.Value ?? default(uint)),
 		 SpeculativeBytesReadtoCachePersec = (ulong) (managementObject.Properties["SpeculativeBytesReadtoCachePersec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalAllocationsPersec = (ulong) (managementObject.Properties["TotalAllocationsPersec"]?.Value ?? default(ulong)),
 		 TransactionsOutstanding = (uint) (managementObject.Properties["TransactionsOutstanding"]?.Value ?? default(uint)),
-		 Treeupdatelatency100ns = (ulong) (managementObject.Properties["Treeupdatelatency100ns"]?.Value ?? default(ulong)),
+		 Treeupdatelatency100Ns = (ulong) (managementObject.Properties["Treeupdatelatency100ns"]?.Value ?? default(ulong)),
 		 TreeupdatesPersec = (ulong) (managementObject.Properties["TreeupdatesPersec"]?.Value ?? default(ulong)),
-		 Trimlatency100ns = (ulong) (managementObject.Properties["Trimlatency100ns"]?.Value ?? default(ulong))
+		 Trimlatency100Ns = (ulong) (managementObject.Properties["Trimlatency100ns"]?.Value ?? default(ulong))
                 };
         }
     }

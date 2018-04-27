@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted.Network.AspNet
 {
     /// <summary>
     /// </summary>
-    public sealed class ASPNET_ASPNETApplications
+    public sealed class AspnetAspnetApplications
     {
 		public uint AnonymousRequests { get; private set; }
 		public uint AnonymousRequestsPerSec { get; private set; }
@@ -15,12 +13,12 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint ApplicationLifetimeEventsPerSec { get; private set; }
 		public uint AuditFailureEventsRaised { get; private set; }
 		public uint AuditSuccessEventsRaised { get; private set; }
-		public uint CacheAPIEntries { get; private set; }
-		public uint CacheAPIHitRatio { get; private set; }
-		public uint CacheAPIHits { get; private set; }
-		public uint CacheAPIMisses { get; private set; }
-		public uint CacheAPITrims { get; private set; }
-		public uint CacheAPITurnoverRate { get; private set; }
+		public uint CacheApiEntries { get; private set; }
+		public uint CacheApiHitRatio { get; private set; }
+		public uint CacheApiHits { get; private set; }
+		public uint CacheApiMisses { get; private set; }
+		public uint CacheApiTrims { get; private set; }
+		public uint CacheApiTurnoverRate { get; private set; }
 		public uint CachePercentMachineMemoryLimitUsed { get; private set; }
 		public uint CachePercentProcessMemoryLimitUsed { get; private set; }
 		public uint CacheTotalEntries { get; private set; }
@@ -46,9 +44,9 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint EventsRaisedPerSec { get; private set; }
 		public uint FormsAuthenticationFailure { get; private set; }
 		public uint FormsAuthenticationSuccess { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint InfrastructureErrorEventsRaised { get; private set; }
 		public uint InfrastructureErrorEventsRaisedPerSec { get; private set; }
 		public uint ManagedMemoryUsedestimated { get; private set; }
@@ -90,21 +88,21 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint RequestWaitTime { get; private set; }
 		public uint SessionsAbandoned { get; private set; }
 		public uint SessionsActive { get; private set; }
-		public uint SessionSQLServerconnectionstotal { get; private set; }
+		public uint SessionSqlServerconnectionstotal { get; private set; }
 		public uint SessionStateServerconnectionstotal { get; private set; }
 		public uint SessionsTimedOut { get; private set; }
 		public uint SessionsTotal { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint TransactionsAborted { get; private set; }
 		public uint TransactionsCommitted { get; private set; }
 		public uint TransactionsPending { get; private set; }
 		public uint TransactionsPerSec { get; private set; }
 		public uint TransactionsTotal { get; private set; }
-		public uint ViewstateMACValidationFailure { get; private set; }
+		public uint ViewstateMacValidationFailure { get; private set; }
 
-        public static IEnumerable<ASPNET_ASPNETApplications> Retrieve(string remote, string username, string password)
+        public static IEnumerable<AspnetAspnetApplications> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -119,20 +117,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ASPNET_ASPNETApplications> Retrieve()
+        public static IEnumerable<AspnetAspnetApplications> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ASPNET_ASPNETApplications> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<AspnetAspnetApplications> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_ASPNET_ASPNETApplications");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ASPNET_ASPNETApplications
+                yield return new AspnetAspnetApplications
                 {
                      AnonymousRequests = (uint) (managementObject.Properties["AnonymousRequests"]?.Value ?? default(uint)),
 		 AnonymousRequestsPerSec = (uint) (managementObject.Properties["AnonymousRequestsPerSec"]?.Value ?? default(uint)),
@@ -140,12 +138,12 @@ namespace WindowsMonitor.Performance.Formatted
 		 ApplicationLifetimeEventsPerSec = (uint) (managementObject.Properties["ApplicationLifetimeEventsPerSec"]?.Value ?? default(uint)),
 		 AuditFailureEventsRaised = (uint) (managementObject.Properties["AuditFailureEventsRaised"]?.Value ?? default(uint)),
 		 AuditSuccessEventsRaised = (uint) (managementObject.Properties["AuditSuccessEventsRaised"]?.Value ?? default(uint)),
-		 CacheAPIEntries = (uint) (managementObject.Properties["CacheAPIEntries"]?.Value ?? default(uint)),
-		 CacheAPIHitRatio = (uint) (managementObject.Properties["CacheAPIHitRatio"]?.Value ?? default(uint)),
-		 CacheAPIHits = (uint) (managementObject.Properties["CacheAPIHits"]?.Value ?? default(uint)),
-		 CacheAPIMisses = (uint) (managementObject.Properties["CacheAPIMisses"]?.Value ?? default(uint)),
-		 CacheAPITrims = (uint) (managementObject.Properties["CacheAPITrims"]?.Value ?? default(uint)),
-		 CacheAPITurnoverRate = (uint) (managementObject.Properties["CacheAPITurnoverRate"]?.Value ?? default(uint)),
+		 CacheApiEntries = (uint) (managementObject.Properties["CacheAPIEntries"]?.Value ?? default(uint)),
+		 CacheApiHitRatio = (uint) (managementObject.Properties["CacheAPIHitRatio"]?.Value ?? default(uint)),
+		 CacheApiHits = (uint) (managementObject.Properties["CacheAPIHits"]?.Value ?? default(uint)),
+		 CacheApiMisses = (uint) (managementObject.Properties["CacheAPIMisses"]?.Value ?? default(uint)),
+		 CacheApiTrims = (uint) (managementObject.Properties["CacheAPITrims"]?.Value ?? default(uint)),
+		 CacheApiTurnoverRate = (uint) (managementObject.Properties["CacheAPITurnoverRate"]?.Value ?? default(uint)),
 		 CachePercentMachineMemoryLimitUsed = (uint) (managementObject.Properties["CachePercentMachineMemoryLimitUsed"]?.Value ?? default(uint)),
 		 CachePercentProcessMemoryLimitUsed = (uint) (managementObject.Properties["CachePercentProcessMemoryLimitUsed"]?.Value ?? default(uint)),
 		 CacheTotalEntries = (uint) (managementObject.Properties["CacheTotalEntries"]?.Value ?? default(uint)),
@@ -171,9 +169,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 EventsRaisedPerSec = (uint) (managementObject.Properties["EventsRaisedPerSec"]?.Value ?? default(uint)),
 		 FormsAuthenticationFailure = (uint) (managementObject.Properties["FormsAuthenticationFailure"]?.Value ?? default(uint)),
 		 FormsAuthenticationSuccess = (uint) (managementObject.Properties["FormsAuthenticationSuccess"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 InfrastructureErrorEventsRaised = (uint) (managementObject.Properties["InfrastructureErrorEventsRaised"]?.Value ?? default(uint)),
 		 InfrastructureErrorEventsRaisedPerSec = (uint) (managementObject.Properties["InfrastructureErrorEventsRaisedPerSec"]?.Value ?? default(uint)),
 		 ManagedMemoryUsedestimated = (uint) (managementObject.Properties["ManagedMemoryUsedestimated"]?.Value ?? default(uint)),
@@ -215,19 +213,19 @@ namespace WindowsMonitor.Performance.Formatted
 		 RequestWaitTime = (uint) (managementObject.Properties["RequestWaitTime"]?.Value ?? default(uint)),
 		 SessionsAbandoned = (uint) (managementObject.Properties["SessionsAbandoned"]?.Value ?? default(uint)),
 		 SessionsActive = (uint) (managementObject.Properties["SessionsActive"]?.Value ?? default(uint)),
-		 SessionSQLServerconnectionstotal = (uint) (managementObject.Properties["SessionSQLServerconnectionstotal"]?.Value ?? default(uint)),
+		 SessionSqlServerconnectionstotal = (uint) (managementObject.Properties["SessionSQLServerconnectionstotal"]?.Value ?? default(uint)),
 		 SessionStateServerconnectionstotal = (uint) (managementObject.Properties["SessionStateServerconnectionstotal"]?.Value ?? default(uint)),
 		 SessionsTimedOut = (uint) (managementObject.Properties["SessionsTimedOut"]?.Value ?? default(uint)),
 		 SessionsTotal = (uint) (managementObject.Properties["SessionsTotal"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TransactionsAborted = (uint) (managementObject.Properties["TransactionsAborted"]?.Value ?? default(uint)),
 		 TransactionsCommitted = (uint) (managementObject.Properties["TransactionsCommitted"]?.Value ?? default(uint)),
 		 TransactionsPending = (uint) (managementObject.Properties["TransactionsPending"]?.Value ?? default(uint)),
 		 TransactionsPerSec = (uint) (managementObject.Properties["TransactionsPerSec"]?.Value ?? default(uint)),
 		 TransactionsTotal = (uint) (managementObject.Properties["TransactionsTotal"]?.Value ?? default(uint)),
-		 ViewstateMACValidationFailure = (uint) (managementObject.Properties["ViewstateMACValidationFailure"]?.Value ?? default(uint))
+		 ViewstateMacValidationFailure = (uint) (managementObject.Properties["ViewstateMACValidationFailure"]?.Value ?? default(uint))
                 };
         }
     }

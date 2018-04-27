@@ -1,27 +1,25 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
 {
     /// <summary>
     /// </summary>
-    public sealed class SQLSERVERAGENT_SQLAgentAlerts
+    public sealed class SqlserveragentSqlAgentAlerts
     {
 		public ulong Activatedalerts { get; private set; }
 		public ulong AlertsactivatedPerminute { get; private set; }
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public string Name { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<SQLSERVERAGENT_SQLAgentAlerts> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SqlserveragentSqlAgentAlerts> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -36,32 +34,32 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SQLSERVERAGENT_SQLAgentAlerts> Retrieve()
+        public static IEnumerable<SqlserveragentSqlAgentAlerts> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SQLSERVERAGENT_SQLAgentAlerts> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SqlserveragentSqlAgentAlerts> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_SQLSERVERAGENT_SQLAgentAlerts");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SQLSERVERAGENT_SQLAgentAlerts
+                yield return new SqlserveragentSqlAgentAlerts
                 {
                      Activatedalerts = (ulong) (managementObject.Properties["Activatedalerts"]?.Value ?? default(ulong)),
 		 AlertsactivatedPerminute = (ulong) (managementObject.Properties["AlertsactivatedPerminute"]?.Value ?? default(ulong)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

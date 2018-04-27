@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using WindowsMonitor;
 using WindowsMonitor.Win32;
-using DiskDrive = WindowsMonitor.Win32.DiskDrive;
+using DiskDrive = WindowsMonitor.Win32.Hardware.DiskDrives.DiskDrive;
 
 namespace Example
 {
