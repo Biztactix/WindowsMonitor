@@ -1,36 +1,34 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class W3SVC_WebServiceCache
+    public sealed class W3SvcWebServiceCache
     {
 		public uint ActiveFlushedEntries { get; private set; }
 		public string Caption { get; private set; }
 		public ulong CurrentFileCacheMemoryUsage { get; private set; }
 		public uint CurrentFilesCached { get; private set; }
 		public uint CurrentMetadataCached { get; private set; }
-		public uint CurrentURIsCached { get; private set; }
+		public uint CurrentUrIsCached { get; private set; }
 		public string Description { get; private set; }
 		public uint FileCacheFlushes { get; private set; }
 		public uint FileCacheHits { get; private set; }
 		public uint FileCacheHitsPercent { get; private set; }
 		public uint FileCacheMisses { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
-		public uint KernelCurrentURIsCached { get; private set; }
-		public uint KernelTotalFlushedURIs { get; private set; }
-		public uint KernelTotalURIsCached { get; private set; }
-		public uint KernelURICacheFlushes { get; private set; }
-		public uint KernelURICacheHits { get; private set; }
-		public uint KernelURICacheHitsPercent { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
+		public uint KernelCurrentUrIsCached { get; private set; }
+		public uint KernelTotalFlushedUrIs { get; private set; }
+		public uint KernelTotalUrIsCached { get; private set; }
+		public uint KernelUriCacheFlushes { get; private set; }
+		public uint KernelUriCacheHits { get; private set; }
+		public uint KernelUriCacheHitsPercent { get; private set; }
 		public uint KernelUriCacheHitsPersec { get; private set; }
-		public uint KernelURICacheMisses { get; private set; }
+		public uint KernelUriCacheMisses { get; private set; }
 		public ulong MaximumFileCacheMemoryUsage { get; private set; }
 		public uint MetadataCacheFlushes { get; private set; }
 		public uint MetadataCacheHits { get; private set; }
@@ -45,21 +43,21 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint OutputCacheTotalFlushes { get; private set; }
 		public uint OutputCacheTotalHits { get; private set; }
 		public uint OutputCacheTotalMisses { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint TotalFilesCached { get; private set; }
 		public uint TotalFlushedFiles { get; private set; }
 		public uint TotalFlushedMetadata { get; private set; }
-		public uint TotalFlushedURIs { get; private set; }
+		public uint TotalFlushedUrIs { get; private set; }
 		public uint TotalMetadataCached { get; private set; }
-		public uint TotalURIsCached { get; private set; }
-		public uint URICacheFlushes { get; private set; }
-		public uint URICacheHits { get; private set; }
-		public uint URICacheHitsPercent { get; private set; }
-		public uint URICacheMisses { get; private set; }
+		public uint TotalUrIsCached { get; private set; }
+		public uint UriCacheFlushes { get; private set; }
+		public uint UriCacheHits { get; private set; }
+		public uint UriCacheHitsPercent { get; private set; }
+		public uint UriCacheMisses { get; private set; }
 
-        public static IEnumerable<W3SVC_WebServiceCache> Retrieve(string remote, string username, string password)
+        public static IEnumerable<W3SvcWebServiceCache> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -74,43 +72,43 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<W3SVC_WebServiceCache> Retrieve()
+        public static IEnumerable<W3SvcWebServiceCache> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<W3SVC_WebServiceCache> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<W3SvcWebServiceCache> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_W3SVC_WebServiceCache");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new W3SVC_WebServiceCache
+                yield return new W3SvcWebServiceCache
                 {
                      ActiveFlushedEntries = (uint) (managementObject.Properties["ActiveFlushedEntries"]?.Value ?? default(uint)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
 		 CurrentFileCacheMemoryUsage = (ulong) (managementObject.Properties["CurrentFileCacheMemoryUsage"]?.Value ?? default(ulong)),
 		 CurrentFilesCached = (uint) (managementObject.Properties["CurrentFilesCached"]?.Value ?? default(uint)),
 		 CurrentMetadataCached = (uint) (managementObject.Properties["CurrentMetadataCached"]?.Value ?? default(uint)),
-		 CurrentURIsCached = (uint) (managementObject.Properties["CurrentURIsCached"]?.Value ?? default(uint)),
+		 CurrentUrIsCached = (uint) (managementObject.Properties["CurrentURIsCached"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
 		 FileCacheFlushes = (uint) (managementObject.Properties["FileCacheFlushes"]?.Value ?? default(uint)),
 		 FileCacheHits = (uint) (managementObject.Properties["FileCacheHits"]?.Value ?? default(uint)),
 		 FileCacheHitsPercent = (uint) (managementObject.Properties["FileCacheHitsPercent"]?.Value ?? default(uint)),
 		 FileCacheMisses = (uint) (managementObject.Properties["FileCacheMisses"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 KernelCurrentURIsCached = (uint) (managementObject.Properties["KernelCurrentURIsCached"]?.Value ?? default(uint)),
-		 KernelTotalFlushedURIs = (uint) (managementObject.Properties["KernelTotalFlushedURIs"]?.Value ?? default(uint)),
-		 KernelTotalURIsCached = (uint) (managementObject.Properties["KernelTotalURIsCached"]?.Value ?? default(uint)),
-		 KernelURICacheFlushes = (uint) (managementObject.Properties["KernelURICacheFlushes"]?.Value ?? default(uint)),
-		 KernelURICacheHits = (uint) (managementObject.Properties["KernelURICacheHits"]?.Value ?? default(uint)),
-		 KernelURICacheHitsPercent = (uint) (managementObject.Properties["KernelURICacheHitsPercent"]?.Value ?? default(uint)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 KernelCurrentUrIsCached = (uint) (managementObject.Properties["KernelCurrentURIsCached"]?.Value ?? default(uint)),
+		 KernelTotalFlushedUrIs = (uint) (managementObject.Properties["KernelTotalFlushedURIs"]?.Value ?? default(uint)),
+		 KernelTotalUrIsCached = (uint) (managementObject.Properties["KernelTotalURIsCached"]?.Value ?? default(uint)),
+		 KernelUriCacheFlushes = (uint) (managementObject.Properties["KernelURICacheFlushes"]?.Value ?? default(uint)),
+		 KernelUriCacheHits = (uint) (managementObject.Properties["KernelURICacheHits"]?.Value ?? default(uint)),
+		 KernelUriCacheHitsPercent = (uint) (managementObject.Properties["KernelURICacheHitsPercent"]?.Value ?? default(uint)),
 		 KernelUriCacheHitsPersec = (uint) (managementObject.Properties["KernelUriCacheHitsPersec"]?.Value ?? default(uint)),
-		 KernelURICacheMisses = (uint) (managementObject.Properties["KernelURICacheMisses"]?.Value ?? default(uint)),
+		 KernelUriCacheMisses = (uint) (managementObject.Properties["KernelURICacheMisses"]?.Value ?? default(uint)),
 		 MaximumFileCacheMemoryUsage = (ulong) (managementObject.Properties["MaximumFileCacheMemoryUsage"]?.Value ?? default(ulong)),
 		 MetadataCacheFlushes = (uint) (managementObject.Properties["MetadataCacheFlushes"]?.Value ?? default(uint)),
 		 MetadataCacheHits = (uint) (managementObject.Properties["MetadataCacheHits"]?.Value ?? default(uint)),
@@ -125,19 +123,19 @@ namespace WindowsMonitor.Performance.Formatted
 		 OutputCacheTotalFlushes = (uint) (managementObject.Properties["OutputCacheTotalFlushes"]?.Value ?? default(uint)),
 		 OutputCacheTotalHits = (uint) (managementObject.Properties["OutputCacheTotalHits"]?.Value ?? default(uint)),
 		 OutputCacheTotalMisses = (uint) (managementObject.Properties["OutputCacheTotalMisses"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalFilesCached = (uint) (managementObject.Properties["TotalFilesCached"]?.Value ?? default(uint)),
 		 TotalFlushedFiles = (uint) (managementObject.Properties["TotalFlushedFiles"]?.Value ?? default(uint)),
 		 TotalFlushedMetadata = (uint) (managementObject.Properties["TotalFlushedMetadata"]?.Value ?? default(uint)),
-		 TotalFlushedURIs = (uint) (managementObject.Properties["TotalFlushedURIs"]?.Value ?? default(uint)),
+		 TotalFlushedUrIs = (uint) (managementObject.Properties["TotalFlushedURIs"]?.Value ?? default(uint)),
 		 TotalMetadataCached = (uint) (managementObject.Properties["TotalMetadataCached"]?.Value ?? default(uint)),
-		 TotalURIsCached = (uint) (managementObject.Properties["TotalURIsCached"]?.Value ?? default(uint)),
-		 URICacheFlushes = (uint) (managementObject.Properties["URICacheFlushes"]?.Value ?? default(uint)),
-		 URICacheHits = (uint) (managementObject.Properties["URICacheHits"]?.Value ?? default(uint)),
-		 URICacheHitsPercent = (uint) (managementObject.Properties["URICacheHitsPercent"]?.Value ?? default(uint)),
-		 URICacheMisses = (uint) (managementObject.Properties["URICacheMisses"]?.Value ?? default(uint))
+		 TotalUrIsCached = (uint) (managementObject.Properties["TotalURIsCached"]?.Value ?? default(uint)),
+		 UriCacheFlushes = (uint) (managementObject.Properties["URICacheFlushes"]?.Value ?? default(uint)),
+		 UriCacheHits = (uint) (managementObject.Properties["URICacheHits"]?.Value ?? default(uint)),
+		 UriCacheHitsPercent = (uint) (managementObject.Properties["URICacheHitsPercent"]?.Value ?? default(uint)),
+		 UriCacheMisses = (uint) (managementObject.Properties["URICacheMisses"]?.Value ?? default(uint))
                 };
         }
     }

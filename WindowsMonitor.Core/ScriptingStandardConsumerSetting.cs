@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,13 +7,14 @@ namespace WindowsMonitor
     /// </summary>
     public sealed class ScriptingStandardConsumerSetting
     {
-		public string Caption { get; private set; }
-		public string Description { get; private set; }
-		public uint MaximumScripts { get; private set; }
-		public string SettingID { get; private set; }
-		public uint Timeout { get; private set; }
+        public string Caption { get; private set; }
+        public string Description { get; private set; }
+        public uint MaximumScripts { get; private set; }
+        public string SettingId { get; private set; }
+        public uint Timeout { get; private set; }
 
-        public static IEnumerable<ScriptingStandardConsumerSetting> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ScriptingStandardConsumerSetting> Retrieve(string remote, string username,
+            string password)
         {
             var options = new ConnectionOptions
             {
@@ -45,11 +44,11 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ScriptingStandardConsumerSetting
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 MaximumScripts = (uint) (managementObject.Properties["MaximumScripts"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
-		 Timeout = (uint) (managementObject.Properties["Timeout"]?.Value ?? default(uint))
+                    Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                    Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                    MaximumScripts = (uint) (managementObject.Properties["MaximumScripts"]?.Value ?? default(uint)),
+                    SettingId = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+                    Timeout = (uint) (managementObject.Properties["Timeout"]?.Value ?? default(uint))
                 };
         }
     }

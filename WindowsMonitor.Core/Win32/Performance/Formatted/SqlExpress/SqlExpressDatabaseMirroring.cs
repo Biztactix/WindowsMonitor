@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted.SqlExpress
 {
     /// <summary>
     /// </summary>
@@ -13,9 +11,9 @@ namespace WindowsMonitor.Performance.Formatted
 		public ulong BytesSentPersec { get; private set; }
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong LogBytesReceivedPersec { get; private set; }
 		public ulong LogBytesRedonefromCachePersec { get; private set; }
 		public ulong LogBytesSentfromCachePersec { get; private set; }
@@ -23,21 +21,21 @@ namespace WindowsMonitor.Performance.Formatted
 		public ulong LogCompressedBytesRcvdPersec { get; private set; }
 		public ulong LogCompressedBytesSentPersec { get; private set; }
 		public ulong LogHardenTimems { get; private set; }
-		public ulong LogRemainingforUndoKB { get; private set; }
-		public ulong LogScannedforUndoKB { get; private set; }
+		public ulong LogRemainingforUndoKb { get; private set; }
+		public ulong LogScannedforUndoKb { get; private set; }
 		public ulong LogSendFlowControlTimems { get; private set; }
-		public ulong LogSendQueueKB { get; private set; }
+		public ulong LogSendQueueKb { get; private set; }
 		public ulong MirroredWriteTransactionsPersec { get; private set; }
 		public string Name { get; private set; }
 		public ulong PagesSentPersec { get; private set; }
 		public ulong ReceivesPersec { get; private set; }
 		public ulong RedoBytesPersec { get; private set; }
-		public ulong RedoQueueKB { get; private set; }
+		public ulong RedoQueueKb { get; private set; }
 		public ulong SendPerReceiveAckTime { get; private set; }
 		public ulong SendsPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong TransactionDelay { get; private set; }
 
         public static IEnumerable<SqlExpressDatabaseMirroring> Retrieve(string remote, string username, string password)
@@ -74,9 +72,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 BytesSentPersec = (ulong) (managementObject.Properties["BytesSentPersec"]?.Value ?? default(ulong)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 LogBytesReceivedPersec = (ulong) (managementObject.Properties["LogBytesReceivedPersec"]?.Value ?? default(ulong)),
 		 LogBytesRedonefromCachePersec = (ulong) (managementObject.Properties["LogBytesRedonefromCachePersec"]?.Value ?? default(ulong)),
 		 LogBytesSentfromCachePersec = (ulong) (managementObject.Properties["LogBytesSentfromCachePersec"]?.Value ?? default(ulong)),
@@ -84,21 +82,21 @@ namespace WindowsMonitor.Performance.Formatted
 		 LogCompressedBytesRcvdPersec = (ulong) (managementObject.Properties["LogCompressedBytesRcvdPersec"]?.Value ?? default(ulong)),
 		 LogCompressedBytesSentPersec = (ulong) (managementObject.Properties["LogCompressedBytesSentPersec"]?.Value ?? default(ulong)),
 		 LogHardenTimems = (ulong) (managementObject.Properties["LogHardenTimems"]?.Value ?? default(ulong)),
-		 LogRemainingforUndoKB = (ulong) (managementObject.Properties["LogRemainingforUndoKB"]?.Value ?? default(ulong)),
-		 LogScannedforUndoKB = (ulong) (managementObject.Properties["LogScannedforUndoKB"]?.Value ?? default(ulong)),
+		 LogRemainingforUndoKb = (ulong) (managementObject.Properties["LogRemainingforUndoKB"]?.Value ?? default(ulong)),
+		 LogScannedforUndoKb = (ulong) (managementObject.Properties["LogScannedforUndoKB"]?.Value ?? default(ulong)),
 		 LogSendFlowControlTimems = (ulong) (managementObject.Properties["LogSendFlowControlTimems"]?.Value ?? default(ulong)),
-		 LogSendQueueKB = (ulong) (managementObject.Properties["LogSendQueueKB"]?.Value ?? default(ulong)),
+		 LogSendQueueKb = (ulong) (managementObject.Properties["LogSendQueueKB"]?.Value ?? default(ulong)),
 		 MirroredWriteTransactionsPersec = (ulong) (managementObject.Properties["MirroredWriteTransactionsPersec"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
 		 PagesSentPersec = (ulong) (managementObject.Properties["PagesSentPersec"]?.Value ?? default(ulong)),
 		 ReceivesPersec = (ulong) (managementObject.Properties["ReceivesPersec"]?.Value ?? default(ulong)),
 		 RedoBytesPersec = (ulong) (managementObject.Properties["RedoBytesPersec"]?.Value ?? default(ulong)),
-		 RedoQueueKB = (ulong) (managementObject.Properties["RedoQueueKB"]?.Value ?? default(ulong)),
+		 RedoQueueKb = (ulong) (managementObject.Properties["RedoQueueKB"]?.Value ?? default(ulong)),
 		 SendPerReceiveAckTime = (ulong) (managementObject.Properties["SendPerReceiveAckTime"]?.Value ?? default(ulong)),
 		 SendsPersec = (ulong) (managementObject.Properties["SendsPersec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TransactionDelay = (ulong) (managementObject.Properties["TransactionDelay"]?.Value ?? default(ulong))
                 };
         }

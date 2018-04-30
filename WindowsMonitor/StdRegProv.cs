@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,8 +7,6 @@ namespace WindowsMonitor
     /// </summary>
     public sealed class StdRegProv
     {
-		
-
         public static IEnumerable<StdRegProv> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
@@ -39,10 +35,7 @@ namespace WindowsMonitor
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new StdRegProv
-                {
-                    
-                };
+                yield return new StdRegProv();
         }
     }
 }

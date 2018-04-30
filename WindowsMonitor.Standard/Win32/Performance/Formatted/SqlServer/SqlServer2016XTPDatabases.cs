@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
 {
     /// <summary>
     /// </summary>
-    public sealed class SqlServer2016XTPDatabases
+    public sealed class SqlServer2016XtpDatabases
     {
 		public ulong AvgTransactionSegmentLargeDataSize { get; private set; }
 		public ulong AvgTransactionSegmentSize { get; private set; }
@@ -19,9 +17,9 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint FlushThreadFrozenIOsPersec256K { get; private set; }
 		public uint FlushThreadFrozenIOsPersec4K { get; private set; }
 		public uint FlushThreadFrozenIOsPersec64K { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint IoPagePool256KFreeListCount { get; private set; }
 		public uint IoPagePool256KTotalAllocated { get; private set; }
 		public uint IoPagePool4KFreeListCount { get; private set; }
@@ -29,15 +27,15 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint IoPagePool64KFreeListCount { get; private set; }
 		public uint IoPagePool64KTotalAllocated { get; private set; }
 		public uint MtLog256KExpandCount { get; private set; }
-		public uint MtLog256KIOsOutstanding { get; private set; }
+		public uint MtLog256KiOsOutstanding { get; private set; }
 		public ulong MtLog256KPageFillPercentPerPageFlushed { get; private set; }
 		public uint MtLog256KWriteBytesPersec { get; private set; }
 		public uint MtLog4KExpandCount { get; private set; }
-		public uint MtLog4KIOsOutstanding { get; private set; }
+		public uint MtLog4KiOsOutstanding { get; private set; }
 		public ulong MtLog4KPageFillPercentPerPageFlushed { get; private set; }
 		public uint MtLog4KWriteBytesPersec { get; private set; }
 		public uint MtLog64KExpandCount { get; private set; }
-		public uint MtLog64KIOsOutstanding { get; private set; }
+		public uint MtLog64KiOsOutstanding { get; private set; }
 		public ulong MtLog64KPageFillPercentPerPageFlushed { get; private set; }
 		public uint MtLog64KWriteBytesPersec { get; private set; }
 		public string Name { get; private set; }
@@ -47,11 +45,11 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint NumSerializationsPersec { get; private set; }
 		public uint TailCachePageCount { get; private set; }
 		public uint TailCachePageCountPeak { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<SqlServer2016XTPDatabases> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SqlServer2016XtpDatabases> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -66,20 +64,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SqlServer2016XTPDatabases> Retrieve()
+        public static IEnumerable<SqlServer2016XtpDatabases> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SqlServer2016XTPDatabases> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SqlServer2016XtpDatabases> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_SQLServer2016XTPDatabaseEngine_SQLServer2016XTPDatabases");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SqlServer2016XTPDatabases
+                yield return new SqlServer2016XtpDatabases
                 {
                      AvgTransactionSegmentLargeDataSize = (ulong) (managementObject.Properties["AvgTransactionSegmentLargeDataSize"]?.Value ?? default(ulong)),
 		 AvgTransactionSegmentSize = (ulong) (managementObject.Properties["AvgTransactionSegmentSize"]?.Value ?? default(ulong)),
@@ -91,9 +89,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 FlushThreadFrozenIOsPersec256K = (uint) (managementObject.Properties["FlushThreadFrozenIOsPersec256K"]?.Value ?? default(uint)),
 		 FlushThreadFrozenIOsPersec4K = (uint) (managementObject.Properties["FlushThreadFrozenIOsPersec4K"]?.Value ?? default(uint)),
 		 FlushThreadFrozenIOsPersec64K = (uint) (managementObject.Properties["FlushThreadFrozenIOsPersec64K"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 IoPagePool256KFreeListCount = (uint) (managementObject.Properties["IoPagePool256KFreeListCount"]?.Value ?? default(uint)),
 		 IoPagePool256KTotalAllocated = (uint) (managementObject.Properties["IoPagePool256KTotalAllocated"]?.Value ?? default(uint)),
 		 IoPagePool4KFreeListCount = (uint) (managementObject.Properties["IoPagePool4KFreeListCount"]?.Value ?? default(uint)),
@@ -101,15 +99,15 @@ namespace WindowsMonitor.Performance.Formatted
 		 IoPagePool64KFreeListCount = (uint) (managementObject.Properties["IoPagePool64KFreeListCount"]?.Value ?? default(uint)),
 		 IoPagePool64KTotalAllocated = (uint) (managementObject.Properties["IoPagePool64KTotalAllocated"]?.Value ?? default(uint)),
 		 MtLog256KExpandCount = (uint) (managementObject.Properties["MtLog256KExpandCount"]?.Value ?? default(uint)),
-		 MtLog256KIOsOutstanding = (uint) (managementObject.Properties["MtLog256KIOsOutstanding"]?.Value ?? default(uint)),
+		 MtLog256KiOsOutstanding = (uint) (managementObject.Properties["MtLog256KIOsOutstanding"]?.Value ?? default(uint)),
 		 MtLog256KPageFillPercentPerPageFlushed = (ulong) (managementObject.Properties["MtLog256KPageFillPercentPerPageFlushed"]?.Value ?? default(ulong)),
 		 MtLog256KWriteBytesPersec = (uint) (managementObject.Properties["MtLog256KWriteBytesPersec"]?.Value ?? default(uint)),
 		 MtLog4KExpandCount = (uint) (managementObject.Properties["MtLog4KExpandCount"]?.Value ?? default(uint)),
-		 MtLog4KIOsOutstanding = (uint) (managementObject.Properties["MtLog4KIOsOutstanding"]?.Value ?? default(uint)),
+		 MtLog4KiOsOutstanding = (uint) (managementObject.Properties["MtLog4KIOsOutstanding"]?.Value ?? default(uint)),
 		 MtLog4KPageFillPercentPerPageFlushed = (ulong) (managementObject.Properties["MtLog4KPageFillPercentPerPageFlushed"]?.Value ?? default(ulong)),
 		 MtLog4KWriteBytesPersec = (uint) (managementObject.Properties["MtLog4KWriteBytesPersec"]?.Value ?? default(uint)),
 		 MtLog64KExpandCount = (uint) (managementObject.Properties["MtLog64KExpandCount"]?.Value ?? default(uint)),
-		 MtLog64KIOsOutstanding = (uint) (managementObject.Properties["MtLog64KIOsOutstanding"]?.Value ?? default(uint)),
+		 MtLog64KiOsOutstanding = (uint) (managementObject.Properties["MtLog64KIOsOutstanding"]?.Value ?? default(uint)),
 		 MtLog64KPageFillPercentPerPageFlushed = (ulong) (managementObject.Properties["MtLog64KPageFillPercentPerPageFlushed"]?.Value ?? default(ulong)),
 		 MtLog64KWriteBytesPersec = (uint) (managementObject.Properties["MtLog64KWriteBytesPersec"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
@@ -119,9 +117,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 NumSerializationsPersec = (uint) (managementObject.Properties["NumSerializationsPersec"]?.Value ?? default(uint)),
 		 TailCachePageCount = (uint) (managementObject.Properties["TailCachePageCount"]?.Value ?? default(uint)),
 		 TailCachePageCountPeak = (uint) (managementObject.Properties["TailCachePageCountPeak"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

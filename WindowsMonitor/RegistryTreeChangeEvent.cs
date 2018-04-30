@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,10 +7,10 @@ namespace WindowsMonitor
     /// </summary>
     public sealed class RegistryTreeChangeEvent
     {
-		public string Hive { get; private set; }
-		public string RootPath { get; private set; }
-		public byte[] SecurityDescriptor { get; private set; }
-		public ulong TimeCreated { get; private set; }
+        public string Hive { get; private set; }
+        public string RootPath { get; private set; }
+        public byte[] SecurityDescriptor { get; private set; }
+        public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<RegistryTreeChangeEvent> Retrieve(string remote, string username, string password)
         {
@@ -44,10 +42,11 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new RegistryTreeChangeEvent
                 {
-                     Hive = (string) (managementObject.Properties["Hive"]?.Value ?? default(string)),
-		 RootPath = (string) (managementObject.Properties["RootPath"]?.Value ?? default(string)),
-		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+                    Hive = (string) (managementObject.Properties["Hive"]?.Value ?? default(string)),
+                    RootPath = (string) (managementObject.Properties["RootPath"]?.Value ?? default(string)),
+                    SecurityDescriptor =
+                        (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+                    TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

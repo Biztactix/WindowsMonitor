@@ -17,12 +17,12 @@ namespace WindowsMonitor.Win32
 		public uint DisplayFrequency { get; private set; }
 		public uint DitherType { get; private set; }
 		public string DriverVersion { get; private set; }
-		public uint ICMIntent { get; private set; }
-		public uint ICMMethod { get; private set; }
+		public uint IcmIntent { get; private set; }
+		public uint IcmMethod { get; private set; }
 		public uint LogPixels { get; private set; }
 		public uint PelsHeight { get; private set; }
 		public uint PelsWidth { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public uint SpecificationVersion { get; private set; }
 
         public static IEnumerable<DisplayConfiguration> Retrieve(string remote, string username, string password)
@@ -63,12 +63,12 @@ namespace WindowsMonitor.Win32
 		 DisplayFrequency = (uint) (managementObject.Properties["DisplayFrequency"]?.Value ?? default(uint)),
 		 DitherType = (uint) (managementObject.Properties["DitherType"]?.Value ?? default(uint)),
 		 DriverVersion = (string) (managementObject.Properties["DriverVersion"]?.Value ?? default(string)),
-		 ICMIntent = (uint) (managementObject.Properties["ICMIntent"]?.Value ?? default(uint)),
-		 ICMMethod = (uint) (managementObject.Properties["ICMMethod"]?.Value ?? default(uint)),
+		 IcmIntent = (uint) (managementObject.Properties["ICMIntent"]?.Value ?? default(uint)),
+		 IcmMethod = (uint) (managementObject.Properties["ICMMethod"]?.Value ?? default(uint)),
 		 LogPixels = (uint) (managementObject.Properties["LogPixels"]?.Value ?? default(uint)),
 		 PelsHeight = (uint) (managementObject.Properties["PelsHeight"]?.Value ?? default(uint)),
 		 PelsWidth = (uint) (managementObject.Properties["PelsWidth"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
 		 SpecificationVersion = (uint) (managementObject.Properties["SpecificationVersion"]?.Value ?? default(uint))
                 };
         }

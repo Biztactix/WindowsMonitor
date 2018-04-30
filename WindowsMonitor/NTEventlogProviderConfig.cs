@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,7 +8,7 @@ namespace WindowsMonitor
     /// </summary>
     public sealed class NtEventlogProviderConfig
     {
-		public DateTime LastBootUpTime { get; private set; }
+        public DateTime LastBootUpTime { get; private set; }
 
         public static IEnumerable<NtEventlogProviderConfig> Retrieve(string remote, string username, string password)
         {
@@ -41,7 +40,8 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NtEventlogProviderConfig
                 {
-                     LastBootUpTime = (DateTime) (managementObject.Properties["LastBootUpTime"]?.Value ?? default(DateTime))
+                    LastBootUpTime =
+                        (DateTime) (managementObject.Properties["LastBootUpTime"]?.Value ?? default(DateTime))
                 };
         }
     }

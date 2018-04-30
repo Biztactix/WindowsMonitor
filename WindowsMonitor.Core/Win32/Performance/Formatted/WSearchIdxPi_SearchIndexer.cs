@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class WSearchIdxPi_SearchIndexer
+    public sealed class WSearchIdxPiSearchIndexer
     {
 		public uint ActiveConnections { get; private set; }
 		public string Caption { get; private set; }
@@ -15,9 +13,9 @@ namespace WindowsMonitor.Performance.Formatted
 		public string Description { get; private set; }
 		public uint DirtyWidSets { get; private set; }
 		public uint DocumentsFiltered { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint IndexSize { get; private set; }
 		public uint L0IndexesWordlists { get; private set; }
 		public uint L0MergeFlushCount { get; private set; }
@@ -75,14 +73,14 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint QueriesSucceeded { get; private set; }
 		public uint ShadowMergeLevels { get; private set; }
 		public uint ShadowMergeLevelsThreshold { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint UniqueKeys { get; private set; }
 		public uint WorkItemsCreated { get; private set; }
 		public uint WorkItemsDeleted { get; private set; }
 
-        public static IEnumerable<WSearchIdxPi_SearchIndexer> Retrieve(string remote, string username, string password)
+        public static IEnumerable<WSearchIdxPiSearchIndexer> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -97,20 +95,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<WSearchIdxPi_SearchIndexer> Retrieve()
+        public static IEnumerable<WSearchIdxPiSearchIndexer> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<WSearchIdxPi_SearchIndexer> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<WSearchIdxPiSearchIndexer> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_WSearchIdxPi_SearchIndexer");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new WSearchIdxPi_SearchIndexer
+                yield return new WSearchIdxPiSearchIndexer
                 {
                      ActiveConnections = (uint) (managementObject.Properties["ActiveConnections"]?.Value ?? default(uint)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
@@ -118,9 +116,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
 		 DirtyWidSets = (uint) (managementObject.Properties["DirtyWidSets"]?.Value ?? default(uint)),
 		 DocumentsFiltered = (uint) (managementObject.Properties["DocumentsFiltered"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 IndexSize = (uint) (managementObject.Properties["IndexSize"]?.Value ?? default(uint)),
 		 L0IndexesWordlists = (uint) (managementObject.Properties["L0IndexesWordlists"]?.Value ?? default(uint)),
 		 L0MergeFlushCount = (uint) (managementObject.Properties["L0MergeFlushCount"]?.Value ?? default(uint)),
@@ -178,9 +176,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 QueriesSucceeded = (uint) (managementObject.Properties["QueriesSucceeded"]?.Value ?? default(uint)),
 		 ShadowMergeLevels = (uint) (managementObject.Properties["ShadowMergeLevels"]?.Value ?? default(uint)),
 		 ShadowMergeLevelsThreshold = (uint) (managementObject.Properties["ShadowMergeLevelsThreshold"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 UniqueKeys = (uint) (managementObject.Properties["UniqueKeys"]?.Value ?? default(uint)),
 		 WorkItemsCreated = (uint) (managementObject.Properties["WorkItemsCreated"]?.Value ?? default(uint)),
 		 WorkItemsDeleted = (uint) (managementObject.Properties["WorkItemsDeleted"]?.Value ?? default(uint))

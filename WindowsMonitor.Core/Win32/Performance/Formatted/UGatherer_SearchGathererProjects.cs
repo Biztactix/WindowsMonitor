@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class UGatherer_SearchGathererProjects
+    public sealed class UGathererSearchGathererProjects
     {
 		public uint AccessedFileRate { get; private set; }
 		public uint AccessedFiles { get; private set; }
@@ -35,9 +33,9 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint FilteredText { get; private set; }
 		public uint FilteredTextRate { get; private set; }
 		public uint FilteringDocuments { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint GathererPausedFlag { get; private set; }
 		public uint HistoryRecoveryProgress { get; private set; }
 		public uint IncrementalCrawls { get; private set; }
@@ -53,14 +51,14 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint StatusError { get; private set; }
 		public uint StatusSuccess { get; private set; }
 		public uint SuccessRate { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint UniqueDocuments { get; private set; }
-		public uint URLsinHistory { get; private set; }
+		public uint UrLsinHistory { get; private set; }
 		public uint WaitingDocuments { get; private set; }
 
-        public static IEnumerable<UGatherer_SearchGathererProjects> Retrieve(string remote, string username, string password)
+        public static IEnumerable<UGathererSearchGathererProjects> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -75,20 +73,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<UGatherer_SearchGathererProjects> Retrieve()
+        public static IEnumerable<UGathererSearchGathererProjects> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<UGatherer_SearchGathererProjects> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<UGathererSearchGathererProjects> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_UGatherer_SearchGathererProjects");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new UGatherer_SearchGathererProjects
+                yield return new UGathererSearchGathererProjects
                 {
                      AccessedFileRate = (uint) (managementObject.Properties["AccessedFileRate"]?.Value ?? default(uint)),
 		 AccessedFiles = (uint) (managementObject.Properties["AccessedFiles"]?.Value ?? default(uint)),
@@ -116,9 +114,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 FilteredText = (uint) (managementObject.Properties["FilteredText"]?.Value ?? default(uint)),
 		 FilteredTextRate = (uint) (managementObject.Properties["FilteredTextRate"]?.Value ?? default(uint)),
 		 FilteringDocuments = (uint) (managementObject.Properties["FilteringDocuments"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 GathererPausedFlag = (uint) (managementObject.Properties["GathererPausedFlag"]?.Value ?? default(uint)),
 		 HistoryRecoveryProgress = (uint) (managementObject.Properties["HistoryRecoveryProgress"]?.Value ?? default(uint)),
 		 IncrementalCrawls = (uint) (managementObject.Properties["IncrementalCrawls"]?.Value ?? default(uint)),
@@ -134,11 +132,11 @@ namespace WindowsMonitor.Performance.Formatted
 		 StatusError = (uint) (managementObject.Properties["StatusError"]?.Value ?? default(uint)),
 		 StatusSuccess = (uint) (managementObject.Properties["StatusSuccess"]?.Value ?? default(uint)),
 		 SuccessRate = (uint) (managementObject.Properties["SuccessRate"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 UniqueDocuments = (uint) (managementObject.Properties["UniqueDocuments"]?.Value ?? default(uint)),
-		 URLsinHistory = (uint) (managementObject.Properties["URLsinHistory"]?.Value ?? default(uint)),
+		 UrLsinHistory = (uint) (managementObject.Properties["URLsinHistory"]?.Value ?? default(uint)),
 		 WaitingDocuments = (uint) (managementObject.Properties["WaitingDocuments"]?.Value ?? default(uint))
                 };
         }

@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
 {
     /// <summary>
     /// </summary>
@@ -13,25 +11,25 @@ namespace WindowsMonitor.Performance.Formatted
 		public ulong Activerequests { get; private set; }
 		public ulong Blockedtasks { get; private set; }
 		public string Caption { get; private set; }
-		public ulong CPUdelayedPercent { get; private set; }
-		public ulong CPUeffectivePercent { get; private set; }
-		public ulong CPUusagePercent { get; private set; }
-		public ulong CPUviolatedPercent { get; private set; }
+		public ulong CpUdelayedPercent { get; private set; }
+		public ulong CpUeffectivePercent { get; private set; }
+		public ulong CpUusagePercent { get; private set; }
+		public ulong CpUviolatedPercent { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong Maxrequestcputimems { get; private set; }
-		public ulong MaxrequestmemorygrantKB { get; private set; }
+		public ulong MaxrequestmemorygrantKb { get; private set; }
 		public string Name { get; private set; }
 		public ulong QueryoptimizationsPersec { get; private set; }
 		public ulong Queuedrequests { get; private set; }
 		public ulong ReducedmemorygrantsPersec { get; private set; }
 		public ulong RequestscompletedPersec { get; private set; }
 		public ulong SuboptimalplansPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
         public static IEnumerable<SqlServerWorkloadGroupStats> Retrieve(string remote, string username, string password)
         {
@@ -67,25 +65,25 @@ namespace WindowsMonitor.Performance.Formatted
 		 Activerequests = (ulong) (managementObject.Properties["Activerequests"]?.Value ?? default(ulong)),
 		 Blockedtasks = (ulong) (managementObject.Properties["Blockedtasks"]?.Value ?? default(ulong)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CPUdelayedPercent = (ulong) (managementObject.Properties["CPUdelayedPercent"]?.Value ?? default(ulong)),
-		 CPUeffectivePercent = (ulong) (managementObject.Properties["CPUeffectivePercent"]?.Value ?? default(ulong)),
-		 CPUusagePercent = (ulong) (managementObject.Properties["CPUusagePercent"]?.Value ?? default(ulong)),
-		 CPUviolatedPercent = (ulong) (managementObject.Properties["CPUviolatedPercent"]?.Value ?? default(ulong)),
+		 CpUdelayedPercent = (ulong) (managementObject.Properties["CPUdelayedPercent"]?.Value ?? default(ulong)),
+		 CpUeffectivePercent = (ulong) (managementObject.Properties["CPUeffectivePercent"]?.Value ?? default(ulong)),
+		 CpUusagePercent = (ulong) (managementObject.Properties["CPUusagePercent"]?.Value ?? default(ulong)),
+		 CpUviolatedPercent = (ulong) (managementObject.Properties["CPUviolatedPercent"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Maxrequestcputimems = (ulong) (managementObject.Properties["Maxrequestcputimems"]?.Value ?? default(ulong)),
-		 MaxrequestmemorygrantKB = (ulong) (managementObject.Properties["MaxrequestmemorygrantKB"]?.Value ?? default(ulong)),
+		 MaxrequestmemorygrantKb = (ulong) (managementObject.Properties["MaxrequestmemorygrantKB"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
 		 QueryoptimizationsPersec = (ulong) (managementObject.Properties["QueryoptimizationsPersec"]?.Value ?? default(ulong)),
 		 Queuedrequests = (ulong) (managementObject.Properties["Queuedrequests"]?.Value ?? default(ulong)),
 		 ReducedmemorygrantsPersec = (ulong) (managementObject.Properties["ReducedmemorygrantsPersec"]?.Value ?? default(ulong)),
 		 RequestscompletedPersec = (ulong) (managementObject.Properties["RequestscompletedPersec"]?.Value ?? default(ulong)),
 		 SuboptimalplansPersec = (ulong) (managementObject.Properties["SuboptimalplansPersec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

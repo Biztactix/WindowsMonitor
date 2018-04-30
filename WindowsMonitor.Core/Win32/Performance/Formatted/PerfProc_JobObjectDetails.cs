@@ -1,31 +1,29 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class PerfProc_JobObjectDetails
+    public sealed class PerfProcJobObjectDetails
     {
 		public string Caption { get; private set; }
-		public ulong CreatingProcessID { get; private set; }
+		public ulong CreatingProcessId { get; private set; }
 		public string Description { get; private set; }
 		public ulong ElapsedTime { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint HandleCount { get; private set; }
-		public ulong IDProcess { get; private set; }
-		public ulong IODataBytesPersec { get; private set; }
-		public ulong IODataOperationsPersec { get; private set; }
-		public ulong IOOtherBytesPersec { get; private set; }
-		public ulong IOOtherOperationsPersec { get; private set; }
-		public ulong IOReadBytesPersec { get; private set; }
-		public ulong IOReadOperationsPersec { get; private set; }
-		public ulong IOWriteBytesPersec { get; private set; }
-		public ulong IOWriteOperationsPersec { get; private set; }
+		public ulong IdProcess { get; private set; }
+		public ulong IoDataBytesPersec { get; private set; }
+		public ulong IoDataOperationsPersec { get; private set; }
+		public ulong IoOtherBytesPersec { get; private set; }
+		public ulong IoOtherOperationsPersec { get; private set; }
+		public ulong IoReadBytesPersec { get; private set; }
+		public ulong IoReadOperationsPersec { get; private set; }
+		public ulong IoWriteBytesPersec { get; private set; }
+		public ulong IoWriteOperationsPersec { get; private set; }
 		public string Name { get; private set; }
 		public uint PageFaultsPersec { get; private set; }
 		public ulong PageFileBytes { get; private set; }
@@ -38,15 +36,15 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint PriorityBase { get; private set; }
 		public ulong PrivateBytes { get; private set; }
 		public uint ThreadCount { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong VirtualBytes { get; private set; }
 		public ulong VirtualBytesPeak { get; private set; }
 		public ulong WorkingSet { get; private set; }
 		public ulong WorkingSetPeak { get; private set; }
 
-        public static IEnumerable<PerfProc_JobObjectDetails> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PerfProcJobObjectDetails> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -61,38 +59,38 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfProc_JobObjectDetails> Retrieve()
+        public static IEnumerable<PerfProcJobObjectDetails> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfProc_JobObjectDetails> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PerfProcJobObjectDetails> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_PerfProc_JobObjectDetails");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PerfProc_JobObjectDetails
+                yield return new PerfProcJobObjectDetails
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreatingProcessID = (ulong) (managementObject.Properties["CreatingProcessID"]?.Value ?? default(ulong)),
+		 CreatingProcessId = (ulong) (managementObject.Properties["CreatingProcessID"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
 		 ElapsedTime = (ulong) (managementObject.Properties["ElapsedTime"]?.Value ?? default(ulong)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 HandleCount = (uint) (managementObject.Properties["HandleCount"]?.Value ?? default(uint)),
-		 IDProcess = (ulong) (managementObject.Properties["IDProcess"]?.Value ?? default(ulong)),
-		 IODataBytesPersec = (ulong) (managementObject.Properties["IODataBytesPersec"]?.Value ?? default(ulong)),
-		 IODataOperationsPersec = (ulong) (managementObject.Properties["IODataOperationsPersec"]?.Value ?? default(ulong)),
-		 IOOtherBytesPersec = (ulong) (managementObject.Properties["IOOtherBytesPersec"]?.Value ?? default(ulong)),
-		 IOOtherOperationsPersec = (ulong) (managementObject.Properties["IOOtherOperationsPersec"]?.Value ?? default(ulong)),
-		 IOReadBytesPersec = (ulong) (managementObject.Properties["IOReadBytesPersec"]?.Value ?? default(ulong)),
-		 IOReadOperationsPersec = (ulong) (managementObject.Properties["IOReadOperationsPersec"]?.Value ?? default(ulong)),
-		 IOWriteBytesPersec = (ulong) (managementObject.Properties["IOWriteBytesPersec"]?.Value ?? default(ulong)),
-		 IOWriteOperationsPersec = (ulong) (managementObject.Properties["IOWriteOperationsPersec"]?.Value ?? default(ulong)),
+		 IdProcess = (ulong) (managementObject.Properties["IDProcess"]?.Value ?? default(ulong)),
+		 IoDataBytesPersec = (ulong) (managementObject.Properties["IODataBytesPersec"]?.Value ?? default(ulong)),
+		 IoDataOperationsPersec = (ulong) (managementObject.Properties["IODataOperationsPersec"]?.Value ?? default(ulong)),
+		 IoOtherBytesPersec = (ulong) (managementObject.Properties["IOOtherBytesPersec"]?.Value ?? default(ulong)),
+		 IoOtherOperationsPersec = (ulong) (managementObject.Properties["IOOtherOperationsPersec"]?.Value ?? default(ulong)),
+		 IoReadBytesPersec = (ulong) (managementObject.Properties["IOReadBytesPersec"]?.Value ?? default(ulong)),
+		 IoReadOperationsPersec = (ulong) (managementObject.Properties["IOReadOperationsPersec"]?.Value ?? default(ulong)),
+		 IoWriteBytesPersec = (ulong) (managementObject.Properties["IOWriteBytesPersec"]?.Value ?? default(ulong)),
+		 IoWriteOperationsPersec = (ulong) (managementObject.Properties["IOWriteOperationsPersec"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
 		 PageFaultsPersec = (uint) (managementObject.Properties["PageFaultsPersec"]?.Value ?? default(uint)),
 		 PageFileBytes = (ulong) (managementObject.Properties["PageFileBytes"]?.Value ?? default(ulong)),
@@ -105,9 +103,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 PriorityBase = (uint) (managementObject.Properties["PriorityBase"]?.Value ?? default(uint)),
 		 PrivateBytes = (ulong) (managementObject.Properties["PrivateBytes"]?.Value ?? default(ulong)),
 		 ThreadCount = (uint) (managementObject.Properties["ThreadCount"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 VirtualBytes = (ulong) (managementObject.Properties["VirtualBytes"]?.Value ?? default(ulong)),
 		 VirtualBytesPeak = (ulong) (managementObject.Properties["VirtualBytesPeak"]?.Value ?? default(ulong)),
 		 WorkingSet = (ulong) (managementObject.Properties["WorkingSet"]?.Value ?? default(ulong)),

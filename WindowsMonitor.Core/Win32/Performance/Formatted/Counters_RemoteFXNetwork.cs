@@ -1,26 +1,24 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class Counters_RemoteFXNetwork
+    public sealed class CountersRemoteFxNetwork
     {
-		public uint BaseTCPRTT { get; private set; }
-		public uint BaseUDPRTT { get; private set; }
+		public uint BaseTcprtt { get; private set; }
+		public uint BaseUdprtt { get; private set; }
 		public string Caption { get; private set; }
-		public uint CurrentTCPBandwidth { get; private set; }
-		public uint CurrentTCPRTT { get; private set; }
-		public uint CurrentUDPBandwidth { get; private set; }
-		public uint CurrentUDPRTT { get; private set; }
+		public uint CurrentTcpBandwidth { get; private set; }
+		public uint CurrentTcprtt { get; private set; }
+		public uint CurrentUdpBandwidth { get; private set; }
+		public uint CurrentUdprtt { get; private set; }
 		public string Description { get; private set; }
-		public uint FECRate { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public uint FecRate { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint LossRate { get; private set; }
 		public string Name { get; private set; }
 		public uint RetransmissionRate { get; private set; }
@@ -28,21 +26,21 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint SentRateP1 { get; private set; }
 		public uint SentRateP2 { get; private set; }
 		public uint SentRateP3 { get; private set; }
-		public uint TCPReceivedRate { get; private set; }
-		public uint TCPSentRate { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public uint TcpReceivedRate { get; private set; }
+		public uint TcpSentRate { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint TotalReceivedBytes { get; private set; }
 		public uint TotalReceivedRate { get; private set; }
 		public uint TotalSentBytes { get; private set; }
 		public uint TotalSentRate { get; private set; }
-		public uint UDPPacketsReceivedPersec { get; private set; }
-		public uint UDPPacketsSentPersec { get; private set; }
-		public uint UDPReceivedRate { get; private set; }
-		public uint UDPSentRate { get; private set; }
+		public uint UdpPacketsReceivedPersec { get; private set; }
+		public uint UdpPacketsSentPersec { get; private set; }
+		public uint UdpReceivedRate { get; private set; }
+		public uint UdpSentRate { get; private set; }
 
-        public static IEnumerable<Counters_RemoteFXNetwork> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CountersRemoteFxNetwork> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -57,33 +55,33 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_RemoteFXNetwork> Retrieve()
+        public static IEnumerable<CountersRemoteFxNetwork> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_RemoteFXNetwork> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CountersRemoteFxNetwork> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_Counters_RemoteFXNetwork");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Counters_RemoteFXNetwork
+                yield return new CountersRemoteFxNetwork
                 {
-                     BaseTCPRTT = (uint) (managementObject.Properties["BaseTCPRTT"]?.Value ?? default(uint)),
-		 BaseUDPRTT = (uint) (managementObject.Properties["BaseUDPRTT"]?.Value ?? default(uint)),
+                     BaseTcprtt = (uint) (managementObject.Properties["BaseTCPRTT"]?.Value ?? default(uint)),
+		 BaseUdprtt = (uint) (managementObject.Properties["BaseUDPRTT"]?.Value ?? default(uint)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CurrentTCPBandwidth = (uint) (managementObject.Properties["CurrentTCPBandwidth"]?.Value ?? default(uint)),
-		 CurrentTCPRTT = (uint) (managementObject.Properties["CurrentTCPRTT"]?.Value ?? default(uint)),
-		 CurrentUDPBandwidth = (uint) (managementObject.Properties["CurrentUDPBandwidth"]?.Value ?? default(uint)),
-		 CurrentUDPRTT = (uint) (managementObject.Properties["CurrentUDPRTT"]?.Value ?? default(uint)),
+		 CurrentTcpBandwidth = (uint) (managementObject.Properties["CurrentTCPBandwidth"]?.Value ?? default(uint)),
+		 CurrentTcprtt = (uint) (managementObject.Properties["CurrentTCPRTT"]?.Value ?? default(uint)),
+		 CurrentUdpBandwidth = (uint) (managementObject.Properties["CurrentUDPBandwidth"]?.Value ?? default(uint)),
+		 CurrentUdprtt = (uint) (managementObject.Properties["CurrentUDPRTT"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 FECRate = (uint) (managementObject.Properties["FECRate"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FecRate = (uint) (managementObject.Properties["FECRate"]?.Value ?? default(uint)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 LossRate = (uint) (managementObject.Properties["LossRate"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
 		 RetransmissionRate = (uint) (managementObject.Properties["RetransmissionRate"]?.Value ?? default(uint)),
@@ -91,19 +89,19 @@ namespace WindowsMonitor.Performance.Formatted
 		 SentRateP1 = (uint) (managementObject.Properties["SentRateP1"]?.Value ?? default(uint)),
 		 SentRateP2 = (uint) (managementObject.Properties["SentRateP2"]?.Value ?? default(uint)),
 		 SentRateP3 = (uint) (managementObject.Properties["SentRateP3"]?.Value ?? default(uint)),
-		 TCPReceivedRate = (uint) (managementObject.Properties["TCPReceivedRate"]?.Value ?? default(uint)),
-		 TCPSentRate = (uint) (managementObject.Properties["TCPSentRate"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TcpReceivedRate = (uint) (managementObject.Properties["TCPReceivedRate"]?.Value ?? default(uint)),
+		 TcpSentRate = (uint) (managementObject.Properties["TCPSentRate"]?.Value ?? default(uint)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalReceivedBytes = (uint) (managementObject.Properties["TotalReceivedBytes"]?.Value ?? default(uint)),
 		 TotalReceivedRate = (uint) (managementObject.Properties["TotalReceivedRate"]?.Value ?? default(uint)),
 		 TotalSentBytes = (uint) (managementObject.Properties["TotalSentBytes"]?.Value ?? default(uint)),
 		 TotalSentRate = (uint) (managementObject.Properties["TotalSentRate"]?.Value ?? default(uint)),
-		 UDPPacketsReceivedPersec = (uint) (managementObject.Properties["UDPPacketsReceivedPersec"]?.Value ?? default(uint)),
-		 UDPPacketsSentPersec = (uint) (managementObject.Properties["UDPPacketsSentPersec"]?.Value ?? default(uint)),
-		 UDPReceivedRate = (uint) (managementObject.Properties["UDPReceivedRate"]?.Value ?? default(uint)),
-		 UDPSentRate = (uint) (managementObject.Properties["UDPSentRate"]?.Value ?? default(uint))
+		 UdpPacketsReceivedPersec = (uint) (managementObject.Properties["UDPPacketsReceivedPersec"]?.Value ?? default(uint)),
+		 UdpPacketsSentPersec = (uint) (managementObject.Properties["UDPPacketsSentPersec"]?.Value ?? default(uint)),
+		 UdpReceivedRate = (uint) (managementObject.Properties["UDPReceivedRate"]?.Value ?? default(uint)),
+		 UdpSentRate = (uint) (managementObject.Properties["UDPSentRate"]?.Value ?? default(uint))
                 };
         }
     }

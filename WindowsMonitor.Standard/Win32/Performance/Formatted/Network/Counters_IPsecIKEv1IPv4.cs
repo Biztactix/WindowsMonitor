@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted.Network
 {
     /// <summary>
     /// </summary>
-    public sealed class Counters_IPsecIKEv1IPv4
+    public sealed class CountersIPsecIkEv1IPv4
     {
 		public uint ActiveMainModeSAs { get; private set; }
 		public uint ActiveQuickModeSAs { get; private set; }
@@ -17,9 +15,9 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint FailedMainModeNegotiationsPersec { get; private set; }
 		public uint FailedQuickModeNegotiations { get; private set; }
 		public uint FailedQuickModeNegotiationsPersec { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint MainModeNegotiationRequestsReceived { get; private set; }
 		public uint MainModeNegotiationRequestsReceivedPersec { get; private set; }
 		public uint MainModeNegotiations { get; private set; }
@@ -33,11 +31,11 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint SuccessfulMainModeNegotiationsPersec { get; private set; }
 		public uint SuccessfulQuickModeNegotiations { get; private set; }
 		public uint SuccessfulQuickModeNegotiationsPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<Counters_IPsecIKEv1IPv4> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CountersIPsecIkEv1IPv4> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -52,20 +50,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_IPsecIKEv1IPv4> Retrieve()
+        public static IEnumerable<CountersIPsecIkEv1IPv4> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_IPsecIKEv1IPv4> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CountersIPsecIkEv1IPv4> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_Counters_IPsecIKEv1IPv4");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Counters_IPsecIKEv1IPv4
+                yield return new CountersIPsecIkEv1IPv4
                 {
                      ActiveMainModeSAs = (uint) (managementObject.Properties["ActiveMainModeSAs"]?.Value ?? default(uint)),
 		 ActiveQuickModeSAs = (uint) (managementObject.Properties["ActiveQuickModeSAs"]?.Value ?? default(uint)),
@@ -75,9 +73,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 FailedMainModeNegotiationsPersec = (uint) (managementObject.Properties["FailedMainModeNegotiationsPersec"]?.Value ?? default(uint)),
 		 FailedQuickModeNegotiations = (uint) (managementObject.Properties["FailedQuickModeNegotiations"]?.Value ?? default(uint)),
 		 FailedQuickModeNegotiationsPersec = (uint) (managementObject.Properties["FailedQuickModeNegotiationsPersec"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 MainModeNegotiationRequestsReceived = (uint) (managementObject.Properties["MainModeNegotiationRequestsReceived"]?.Value ?? default(uint)),
 		 MainModeNegotiationRequestsReceivedPersec = (uint) (managementObject.Properties["MainModeNegotiationRequestsReceivedPersec"]?.Value ?? default(uint)),
 		 MainModeNegotiations = (uint) (managementObject.Properties["MainModeNegotiations"]?.Value ?? default(uint)),
@@ -91,9 +89,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 SuccessfulMainModeNegotiationsPersec = (uint) (managementObject.Properties["SuccessfulMainModeNegotiationsPersec"]?.Value ?? default(uint)),
 		 SuccessfulQuickModeNegotiations = (uint) (managementObject.Properties["SuccessfulQuickModeNegotiations"]?.Value ?? default(uint)),
 		 SuccessfulQuickModeNegotiationsPersec = (uint) (managementObject.Properties["SuccessfulQuickModeNegotiationsPersec"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

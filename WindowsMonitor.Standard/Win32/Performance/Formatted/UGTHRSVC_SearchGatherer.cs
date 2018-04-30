@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class UGTHRSVC_SearchGatherer
+    public sealed class UgthrsvcSearchGatherer
     {
 		public uint ActiveQueueLength { get; private set; }
 		public uint AdminClients { get; private set; }
@@ -28,9 +26,9 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint FilterProcessCreated { get; private set; }
 		public uint FilterProcesses { get; private set; }
 		public uint FilterProcessesMax { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint Heartbeats { get; private set; }
 		public uint HeartbeatsRate { get; private set; }
 		public uint IdleThreads { get; private set; }
@@ -49,12 +47,12 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint Threadsblockedduetobackoff { get; private set; }
 		public uint ThreadsInPlugins { get; private set; }
 		public uint TimeOuts { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint WordBreakersCached { get; private set; }
 
-        public static IEnumerable<UGTHRSVC_SearchGatherer> Retrieve(string remote, string username, string password)
+        public static IEnumerable<UgthrsvcSearchGatherer> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -69,20 +67,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<UGTHRSVC_SearchGatherer> Retrieve()
+        public static IEnumerable<UgthrsvcSearchGatherer> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<UGTHRSVC_SearchGatherer> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<UgthrsvcSearchGatherer> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_UGTHRSVC_SearchGatherer");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new UGTHRSVC_SearchGatherer
+                yield return new UgthrsvcSearchGatherer
                 {
                      ActiveQueueLength = (uint) (managementObject.Properties["ActiveQueueLength"]?.Value ?? default(uint)),
 		 AdminClients = (uint) (managementObject.Properties["AdminClients"]?.Value ?? default(uint)),
@@ -103,9 +101,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 FilterProcessCreated = (uint) (managementObject.Properties["FilterProcessCreated"]?.Value ?? default(uint)),
 		 FilterProcesses = (uint) (managementObject.Properties["FilterProcesses"]?.Value ?? default(uint)),
 		 FilterProcessesMax = (uint) (managementObject.Properties["FilterProcessesMax"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Heartbeats = (uint) (managementObject.Properties["Heartbeats"]?.Value ?? default(uint)),
 		 HeartbeatsRate = (uint) (managementObject.Properties["HeartbeatsRate"]?.Value ?? default(uint)),
 		 IdleThreads = (uint) (managementObject.Properties["IdleThreads"]?.Value ?? default(uint)),
@@ -124,9 +122,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 Threadsblockedduetobackoff = (uint) (managementObject.Properties["Threadsblockedduetobackoff"]?.Value ?? default(uint)),
 		 ThreadsInPlugins = (uint) (managementObject.Properties["ThreadsInPlugins"]?.Value ?? default(uint)),
 		 TimeOuts = (uint) (managementObject.Properties["TimeOuts"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 WordBreakersCached = (uint) (managementObject.Properties["WordBreakersCached"]?.Value ?? default(uint))
                 };
         }

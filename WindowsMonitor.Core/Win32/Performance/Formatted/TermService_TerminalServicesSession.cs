@@ -1,19 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class TermService_TerminalServicesSession
+    public sealed class TermServiceTerminalServicesSession
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint HandleCount { get; private set; }
 		public string Name { get; private set; }
 		public uint PageFaultsPersec { get; private set; }
@@ -26,15 +24,15 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint PoolPagedBytes { get; private set; }
 		public ulong PrivateBytes { get; private set; }
 		public uint ThreadCount { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong VirtualBytes { get; private set; }
 		public ulong VirtualBytesPeak { get; private set; }
 		public ulong WorkingSet { get; private set; }
 		public ulong WorkingSetPeak { get; private set; }
 
-        public static IEnumerable<TermService_TerminalServicesSession> Retrieve(string remote, string username, string password)
+        public static IEnumerable<TermServiceTerminalServicesSession> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -49,26 +47,26 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TermService_TerminalServicesSession> Retrieve()
+        public static IEnumerable<TermServiceTerminalServicesSession> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TermService_TerminalServicesSession> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<TermServiceTerminalServicesSession> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_TermService_TerminalServicesSession");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new TermService_TerminalServicesSession
+                yield return new TermServiceTerminalServicesSession
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 HandleCount = (uint) (managementObject.Properties["HandleCount"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
 		 PageFaultsPersec = (uint) (managementObject.Properties["PageFaultsPersec"]?.Value ?? default(uint)),
@@ -81,9 +79,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 PoolPagedBytes = (uint) (managementObject.Properties["PoolPagedBytes"]?.Value ?? default(uint)),
 		 PrivateBytes = (ulong) (managementObject.Properties["PrivateBytes"]?.Value ?? default(ulong)),
 		 ThreadCount = (uint) (managementObject.Properties["ThreadCount"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 VirtualBytes = (ulong) (managementObject.Properties["VirtualBytes"]?.Value ?? default(ulong)),
 		 VirtualBytesPeak = (ulong) (managementObject.Properties["VirtualBytesPeak"]?.Value ?? default(ulong)),
 		 WorkingSet = (ulong) (managementObject.Properties["WorkingSet"]?.Value ?? default(ulong)),

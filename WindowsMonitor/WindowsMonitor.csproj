@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CCM_LogicalMemoryConfiguration.cs" />
+    <Compile Include="CcmLogicalMemoryConfiguration.cs" />
     <Compile Include="CIM\Action.cs" />
     <Compile Include="CIM\ActionSequence.cs" />
     <Compile Include="CIM\ActsAsSpare.cs" />
@@ -332,7 +332,7 @@
     <Compile Include="CIM\VoltageSensor.cs" />
     <Compile Include="CIM\VolumeSet.cs" />
     <Compile Include="CIM\WORMDrive.cs" />
-    <Compile Include="Microsoft_BDD_Info.cs" />
+    <Compile Include="MicrosoftBddInfo.cs" />
     <Compile Include="MSFT\ExtendedStatus.cs" />
     <Compile Include="MSFT\NCProvAccessCheck.cs" />
     <Compile Include="MSFT\NCProvCancelQuery.cs" />
@@ -449,18 +449,18 @@
     <Compile Include="RegistryTreeChangeEvent.cs" />
     <Compile Include="RegistryValueChangeEvent.cs" />
     <Compile Include="ScriptingStandardConsumerSetting.cs" />
-    <Compile Include="SMS_AI_InstalledSoftwareDupDetect.cs" />
-    <Compile Include="SMS_AI_InstalledSoftwareSetPropertyValue.cs" />
-    <Compile Include="SMS_AI_Office14ProductMapping.cs" />
-    <Compile Include="SMS_RegLookupEntry.cs" />
+    <Compile Include="SmsAiInstalledSoftwareDupDetect.cs" />
+    <Compile Include="SmsAiInstalledSoftwareSetPropertyValue.cs" />
+    <Compile Include="SmsAiOffice14ProductMapping.cs" />
+    <Compile Include="SmsRegLookupEntry.cs" />
     <Compile Include="Win32\Software\SoftwareLicensingProduct.cs" />
     <Compile Include="Win32\Software\SoftwareLicensingService.cs" />
     <Compile Include="Win32\Software\SoftwareLicensingTokenActivationLicense.cs" />
-    <Compile Include="SQL_2000_And_2005.cs" />
-    <Compile Include="SQL_2008.cs" />
-    <Compile Include="SQL_2012.cs" />
-    <Compile Include="SQL_2014.cs" />
-    <Compile Include="SQL_2016.cs" />
+    <Compile Include="Sql2000And2005.cs" />
+    <Compile Include="Sql2008.cs" />
+    <Compile Include="Sql2012.cs" />
+    <Compile Include="Sql2014.cs" />
+    <Compile Include="Sql2016.cs" />
     <Compile Include="StdRegProv.cs" />
     <Compile Include="Win32\Registry\Win32Reg_AddRemovePrograms.cs" />
     <Compile Include="Win32\Registry\Win32Reg_AddRemovePrograms64.cs" />

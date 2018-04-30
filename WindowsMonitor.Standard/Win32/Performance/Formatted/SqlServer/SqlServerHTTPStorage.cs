@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
 {
     /// <summary>
     /// </summary>
-    public sealed class SqlServerHTTPStorage
+    public sealed class SqlServerHttpStorage
     {
 		public ulong AvgBytesPerRead { get; private set; }
 		public ulong AvgBytesPerTransfer { get; private set; }
@@ -19,24 +17,24 @@ namespace WindowsMonitor.Performance.Formatted
 		public ulong AvgmicrosecPerWriteComp { get; private set; }
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
-		public ulong HTTPStorageIOfailedPersec { get; private set; }
-		public ulong HTTPStorageIOretryPersec { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
+		public ulong HttpStorageIOfailedPersec { get; private set; }
+		public ulong HttpStorageIOretryPersec { get; private set; }
 		public string Name { get; private set; }
-		public ulong OutstandingHTTPStorageIO { get; private set; }
+		public ulong OutstandingHttpStorageIo { get; private set; }
 		public ulong ReadBytesPerSec { get; private set; }
 		public ulong ReadsPerSec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong TotalBytesPerSec { get; private set; }
 		public ulong TransfersPerSec { get; private set; }
 		public ulong WriteBytesPerSec { get; private set; }
 		public ulong WritesPerSec { get; private set; }
 
-        public static IEnumerable<SqlServerHTTPStorage> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SqlServerHttpStorage> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -51,20 +49,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SqlServerHTTPStorage> Retrieve()
+        public static IEnumerable<SqlServerHttpStorage> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SqlServerHTTPStorage> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SqlServerHttpStorage> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_MSSQLSERVER_SQLServerHTTPStorage");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SqlServerHTTPStorage
+                yield return new SqlServerHttpStorage
                 {
                      AvgBytesPerRead = (ulong) (managementObject.Properties["AvgBytesPerRead"]?.Value ?? default(ulong)),
 		 AvgBytesPerTransfer = (ulong) (managementObject.Properties["AvgBytesPerTransfer"]?.Value ?? default(ulong)),
@@ -76,18 +74,18 @@ namespace WindowsMonitor.Performance.Formatted
 		 AvgmicrosecPerWriteComp = (ulong) (managementObject.Properties["AvgmicrosecPerWriteComp"]?.Value ?? default(ulong)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 HTTPStorageIOfailedPersec = (ulong) (managementObject.Properties["HTTPStorageIOfailedPersec"]?.Value ?? default(ulong)),
-		 HTTPStorageIOretryPersec = (ulong) (managementObject.Properties["HTTPStorageIOretryPersec"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 HttpStorageIOfailedPersec = (ulong) (managementObject.Properties["HTTPStorageIOfailedPersec"]?.Value ?? default(ulong)),
+		 HttpStorageIOretryPersec = (ulong) (managementObject.Properties["HTTPStorageIOretryPersec"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 OutstandingHTTPStorageIO = (ulong) (managementObject.Properties["OutstandingHTTPStorageIO"]?.Value ?? default(ulong)),
+		 OutstandingHttpStorageIo = (ulong) (managementObject.Properties["OutstandingHTTPStorageIO"]?.Value ?? default(ulong)),
 		 ReadBytesPerSec = (ulong) (managementObject.Properties["ReadBytesPerSec"]?.Value ?? default(ulong)),
 		 ReadsPerSec = (ulong) (managementObject.Properties["ReadsPerSec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalBytesPerSec = (ulong) (managementObject.Properties["TotalBytesPerSec"]?.Value ?? default(ulong)),
 		 TransfersPerSec = (ulong) (managementObject.Properties["TransfersPerSec"]?.Value ?? default(ulong)),
 		 WriteBytesPerSec = (ulong) (managementObject.Properties["WriteBytesPerSec"]?.Value ?? default(ulong)),

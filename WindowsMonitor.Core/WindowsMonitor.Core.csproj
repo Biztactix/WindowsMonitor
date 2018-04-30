@@ -11,8 +11,4 @@
     <PackageReference Include="System.Management" Version="4.5.0-preview2-26406-04" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Win32\Performance\Formatted\HyperVisor\" />
-  </ItemGroup>
-
 </Project>

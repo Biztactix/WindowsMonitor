@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class PeerNameResolutionProtocolPerf_PeerNameResolutionProtocol
+    public sealed class PeerNameResolutionProtocolPerfPeerNameResolutionProtocol
     {
 		public uint Ackreceivedpersecond { get; private set; }
 		public uint Acksentpersecond { get; private set; }
@@ -23,9 +21,9 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint Estimatedcloudsize { get; private set; }
 		public uint Floodreceivedpersecond { get; private set; }
 		public uint Floodsentpersecond { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint Inquirereceivedpersecond { get; private set; }
 		public uint Inquiresentpersecond { get; private set; }
 		public uint Lookupreceivedpersecond { get; private set; }
@@ -40,12 +38,12 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint Solicitreceivedpersecond { get; private set; }
 		public uint Solicitsentpersecond { get; private set; }
 		public uint Stalecacheentry { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint Unknownmessagetypereceived { get; private set; }
 
-        public static IEnumerable<PeerNameResolutionProtocolPerf_PeerNameResolutionProtocol> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PeerNameResolutionProtocolPerfPeerNameResolutionProtocol> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -60,20 +58,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PeerNameResolutionProtocolPerf_PeerNameResolutionProtocol> Retrieve()
+        public static IEnumerable<PeerNameResolutionProtocolPerfPeerNameResolutionProtocol> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PeerNameResolutionProtocolPerf_PeerNameResolutionProtocol> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PeerNameResolutionProtocolPerfPeerNameResolutionProtocol> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_PeerNameResolutionProtocolPerf_PeerNameResolutionProtocol");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PeerNameResolutionProtocolPerf_PeerNameResolutionProtocol
+                yield return new PeerNameResolutionProtocolPerfPeerNameResolutionProtocol
                 {
                      Ackreceivedpersecond = (uint) (managementObject.Properties["Ackreceivedpersecond"]?.Value ?? default(uint)),
 		 Acksentpersecond = (uint) (managementObject.Properties["Acksentpersecond"]?.Value ?? default(uint)),
@@ -89,9 +87,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 Estimatedcloudsize = (uint) (managementObject.Properties["Estimatedcloudsize"]?.Value ?? default(uint)),
 		 Floodreceivedpersecond = (uint) (managementObject.Properties["Floodreceivedpersecond"]?.Value ?? default(uint)),
 		 Floodsentpersecond = (uint) (managementObject.Properties["Floodsentpersecond"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Inquirereceivedpersecond = (uint) (managementObject.Properties["Inquirereceivedpersecond"]?.Value ?? default(uint)),
 		 Inquiresentpersecond = (uint) (managementObject.Properties["Inquiresentpersecond"]?.Value ?? default(uint)),
 		 Lookupreceivedpersecond = (uint) (managementObject.Properties["Lookupreceivedpersecond"]?.Value ?? default(uint)),
@@ -106,9 +104,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 Solicitreceivedpersecond = (uint) (managementObject.Properties["Solicitreceivedpersecond"]?.Value ?? default(uint)),
 		 Solicitsentpersecond = (uint) (managementObject.Properties["Solicitsentpersecond"]?.Value ?? default(uint)),
 		 Stalecacheentry = (uint) (managementObject.Properties["Stalecacheentry"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 Unknownmessagetypereceived = (uint) (managementObject.Properties["Unknownmessagetypereceived"]?.Value ?? default(uint))
                 };
         }

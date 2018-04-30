@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
 {
     /// <summary>
     /// </summary>
@@ -44,17 +42,17 @@ namespace WindowsMonitor.Performance.Formatted
 		public ulong ForwardedMsgsDiscardedPersec { get; private set; }
 		public ulong ForwardedPendingMsgBytes { get; private set; }
 		public ulong ForwardedPendingMsgCount { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public string Name { get; private set; }
-		public ulong SQLRECEIVEsPersec { get; private set; }
-		public ulong SQLRECEIVETotal { get; private set; }
-		public ulong SQLSENDsPersec { get; private set; }
-		public ulong SQLSENDTotal { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong SqlreceivEsPersec { get; private set; }
+		public ulong SqlreceiveTotal { get; private set; }
+		public ulong SqlsenDsPersec { get; private set; }
+		public ulong SqlsendTotal { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
         public static IEnumerable<SqlServerBrokerStatistics> Retrieve(string remote, string username, string password)
         {
@@ -121,17 +119,17 @@ namespace WindowsMonitor.Performance.Formatted
 		 ForwardedMsgsDiscardedPersec = (ulong) (managementObject.Properties["ForwardedMsgsDiscardedPersec"]?.Value ?? default(ulong)),
 		 ForwardedPendingMsgBytes = (ulong) (managementObject.Properties["ForwardedPendingMsgBytes"]?.Value ?? default(ulong)),
 		 ForwardedPendingMsgCount = (ulong) (managementObject.Properties["ForwardedPendingMsgCount"]?.Value ?? default(ulong)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SQLRECEIVEsPersec = (ulong) (managementObject.Properties["SQLRECEIVEsPersec"]?.Value ?? default(ulong)),
-		 SQLRECEIVETotal = (ulong) (managementObject.Properties["SQLRECEIVETotal"]?.Value ?? default(ulong)),
-		 SQLSENDsPersec = (ulong) (managementObject.Properties["SQLSENDsPersec"]?.Value ?? default(ulong)),
-		 SQLSENDTotal = (ulong) (managementObject.Properties["SQLSENDTotal"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 SqlreceivEsPersec = (ulong) (managementObject.Properties["SQLRECEIVEsPersec"]?.Value ?? default(ulong)),
+		 SqlreceiveTotal = (ulong) (managementObject.Properties["SQLRECEIVETotal"]?.Value ?? default(ulong)),
+		 SqlsenDsPersec = (ulong) (managementObject.Properties["SQLSENDsPersec"]?.Value ?? default(ulong)),
+		 SqlsendTotal = (ulong) (managementObject.Properties["SQLSENDTotal"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

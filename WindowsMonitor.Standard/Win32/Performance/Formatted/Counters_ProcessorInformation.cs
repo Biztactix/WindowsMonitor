@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Formatted
+namespace WindowsMonitor.Win32.Performance.Formatted
 {
     /// <summary>
     /// </summary>
-    public sealed class Counters_ProcessorInformation
+    public sealed class CountersProcessorInformation
     {
 		public ulong AverageIdleTime { get; private set; }
 		public ulong C1TransitionsPersec { get; private set; }
@@ -16,11 +14,11 @@ namespace WindowsMonitor.Performance.Formatted
 		public string Caption { get; private set; }
 		public uint ClockInterruptsPersec { get; private set; }
 		public string Description { get; private set; }
-		public uint DPCRate { get; private set; }
-		public uint DPCsQueuedPersec { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public uint DpcRate { get; private set; }
+		public uint DpCsQueuedPersec { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong IdleBreakEventsPersec { get; private set; }
 		public uint InterruptsPersec { get; private set; }
 		public string Name { get; private set; }
@@ -28,7 +26,7 @@ namespace WindowsMonitor.Performance.Formatted
 		public ulong PercentC1Time { get; private set; }
 		public ulong PercentC2Time { get; private set; }
 		public ulong PercentC3Time { get; private set; }
-		public ulong PercentDPCTime { get; private set; }
+		public ulong PercentDpcTime { get; private set; }
 		public ulong PercentIdleTime { get; private set; }
 		public ulong PercentInterruptTime { get; private set; }
 		public uint PercentofMaximumFrequency { get; private set; }
@@ -43,11 +41,11 @@ namespace WindowsMonitor.Performance.Formatted
 		public uint PerformanceLimitFlags { get; private set; }
 		public uint ProcessorFrequency { get; private set; }
 		public uint ProcessorStateFlags { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<Counters_ProcessorInformation> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CountersProcessorInformation> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -62,20 +60,20 @@ namespace WindowsMonitor.Performance.Formatted
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_ProcessorInformation> Retrieve()
+        public static IEnumerable<CountersProcessorInformation> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_ProcessorInformation> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CountersProcessorInformation> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfFormattedData_Counters_ProcessorInformation");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Counters_ProcessorInformation
+                yield return new CountersProcessorInformation
                 {
                      AverageIdleTime = (ulong) (managementObject.Properties["AverageIdleTime"]?.Value ?? default(ulong)),
 		 C1TransitionsPersec = (ulong) (managementObject.Properties["C1TransitionsPersec"]?.Value ?? default(ulong)),
@@ -84,11 +82,11 @@ namespace WindowsMonitor.Performance.Formatted
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
 		 ClockInterruptsPersec = (uint) (managementObject.Properties["ClockInterruptsPersec"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 DPCRate = (uint) (managementObject.Properties["DPCRate"]?.Value ?? default(uint)),
-		 DPCsQueuedPersec = (uint) (managementObject.Properties["DPCsQueuedPersec"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 DpcRate = (uint) (managementObject.Properties["DPCRate"]?.Value ?? default(uint)),
+		 DpCsQueuedPersec = (uint) (managementObject.Properties["DPCsQueuedPersec"]?.Value ?? default(uint)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 IdleBreakEventsPersec = (ulong) (managementObject.Properties["IdleBreakEventsPersec"]?.Value ?? default(ulong)),
 		 InterruptsPersec = (uint) (managementObject.Properties["InterruptsPersec"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
@@ -96,7 +94,7 @@ namespace WindowsMonitor.Performance.Formatted
 		 PercentC1Time = (ulong) (managementObject.Properties["PercentC1Time"]?.Value ?? default(ulong)),
 		 PercentC2Time = (ulong) (managementObject.Properties["PercentC2Time"]?.Value ?? default(ulong)),
 		 PercentC3Time = (ulong) (managementObject.Properties["PercentC3Time"]?.Value ?? default(ulong)),
-		 PercentDPCTime = (ulong) (managementObject.Properties["PercentDPCTime"]?.Value ?? default(ulong)),
+		 PercentDpcTime = (ulong) (managementObject.Properties["PercentDPCTime"]?.Value ?? default(ulong)),
 		 PercentIdleTime = (ulong) (managementObject.Properties["PercentIdleTime"]?.Value ?? default(ulong)),
 		 PercentInterruptTime = (ulong) (managementObject.Properties["PercentInterruptTime"]?.Value ?? default(ulong)),
 		 PercentofMaximumFrequency = (uint) (managementObject.Properties["PercentofMaximumFrequency"]?.Value ?? default(uint)),
@@ -111,9 +109,9 @@ namespace WindowsMonitor.Performance.Formatted
 		 PerformanceLimitFlags = (uint) (managementObject.Properties["PerformanceLimitFlags"]?.Value ?? default(uint)),
 		 ProcessorFrequency = (uint) (managementObject.Properties["ProcessorFrequency"]?.Value ?? default(uint)),
 		 ProcessorStateFlags = (uint) (managementObject.Properties["ProcessorStateFlags"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }
