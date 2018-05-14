@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM.Bios
+namespace WindowsMonitor.CIM.Hardware.Bios
 {
     /// <summary>
     /// </summary>

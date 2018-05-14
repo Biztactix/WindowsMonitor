@@ -5,7 +5,7 @@ using System.Management;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsMonitor.CIM.Sensors;
+using WindowsMonitor.CIM.Hardware.Sensors;
 using WindowsMonitor.Win32;
 using WindowsMonitor.Win32.Hardware.Cooling;
 using WindowsMonitor.Win32.Hardware.Probes;

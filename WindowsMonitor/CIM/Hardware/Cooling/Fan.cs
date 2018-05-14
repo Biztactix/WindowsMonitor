@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM.Cooling
+namespace WindowsMonitor.CIM.Hardware.Cooling
 {
     /// <summary>
     /// </summary>
