@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using WindowsMonitor;
-using WindowsMonitor.Win32;
 using WindowsMonitor.Win32.Hardware;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

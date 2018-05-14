@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WindowsMonitor\WindowsMonitor.csproj">
-      <Project>{cd0ff8b8-e3ae-481a-8790-2d6d57fc3114}</Project>
+      <Project>{848b1365-89f6-4581-80ce-03045c5a2d6e}</Project>
       <Name>WindowsMonitor</Name>
     </ProjectReference>
   </ItemGroup>
