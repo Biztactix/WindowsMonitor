@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsMonitor.CIM;
+using WindowsMonitor.Win32;
 
 namespace WindowsMonitor.Service
 {
@@ -11,11 +12,20 @@ namespace WindowsMonitor.Service
     {
         static void Main(string[] args)
         {
-            var drives = DiskDrive.Retrieve().ToArray();
-            var media = PhysicalMedia.Retrieve().ToArray();
-            Console.WriteLine(media.Length);
+            try
+            {
+                var os = Win32.OperatingSystem.Retrieve().ToArray();
 
-            Console.ReadLine();
+
+                Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                var n = e.GetType().Name;
+                Console.WriteLine(n);
+                throw;
+            }
+
         }
     }
 }

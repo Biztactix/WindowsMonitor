@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WindowsMonitor\WindowsMonitor.csproj">
+      <Project>{848B1365-89F6-4581-80CE-03045C5A2D6E}</Project>
+      <Name>WindowsMonitor</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
