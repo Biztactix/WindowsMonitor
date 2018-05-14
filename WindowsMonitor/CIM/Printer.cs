@@ -32,7 +32,7 @@ namespace WindowsMonitor.CIM
 		public string DefaultPaperType { get; private set; }
 		public string Description { get; private set; }
 		public ushort DetectedErrorState { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public string[] ErrorInformation { get; private set; }
@@ -50,7 +50,7 @@ namespace WindowsMonitor.CIM
 		public string[] NaturalLanguagesSupported { get; private set; }
 		public ushort[] PaperSizesSupported { get; private set; }
 		public string[] PaperTypesAvailable { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public ushort PrinterStatus { get; private set; }
@@ -114,12 +114,12 @@ namespace WindowsMonitor.CIM
 		 DefaultPaperType = (string) (managementObject.Properties["DefaultPaperType"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DetectedErrorState = (ushort) (managementObject.Properties["DetectedErrorState"]?.Value ?? default(ushort)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 ErrorInformation = (string[]) (managementObject.Properties["ErrorInformation"]?.Value ?? new string[0]),
 		 HorizontalResolution = (uint) (managementObject.Properties["HorizontalResolution"]?.Value ?? default(uint)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 JobCountSinceLastReset = (uint) (managementObject.Properties["JobCountSinceLastReset"]?.Value ?? default(uint)),
 		 LanguagesSupported = (ushort[]) (managementObject.Properties["LanguagesSupported"]?.Value ?? new ushort[0]),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
@@ -132,7 +132,7 @@ namespace WindowsMonitor.CIM
 		 NaturalLanguagesSupported = (string[]) (managementObject.Properties["NaturalLanguagesSupported"]?.Value ?? new string[0]),
 		 PaperSizesSupported = (ushort[]) (managementObject.Properties["PaperSizesSupported"]?.Value ?? new ushort[0]),
 		 PaperTypesAvailable = (string[]) (managementObject.Properties["PaperTypesAvailable"]?.Value ?? new string[0]),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 PrinterStatus = (ushort) (managementObject.Properties["PrinterStatus"]?.Value ?? default(ushort)),
@@ -140,7 +140,7 @@ namespace WindowsMonitor.CIM
 		 StatusInfo = (ushort) (managementObject.Properties["StatusInfo"]?.Value ?? default(ushort)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
-		 TimeOfLastReset = (DateTime) (managementObject.Properties["TimeOfLastReset"]?.Value ?? default(DateTime)),
+		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010101000000.000000+060"),
 		 VerticalResolution = (uint) (managementObject.Properties["VerticalResolution"]?.Value ?? default(uint))
                 };
         }

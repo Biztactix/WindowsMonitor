@@ -7,13 +7,13 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class CollectionOfMSEs
+    public sealed class CollectionOfMsEs
     {
 		public string Caption { get; private set; }
-		public string CollectionID { get; private set; }
+		public string CollectionId { get; private set; }
 		public string Description { get; private set; }
 
-        public static IEnumerable<CollectionOfMSEs> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CollectionOfMsEs> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -28,23 +28,23 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CollectionOfMSEs> Retrieve()
+        public static IEnumerable<CollectionOfMsEs> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CollectionOfMSEs> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CollectionOfMsEs> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_CollectionOfMSEs");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new CollectionOfMSEs
+                yield return new CollectionOfMsEs
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
-		 CollectionID = (string) (managementObject.Properties["CollectionID"]?.Value),
+		 CollectionId = (string) (managementObject.Properties["CollectionID"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value)
                 };
         }

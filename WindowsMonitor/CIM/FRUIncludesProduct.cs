@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class FRUIncludesProduct
+    public sealed class FruIncludesProduct
     {
 		public short Component { get; private set; }
-		public short FRU { get; private set; }
+		public short Fru { get; private set; }
 
-        public static IEnumerable<FRUIncludesProduct> Retrieve(string remote, string username, string password)
+        public static IEnumerable<FruIncludesProduct> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,23 +27,23 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FRUIncludesProduct> Retrieve()
+        public static IEnumerable<FruIncludesProduct> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FRUIncludesProduct> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<FruIncludesProduct> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_FRUIncludesProduct");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new FRUIncludesProduct
+                yield return new FruIncludesProduct
                 {
                      Component = (short) (managementObject.Properties["Component"]?.Value ?? default(short)),
-		 FRU = (short) (managementObject.Properties["FRU"]?.Value ?? default(short))
+		 Fru = (short) (managementObject.Properties["FRU"]?.Value ?? default(short))
                 };
         }
     }

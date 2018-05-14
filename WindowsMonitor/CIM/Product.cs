@@ -13,7 +13,7 @@ namespace WindowsMonitor.CIM
 		public string Description { get; private set; }
 		public string IdentifyingNumber { get; private set; }
 		public string Name { get; private set; }
-		public string SKUNumber { get; private set; }
+		public string SkuNumber { get; private set; }
 		public string Vendor { get; private set; }
 		public string Version { get; private set; }
 
@@ -51,7 +51,7 @@ namespace WindowsMonitor.CIM
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 SKUNumber = (string) (managementObject.Properties["SKUNumber"]?.Value),
+		 SkuNumber = (string) (managementObject.Properties["SKUNumber"]?.Value),
 		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value),
 		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };

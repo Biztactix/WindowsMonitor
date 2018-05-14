@@ -17,7 +17,7 @@ namespace WindowsMonitor.CIM
 		public ulong NumberOfColors { get; private set; }
 		public uint RefreshRate { get; private set; }
 		public ushort ScanMode { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public uint VerticalResolution { get; private set; }
 
         public static IEnumerable<VideoControllerResolution> Retrieve(string remote, string username, string password)
@@ -58,7 +58,7 @@ namespace WindowsMonitor.CIM
 		 NumberOfColors = (ulong) (managementObject.Properties["NumberOfColors"]?.Value ?? default(ulong)),
 		 RefreshRate = (uint) (managementObject.Properties["RefreshRate"]?.Value ?? default(uint)),
 		 ScanMode = (ushort) (managementObject.Properties["ScanMode"]?.Value ?? default(ushort)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 VerticalResolution = (uint) (managementObject.Properties["VerticalResolution"]?.Value ?? default(uint))
                 };
         }

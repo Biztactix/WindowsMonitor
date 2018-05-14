@@ -33,7 +33,7 @@ namespace WindowsMonitor.CIM
 		public string SerialNumber { get; private set; }
 		public string[] ServiceDescriptions { get; private set; }
 		public ushort[] ServicePhilosophy { get; private set; }
-		public string SKU { get; private set; }
+		public string Sku { get; private set; }
 		public string Status { get; private set; }
 		public string Tag { get; private set; }
 		public ushort TypeOfRack { get; private set; }
@@ -82,7 +82,7 @@ namespace WindowsMonitor.CIM
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Height = (float) (managementObject.Properties["Height"]?.Value ?? default(float)),
 		 HotSwappable = (bool) (managementObject.Properties["HotSwappable"]?.Value ?? default(bool)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LockPresent = (bool) (managementObject.Properties["LockPresent"]?.Value ?? default(bool)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Model = (string) (managementObject.Properties["Model"]?.Value),
@@ -96,7 +96,7 @@ namespace WindowsMonitor.CIM
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
 		 ServiceDescriptions = (string[]) (managementObject.Properties["ServiceDescriptions"]?.Value ?? new string[0]),
 		 ServicePhilosophy = (ushort[]) (managementObject.Properties["ServicePhilosophy"]?.Value ?? new ushort[0]),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Tag = (string) (managementObject.Properties["Tag"]?.Value),
 		 TypeOfRack = (ushort) (managementObject.Properties["TypeOfRack"]?.Value ?? default(ushort)),

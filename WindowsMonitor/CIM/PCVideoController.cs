@@ -7,7 +7,7 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class PCVideoController
+    public sealed class PcVideoController
     {
 		public ushort[] AcceleratorCapabilities { get; private set; }
 		public ushort Availability { get; private set; }
@@ -25,7 +25,7 @@ namespace WindowsMonitor.CIM
 		public ushort CurrentScanMode { get; private set; }
 		public uint CurrentVerticalResolution { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public DateTime InstallDate { get; private set; }
@@ -37,7 +37,7 @@ namespace WindowsMonitor.CIM
 		public string Name { get; private set; }
 		public ushort NumberOfColorPlanes { get; private set; }
 		public uint NumberOfVideoPages { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public ushort ProtocolSupported { get; private set; }
@@ -51,7 +51,7 @@ namespace WindowsMonitor.CIM
 		public ushort VideoMode { get; private set; }
 		public string VideoProcessor { get; private set; }
 
-        public static IEnumerable<PCVideoController> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PcVideoController> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -66,20 +66,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PCVideoController> Retrieve()
+        public static IEnumerable<PcVideoController> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PCVideoController> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PcVideoController> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_PCVideoController");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PCVideoController
+                yield return new PcVideoController
                 {
                      AcceleratorCapabilities = (ushort[]) (managementObject.Properties["AcceleratorCapabilities"]?.Value ?? new ushort[0]),
 		 Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
@@ -97,10 +97,10 @@ namespace WindowsMonitor.CIM
 		 CurrentScanMode = (ushort) (managementObject.Properties["CurrentScanMode"]?.Value ?? default(ushort)),
 		 CurrentVerticalResolution = (uint) (managementObject.Properties["CurrentVerticalResolution"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 MaxMemorySupported = (uint) (managementObject.Properties["MaxMemorySupported"]?.Value ?? default(uint)),
 		 MaxNumberControlled = (uint) (managementObject.Properties["MaxNumberControlled"]?.Value ?? default(uint)),
@@ -109,7 +109,7 @@ namespace WindowsMonitor.CIM
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfColorPlanes = (ushort) (managementObject.Properties["NumberOfColorPlanes"]?.Value ?? default(ushort)),
 		 NumberOfVideoPages = (uint) (managementObject.Properties["NumberOfVideoPages"]?.Value ?? default(uint)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 ProtocolSupported = (ushort) (managementObject.Properties["ProtocolSupported"]?.Value ?? default(ushort)),
@@ -117,7 +117,7 @@ namespace WindowsMonitor.CIM
 		 StatusInfo = (ushort) (managementObject.Properties["StatusInfo"]?.Value ?? default(ushort)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
-		 TimeOfLastReset = (DateTime) (managementObject.Properties["TimeOfLastReset"]?.Value ?? default(DateTime)),
+		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010101000000.000000+060"),
 		 VideoArchitecture = (ushort) (managementObject.Properties["VideoArchitecture"]?.Value ?? default(ushort)),
 		 VideoMemoryType = (ushort) (managementObject.Properties["VideoMemoryType"]?.Value ?? default(ushort)),
 		 VideoMode = (ushort) (managementObject.Properties["VideoMode"]?.Value ?? default(ushort)),

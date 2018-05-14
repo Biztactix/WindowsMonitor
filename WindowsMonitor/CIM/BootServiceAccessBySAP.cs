@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class BootServiceAccessBySAP
+    public sealed class BootServiceAccessBySap
     {
 		public short Antecedent { get; private set; }
 		public short Dependent { get; private set; }
 
-        public static IEnumerable<BootServiceAccessBySAP> Retrieve(string remote, string username, string password)
+        public static IEnumerable<BootServiceAccessBySap> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +27,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<BootServiceAccessBySAP> Retrieve()
+        public static IEnumerable<BootServiceAccessBySap> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<BootServiceAccessBySAP> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<BootServiceAccessBySap> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_BootServiceAccessBySAP");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new BootServiceAccessBySAP
+                yield return new BootServiceAccessBySap
                 {
                      Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
 		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short))

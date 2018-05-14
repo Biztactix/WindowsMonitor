@@ -84,21 +84,22 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new OfficeSoftwareProtectionProduct
                 {
-                    ApplicationId = (string) (managementObject.Properties["ApplicationID"]?.Value),
-                    Description = (string) (managementObject.Properties["Description"]?.Value),
+                    ApplicationId = (string) managementObject.Properties["ApplicationID"]?.Value,
+                    Description = (string) managementObject.Properties["Description"]?.Value,
                     DiscoveredKeyManagementServiceMachineName =
-                        (string) (managementObject.Properties["DiscoveredKeyManagementServiceMachineName"]?.Value ??
-                                  default(string)),
+                        (string) (managementObject.Properties["DiscoveredKeyManagementServiceMachineName"]?.Value),
                     DiscoveredKeyManagementServiceMachinePort =
                         (uint) (managementObject.Properties["DiscoveredKeyManagementServiceMachinePort"]?.Value ??
                                 default(uint)),
                     EvaluationEndDate =
-                        (DateTime) (managementObject.Properties["EvaluationEndDate"]?.Value ?? default(DateTime)),
+                        ManagementDateTimeConverter.ToDateTime(
+                            managementObject.Properties["EvaluationEndDate"]?.Value as string ??
+                            "00010101000000.000000+060"),
                     ExtendedGrace = (uint) (managementObject.Properties["ExtendedGrace"]?.Value ?? default(uint)),
                     GenuineStatus = (uint) (managementObject.Properties["GenuineStatus"]?.Value ?? default(uint)),
                     GracePeriodRemaining =
                         (uint) (managementObject.Properties["GracePeriodRemaining"]?.Value ?? default(uint)),
-                    Id = (string) (managementObject.Properties["ID"]?.Value),
+                    Id = (string) managementObject.Properties["ID"]?.Value,
                     IsKeyManagementServiceMachine =
                         (uint) (managementObject.Properties["IsKeyManagementServiceMachine"]?.Value ?? default(uint)),
                     KeyManagementServiceCurrentCount =
@@ -111,7 +112,7 @@ namespace WindowsMonitor
                         (uint) (managementObject.Properties["KeyManagementServiceLicensedRequests"]?.Value ??
                                 default(uint)),
                     KeyManagementServiceMachine =
-                        (string) (managementObject.Properties["KeyManagementServiceMachine"]?.Value),
+                        (string) managementObject.Properties["KeyManagementServiceMachine"]?.Value,
                     KeyManagementServiceNonGenuineGraceRequests =
                         (uint) (managementObject.Properties["KeyManagementServiceNonGenuineGraceRequests"]?.Value ??
                                 default(uint)),
@@ -136,21 +137,21 @@ namespace WindowsMonitor
                         (uint) (managementObject.Properties["KeyManagementServiceUnlicensedRequests"]?.Value ??
                                 default(uint)),
                     LicenseDependsOn =
-                        (string) (managementObject.Properties["LicenseDependsOn"]?.Value),
-                    LicenseFamily = (string) (managementObject.Properties["LicenseFamily"]?.Value),
+                        (string) managementObject.Properties["LicenseDependsOn"]?.Value,
+                    LicenseFamily = (string) managementObject.Properties["LicenseFamily"]?.Value,
                     LicenseIsAddon = (bool) (managementObject.Properties["LicenseIsAddon"]?.Value ?? default(bool)),
                     LicenseStatus = (uint) (managementObject.Properties["LicenseStatus"]?.Value ?? default(uint)),
                     LicenseStatusReason =
                         (uint) (managementObject.Properties["LicenseStatusReason"]?.Value ?? default(uint)),
-                    MachineUrl = (string) (managementObject.Properties["MachineURL"]?.Value),
-                    Name = (string) (managementObject.Properties["Name"]?.Value),
+                    MachineUrl = (string) managementObject.Properties["MachineURL"]?.Value,
+                    Name = (string) managementObject.Properties["Name"]?.Value,
                     OfflineInstallationId =
-                        (string) (managementObject.Properties["OfflineInstallationId"]?.Value),
+                        (string) managementObject.Properties["OfflineInstallationId"]?.Value,
                     PartialProductKey =
-                        (string) (managementObject.Properties["PartialProductKey"]?.Value),
-                    ProcessorUrl = (string) (managementObject.Properties["ProcessorURL"]?.Value),
-                    ProductKeyId = (string) (managementObject.Properties["ProductKeyID"]?.Value),
-                    ProductKeyUrl = (string) (managementObject.Properties["ProductKeyURL"]?.Value),
+                        (string) managementObject.Properties["PartialProductKey"]?.Value,
+                    ProcessorUrl = (string) managementObject.Properties["ProcessorURL"]?.Value,
+                    ProductKeyId = (string) managementObject.Properties["ProductKeyID"]?.Value,
+                    ProductKeyUrl = (string) managementObject.Properties["ProductKeyURL"]?.Value,
                     RequiredClientCount =
                         (uint) (managementObject.Properties["RequiredClientCount"]?.Value ?? default(uint)),
                     TokenActivationAdditionalInfo =
@@ -162,11 +163,13 @@ namespace WindowsMonitor
                     TokenActivationGrantNumber =
                         (uint) (managementObject.Properties["TokenActivationGrantNumber"]?.Value ?? default(uint)),
                     TokenActivationIlid =
-                        (string) (managementObject.Properties["TokenActivationILID"]?.Value),
+                        (string) managementObject.Properties["TokenActivationILID"]?.Value,
                     TokenActivationIlvid =
                         (uint) (managementObject.Properties["TokenActivationILVID"]?.Value ?? default(uint)),
-                    TrustedTime = (DateTime) (managementObject.Properties["TrustedTime"]?.Value ?? default(DateTime)),
-                    UseLicenseUrl = (string) (managementObject.Properties["UseLicenseURL"]?.Value),
+                    TrustedTime =
+                        ManagementDateTimeConverter.ToDateTime(
+                            managementObject.Properties["TrustedTime"]?.Value as string ?? "00010101000000.000000+060"),
+                    UseLicenseUrl = (string) managementObject.Properties["UseLicenseURL"]?.Value,
                     VlActivationInterval =
                         (uint) (managementObject.Properties["VLActivationInterval"]?.Value ?? default(uint)),
                     VlRenewalInterval =

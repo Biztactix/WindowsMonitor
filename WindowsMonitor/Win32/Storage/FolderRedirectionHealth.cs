@@ -48,9 +48,9 @@ namespace WindowsMonitor.Win32
                 yield return new FolderRedirectionHealth
                 {
                      HealthStatus = (byte) (managementObject.Properties["HealthStatus"]?.Value ?? default(byte)),
-		 LastSuccessfulSyncTime = (DateTime) (managementObject.Properties["LastSuccessfulSyncTime"]?.Value ?? default(DateTime)),
+		 LastSuccessfulSyncTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LastSuccessfulSyncTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastSyncStatus = (byte) (managementObject.Properties["LastSyncStatus"]?.Value ?? default(byte)),
-		 LastSyncTime = (DateTime) (managementObject.Properties["LastSyncTime"]?.Value ?? default(DateTime)),
+		 LastSyncTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LastSyncTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 OfflineAccessEnabled = (bool) (managementObject.Properties["OfflineAccessEnabled"]?.Value ?? default(bool)),
 		 OfflineFileNameFolderGUID = (string) (managementObject.Properties["OfflineFileNameFolderGUID"]?.Value),
 		 Redirected = (bool) (managementObject.Properties["Redirected"]?.Value ?? default(bool))

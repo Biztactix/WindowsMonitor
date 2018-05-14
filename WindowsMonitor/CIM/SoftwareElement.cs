@@ -18,9 +18,9 @@ namespace WindowsMonitor.CIM
 		public string LanguageEdition { get; private set; }
 		public string Manufacturer { get; private set; }
 		public string Name { get; private set; }
-		public string OtherTargetOS { get; private set; }
+		public string OtherTargetOs { get; private set; }
 		public string SerialNumber { get; private set; }
-		public string SoftwareElementID { get; private set; }
+		public string SoftwareElementId { get; private set; }
 		public ushort SoftwareElementState { get; private set; }
 		public string Status { get; private set; }
 		public ushort TargetOperatingSystem { get; private set; }
@@ -61,13 +61,13 @@ namespace WindowsMonitor.CIM
 		 CodeSet = (string) (managementObject.Properties["CodeSet"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 IdentificationCode = (string) (managementObject.Properties["IdentificationCode"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LanguageEdition = (string) (managementObject.Properties["LanguageEdition"]?.Value),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 OtherTargetOS = (string) (managementObject.Properties["OtherTargetOS"]?.Value),
+		 OtherTargetOs = (string) (managementObject.Properties["OtherTargetOS"]?.Value),
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
+		 SoftwareElementId = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),

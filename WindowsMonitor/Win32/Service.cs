@@ -77,7 +77,7 @@ namespace WindowsMonitor.Win32
 		 DisplayName = (string) (managementObject.Properties["DisplayName"]?.Value),
 		 ErrorControl = (string) (managementObject.Properties["ErrorControl"]?.Value),
 		 ExitCode = (uint) (managementObject.Properties["ExitCode"]?.Value ?? default(uint)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PathName = (string) (managementObject.Properties["PathName"]?.Value),
 		 ProcessId = (uint) (managementObject.Properties["ProcessId"]?.Value ?? default(uint)),

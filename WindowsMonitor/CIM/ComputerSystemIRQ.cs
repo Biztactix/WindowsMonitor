@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class ComputerSystemIRQ
+    public sealed class ComputerSystemIrq
     {
 		public short GroupComponent { get; private set; }
 		public short PartComponent { get; private set; }
 
-        public static IEnumerable<ComputerSystemIRQ> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ComputerSystemIrq> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +27,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ComputerSystemIRQ> Retrieve()
+        public static IEnumerable<ComputerSystemIrq> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ComputerSystemIRQ> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ComputerSystemIrq> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_ComputerSystemIRQ");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ComputerSystemIRQ
+                yield return new ComputerSystemIrq
                 {
                      GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
 		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))

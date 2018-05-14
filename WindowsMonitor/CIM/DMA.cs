@@ -7,7 +7,7 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class DMA
+    public sealed class Dma
     {
 		public ushort AddressSize { get; private set; }
 		public ushort Availability { get; private set; }
@@ -16,10 +16,10 @@ namespace WindowsMonitor.CIM
 		public string Caption { get; private set; }
 		public ushort ChannelTiming { get; private set; }
 		public string CreationClassName { get; private set; }
-		public string CSCreationClassName { get; private set; }
-		public string CSName { get; private set; }
+		public string CsCreationClassName { get; private set; }
+		public string CsName { get; private set; }
 		public string Description { get; private set; }
-		public uint DMAChannel { get; private set; }
+		public uint DmaChannel { get; private set; }
 		public DateTime InstallDate { get; private set; }
 		public uint MaxTransferSize { get; private set; }
 		public string Name { get; private set; }
@@ -28,7 +28,7 @@ namespace WindowsMonitor.CIM
 		public ushort TypeCTiming { get; private set; }
 		public ushort WordMode { get; private set; }
 
-        public static IEnumerable<DMA> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Dma> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -43,20 +43,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DMA> Retrieve()
+        public static IEnumerable<Dma> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DMA> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Dma> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_DMA");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new DMA
+                yield return new Dma
                 {
                      AddressSize = (ushort) (managementObject.Properties["AddressSize"]?.Value ?? default(ushort)),
 		 Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
@@ -65,11 +65,11 @@ namespace WindowsMonitor.CIM
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ChannelTiming = (ushort) (managementObject.Properties["ChannelTiming"]?.Value ?? default(ushort)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DMAChannel = (uint) (managementObject.Properties["DMAChannel"]?.Value ?? default(uint)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 DmaChannel = (uint) (managementObject.Properties["DMAChannel"]?.Value ?? default(uint)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 MaxTransferSize = (uint) (managementObject.Properties["MaxTransferSize"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),

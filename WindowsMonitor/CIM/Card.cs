@@ -28,7 +28,7 @@ namespace WindowsMonitor.CIM
 		public string RequirementsDescription { get; private set; }
 		public bool RequiresDaughterBoard { get; private set; }
 		public string SerialNumber { get; private set; }
-		public string SKU { get; private set; }
+		public string Sku { get; private set; }
 		public string SlotLayout { get; private set; }
 		public bool SpecialRequirements { get; private set; }
 		public string Status { get; private set; }
@@ -74,7 +74,7 @@ namespace WindowsMonitor.CIM
 		 Height = (float) (managementObject.Properties["Height"]?.Value ?? default(float)),
 		 HostingBoard = (bool) (managementObject.Properties["HostingBoard"]?.Value ?? default(bool)),
 		 HotSwappable = (bool) (managementObject.Properties["HotSwappable"]?.Value ?? default(bool)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Model = (string) (managementObject.Properties["Model"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
@@ -86,7 +86,7 @@ namespace WindowsMonitor.CIM
 		 RequirementsDescription = (string) (managementObject.Properties["RequirementsDescription"]?.Value),
 		 RequiresDaughterBoard = (bool) (managementObject.Properties["RequiresDaughterBoard"]?.Value ?? default(bool)),
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
 		 SlotLayout = (string) (managementObject.Properties["SlotLayout"]?.Value),
 		 SpecialRequirements = (bool) (managementObject.Properties["SpecialRequirements"]?.Value ?? default(bool)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),

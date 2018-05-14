@@ -18,7 +18,7 @@ namespace WindowsMonitor.CIM
 		public uint CurrentClockSpeed { get; private set; }
 		public ushort DataWidth { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public ushort Family { get; private set; }
@@ -28,7 +28,7 @@ namespace WindowsMonitor.CIM
 		public uint MaxClockSpeed { get; private set; }
 		public string Name { get; private set; }
 		public string OtherFamilyDescription { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public string Role { get; private set; }
@@ -79,17 +79,17 @@ namespace WindowsMonitor.CIM
 		 CurrentClockSpeed = (uint) (managementObject.Properties["CurrentClockSpeed"]?.Value ?? default(uint)),
 		 DataWidth = (ushort) (managementObject.Properties["DataWidth"]?.Value ?? default(ushort)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 Family = (ushort) (managementObject.Properties["Family"]?.Value ?? default(ushort)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 LoadPercentage = (ushort) (managementObject.Properties["LoadPercentage"]?.Value ?? default(ushort)),
 		 MaxClockSpeed = (uint) (managementObject.Properties["MaxClockSpeed"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OtherFamilyDescription = (string) (managementObject.Properties["OtherFamilyDescription"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 Role = (string) (managementObject.Properties["Role"]?.Value),

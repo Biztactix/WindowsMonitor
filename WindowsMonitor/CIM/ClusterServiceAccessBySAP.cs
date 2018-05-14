@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class ClusterServiceAccessBySAP
+    public sealed class ClusterServiceAccessBySap
     {
 		public short Antecedent { get; private set; }
 		public short Dependent { get; private set; }
 
-        public static IEnumerable<ClusterServiceAccessBySAP> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ClusterServiceAccessBySap> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +27,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ClusterServiceAccessBySAP> Retrieve()
+        public static IEnumerable<ClusterServiceAccessBySap> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ClusterServiceAccessBySAP> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ClusterServiceAccessBySap> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_ClusterServiceAccessBySAP");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ClusterServiceAccessBySAP
+                yield return new ClusterServiceAccessBySap
                 {
                      Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
 		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short))

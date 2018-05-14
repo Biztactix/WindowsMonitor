@@ -100,7 +100,7 @@ namespace WindowsMonitor.Win32.Hardware.Power
                     ExpectedLife = (uint) (managementObject.Properties["ExpectedLife"]?.Value ?? default(uint)),
                     FullChargeCapacity =
                         (uint) (managementObject.Properties["FullChargeCapacity"]?.Value ?? default(uint)),
-                    InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+                    InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
                     LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
                     Location = (string) (managementObject.Properties["Location"]?.Value),
                     ManufactureDate =

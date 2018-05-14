@@ -53,7 +53,7 @@ namespace WindowsMonitor.Win32
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Started = (bool) (managementObject.Properties["Started"]?.Value ?? default(bool)),
 		 StartMode = (string) (managementObject.Properties["StartMode"]?.Value),

@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class OSProcess
+    public sealed class OsProcess
     {
 		public short GroupComponent { get; private set; }
 		public short PartComponent { get; private set; }
 
-        public static IEnumerable<OSProcess> Retrieve(string remote, string username, string password)
+        public static IEnumerable<OsProcess> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +27,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<OSProcess> Retrieve()
+        public static IEnumerable<OsProcess> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<OSProcess> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<OsProcess> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_OSProcess");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new OSProcess
+                yield return new OsProcess
                 {
                      GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
 		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))

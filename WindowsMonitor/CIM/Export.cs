@@ -11,7 +11,7 @@ namespace WindowsMonitor.CIM
     {
 		public short Directory { get; private set; }
 		public string ExportedDirectoryName { get; private set; }
-		public short LocalFS { get; private set; }
+		public short LocalFs { get; private set; }
 
         public static IEnumerable<Export> Retrieve(string remote, string username, string password)
         {
@@ -45,7 +45,7 @@ namespace WindowsMonitor.CIM
                 {
                      Directory = (short) (managementObject.Properties["Directory"]?.Value ?? default(short)),
 		 ExportedDirectoryName = (string) (managementObject.Properties["ExportedDirectoryName"]?.Value),
-		 LocalFS = (short) (managementObject.Properties["LocalFS"]?.Value ?? default(short))
+		 LocalFs = (short) (managementObject.Properties["LocalFS"]?.Value ?? default(short))
                 };
         }
     }

@@ -9,13 +9,13 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class RemoveFileAction
     {
-		public string ActionID { get; private set; }
+		public string ActionId { get; private set; }
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
 		public ushort Direction { get; private set; }
 		public string File { get; private set; }
 		public string Name { get; private set; }
-		public string SoftwareElementID { get; private set; }
+		public string SoftwareElementId { get; private set; }
 		public ushort SoftwareElementState { get; private set; }
 		public ushort TargetOperatingSystem { get; private set; }
 		public string Version { get; private set; }
@@ -50,13 +50,13 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new RemoveFileAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+                     ActionId = (string) (managementObject.Properties["ActionID"]?.Value),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
 		 File = (string) (managementObject.Properties["File"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
+		 SoftwareElementId = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
 		 Version = (string) (managementObject.Properties["Version"]?.Value)

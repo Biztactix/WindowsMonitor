@@ -87,7 +87,7 @@ namespace WindowsMonitor.Win32.Hardware
 		 HardwareType = (string) (managementObject.Properties["HardwareType"]?.Value),
 		 InfFileName = (string) (managementObject.Properties["InfFileName"]?.Value),
 		 InfSection = (string) (managementObject.Properties["InfSection"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 IsLocked = (bool) (managementObject.Properties["IsLocked"]?.Value ?? default(bool)),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),

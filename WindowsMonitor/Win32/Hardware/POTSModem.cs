@@ -143,7 +143,7 @@ namespace WindowsMonitor.Win32.Hardware
 		 DeviceLoader = (string) (managementObject.Properties["DeviceLoader"]?.Value),
 		 DeviceType = (string) (managementObject.Properties["DeviceType"]?.Value),
 		 DialType = (ushort) (managementObject.Properties["DialType"]?.Value ?? default(ushort)),
-		 DriverDate = (DateTime) (managementObject.Properties["DriverDate"]?.Value ?? default(DateTime)),
+		 DriverDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["DriverDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorControlForced = (string) (managementObject.Properties["ErrorControlForced"]?.Value),
 		 ErrorControlInfo = (ushort) (managementObject.Properties["ErrorControlInfo"]?.Value ?? default(ushort)),
@@ -157,7 +157,7 @@ namespace WindowsMonitor.Win32.Hardware
 		 InactivityTimeout = (uint) (managementObject.Properties["InactivityTimeout"]?.Value ?? default(uint)),
 		 Index = (uint) (managementObject.Properties["Index"]?.Value ?? default(uint)),
 		 IndexEx = (string) (managementObject.Properties["IndexEx"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 MaxBaudRateToPhone = (uint) (managementObject.Properties["MaxBaudRateToPhone"]?.Value ?? default(uint)),
 		 MaxBaudRateToSerialPort = (uint) (managementObject.Properties["MaxBaudRateToSerialPort"]?.Value ?? default(uint)),
@@ -196,7 +196,7 @@ namespace WindowsMonitor.Win32.Hardware
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
 		 Terminator = (string) (managementObject.Properties["Terminator"]?.Value),
-		 TimeOfLastReset = (DateTime) (managementObject.Properties["TimeOfLastReset"]?.Value ?? default(DateTime)),
+		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010101000000.000000+060"),
 		 Tone = (string) (managementObject.Properties["Tone"]?.Value),
 		 VoiceSwitchFeature = (string) (managementObject.Properties["VoiceSwitchFeature"]?.Value)
                 };

@@ -9,14 +9,14 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class Error
     {
-		public uint CIMStatusCode { get; private set; }
-		public string CIMStatusCodeDescription { get; private set; }
+		public uint CimStatusCode { get; private set; }
+		public string CimStatusCodeDescription { get; private set; }
 		public string ErrorSource { get; private set; }
 		public ushort ErrorSourceFormat { get; private set; }
 		public ushort ErrorType { get; private set; }
 		public string Message { get; private set; }
 		public string[] MessageArguments { get; private set; }
-		public string MessageID { get; private set; }
+		public string MessageId { get; private set; }
 		public string OtherErrorSourceFormat { get; private set; }
 		public string OtherErrorType { get; private set; }
 		public string OWningEntity { get; private set; }
@@ -55,14 +55,14 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Error
                 {
-                     CIMStatusCode = (uint) (managementObject.Properties["CIMStatusCode"]?.Value ?? default(uint)),
-		 CIMStatusCodeDescription = (string) (managementObject.Properties["CIMStatusCodeDescription"]?.Value),
+                     CimStatusCode = (uint) (managementObject.Properties["CIMStatusCode"]?.Value ?? default(uint)),
+		 CimStatusCodeDescription = (string) (managementObject.Properties["CIMStatusCodeDescription"]?.Value),
 		 ErrorSource = (string) (managementObject.Properties["ErrorSource"]?.Value),
 		 ErrorSourceFormat = (ushort) (managementObject.Properties["ErrorSourceFormat"]?.Value ?? default(ushort)),
 		 ErrorType = (ushort) (managementObject.Properties["ErrorType"]?.Value ?? default(ushort)),
 		 Message = (string) (managementObject.Properties["Message"]?.Value),
 		 MessageArguments = (string[]) (managementObject.Properties["MessageArguments"]?.Value ?? new string[0]),
-		 MessageID = (string) (managementObject.Properties["MessageID"]?.Value),
+		 MessageId = (string) (managementObject.Properties["MessageID"]?.Value),
 		 OtherErrorSourceFormat = (string) (managementObject.Properties["OtherErrorSourceFormat"]?.Value),
 		 OtherErrorType = (string) (managementObject.Properties["OtherErrorType"]?.Value),
 		 OWningEntity = (string) (managementObject.Properties["OWningEntity"]?.Value),

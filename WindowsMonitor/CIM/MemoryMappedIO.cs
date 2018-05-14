@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class MemoryMappedIO
+    public sealed class MemoryMappedIo
     {
 		public string Caption { get; private set; }
 		public string CreationClassName { get; private set; }
-		public string CSCreationClassName { get; private set; }
-		public string CSName { get; private set; }
+		public string CsCreationClassName { get; private set; }
+		public string CsName { get; private set; }
 		public string Description { get; private set; }
 		public ulong EndingAddress { get; private set; }
 		public DateTime InstallDate { get; private set; }
@@ -20,7 +20,7 @@ namespace WindowsMonitor.CIM
 		public ulong StartingAddress { get; private set; }
 		public string Status { get; private set; }
 
-        public static IEnumerable<MemoryMappedIO> Retrieve(string remote, string username, string password)
+        public static IEnumerable<MemoryMappedIo> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -35,28 +35,28 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MemoryMappedIO> Retrieve()
+        public static IEnumerable<MemoryMappedIo> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MemoryMappedIO> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<MemoryMappedIo> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_MemoryMappedIO");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MemoryMappedIO
+                yield return new MemoryMappedIo
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 EndingAddress = (ulong) (managementObject.Properties["EndingAddress"]?.Value ?? default(ulong)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 StartingAddress = (ulong) (managementObject.Properties["StartingAddress"]?.Value ?? default(ulong)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value)

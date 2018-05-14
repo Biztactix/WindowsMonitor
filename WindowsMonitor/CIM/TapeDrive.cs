@@ -19,8 +19,8 @@ namespace WindowsMonitor.CIM
 		public string CreationClassName { get; private set; }
 		public ulong DefaultBlockSize { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
-		public uint EOTWarningZoneSize { get; private set; }
+		public string DeviceId { get; private set; }
+		public uint EotWarningZoneSize { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public string ErrorMethodology { get; private set; }
@@ -34,7 +34,7 @@ namespace WindowsMonitor.CIM
 		public bool NeedsCleaning { get; private set; }
 		public uint NumberOfMediaSupported { get; private set; }
 		public uint Padding { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public string Status { get; private set; }
@@ -82,12 +82,12 @@ namespace WindowsMonitor.CIM
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 DefaultBlockSize = (ulong) (managementObject.Properties["DefaultBlockSize"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
-		 EOTWarningZoneSize = (uint) (managementObject.Properties["EOTWarningZoneSize"]?.Value ?? default(uint)),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 EotWarningZoneSize = (uint) (managementObject.Properties["EOTWarningZoneSize"]?.Value ?? default(uint)),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 ErrorMethodology = (string) (managementObject.Properties["ErrorMethodology"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 MaxBlockSize = (ulong) (managementObject.Properties["MaxBlockSize"]?.Value ?? default(ulong)),
 		 MaxMediaSize = (ulong) (managementObject.Properties["MaxMediaSize"]?.Value ?? default(ulong)),
@@ -97,7 +97,7 @@ namespace WindowsMonitor.CIM
 		 NeedsCleaning = (bool) (managementObject.Properties["NeedsCleaning"]?.Value ?? default(bool)),
 		 NumberOfMediaSupported = (uint) (managementObject.Properties["NumberOfMediaSupported"]?.Value ?? default(uint)),
 		 Padding = (uint) (managementObject.Properties["Padding"]?.Value ?? default(uint)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),

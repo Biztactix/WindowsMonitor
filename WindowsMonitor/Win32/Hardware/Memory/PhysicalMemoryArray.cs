@@ -73,7 +73,7 @@ namespace WindowsMonitor.Win32.Hardware.Memory
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Height = (float) (managementObject.Properties["Height"]?.Value ?? default(float)),
 		 HotSwappable = (bool) (managementObject.Properties["HotSwappable"]?.Value ?? default(bool)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Location = (ushort) (managementObject.Properties["Location"]?.Value ?? default(ushort)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 MaxCapacity = (uint) (managementObject.Properties["MaxCapacity"]?.Value ?? default(uint)),

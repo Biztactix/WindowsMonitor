@@ -7,7 +7,7 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class NFS
+    public sealed class Nfs
     {
 		public bool AttributeCaching { get; private set; }
 		public ushort AttributeCachingForDirectoriesMax { get; private set; }
@@ -22,8 +22,8 @@ namespace WindowsMonitor.CIM
 		public ushort[] CodeSet { get; private set; }
 		public string CompressionMethod { get; private set; }
 		public string CreationClassName { get; private set; }
-		public string CSCreationClassName { get; private set; }
-		public string CSName { get; private set; }
+		public string CsCreationClassName { get; private set; }
+		public string CsName { get; private set; }
 		public string Description { get; private set; }
 		public string EncryptionMethod { get; private set; }
 		public ulong FileSystemSize { get; private set; }
@@ -43,7 +43,7 @@ namespace WindowsMonitor.CIM
 		public string Status { get; private set; }
 		public ulong WriteBufferSize { get; private set; }
 
-        public static IEnumerable<NFS> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Nfs> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -58,20 +58,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NFS> Retrieve()
+        public static IEnumerable<Nfs> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NFS> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Nfs> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_NFS");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NFS
+                yield return new Nfs
                 {
                      AttributeCaching = (bool) (managementObject.Properties["AttributeCaching"]?.Value ?? default(bool)),
 		 AttributeCachingForDirectoriesMax = (ushort) (managementObject.Properties["AttributeCachingForDirectoriesMax"]?.Value ?? default(ushort)),
@@ -86,14 +86,14 @@ namespace WindowsMonitor.CIM
 		 CodeSet = (ushort[]) (managementObject.Properties["CodeSet"]?.Value ?? new ushort[0]),
 		 CompressionMethod = (string) (managementObject.Properties["CompressionMethod"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 EncryptionMethod = (string) (managementObject.Properties["EncryptionMethod"]?.Value),
 		 FileSystemSize = (ulong) (managementObject.Properties["FileSystemSize"]?.Value ?? default(ulong)),
 		 ForegroundMount = (bool) (managementObject.Properties["ForegroundMount"]?.Value ?? default(bool)),
 		 HardMount = (bool) (managementObject.Properties["HardMount"]?.Value ?? default(bool)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Interrupt = (bool) (managementObject.Properties["Interrupt"]?.Value ?? default(bool)),
 		 MaxFileNameLength = (uint) (managementObject.Properties["MaxFileNameLength"]?.Value ?? default(uint)),
 		 MountFailureRetries = (ushort) (managementObject.Properties["MountFailureRetries"]?.Value ?? default(ushort)),

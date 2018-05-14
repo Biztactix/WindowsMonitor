@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class ComputerSystemMappedIO
+    public sealed class ComputerSystemMappedIo
     {
 		public short GroupComponent { get; private set; }
 		public short PartComponent { get; private set; }
 
-        public static IEnumerable<ComputerSystemMappedIO> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ComputerSystemMappedIo> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +27,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ComputerSystemMappedIO> Retrieve()
+        public static IEnumerable<ComputerSystemMappedIo> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ComputerSystemMappedIO> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ComputerSystemMappedIo> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_ComputerSystemMappedIO");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ComputerSystemMappedIO
+                yield return new ComputerSystemMappedIo
                 {
                      GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
 		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))

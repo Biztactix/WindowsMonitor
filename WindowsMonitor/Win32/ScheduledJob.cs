@@ -64,8 +64,8 @@ namespace WindowsMonitor.Win32
 		 DaysOfMonth = (uint) (managementObject.Properties["DaysOfMonth"]?.Value ?? default(uint)),
 		 DaysOfWeek = (uint) (managementObject.Properties["DaysOfWeek"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 ElapsedTime = (DateTime) (managementObject.Properties["ElapsedTime"]?.Value ?? default(DateTime)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 ElapsedTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["ElapsedTime"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 InteractWithDesktop = (bool) (managementObject.Properties["InteractWithDesktop"]?.Value ?? default(bool)),
 		 JobId = (uint) (managementObject.Properties["JobId"]?.Value ?? default(uint)),
 		 JobStatus = (string) (managementObject.Properties["JobStatus"]?.Value),
@@ -74,10 +74,10 @@ namespace WindowsMonitor.Win32
 		 Owner = (string) (managementObject.Properties["Owner"]?.Value),
 		 Priority = (uint) (managementObject.Properties["Priority"]?.Value ?? default(uint)),
 		 RunRepeatedly = (bool) (managementObject.Properties["RunRepeatedly"]?.Value ?? default(bool)),
-		 StartTime = (DateTime) (managementObject.Properties["StartTime"]?.Value ?? default(DateTime)),
+		 StartTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["StartTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
-		 TimeSubmitted = (DateTime) (managementObject.Properties["TimeSubmitted"]?.Value ?? default(DateTime)),
-		 UntilTime = (DateTime) (managementObject.Properties["UntilTime"]?.Value ?? default(DateTime))
+		 TimeSubmitted = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeSubmitted"]?.Value as string ?? "00010101000000.000000+060"),
+		 UntilTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["UntilTime"]?.Value as string ?? "00010101000000.000000+060")
                 };
         }
     }

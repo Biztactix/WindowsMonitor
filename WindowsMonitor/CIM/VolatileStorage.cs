@@ -21,7 +21,7 @@ namespace WindowsMonitor.CIM
 		public bool CorrectableError { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public ulong EndingAddress { get; private set; }
 		public ushort ErrorAccess { get; private set; }
 		public ulong ErrorAddress { get; private set; }
@@ -39,7 +39,7 @@ namespace WindowsMonitor.CIM
 		public string Name { get; private set; }
 		public ulong NumberOfBlocks { get; private set; }
 		public string OtherErrorDescription { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public string Purpose { get; private set; }
@@ -92,7 +92,7 @@ namespace WindowsMonitor.CIM
 		 CorrectableError = (bool) (managementObject.Properties["CorrectableError"]?.Value ?? default(bool)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 EndingAddress = (ulong) (managementObject.Properties["EndingAddress"]?.Value ?? default(ulong)),
 		 ErrorAccess = (ushort) (managementObject.Properties["ErrorAccess"]?.Value ?? default(ushort)),
 		 ErrorAddress = (ulong) (managementObject.Properties["ErrorAddress"]?.Value ?? default(ulong)),
@@ -103,14 +103,14 @@ namespace WindowsMonitor.CIM
 		 ErrorInfo = (ushort) (managementObject.Properties["ErrorInfo"]?.Value ?? default(ushort)),
 		 ErrorMethodology = (string) (managementObject.Properties["ErrorMethodology"]?.Value),
 		 ErrorResolution = (ulong) (managementObject.Properties["ErrorResolution"]?.Value ?? default(ulong)),
-		 ErrorTime = (DateTime) (managementObject.Properties["ErrorTime"]?.Value ?? default(DateTime)),
+		 ErrorTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["ErrorTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 ErrorTransferSize = (uint) (managementObject.Properties["ErrorTransferSize"]?.Value ?? default(uint)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfBlocks = (ulong) (managementObject.Properties["NumberOfBlocks"]?.Value ?? default(ulong)),
 		 OtherErrorDescription = (string) (managementObject.Properties["OtherErrorDescription"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 Purpose = (string) (managementObject.Properties["Purpose"]?.Value),

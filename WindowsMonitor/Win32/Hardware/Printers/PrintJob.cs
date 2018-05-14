@@ -74,9 +74,9 @@ namespace WindowsMonitor.Win32.Hardware.Printers
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Document = (string) (managementObject.Properties["Document"]?.Value),
 		 DriverName = (string) (managementObject.Properties["DriverName"]?.Value),
-		 ElapsedTime = (DateTime) (managementObject.Properties["ElapsedTime"]?.Value ?? default(DateTime)),
+		 ElapsedTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["ElapsedTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 HostPrintQueue = (string) (managementObject.Properties["HostPrintQueue"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 JobId = (uint) (managementObject.Properties["JobId"]?.Value ?? default(uint)),
 		 JobStatus = (string) (managementObject.Properties["JobStatus"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
@@ -91,12 +91,12 @@ namespace WindowsMonitor.Win32.Hardware.Printers
 		 Priority = (uint) (managementObject.Properties["Priority"]?.Value ?? default(uint)),
 		 Size = (uint) (managementObject.Properties["Size"]?.Value ?? default(uint)),
 		 SizeHigh = (uint) (managementObject.Properties["SizeHigh"]?.Value ?? default(uint)),
-		 StartTime = (DateTime) (managementObject.Properties["StartTime"]?.Value ?? default(DateTime)),
+		 StartTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["StartTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 StatusMask = (uint) (managementObject.Properties["StatusMask"]?.Value ?? default(uint)),
-		 TimeSubmitted = (DateTime) (managementObject.Properties["TimeSubmitted"]?.Value ?? default(DateTime)),
+		 TimeSubmitted = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeSubmitted"]?.Value as string ?? "00010101000000.000000+060"),
 		 TotalPages = (uint) (managementObject.Properties["TotalPages"]?.Value ?? default(uint)),
-		 UntilTime = (DateTime) (managementObject.Properties["UntilTime"]?.Value ?? default(DateTime))
+		 UntilTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["UntilTime"]?.Value as string ?? "00010101000000.000000+060")
                 };
         }
     }

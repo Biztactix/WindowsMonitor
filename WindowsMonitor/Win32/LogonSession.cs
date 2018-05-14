@@ -52,11 +52,11 @@ namespace WindowsMonitor.Win32
                      AuthenticationPackage = (string) (managementObject.Properties["AuthenticationPackage"]?.Value),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LogonId = (string) (managementObject.Properties["LogonId"]?.Value),
 		 LogonType = (uint) (managementObject.Properties["LogonType"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 StartTime = (DateTime) (managementObject.Properties["StartTime"]?.Value ?? default(DateTime)),
+		 StartTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["StartTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }

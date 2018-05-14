@@ -93,7 +93,7 @@ namespace WindowsMonitor.Win32.Network
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 GUID = (string) (managementObject.Properties["GUID"]?.Value),
 		 Index = (uint) (managementObject.Properties["Index"]?.Value ?? default(uint)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Installed = (bool) (managementObject.Properties["Installed"]?.Value ?? default(bool)),
 		 InterfaceIndex = (uint) (managementObject.Properties["InterfaceIndex"]?.Value ?? default(uint)),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
@@ -118,7 +118,7 @@ namespace WindowsMonitor.Win32.Network
 		 StatusInfo = (ushort) (managementObject.Properties["StatusInfo"]?.Value ?? default(ushort)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
-		 TimeOfLastReset = (DateTime) (managementObject.Properties["TimeOfLastReset"]?.Value ?? default(DateTime))
+		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010101000000.000000+060")
                 };
         }
     }

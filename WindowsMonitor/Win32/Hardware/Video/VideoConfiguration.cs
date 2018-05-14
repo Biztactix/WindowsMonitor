@@ -82,7 +82,7 @@ namespace WindowsMonitor.Win32.Hardware.Video
 		 ColorTableEntries = (uint) (managementObject.Properties["ColorTableEntries"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DeviceSpecificPens = (uint) (managementObject.Properties["DeviceSpecificPens"]?.Value ?? default(uint)),
-		 DriverDate = (DateTime) (managementObject.Properties["DriverDate"]?.Value ?? default(DateTime)),
+		 DriverDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["DriverDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 HorizontalResolution = (uint) (managementObject.Properties["HorizontalResolution"]?.Value ?? default(uint)),
 		 InfFilename = (string) (managementObject.Properties["InfFilename"]?.Value),
 		 InfSection = (string) (managementObject.Properties["InfSection"]?.Value),

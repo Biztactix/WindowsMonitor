@@ -72,7 +72,7 @@ namespace WindowsMonitor.Win32.Hardware.Printers
 		 FilePath = (string) (managementObject.Properties["FilePath"]?.Value),
 		 HelpFile = (string) (managementObject.Properties["HelpFile"]?.Value),
 		 InfName = (string) (managementObject.Properties["InfName"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 MonitorName = (string) (managementObject.Properties["MonitorName"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OEMUrl = (string) (managementObject.Properties["OEMUrl"]?.Value),

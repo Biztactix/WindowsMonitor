@@ -74,7 +74,7 @@ namespace WindowsMonitor.Win32
 		 HelpTelephone = (string) (managementObject.Properties["HelpTelephone"]?.Value),
 		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value),
 		 InstallDate = (string) (managementObject.Properties["InstallDate"]?.Value),
-		 InstallDate2 = (DateTime) (managementObject.Properties["InstallDate2"]?.Value ?? default(DateTime)),
+		 InstallDate2 = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate2"]?.Value as string ?? "00010101000000.000000+060"),
 		 InstallLocation = (string) (managementObject.Properties["InstallLocation"]?.Value),
 		 InstallSource = (string) (managementObject.Properties["InstallSource"]?.Value),
 		 InstallState = (short) (managementObject.Properties["InstallState"]?.Value ?? default(short)),

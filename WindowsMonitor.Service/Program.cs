@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,10 @@ namespace WindowsMonitor.Service
         {
             try
             {
-                var os = Win32.OperatingSystem.Retrieve().ToArray();
+                var kk = ManagementDateTimeConverter.ToDmtfDateTime(DateTime.MinValue).ToString();
 
+                var os = Win32.OperatingSystem.Retrieve().ToArray();
+                
 
                 Console.ReadLine();
             }

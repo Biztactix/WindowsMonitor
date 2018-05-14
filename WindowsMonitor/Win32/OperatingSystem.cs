@@ -139,12 +139,12 @@ namespace WindowsMonitor.Win32
                         (ulong) (managementObject.Properties["FreeSpaceInPagingFiles"]?.Value ?? default(ulong)),
                     FreeVirtualMemory =
                         (ulong) (managementObject.Properties["FreeVirtualMemory"]?.Value ?? default(ulong)),
-                    InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+                    InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
                     LargeSystemCache = (uint) (managementObject.Properties["LargeSystemCache"]?.Value ?? default(uint)),
                     LastBootUpTime =
-                        (DateTime) (managementObject.Properties["LastBootUpTime"]?.Value ?? default(DateTime)),
+                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LastBootUpTime"]?.Value as string ?? "00010101000000.000000+060"),
                     LocalDateTime =
-                        (DateTime) (managementObject.Properties["LocalDateTime"]?.Value ?? default(DateTime)),
+                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LocalDateTime"]?.Value as string ?? "00010101000000.000000+060"),
                     Locale = (string) (managementObject.Properties["Locale"]?.Value),
                     Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
                     MaxNumberOfProcesses =

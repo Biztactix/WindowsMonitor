@@ -7,13 +7,13 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class InstalledOS
+    public sealed class InstalledOs
     {
 		public short GroupComponent { get; private set; }
 		public short PartComponent { get; private set; }
-		public bool PrimaryOS { get; private set; }
+		public bool PrimaryOs { get; private set; }
 
-        public static IEnumerable<InstalledOS> Retrieve(string remote, string username, string password)
+        public static IEnumerable<InstalledOs> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -28,24 +28,24 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<InstalledOS> Retrieve()
+        public static IEnumerable<InstalledOs> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<InstalledOS> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<InstalledOs> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_InstalledOS");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new InstalledOS
+                yield return new InstalledOs
                 {
                      GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
 		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short)),
-		 PrimaryOS = (bool) (managementObject.Properties["PrimaryOS"]?.Value ?? default(bool))
+		 PrimaryOs = (bool) (managementObject.Properties["PrimaryOS"]?.Value ?? default(bool))
                 };
         }
     }

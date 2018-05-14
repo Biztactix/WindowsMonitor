@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class FRUPhysicalElements
+    public sealed class FruPhysicalElements
     {
 		public short Component { get; private set; }
-		public short FRU { get; private set; }
+		public short Fru { get; private set; }
 
-        public static IEnumerable<FRUPhysicalElements> Retrieve(string remote, string username, string password)
+        public static IEnumerable<FruPhysicalElements> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,23 +27,23 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FRUPhysicalElements> Retrieve()
+        public static IEnumerable<FruPhysicalElements> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FRUPhysicalElements> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<FruPhysicalElements> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_FRUPhysicalElements");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new FRUPhysicalElements
+                yield return new FruPhysicalElements
                 {
                      Component = (short) (managementObject.Properties["Component"]?.Value ?? default(short)),
-		 FRU = (short) (managementObject.Properties["FRU"]?.Value ?? default(short))
+		 Fru = (short) (managementObject.Properties["FRU"]?.Value ?? default(short))
                 };
         }
     }

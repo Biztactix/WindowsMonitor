@@ -60,7 +60,7 @@ namespace WindowsMonitor.CIM
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InitialLoadInfo = (string[]) (managementObject.Properties["InitialLoadInfo"]?.Value ?? new string[0]),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastLoadInfo = (string) (managementObject.Properties["LastLoadInfo"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NameFormat = (string) (managementObject.Properties["NameFormat"]?.Value),

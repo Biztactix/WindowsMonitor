@@ -10,12 +10,12 @@ namespace WindowsMonitor.CIM
     public sealed class MemoryCheck
     {
 		public string Caption { get; private set; }
-		public string CheckID { get; private set; }
+		public string CheckId { get; private set; }
 		public bool CheckMode { get; private set; }
 		public string Description { get; private set; }
 		public ulong MemorySize { get; private set; }
 		public string Name { get; private set; }
-		public string SoftwareElementID { get; private set; }
+		public string SoftwareElementId { get; private set; }
 		public ushort SoftwareElementState { get; private set; }
 		public ushort TargetOperatingSystem { get; private set; }
 		public string Version { get; private set; }
@@ -51,12 +51,12 @@ namespace WindowsMonitor.CIM
                 yield return new MemoryCheck
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
-		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value),
+		 CheckId = (string) (managementObject.Properties["CheckID"]?.Value),
 		 CheckMode = (bool) (managementObject.Properties["CheckMode"]?.Value ?? default(bool)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 MemorySize = (ulong) (managementObject.Properties["MemorySize"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
+		 SoftwareElementId = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
 		 Version = (string) (managementObject.Properties["Version"]?.Value)

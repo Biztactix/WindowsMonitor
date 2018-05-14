@@ -45,11 +45,11 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ReliabilityStabilityMetrics
                 {
-                     EndMeasurementDate = (DateTime) (managementObject.Properties["EndMeasurementDate"]?.Value ?? default(DateTime)),
+                     EndMeasurementDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["EndMeasurementDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 RelID = (string) (managementObject.Properties["RelID"]?.Value),
-		 StartMeasurementDate = (DateTime) (managementObject.Properties["StartMeasurementDate"]?.Value ?? default(DateTime)),
+		 StartMeasurementDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["StartMeasurementDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 SystemStabilityIndex = (double) (managementObject.Properties["SystemStabilityIndex"]?.Value ?? default(double)),
-		 TimeGenerated = (DateTime) (managementObject.Properties["TimeGenerated"]?.Value ?? default(DateTime))
+		 TimeGenerated = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeGenerated"]?.Value as string ?? "00010101000000.000000+060")
                 };
         }
     }

@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class CollectedMSEs
+    public sealed class CollectedMsEs
     {
 		public short Collection { get; private set; }
 		public short Member { get; private set; }
 
-        public static IEnumerable<CollectedMSEs> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CollectedMsEs> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +27,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CollectedMSEs> Retrieve()
+        public static IEnumerable<CollectedMsEs> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CollectedMSEs> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CollectedMsEs> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_CollectedMSEs");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new CollectedMSEs
+                yield return new CollectedMsEs
                 {
                      Collection = (short) (managementObject.Properties["Collection"]?.Value ?? default(short)),
 		 Member = (short) (managementObject.Properties["Member"]?.Value ?? default(short))

@@ -13,7 +13,7 @@ namespace WindowsMonitor.CIM
 		public ulong CriticalErrorCount { get; private set; }
 		public string Description { get; private set; }
 		public string DeviceCreationClassName { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public ulong IndeterminateErrorCount { get; private set; }
 		public ulong MajorErrorCount { get; private set; }
 		public ulong MinorErrorCount { get; private set; }
@@ -56,7 +56,7 @@ namespace WindowsMonitor.CIM
 		 CriticalErrorCount = (ulong) (managementObject.Properties["CriticalErrorCount"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DeviceCreationClassName = (string) (managementObject.Properties["DeviceCreationClassName"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 IndeterminateErrorCount = (ulong) (managementObject.Properties["IndeterminateErrorCount"]?.Value ?? default(ulong)),
 		 MajorErrorCount = (ulong) (managementObject.Properties["MajorErrorCount"]?.Value ?? default(ulong)),
 		 MinorErrorCount = (ulong) (managementObject.Properties["MinorErrorCount"]?.Value ?? default(ulong)),

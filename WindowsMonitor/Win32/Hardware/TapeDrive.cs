@@ -99,7 +99,7 @@ namespace WindowsMonitor.Win32.Hardware
 		 FeaturesHigh = (uint) (managementObject.Properties["FeaturesHigh"]?.Value ?? default(uint)),
 		 FeaturesLow = (uint) (managementObject.Properties["FeaturesLow"]?.Value ?? default(uint)),
 		 Id = (string) (managementObject.Properties["Id"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 MaxBlockSize = (ulong) (managementObject.Properties["MaxBlockSize"]?.Value ?? default(ulong)),

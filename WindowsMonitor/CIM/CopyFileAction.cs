@@ -9,14 +9,14 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class CopyFileAction
     {
-		public string ActionID { get; private set; }
+		public string ActionId { get; private set; }
 		public string Caption { get; private set; }
 		public bool DeleteAfterCopy { get; private set; }
 		public string Description { get; private set; }
 		public string Destination { get; private set; }
 		public ushort Direction { get; private set; }
 		public string Name { get; private set; }
-		public string SoftwareElementID { get; private set; }
+		public string SoftwareElementId { get; private set; }
 		public ushort SoftwareElementState { get; private set; }
 		public string Source { get; private set; }
 		public ushort TargetOperatingSystem { get; private set; }
@@ -52,14 +52,14 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new CopyFileAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+                     ActionId = (string) (managementObject.Properties["ActionID"]?.Value),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DeleteAfterCopy = (bool) (managementObject.Properties["DeleteAfterCopy"]?.Value ?? default(bool)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Destination = (string) (managementObject.Properties["Destination"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
+		 SoftwareElementId = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 Source = (string) (managementObject.Properties["Source"]?.Value),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),

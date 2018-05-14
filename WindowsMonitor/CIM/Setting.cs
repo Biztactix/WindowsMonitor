@@ -11,7 +11,7 @@ namespace WindowsMonitor.CIM
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 
         public static IEnumerable<Setting> Retrieve(string remote, string username, string password)
         {
@@ -45,7 +45,7 @@ namespace WindowsMonitor.CIM
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

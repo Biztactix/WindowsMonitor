@@ -7,7 +7,7 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class USBControllerHasHub
+    public sealed class UsbControllerHasHub
     {
 		public ushort AccessState { get; private set; }
 		public short Antecedent { get; private set; }
@@ -17,7 +17,7 @@ namespace WindowsMonitor.CIM
 		public uint NumberOfHardResets { get; private set; }
 		public uint NumberOfSoftResets { get; private set; }
 
-        public static IEnumerable<USBControllerHasHub> Retrieve(string remote, string username, string password)
+        public static IEnumerable<UsbControllerHasHub> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -32,20 +32,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<USBControllerHasHub> Retrieve()
+        public static IEnumerable<UsbControllerHasHub> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<USBControllerHasHub> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<UsbControllerHasHub> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_USBControllerHasHub");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new USBControllerHasHub
+                yield return new UsbControllerHasHub
                 {
                      AccessState = (ushort) (managementObject.Properties["AccessState"]?.Value ?? default(ushort)),
 		 Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),

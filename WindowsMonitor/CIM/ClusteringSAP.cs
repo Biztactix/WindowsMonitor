@@ -7,7 +7,7 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class ClusteringSAP
+    public sealed class ClusteringSap
     {
 		public string Caption { get; private set; }
 		public string CreationClassName { get; private set; }
@@ -19,7 +19,7 @@ namespace WindowsMonitor.CIM
 		public string SystemName { get; private set; }
 		public uint Type { get; private set; }
 
-        public static IEnumerable<ClusteringSAP> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ClusteringSap> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -34,25 +34,25 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ClusteringSAP> Retrieve()
+        public static IEnumerable<ClusteringSap> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ClusteringSAP> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ClusteringSap> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_ClusteringSAP");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ClusteringSAP
+                yield return new ClusteringSap
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),

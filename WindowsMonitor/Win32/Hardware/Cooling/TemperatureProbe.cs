@@ -85,7 +85,7 @@ namespace WindowsMonitor.Win32.Hardware.Cooling
 		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 IsLinear = (bool) (managementObject.Properties["IsLinear"]?.Value ?? default(bool)),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 LowerThresholdCritical = (int) (managementObject.Properties["LowerThresholdCritical"]?.Value ?? default(int)),

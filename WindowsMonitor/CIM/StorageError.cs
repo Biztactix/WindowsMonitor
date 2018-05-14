@@ -10,7 +10,7 @@ namespace WindowsMonitor.CIM
     public sealed class StorageError
     {
 		public string DeviceCreationClassName { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public ulong EndingAddress { get; private set; }
 		public ulong StartingAddress { get; private set; }
 		public string SystemCreationClassName { get; private set; }
@@ -47,7 +47,7 @@ namespace WindowsMonitor.CIM
                 yield return new StorageError
                 {
                      DeviceCreationClassName = (string) (managementObject.Properties["DeviceCreationClassName"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 EndingAddress = (ulong) (managementObject.Properties["EndingAddress"]?.Value ?? default(ulong)),
 		 StartingAddress = (ulong) (managementObject.Properties["StartingAddress"]?.Value ?? default(ulong)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),

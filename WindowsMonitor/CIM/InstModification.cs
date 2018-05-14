@@ -55,7 +55,7 @@ namespace WindowsMonitor.CIM
                      CorrelatedIndications = (string[]) (managementObject.Properties["CorrelatedIndications"]?.Value ?? new string[0]),
 		 IndicationFilterName = (string) (managementObject.Properties["IndicationFilterName"]?.Value),
 		 IndicationIdentifier = (string) (managementObject.Properties["IndicationIdentifier"]?.Value),
-		 IndicationTime = (DateTime) (managementObject.Properties["IndicationTime"]?.Value ?? default(DateTime)),
+		 IndicationTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["IndicationTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 OtherSeverity = (string) (managementObject.Properties["OtherSeverity"]?.Value),
 		 PerceivedSeverity = (ushort) (managementObject.Properties["PerceivedSeverity"]?.Value ?? default(ushort)),
 		 PreviousInstance = (dynamic) (managementObject.Properties["PreviousInstance"]?.Value ?? default(dynamic)),

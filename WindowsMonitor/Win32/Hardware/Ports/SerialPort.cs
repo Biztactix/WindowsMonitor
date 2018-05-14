@@ -98,7 +98,7 @@ namespace WindowsMonitor.Win32.Hardware.Ports
 		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 MaxBaudRate = (uint) (managementObject.Properties["MaxBaudRate"]?.Value ?? default(uint)),
 		 MaximumInputBufferSize = (uint) (managementObject.Properties["MaximumInputBufferSize"]?.Value ?? default(uint)),
@@ -132,7 +132,7 @@ namespace WindowsMonitor.Win32.Hardware.Ports
 		 SupportsXOnXOffSet = (bool) (managementObject.Properties["SupportsXOnXOffSet"]?.Value ?? default(bool)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
-		 TimeOfLastReset = (DateTime) (managementObject.Properties["TimeOfLastReset"]?.Value ?? default(DateTime))
+		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010101000000.000000+060")
                 };
         }
     }

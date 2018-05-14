@@ -128,7 +128,7 @@ namespace WindowsMonitor.Win32
 		 HypervisorPresent = (bool) (managementObject.Properties["HypervisorPresent"]?.Value ?? default(bool)),
 		 InfraredSupported = (bool) (managementObject.Properties["InfraredSupported"]?.Value ?? default(bool)),
 		 InitialLoadInfo = (string[]) (managementObject.Properties["InitialLoadInfo"]?.Value ?? new string[0]),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 KeyboardPasswordStatus = (ushort) (managementObject.Properties["KeyboardPasswordStatus"]?.Value ?? default(ushort)),
 		 LastLoadInfo = (string) (managementObject.Properties["LastLoadInfo"]?.Value),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),

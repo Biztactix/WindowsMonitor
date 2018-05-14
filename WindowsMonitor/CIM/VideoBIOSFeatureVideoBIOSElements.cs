@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class VideoBIOSFeatureVideoBIOSElements
+    public sealed class VideoBiosFeatureVideoBiosElements
     {
 		public short GroupComponent { get; private set; }
 		public short PartComponent { get; private set; }
 
-        public static IEnumerable<VideoBIOSFeatureVideoBIOSElements> Retrieve(string remote, string username, string password)
+        public static IEnumerable<VideoBiosFeatureVideoBiosElements> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +27,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<VideoBIOSFeatureVideoBIOSElements> Retrieve()
+        public static IEnumerable<VideoBiosFeatureVideoBiosElements> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<VideoBIOSFeatureVideoBIOSElements> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<VideoBiosFeatureVideoBiosElements> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_VideoBIOSFeatureVideoBIOSElements");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new VideoBIOSFeatureVideoBIOSElements
+                yield return new VideoBiosFeatureVideoBiosElements
                 {
                      GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
 		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))

@@ -23,7 +23,7 @@ namespace WindowsMonitor.CIM
 		public string PartNumber { get; private set; }
 		public bool PoweredOn { get; private set; }
 		public string SerialNumber { get; private set; }
-		public string SKU { get; private set; }
+		public string Sku { get; private set; }
 		public string Status { get; private set; }
 		public string Tag { get; private set; }
 		public string Version { get; private set; }
@@ -62,7 +62,7 @@ namespace WindowsMonitor.CIM
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Length = (double) (managementObject.Properties["Length"]?.Value ?? default(double)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 MaxLength = (double) (managementObject.Properties["MaxLength"]?.Value ?? default(double)),
@@ -73,7 +73,7 @@ namespace WindowsMonitor.CIM
 		 PartNumber = (string) (managementObject.Properties["PartNumber"]?.Value),
 		 PoweredOn = (bool) (managementObject.Properties["PoweredOn"]?.Value ?? default(bool)),
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Tag = (string) (managementObject.Properties["Tag"]?.Value),
 		 Version = (string) (managementObject.Properties["Version"]?.Value),

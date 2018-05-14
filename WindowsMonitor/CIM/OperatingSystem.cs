@@ -11,8 +11,8 @@ namespace WindowsMonitor.CIM
     {
 		public string Caption { get; private set; }
 		public string CreationClassName { get; private set; }
-		public string CSCreationClassName { get; private set; }
-		public string CSName { get; private set; }
+		public string CsCreationClassName { get; private set; }
+		public string CsName { get; private set; }
 		public short CurrentTimeZone { get; private set; }
 		public string Description { get; private set; }
 		public bool Distributed { get; private set; }
@@ -28,7 +28,7 @@ namespace WindowsMonitor.CIM
 		public uint NumberOfLicensedUsers { get; private set; }
 		public uint NumberOfProcesses { get; private set; }
 		public uint NumberOfUsers { get; private set; }
-		public ushort OSType { get; private set; }
+		public ushort OsType { get; private set; }
 		public string OtherTypeDescription { get; private set; }
 		public ulong SizeStoredInPagingFiles { get; private set; }
 		public string Status { get; private set; }
@@ -69,24 +69,24 @@ namespace WindowsMonitor.CIM
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 CurrentTimeZone = (short) (managementObject.Properties["CurrentTimeZone"]?.Value ?? default(short)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Distributed = (bool) (managementObject.Properties["Distributed"]?.Value ?? default(bool)),
 		 FreePhysicalMemory = (ulong) (managementObject.Properties["FreePhysicalMemory"]?.Value ?? default(ulong)),
 		 FreeSpaceInPagingFiles = (ulong) (managementObject.Properties["FreeSpaceInPagingFiles"]?.Value ?? default(ulong)),
 		 FreeVirtualMemory = (ulong) (managementObject.Properties["FreeVirtualMemory"]?.Value ?? default(ulong)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 LastBootUpTime = (DateTime) (managementObject.Properties["LastBootUpTime"]?.Value ?? default(DateTime)),
-		 LocalDateTime = (DateTime) (managementObject.Properties["LocalDateTime"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 LastBootUpTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LastBootUpTime"]?.Value as string ?? "00010101000000.000000+060"),
+		 LocalDateTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LocalDateTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 MaxNumberOfProcesses = (uint) (managementObject.Properties["MaxNumberOfProcesses"]?.Value ?? default(uint)),
 		 MaxProcessMemorySize = (ulong) (managementObject.Properties["MaxProcessMemorySize"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfLicensedUsers = (uint) (managementObject.Properties["NumberOfLicensedUsers"]?.Value ?? default(uint)),
 		 NumberOfProcesses = (uint) (managementObject.Properties["NumberOfProcesses"]?.Value ?? default(uint)),
 		 NumberOfUsers = (uint) (managementObject.Properties["NumberOfUsers"]?.Value ?? default(uint)),
-		 OSType = (ushort) (managementObject.Properties["OSType"]?.Value ?? default(ushort)),
+		 OsType = (ushort) (managementObject.Properties["OSType"]?.Value ?? default(ushort)),
 		 OtherTypeDescription = (string) (managementObject.Properties["OtherTypeDescription"]?.Value),
 		 SizeStoredInPagingFiles = (ulong) (managementObject.Properties["SizeStoredInPagingFiles"]?.Value ?? default(ulong)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),

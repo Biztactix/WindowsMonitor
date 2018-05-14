@@ -61,7 +61,7 @@ namespace WindowsMonitor.Win32.Hardware.Printers
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 HostAddress = (string) (managementObject.Properties["HostAddress"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PortNumber = (uint) (managementObject.Properties["PortNumber"]?.Value ?? default(uint)),
 		 Protocol = (uint) (managementObject.Properties["Protocol"]?.Value ?? default(uint)),

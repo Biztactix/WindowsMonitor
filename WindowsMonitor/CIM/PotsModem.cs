@@ -20,7 +20,7 @@ namespace WindowsMonitor.CIM
 		public string CreationClassName { get; private set; }
 		public string[] CurrentPasswords { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public ushort DialType { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public ushort ErrorControlInfo { get; private set; }
@@ -33,7 +33,7 @@ namespace WindowsMonitor.CIM
 		public ushort MaxNumberOfPasswords { get; private set; }
 		public ushort ModulationScheme { get; private set; }
 		public string Name { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public byte RingsBeforeAnswer { get; private set; }
@@ -87,20 +87,20 @@ namespace WindowsMonitor.CIM
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 CurrentPasswords = (string[]) (managementObject.Properties["CurrentPasswords"]?.Value ?? new string[0]),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 DialType = (ushort) (managementObject.Properties["DialType"]?.Value ?? default(ushort)),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorControlInfo = (ushort) (managementObject.Properties["ErrorControlInfo"]?.Value ?? default(ushort)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 InactivityTimeout = (uint) (managementObject.Properties["InactivityTimeout"]?.Value ?? default(uint)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 MaxBaudRateToPhone = (uint) (managementObject.Properties["MaxBaudRateToPhone"]?.Value ?? default(uint)),
 		 MaxBaudRateToSerialPort = (uint) (managementObject.Properties["MaxBaudRateToSerialPort"]?.Value ?? default(uint)),
 		 MaxNumberOfPasswords = (ushort) (managementObject.Properties["MaxNumberOfPasswords"]?.Value ?? default(ushort)),
 		 ModulationScheme = (ushort) (managementObject.Properties["ModulationScheme"]?.Value ?? default(ushort)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 RingsBeforeAnswer = (byte) (managementObject.Properties["RingsBeforeAnswer"]?.Value ?? default(byte)),
@@ -111,7 +111,7 @@ namespace WindowsMonitor.CIM
 		 SupportsSynchronousConnect = (bool) (managementObject.Properties["SupportsSynchronousConnect"]?.Value ?? default(bool)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
-		 TimeOfLastReset = (DateTime) (managementObject.Properties["TimeOfLastReset"]?.Value ?? default(DateTime))
+		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010101000000.000000+060")
                 };
         }
     }

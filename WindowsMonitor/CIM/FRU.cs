@@ -7,17 +7,17 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class FRU
+    public sealed class Fru
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
-		public string FRUNumber { get; private set; }
+		public string FruNumber { get; private set; }
 		public string IdentifyingNumber { get; private set; }
 		public string Name { get; private set; }
 		public string RevisionLevel { get; private set; }
 		public string Vendor { get; private set; }
 
-        public static IEnumerable<FRU> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Fru> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -32,24 +32,24 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FRU> Retrieve()
+        public static IEnumerable<Fru> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FRU> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Fru> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_FRU");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new FRU
+                yield return new Fru
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 FRUNumber = (string) (managementObject.Properties["FRUNumber"]?.Value),
+		 FruNumber = (string) (managementObject.Properties["FRUNumber"]?.Value),
 		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RevisionLevel = (string) (managementObject.Properties["RevisionLevel"]?.Value),

@@ -27,7 +27,7 @@ namespace WindowsMonitor.CIM
 		public bool PoweredOn { get; private set; }
 		public string PurposeDescription { get; private set; }
 		public string SerialNumber { get; private set; }
-		public string SKU { get; private set; }
+		public string Sku { get; private set; }
 		public bool SpecialPurpose { get; private set; }
 		public string Status { get; private set; }
 		public bool SupportsHotPlug { get; private set; }
@@ -73,7 +73,7 @@ namespace WindowsMonitor.CIM
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 HeightAllowed = (float) (managementObject.Properties["HeightAllowed"]?.Value ?? default(float)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LengthAllowed = (float) (managementObject.Properties["LengthAllowed"]?.Value ?? default(float)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 MaxDataWidth = (ushort) (managementObject.Properties["MaxDataWidth"]?.Value ?? default(ushort)),
@@ -85,7 +85,7 @@ namespace WindowsMonitor.CIM
 		 PoweredOn = (bool) (managementObject.Properties["PoweredOn"]?.Value ?? default(bool)),
 		 PurposeDescription = (string) (managementObject.Properties["PurposeDescription"]?.Value),
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
 		 SpecialPurpose = (bool) (managementObject.Properties["SpecialPurpose"]?.Value ?? default(bool)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 SupportsHotPlug = (bool) (managementObject.Properties["SupportsHotPlug"]?.Value ?? default(bool)),

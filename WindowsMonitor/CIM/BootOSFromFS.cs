@@ -7,12 +7,12 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class BootOSFromFS
+    public sealed class BootOsFromFs
     {
 		public short Antecedent { get; private set; }
 		public short Dependent { get; private set; }
 
-        public static IEnumerable<BootOSFromFS> Retrieve(string remote, string username, string password)
+        public static IEnumerable<BootOsFromFs> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +27,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<BootOSFromFS> Retrieve()
+        public static IEnumerable<BootOsFromFs> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<BootOSFromFS> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<BootOsFromFs> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_BootOSFromFS");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new BootOSFromFS
+                yield return new BootOsFromFs
                 {
                      Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
 		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short))

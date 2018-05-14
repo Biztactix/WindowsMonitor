@@ -65,7 +65,7 @@ namespace WindowsMonitor.Win32
 		 CodeSet = (string) (managementObject.Properties["CodeSet"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 IdentificationCode = (string) (managementObject.Properties["IdentificationCode"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 InstallState = (short) (managementObject.Properties["InstallState"]?.Value ?? default(short)),
 		 LanguageEdition = (string) (managementObject.Properties["LanguageEdition"]?.Value),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),

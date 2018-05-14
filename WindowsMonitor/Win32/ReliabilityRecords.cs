@@ -58,7 +58,7 @@ namespace WindowsMonitor.Win32
 		 ProductName = (string) (managementObject.Properties["ProductName"]?.Value),
 		 RecordNumber = (uint) (managementObject.Properties["RecordNumber"]?.Value ?? default(uint)),
 		 SourceName = (string) (managementObject.Properties["SourceName"]?.Value),
-		 TimeGenerated = (DateTime) (managementObject.Properties["TimeGenerated"]?.Value ?? default(DateTime)),
+		 TimeGenerated = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeGenerated"]?.Value as string ?? "00010101000000.000000+060"),
 		 User = (string) (managementObject.Properties["User"]?.Value)
                 };
         }

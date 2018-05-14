@@ -7,7 +7,7 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class SCSIInterface
+    public sealed class ScsiInterface
     {
 		public ushort AccessState { get; private set; }
 		public short Antecedent { get; private set; }
@@ -16,10 +16,10 @@ namespace WindowsMonitor.CIM
 		public ulong NegotiatedSpeed { get; private set; }
 		public uint NumberOfHardResets { get; private set; }
 		public uint NumberOfSoftResets { get; private set; }
-		public uint SCSIRetries { get; private set; }
-		public uint SCSITimeouts { get; private set; }
+		public uint ScsiRetries { get; private set; }
+		public uint ScsiTimeouts { get; private set; }
 
-        public static IEnumerable<SCSIInterface> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ScsiInterface> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -34,20 +34,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SCSIInterface> Retrieve()
+        public static IEnumerable<ScsiInterface> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SCSIInterface> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ScsiInterface> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_SCSIInterface");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SCSIInterface
+                yield return new ScsiInterface
                 {
                      AccessState = (ushort) (managementObject.Properties["AccessState"]?.Value ?? default(ushort)),
 		 Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
@@ -56,8 +56,8 @@ namespace WindowsMonitor.CIM
 		 NegotiatedSpeed = (ulong) (managementObject.Properties["NegotiatedSpeed"]?.Value ?? default(ulong)),
 		 NumberOfHardResets = (uint) (managementObject.Properties["NumberOfHardResets"]?.Value ?? default(uint)),
 		 NumberOfSoftResets = (uint) (managementObject.Properties["NumberOfSoftResets"]?.Value ?? default(uint)),
-		 SCSIRetries = (uint) (managementObject.Properties["SCSIRetries"]?.Value ?? default(uint)),
-		 SCSITimeouts = (uint) (managementObject.Properties["SCSITimeouts"]?.Value ?? default(uint))
+		 ScsiRetries = (uint) (managementObject.Properties["SCSIRetries"]?.Value ?? default(uint)),
+		 ScsiTimeouts = (uint) (managementObject.Properties["SCSITimeouts"]?.Value ?? default(uint))
                 };
         }
     }

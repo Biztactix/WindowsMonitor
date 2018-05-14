@@ -107,7 +107,7 @@ namespace WindowsMonitor.Win32.Hardware.DiskDrives
 		 ErrorMethodology = (string) (managementObject.Properties["ErrorMethodology"]?.Value),
 		 FirmwareRevision = (string) (managementObject.Properties["FirmwareRevision"]?.Value),
 		 Index = (uint) (managementObject.Properties["Index"]?.Value ?? default(uint)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 InterfaceType = (string) (managementObject.Properties["InterfaceType"]?.Value),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),

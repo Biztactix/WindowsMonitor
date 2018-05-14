@@ -72,7 +72,7 @@ namespace WindowsMonitor.Win32
 		 AutorecoverMofs = (string[]) (managementObject.Properties["AutorecoverMofs"]?.Value ?? new string[0]),
 		 AutoStartWin9X = (uint) (managementObject.Properties["AutoStartWin9X"]?.Value ?? default(uint)),
 		 BackupInterval = (uint) (managementObject.Properties["BackupInterval"]?.Value ?? default(uint)),
-		 BackupLastTime = (DateTime) (managementObject.Properties["BackupLastTime"]?.Value ?? default(DateTime)),
+		 BackupLastTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["BackupLastTime"]?.Value as string ?? "00010101000000.000000+060"),
 		 BuildVersion = (string) (managementObject.Properties["BuildVersion"]?.Value),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DatabaseDirectory = (string) (managementObject.Properties["DatabaseDirectory"]?.Value),

@@ -7,7 +7,7 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class VideoBIOSFeature
+    public sealed class VideoBiosFeature
     {
 		public string Caption { get; private set; }
 		public string[] CharacteristicDescriptions { get; private set; }
@@ -21,7 +21,7 @@ namespace WindowsMonitor.CIM
 		public string Vendor { get; private set; }
 		public string Version { get; private set; }
 
-        public static IEnumerable<VideoBIOSFeature> Retrieve(string remote, string username, string password)
+        public static IEnumerable<VideoBiosFeature> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -36,27 +36,27 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<VideoBIOSFeature> Retrieve()
+        public static IEnumerable<VideoBiosFeature> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<VideoBIOSFeature> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<VideoBiosFeature> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_VideoBIOSFeature");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new VideoBIOSFeature
+                yield return new VideoBiosFeature
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CharacteristicDescriptions = (string[]) (managementObject.Properties["CharacteristicDescriptions"]?.Value ?? new string[0]),
 		 Characteristics = (ushort[]) (managementObject.Properties["Characteristics"]?.Value ?? new ushort[0]),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ProductName = (string) (managementObject.Properties["ProductName"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),

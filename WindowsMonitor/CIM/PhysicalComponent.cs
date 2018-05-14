@@ -23,7 +23,7 @@ namespace WindowsMonitor.CIM
 		public bool Removable { get; private set; }
 		public bool Replaceable { get; private set; }
 		public string SerialNumber { get; private set; }
-		public string SKU { get; private set; }
+		public string Sku { get; private set; }
 		public string Status { get; private set; }
 		public string Tag { get; private set; }
 		public string Version { get; private set; }
@@ -62,7 +62,7 @@ namespace WindowsMonitor.CIM
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 HotSwappable = (bool) (managementObject.Properties["HotSwappable"]?.Value ?? default(bool)),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Model = (string) (managementObject.Properties["Model"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
@@ -72,7 +72,7 @@ namespace WindowsMonitor.CIM
 		 Removable = (bool) (managementObject.Properties["Removable"]?.Value ?? default(bool)),
 		 Replaceable = (bool) (managementObject.Properties["Replaceable"]?.Value ?? default(bool)),
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Tag = (string) (managementObject.Properties["Tag"]?.Value),
 		 Version = (string) (managementObject.Properties["Version"]?.Value)

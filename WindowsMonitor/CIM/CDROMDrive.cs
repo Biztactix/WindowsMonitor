@@ -7,7 +7,7 @@ namespace WindowsMonitor.CIM
 {
     /// <summary>
     /// </summary>
-    public sealed class CDROMDrive
+    public sealed class CdromDrive
     {
 		public ushort Availability { get; private set; }
 		public ushort[] Capabilities { get; private set; }
@@ -19,7 +19,7 @@ namespace WindowsMonitor.CIM
 		public string CreationClassName { get; private set; }
 		public ulong DefaultBlockSize { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public string ErrorMethodology { get; private set; }
@@ -31,7 +31,7 @@ namespace WindowsMonitor.CIM
 		public string Name { get; private set; }
 		public bool NeedsCleaning { get; private set; }
 		public uint NumberOfMediaSupported { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public string Status { get; private set; }
@@ -39,7 +39,7 @@ namespace WindowsMonitor.CIM
 		public string SystemCreationClassName { get; private set; }
 		public string SystemName { get; private set; }
 
-        public static IEnumerable<CDROMDrive> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CdromDrive> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -54,20 +54,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CDROMDrive> Retrieve()
+        public static IEnumerable<CdromDrive> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CDROMDrive> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CdromDrive> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM CIM_CDROMDrive");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new CDROMDrive
+                yield return new CdromDrive
                 {
                      Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
 		 Capabilities = (ushort[]) (managementObject.Properties["Capabilities"]?.Value ?? new ushort[0]),
@@ -79,11 +79,11 @@ namespace WindowsMonitor.CIM
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 DefaultBlockSize = (ulong) (managementObject.Properties["DefaultBlockSize"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 ErrorMethodology = (string) (managementObject.Properties["ErrorMethodology"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 MaxBlockSize = (ulong) (managementObject.Properties["MaxBlockSize"]?.Value ?? default(ulong)),
 		 MaxMediaSize = (ulong) (managementObject.Properties["MaxMediaSize"]?.Value ?? default(ulong)),
@@ -91,7 +91,7 @@ namespace WindowsMonitor.CIM
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NeedsCleaning = (bool) (managementObject.Properties["NeedsCleaning"]?.Value ?? default(bool)),
 		 NumberOfMediaSupported = (uint) (managementObject.Properties["NumberOfMediaSupported"]?.Value ?? default(uint)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),

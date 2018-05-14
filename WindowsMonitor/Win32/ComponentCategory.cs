@@ -49,7 +49,7 @@ namespace WindowsMonitor.Win32
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CategoryId = (string) (managementObject.Properties["CategoryId"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
