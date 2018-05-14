@@ -43,12 +43,12 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new RegistryValueChangeEvent
                 {
-                    Hive = (string) (managementObject.Properties["Hive"]?.Value ?? default(string)),
-                    KeyPath = (string) (managementObject.Properties["KeyPath"]?.Value ?? default(string)),
+                    Hive = (string) (managementObject.Properties["Hive"]?.Value),
+                    KeyPath = (string) (managementObject.Properties["KeyPath"]?.Value),
                     SecurityDescriptor =
                         (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
                     TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
-                    ValueName = (string) (managementObject.Properties["ValueName"]?.Value ?? default(string))
+                    ValueName = (string) (managementObject.Properties["ValueName"]?.Value)
                 };
         }
     }

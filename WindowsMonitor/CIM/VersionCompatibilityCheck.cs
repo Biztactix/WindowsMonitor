@@ -54,16 +54,16 @@ namespace WindowsMonitor.CIM
                 {
                      AllowDownVersion = (bool) (managementObject.Properties["AllowDownVersion"]?.Value ?? default(bool)),
 		 AllowMultipleVersions = (bool) (managementObject.Properties["AllowMultipleVersions"]?.Value ?? default(bool)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value),
 		 CheckMode = (bool) (managementObject.Properties["CheckMode"]?.Value ?? default(bool)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Reinstall = (bool) (managementObject.Properties["Reinstall"]?.Value ?? default(bool)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

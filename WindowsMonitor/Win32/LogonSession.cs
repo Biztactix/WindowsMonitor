@@ -49,15 +49,15 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new LogonSession
                 {
-                     AuthenticationPackage = (string) (managementObject.Properties["AuthenticationPackage"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     AuthenticationPackage = (string) (managementObject.Properties["AuthenticationPackage"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 LogonId = (string) (managementObject.Properties["LogonId"]?.Value ?? default(string)),
+		 LogonId = (string) (managementObject.Properties["LogonId"]?.Value),
 		 LogonType = (uint) (managementObject.Properties["LogonType"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 StartTime = (DateTime) (managementObject.Properties["StartTime"]?.Value ?? default(DateTime)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

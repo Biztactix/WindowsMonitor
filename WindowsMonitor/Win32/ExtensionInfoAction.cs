@@ -57,23 +57,23 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ExtensionInfoAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value ?? default(string)),
-		 Argument = (string) (managementObject.Properties["Argument"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Command = (string) (managementObject.Properties["Command"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+		 Argument = (string) (managementObject.Properties["Argument"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Command = (string) (managementObject.Properties["Command"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
-		 Extension = (string) (managementObject.Properties["Extension"]?.Value ?? default(string)),
-		 MIME = (string) (managementObject.Properties["MIME"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ProgID = (string) (managementObject.Properties["ProgID"]?.Value ?? default(string)),
-		 ShellNew = (string) (managementObject.Properties["ShellNew"]?.Value ?? default(string)),
-		 ShellNewValue = (string) (managementObject.Properties["ShellNewValue"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 Extension = (string) (managementObject.Properties["Extension"]?.Value),
+		 MIME = (string) (managementObject.Properties["MIME"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ProgID = (string) (managementObject.Properties["ProgID"]?.Value),
+		 ShellNew = (string) (managementObject.Properties["ShellNew"]?.Value),
+		 ShellNewValue = (string) (managementObject.Properties["ShellNewValue"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Verb = (string) (managementObject.Properties["Verb"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Verb = (string) (managementObject.Properties["Verb"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

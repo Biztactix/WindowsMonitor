@@ -49,7 +49,7 @@ namespace WindowsMonitor.Win32
                 {
                      ParentProcessID = (uint) (managementObject.Properties["ParentProcessID"]?.Value ?? default(uint)),
 		 ProcessID = (uint) (managementObject.Properties["ProcessID"]?.Value ?? default(uint)),
-		 ProcessName = (string) (managementObject.Properties["ProcessName"]?.Value ?? default(string)),
+		 ProcessName = (string) (managementObject.Properties["ProcessName"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 SessionID = (uint) (managementObject.Properties["SessionID"]?.Value ?? default(uint)),
 		 Sid = (byte[]) (managementObject.Properties["Sid"]?.Value ?? new byte[0]),

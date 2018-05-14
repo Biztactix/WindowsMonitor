@@ -48,10 +48,10 @@ namespace WindowsMonitor.Msft
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NCProvAccessCheck
                 {
-                     Namespace = (string) (managementObject.Properties["Namespace"]?.Value ?? default(string)),
-		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value ?? default(string)),
-		 Query = (string) (managementObject.Properties["Query"]?.Value ?? default(string)),
-		 QueryLanguage = (string) (managementObject.Properties["QueryLanguage"]?.Value ?? default(string)),
+                     Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
+		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
+		 Query = (string) (managementObject.Properties["Query"]?.Value),
+		 QueryLanguage = (string) (managementObject.Properties["QueryLanguage"]?.Value),
 		 Result = (uint) (managementObject.Properties["Result"]?.Value ?? default(uint)),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 Sid = (byte[]) (managementObject.Properties["Sid"]?.Value ?? new byte[0]),

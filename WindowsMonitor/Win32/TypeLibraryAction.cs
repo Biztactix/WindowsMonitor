@@ -52,18 +52,18 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new TypeLibraryAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Cost = (uint) (managementObject.Properties["Cost"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
 		 Language = (ushort) (managementObject.Properties["Language"]?.Value ?? default(ushort)),
-		 LibID = (string) (managementObject.Properties["LibID"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 LibID = (string) (managementObject.Properties["LibID"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

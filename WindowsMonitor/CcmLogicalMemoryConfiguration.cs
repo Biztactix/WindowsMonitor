@@ -46,7 +46,7 @@ namespace WindowsMonitor
                 {
                     AvailableVirtualMemory =
                         (ulong) (managementObject.Properties["AvailableVirtualMemory"]?.Value ?? default(ulong)),
-                    Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+                    Name = (string) (managementObject.Properties["Name"]?.Value),
                     TotalPageFileSpace =
                         (ulong) (managementObject.Properties["TotalPageFileSpace"]?.Value ?? default(ulong)),
                     TotalPhysicalMemory =

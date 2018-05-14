@@ -57,14 +57,14 @@ namespace WindowsMonitor.Win32.Performance.Formatted.DotNet
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetClrLocksAndThreads
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ContentionRatePersec = (uint) (managementObject.Properties["ContentionRatePersec"]?.Value ?? default(uint)),
 		 CurrentQueueLength = (uint) (managementObject.Properties["CurrentQueueLength"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberofcurrentlogicalThreads = (uint) (managementObject.Properties["NumberofcurrentlogicalThreads"]?.Value ?? default(uint)),
 		 NumberofcurrentphysicalThreads = (uint) (managementObject.Properties["NumberofcurrentphysicalThreads"]?.Value ?? default(uint)),
 		 Numberofcurrentrecognizedthreads = (uint) (managementObject.Properties["Numberofcurrentrecognizedthreads"]?.Value ?? default(uint)),

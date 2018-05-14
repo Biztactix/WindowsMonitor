@@ -64,26 +64,26 @@ namespace WindowsMonitor.CIM
                 {
                      AcceptableValues = (string[]) (managementObject.Properties["AcceptableValues"]?.Value ?? new string[0]),
 		 Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConfigManagerErrorCode = (uint) (managementObject.Properties["ConfigManagerErrorCode"]?.Value ?? default(uint)),
 		 ConfigManagerUserConfig = (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 CurrentReading = (string) (managementObject.Properties["CurrentReading"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 CurrentReading = (string) (managementObject.Properties["CurrentReading"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
-		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value ?? default(string)),
+		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PossibleValues = (string[]) (managementObject.Properties["PossibleValues"]?.Value ?? new string[0]),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 StatusInfo = (ushort) (managementObject.Properties["StatusInfo"]?.Value ?? default(ushort)),
-		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value ?? default(string)),
-		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value ?? default(string))
+		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
+		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value)
                 };
         }
     }

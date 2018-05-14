@@ -64,7 +64,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted.Network
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new TcpipIPv4
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DatagramsForwardedPersec = (uint) (managementObject.Properties["DatagramsForwardedPersec"]?.Value ?? default(uint)),
 		 DatagramsOutboundDiscarded = (uint) (managementObject.Properties["DatagramsOutboundDiscarded"]?.Value ?? default(uint)),
 		 DatagramsOutboundNoRoute = (uint) (managementObject.Properties["DatagramsOutboundNoRoute"]?.Value ?? default(uint)),
@@ -76,7 +76,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted.Network
 		 DatagramsReceivedPersec = (uint) (managementObject.Properties["DatagramsReceivedPersec"]?.Value ?? default(uint)),
 		 DatagramsReceivedUnknownProtocol = (uint) (managementObject.Properties["DatagramsReceivedUnknownProtocol"]?.Value ?? default(uint)),
 		 DatagramsSentPersec = (uint) (managementObject.Properties["DatagramsSentPersec"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FragmentationFailures = (uint) (managementObject.Properties["FragmentationFailures"]?.Value ?? default(uint)),
 		 FragmentedDatagramsPersec = (uint) (managementObject.Properties["FragmentedDatagramsPersec"]?.Value ?? default(uint)),
 		 FragmentReassemblyFailures = (uint) (managementObject.Properties["FragmentReassemblyFailures"]?.Value ?? default(uint)),
@@ -86,7 +86,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted.Network
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
 		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
 		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))

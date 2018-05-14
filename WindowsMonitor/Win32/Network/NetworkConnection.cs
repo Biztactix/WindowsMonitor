@@ -57,22 +57,22 @@ namespace WindowsMonitor.Win32.Network
                 yield return new NetworkConnection
                 {
                      AccessMask = (uint) (managementObject.Properties["AccessMask"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Comment = (string) (managementObject.Properties["Comment"]?.Value ?? default(string)),
-		 ConnectionState = (string) (managementObject.Properties["ConnectionState"]?.Value ?? default(string)),
-		 ConnectionType = (string) (managementObject.Properties["ConnectionType"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 DisplayType = (string) (managementObject.Properties["DisplayType"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Comment = (string) (managementObject.Properties["Comment"]?.Value),
+		 ConnectionState = (string) (managementObject.Properties["ConnectionState"]?.Value),
+		 ConnectionType = (string) (managementObject.Properties["ConnectionType"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 DisplayType = (string) (managementObject.Properties["DisplayType"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 LocalName = (string) (managementObject.Properties["LocalName"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 LocalName = (string) (managementObject.Properties["LocalName"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Persistent = (bool) (managementObject.Properties["Persistent"]?.Value ?? default(bool)),
-		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value ?? default(string)),
-		 RemoteName = (string) (managementObject.Properties["RemoteName"]?.Value ?? default(string)),
-		 RemotePath = (string) (managementObject.Properties["RemotePath"]?.Value ?? default(string)),
-		 ResourceType = (string) (managementObject.Properties["ResourceType"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
-		 UserName = (string) (managementObject.Properties["UserName"]?.Value ?? default(string))
+		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
+		 RemoteName = (string) (managementObject.Properties["RemoteName"]?.Value),
+		 RemotePath = (string) (managementObject.Properties["RemotePath"]?.Value),
+		 ResourceType = (string) (managementObject.Properties["ResourceType"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
+		 UserName = (string) (managementObject.Properties["UserName"]?.Value)
                 };
         }
     }

@@ -48,14 +48,14 @@ namespace WindowsMonitor
                 yield return new PbaStore
                 {
                     AllocSize = (uint) (managementObject.Properties["AllocSize"]?.Value ?? default(uint)),
-                    ClientIp = (string) (managementObject.Properties["ClientIP"]?.Value ?? default(string)),
-                    ClientName = (string) (managementObject.Properties["ClientName"]?.Value ?? default(string)),
-                    CompleteTime = (string) (managementObject.Properties["CompleteTime"]?.Value ?? default(string)),
-                    ExpireTime = (string) (managementObject.Properties["ExpireTime"]?.Value ?? default(string)),
-                    Path = (string) (managementObject.Properties["Path"]?.Value ?? default(string)),
-                    ShareName = (string) (managementObject.Properties["ShareName"]?.Value ?? default(string)),
-                    StartTime = (string) (managementObject.Properties["StartTime"]?.Value ?? default(string)),
-                    UserName = (string) (managementObject.Properties["UserName"]?.Value ?? default(string))
+                    ClientIp = (string) (managementObject.Properties["ClientIP"]?.Value),
+                    ClientName = (string) (managementObject.Properties["ClientName"]?.Value),
+                    CompleteTime = (string) (managementObject.Properties["CompleteTime"]?.Value),
+                    ExpireTime = (string) (managementObject.Properties["ExpireTime"]?.Value),
+                    Path = (string) (managementObject.Properties["Path"]?.Value),
+                    ShareName = (string) (managementObject.Properties["ShareName"]?.Value),
+                    StartTime = (string) (managementObject.Properties["StartTime"]?.Value),
+                    UserName = (string) (managementObject.Properties["UserName"]?.Value)
                 };
         }
     }

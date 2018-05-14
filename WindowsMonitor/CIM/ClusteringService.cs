@@ -50,16 +50,16 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ClusteringService
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Started = (bool) (managementObject.Properties["Started"]?.Value ?? default(bool)),
-		 StartMode = (string) (managementObject.Properties["StartMode"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
-		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value ?? default(string)),
-		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value ?? default(string))
+		 StartMode = (string) (managementObject.Properties["StartMode"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
+		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
+		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value)
                 };
         }
     }

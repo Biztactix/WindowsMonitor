@@ -60,26 +60,26 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PortConnector
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 ConnectorPinout = (string) (managementObject.Properties["ConnectorPinout"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 ConnectorPinout = (string) (managementObject.Properties["ConnectorPinout"]?.Value),
 		 ConnectorType = (ushort[]) (managementObject.Properties["ConnectorType"]?.Value ?? new ushort[0]),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 ExternalReferenceDesignator = (string) (managementObject.Properties["ExternalReferenceDesignator"]?.Value ?? default(string)),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 ExternalReferenceDesignator = (string) (managementObject.Properties["ExternalReferenceDesignator"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 InternalReferenceDesignator = (string) (managementObject.Properties["InternalReferenceDesignator"]?.Value ?? default(string)),
-		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value ?? default(string)),
-		 Model = (string) (managementObject.Properties["Model"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 OtherIdentifyingInfo = (string) (managementObject.Properties["OtherIdentifyingInfo"]?.Value ?? default(string)),
-		 PartNumber = (string) (managementObject.Properties["PartNumber"]?.Value ?? default(string)),
+		 InternalReferenceDesignator = (string) (managementObject.Properties["InternalReferenceDesignator"]?.Value),
+		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
+		 Model = (string) (managementObject.Properties["Model"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 OtherIdentifyingInfo = (string) (managementObject.Properties["OtherIdentifyingInfo"]?.Value),
+		 PartNumber = (string) (managementObject.Properties["PartNumber"]?.Value),
 		 PortType = (ushort) (managementObject.Properties["PortType"]?.Value ?? default(ushort)),
 		 PoweredOn = (bool) (managementObject.Properties["PoweredOn"]?.Value ?? default(bool)),
-		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value ?? default(string)),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
-		 Tag = (string) (managementObject.Properties["Tag"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
+		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
+		 Tag = (string) (managementObject.Properties["Tag"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

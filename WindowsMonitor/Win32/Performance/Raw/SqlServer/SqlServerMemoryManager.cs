@@ -69,10 +69,10 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlServerMemoryManager
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConnectionMemoryKB = (ulong) (managementObject.Properties["ConnectionMemoryKB"]?.Value ?? default(ulong)),
 		 DatabaseCacheMemoryKB = (ulong) (managementObject.Properties["DatabaseCacheMemoryKB"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Externalbenefitofmemory = (ulong) (managementObject.Properties["Externalbenefitofmemory"]?.Value ?? default(ulong)),
 		 FreeMemoryKB = (ulong) (managementObject.Properties["FreeMemoryKB"]?.Value ?? default(ulong)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
@@ -88,7 +88,7 @@ namespace WindowsMonitor.Performance.Raw
 		 MaximumWorkspaceMemoryKB = (ulong) (managementObject.Properties["MaximumWorkspaceMemoryKB"]?.Value ?? default(ulong)),
 		 MemoryGrantsOutstanding = (ulong) (managementObject.Properties["MemoryGrantsOutstanding"]?.Value ?? default(ulong)),
 		 MemoryGrantsPending = (ulong) (managementObject.Properties["MemoryGrantsPending"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OptimizerMemoryKB = (ulong) (managementObject.Properties["OptimizerMemoryKB"]?.Value ?? default(ulong)),
 		 ReservedServerMemoryKB = (ulong) (managementObject.Properties["ReservedServerMemoryKB"]?.Value ?? default(ulong)),
 		 SQLCacheMemoryKB = (ulong) (managementObject.Properties["SQLCacheMemoryKB"]?.Value ?? default(ulong)),

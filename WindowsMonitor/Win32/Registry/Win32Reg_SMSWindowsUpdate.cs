@@ -45,7 +45,7 @@ namespace WindowsMonitor
                 yield return new Win32Reg_SMSWindowsUpdate
                 {
                      AUOptions = (uint) (managementObject.Properties["AUOptions"]?.Value ?? default(uint)),
-		 InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value ?? default(string)),
+		 InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value),
 		 NoAutoUpdate = (uint) (managementObject.Properties["NoAutoUpdate"]?.Value ?? default(uint)),
 		 UseWUServer = (uint) (managementObject.Properties["UseWUServer"]?.Value ?? default(uint))
                 };

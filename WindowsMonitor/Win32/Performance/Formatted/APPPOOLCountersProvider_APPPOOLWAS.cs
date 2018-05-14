@@ -60,16 +60,16 @@ namespace WindowsMonitor.Win32.Performance.Formatted
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ApppoolCountersProviderApppoolwas
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CurrentApplicationPoolState = (uint) (managementObject.Properties["CurrentApplicationPoolState"]?.Value ?? default(uint)),
 		 CurrentApplicationPoolUptime = (ulong) (managementObject.Properties["CurrentApplicationPoolUptime"]?.Value ?? default(ulong)),
 		 CurrentWorkerProcesses = (uint) (managementObject.Properties["CurrentWorkerProcesses"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 MaximumWorkerProcesses = (uint) (managementObject.Properties["MaximumWorkerProcesses"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RecentWorkerProcessFailures = (uint) (managementObject.Properties["RecentWorkerProcessFailures"]?.Value ?? default(uint)),
 		 TimeSinceLastWorkerProcessFailure = (ulong) (managementObject.Properties["TimeSinceLastWorkerProcessFailure"]?.Value ?? default(ulong)),
 		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),

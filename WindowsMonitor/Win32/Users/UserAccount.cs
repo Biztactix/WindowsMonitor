@@ -57,21 +57,21 @@ namespace WindowsMonitor.Win32
                 yield return new UserAccount
                 {
                      AccountType = (uint) (managementObject.Properties["AccountType"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Disabled = (bool) (managementObject.Properties["Disabled"]?.Value ?? default(bool)),
-		 Domain = (string) (managementObject.Properties["Domain"]?.Value ?? default(string)),
-		 FullName = (string) (managementObject.Properties["FullName"]?.Value ?? default(string)),
+		 Domain = (string) (managementObject.Properties["Domain"]?.Value),
+		 FullName = (string) (managementObject.Properties["FullName"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 LocalAccount = (bool) (managementObject.Properties["LocalAccount"]?.Value ?? default(bool)),
 		 Lockout = (bool) (managementObject.Properties["Lockout"]?.Value ?? default(bool)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PasswordChangeable = (bool) (managementObject.Properties["PasswordChangeable"]?.Value ?? default(bool)),
 		 PasswordExpires = (bool) (managementObject.Properties["PasswordExpires"]?.Value ?? default(bool)),
 		 PasswordRequired = (bool) (managementObject.Properties["PasswordRequired"]?.Value ?? default(bool)),
-		 SID = (string) (managementObject.Properties["SID"]?.Value ?? default(string)),
+		 SID = (string) (managementObject.Properties["SID"]?.Value),
 		 SIDType = (byte) (managementObject.Properties["SIDType"]?.Value ?? default(byte)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

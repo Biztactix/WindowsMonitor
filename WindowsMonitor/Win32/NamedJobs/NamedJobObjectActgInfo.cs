@@ -58,9 +58,9 @@ namespace WindowsMonitor.Win32.NamedJobs
                 yield return new NamedJobObjectActgInfo
                 {
                      ActiveProcesses = (uint) (managementObject.Properties["ActiveProcesses"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OtherOperationCount = (ulong) (managementObject.Properties["OtherOperationCount"]?.Value ?? default(ulong)),
 		 OtherTransferCount = (ulong) (managementObject.Properties["OtherTransferCount"]?.Value ?? default(ulong)),
 		 PeakJobMemoryUsed = (uint) (managementObject.Properties["PeakJobMemoryUsed"]?.Value ?? default(uint)),

@@ -45,11 +45,11 @@ namespace WindowsMonitor.MSFT.NetServices
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetServiceServiceCrash
                 {
-                     Action = (string) (managementObject.Properties["Action"]?.Value ?? default(string)),
+                     Action = (string) (managementObject.Properties["Action"]?.Value),
 		 ActionDelay = (uint) (managementObject.Properties["ActionDelay"]?.Value ?? default(uint)),
 		 ActionType = (uint) (managementObject.Properties["ActionType"]?.Value ?? default(uint)),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
 		 TimesFailed = (uint) (managementObject.Properties["TimesFailed"]?.Value ?? default(uint))
                 };

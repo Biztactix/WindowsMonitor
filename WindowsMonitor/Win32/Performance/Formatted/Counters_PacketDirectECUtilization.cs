@@ -59,13 +59,13 @@ namespace WindowsMonitor.Win32.Performance.Formatted
                 yield return new CountersPacketDirectEcUtilization
                 {
                      BusyWaitIterationsPersec = (uint) (managementObject.Properties["BusyWaitIterationsPersec"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 IterationsPersec = (uint) (managementObject.Properties["IterationsPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PercentBusyWaitingTime = (ulong) (managementObject.Properties["PercentBusyWaitingTime"]?.Value ?? default(ulong)),
 		 PercentBusyWaitIterations = (uint) (managementObject.Properties["PercentBusyWaitIterations"]?.Value ?? default(uint)),
 		 PercentIdleTime = (ulong) (managementObject.Properties["PercentIdleTime"]?.Value ?? default(ulong)),

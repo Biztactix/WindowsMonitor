@@ -54,18 +54,18 @@ namespace WindowsMonitor.Win32
                 yield return new ServerSession
                 {
                      ActiveTime = (uint) (managementObject.Properties["ActiveTime"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 ClientType = (string) (managementObject.Properties["ClientType"]?.Value ?? default(string)),
-		 ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 ClientType = (string) (managementObject.Properties["ClientType"]?.Value),
+		 ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 IdleTime = (uint) (managementObject.Properties["IdleTime"]?.Value ?? default(uint)),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ResourcesOpened = (uint) (managementObject.Properties["ResourcesOpened"]?.Value ?? default(uint)),
 		 SessionType = (uint) (managementObject.Properties["SessionType"]?.Value ?? default(uint)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
-		 TransportName = (string) (managementObject.Properties["TransportName"]?.Value ?? default(string)),
-		 UserName = (string) (managementObject.Properties["UserName"]?.Value ?? default(string))
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
+		 TransportName = (string) (managementObject.Properties["TransportName"]?.Value),
+		 UserName = (string) (managementObject.Properties["UserName"]?.Value)
                 };
         }
     }

@@ -53,12 +53,12 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlServerBrokerActivation
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 StoredProceduresInvokedPersec = (ulong) (managementObject.Properties["StoredProceduresInvokedPersec"]?.Value ?? default(ulong)),
 		 TaskLimitReached = (ulong) (managementObject.Properties["TaskLimitReached"]?.Value ?? default(ulong)),
 		 TaskLimitReachedPersec = (ulong) (managementObject.Properties["TaskLimitReachedPersec"]?.Value ?? default(ulong)),

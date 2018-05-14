@@ -63,14 +63,14 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NETDataProviderforOracle_NETDataProviderforOracle
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 HardConnectsPerSecond = (uint) (managementObject.Properties["HardConnectsPerSecond"]?.Value ?? default(uint)),
 		 HardDisconnectsPerSecond = (uint) (managementObject.Properties["HardDisconnectsPerSecond"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfActiveConnectionPoolGroups = (uint) (managementObject.Properties["NumberOfActiveConnectionPoolGroups"]?.Value ?? default(uint)),
 		 NumberOfActiveConnectionPools = (uint) (managementObject.Properties["NumberOfActiveConnectionPools"]?.Value ?? default(uint)),
 		 NumberOfActiveConnections = (uint) (managementObject.Properties["NumberOfActiveConnections"]?.Value ?? default(uint)),

@@ -46,12 +46,12 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ClassicCOMClass
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 ComponentId = (string) (managementObject.Properties["ComponentId"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 ComponentId = (string) (managementObject.Properties["ComponentId"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

@@ -50,16 +50,16 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ReliabilityRecords
                 {
-                     ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value ?? default(string)),
+                     ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value),
 		 EventIdentifier = (uint) (managementObject.Properties["EventIdentifier"]?.Value ?? default(uint)),
 		 InsertionStrings = (string[]) (managementObject.Properties["InsertionStrings"]?.Value ?? new string[0]),
-		 Logfile = (string) (managementObject.Properties["Logfile"]?.Value ?? default(string)),
-		 Message = (string) (managementObject.Properties["Message"]?.Value ?? default(string)),
-		 ProductName = (string) (managementObject.Properties["ProductName"]?.Value ?? default(string)),
+		 Logfile = (string) (managementObject.Properties["Logfile"]?.Value),
+		 Message = (string) (managementObject.Properties["Message"]?.Value),
+		 ProductName = (string) (managementObject.Properties["ProductName"]?.Value),
 		 RecordNumber = (uint) (managementObject.Properties["RecordNumber"]?.Value ?? default(uint)),
-		 SourceName = (string) (managementObject.Properties["SourceName"]?.Value ?? default(string)),
+		 SourceName = (string) (managementObject.Properties["SourceName"]?.Value),
 		 TimeGenerated = (DateTime) (managementObject.Properties["TimeGenerated"]?.Value ?? default(DateTime)),
-		 User = (string) (managementObject.Properties["User"]?.Value ?? default(string))
+		 User = (string) (managementObject.Properties["User"]?.Value)
                 };
         }
     }

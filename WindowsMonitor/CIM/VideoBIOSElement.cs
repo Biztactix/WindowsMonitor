@@ -57,23 +57,23 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new VideoBIOSElement
                 {
-                     BuildNumber = (string) (managementObject.Properties["BuildNumber"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CodeSet = (string) (managementObject.Properties["CodeSet"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 IdentificationCode = (string) (managementObject.Properties["IdentificationCode"]?.Value ?? default(string)),
+                     BuildNumber = (string) (managementObject.Properties["BuildNumber"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CodeSet = (string) (managementObject.Properties["CodeSet"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 IdentificationCode = (string) (managementObject.Properties["IdentificationCode"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 IsShadowed = (bool) (managementObject.Properties["IsShadowed"]?.Value ?? default(bool)),
-		 LanguageEdition = (string) (managementObject.Properties["LanguageEdition"]?.Value ?? default(string)),
-		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 OtherTargetOS = (string) (managementObject.Properties["OtherTargetOS"]?.Value ?? default(string)),
-		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 LanguageEdition = (string) (managementObject.Properties["LanguageEdition"]?.Value),
+		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 OtherTargetOS = (string) (managementObject.Properties["OtherTargetOS"]?.Value),
+		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

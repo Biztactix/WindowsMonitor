@@ -59,14 +59,14 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlServer2016XTPTransactions
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CascadingabortsPersec = (uint) (managementObject.Properties["CascadingabortsPersec"]?.Value ?? default(uint)),
 		 CommitdependenciestakenPersec = (uint) (managementObject.Properties["CommitdependenciestakenPersec"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ReadonlytransactionspreparedPersec = (uint) (managementObject.Properties["ReadonlytransactionspreparedPersec"]?.Value ?? default(uint)),
 		 SavepointrefreshesPersec = (uint) (managementObject.Properties["SavepointrefreshesPersec"]?.Value ?? default(uint)),
 		 SavepointrollbacksPersec = (uint) (managementObject.Properties["SavepointrollbacksPersec"]?.Value ?? default(uint)),

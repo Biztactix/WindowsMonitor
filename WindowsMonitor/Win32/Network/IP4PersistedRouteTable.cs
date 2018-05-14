@@ -48,15 +48,15 @@ namespace WindowsMonitor.Win32.Network
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new IP4PersistedRouteTable
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Destination = (string) (managementObject.Properties["Destination"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Destination = (string) (managementObject.Properties["Destination"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Mask = (string) (managementObject.Properties["Mask"]?.Value ?? default(string)),
+		 Mask = (string) (managementObject.Properties["Mask"]?.Value),
 		 Metric1 = (int) (managementObject.Properties["Metric1"]?.Value ?? default(int)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 NextHop = (string) (managementObject.Properties["NextHop"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 NextHop = (string) (managementObject.Properties["NextHop"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

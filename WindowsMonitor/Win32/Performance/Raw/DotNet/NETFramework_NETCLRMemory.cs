@@ -74,8 +74,8 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new NETFramework_NETCLRMemory
                 {
                      AllocatedBytesPersec = (uint) (managementObject.Properties["AllocatedBytesPersec"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FinalizationSurvivors = (uint) (managementObject.Properties["FinalizationSurvivors"]?.Value ?? default(uint)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
@@ -86,7 +86,7 @@ namespace WindowsMonitor.Performance.Raw
 		 Gen1PromotedBytesPerSec = (uint) (managementObject.Properties["Gen1PromotedBytesPerSec"]?.Value ?? default(uint)),
 		 Gen2heapsize = (uint) (managementObject.Properties["Gen2heapsize"]?.Value ?? default(uint)),
 		 LargeObjectHeapsize = (uint) (managementObject.Properties["LargeObjectHeapsize"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberBytesinallHeaps = (uint) (managementObject.Properties["NumberBytesinallHeaps"]?.Value ?? default(uint)),
 		 NumberGCHandles = (uint) (managementObject.Properties["NumberGCHandles"]?.Value ?? default(uint)),
 		 NumberGen0Collections = (uint) (managementObject.Properties["NumberGen0Collections"]?.Value ?? default(uint)),

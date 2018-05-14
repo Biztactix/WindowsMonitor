@@ -53,13 +53,13 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlServer2016XtpPhantomProcessor
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DustycornerscanretriesPersecPhantomissued = (uint) (managementObject.Properties["DustycornerscanretriesPersecPhantomissued"]?.Value ?? default(uint)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PhantomexpiredrowsremovedPersec = (uint) (managementObject.Properties["PhantomexpiredrowsremovedPersec"]?.Value ?? default(uint)),
 		 PhantomexpiredrowstouchedPersec = (uint) (managementObject.Properties["PhantomexpiredrowstouchedPersec"]?.Value ?? default(uint)),
 		 PhantomexpiringrowstouchedPersec = (uint) (managementObject.Properties["PhantomexpiringrowstouchedPersec"]?.Value ?? default(uint)),

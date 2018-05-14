@@ -53,19 +53,19 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DuplicateFileAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DeleteAfterCopy = (bool) (managementObject.Properties["DeleteAfterCopy"]?.Value ?? default(bool)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Destination = (string) (managementObject.Properties["Destination"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Destination = (string) (managementObject.Properties["Destination"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
-		 FileKey = (string) (managementObject.Properties["FileKey"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 FileKey = (string) (managementObject.Properties["FileKey"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
-		 Source = (string) (managementObject.Properties["Source"]?.Value ?? default(string)),
+		 Source = (string) (managementObject.Properties["Source"]?.Value),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

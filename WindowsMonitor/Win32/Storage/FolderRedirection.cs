@@ -52,9 +52,9 @@ namespace WindowsMonitor.Win32
 		 ContentsMovedOnPolicyRemoval = (bool) (managementObject.Properties["ContentsMovedOnPolicyRemoval"]?.Value ?? default(bool)),
 		 ContentsRenamedInLocalCache = (bool) (managementObject.Properties["ContentsRenamedInLocalCache"]?.Value ?? default(bool)),
 		 ExclusiveRightsGranted = (bool) (managementObject.Properties["ExclusiveRightsGranted"]?.Value ?? default(bool)),
-		 FolderId = (string) (managementObject.Properties["FolderId"]?.Value ?? default(string)),
+		 FolderId = (string) (managementObject.Properties["FolderId"]?.Value),
 		 MakeFolderAvailableOfflineDisabled = (bool) (managementObject.Properties["MakeFolderAvailableOfflineDisabled"]?.Value ?? default(bool)),
-		 RedirectionPath = (string) (managementObject.Properties["RedirectionPath"]?.Value ?? default(string)),
+		 RedirectionPath = (string) (managementObject.Properties["RedirectionPath"]?.Value),
 		 RedirectionType = (byte) (managementObject.Properties["RedirectionType"]?.Value ?? default(byte))
                 };
         }

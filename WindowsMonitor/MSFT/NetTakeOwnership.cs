@@ -43,7 +43,7 @@ namespace WindowsMonitor.Msft
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetTakeOwnership
                 {
-                     RegistryKey = (string) (managementObject.Properties["RegistryKey"]?.Value ?? default(string)),
+                     RegistryKey = (string) (managementObject.Properties["RegistryKey"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };

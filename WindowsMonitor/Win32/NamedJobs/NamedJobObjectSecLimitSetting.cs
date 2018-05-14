@@ -45,12 +45,12 @@ namespace WindowsMonitor.Win32.NamedJobs
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NamedJobObjectSecLimitSetting
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 PrivilegesToDelete = (dynamic) (managementObject.Properties["PrivilegesToDelete"]?.Value ?? default(dynamic)),
 		 RestrictedSIDs = (dynamic) (managementObject.Properties["RestrictedSIDs"]?.Value ?? default(dynamic)),
 		 SecurityLimitFlags = (uint) (managementObject.Properties["SecurityLimitFlags"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
 		 SIDsToDisable = (dynamic) (managementObject.Properties["SIDsToDisable"]?.Value ?? default(dynamic))
                 };
         }

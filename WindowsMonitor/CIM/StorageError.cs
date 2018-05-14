@@ -46,12 +46,12 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new StorageError
                 {
-                     DeviceCreationClassName = (string) (managementObject.Properties["DeviceCreationClassName"]?.Value ?? default(string)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
+                     DeviceCreationClassName = (string) (managementObject.Properties["DeviceCreationClassName"]?.Value),
+		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 EndingAddress = (ulong) (managementObject.Properties["EndingAddress"]?.Value ?? default(ulong)),
 		 StartingAddress = (ulong) (managementObject.Properties["StartingAddress"]?.Value ?? default(ulong)),
-		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value ?? default(string)),
-		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value ?? default(string))
+		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
+		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value)
                 };
         }
     }

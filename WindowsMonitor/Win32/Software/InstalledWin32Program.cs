@@ -47,13 +47,13 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new InstalledWin32Program
                 {
-                     Language = (string) (managementObject.Properties["Language"]?.Value ?? default(string)),
-		 MsiPackageCode = (string) (managementObject.Properties["MsiPackageCode"]?.Value ?? default(string)),
-		 MsiProductCode = (string) (managementObject.Properties["MsiProductCode"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ProgramId = (string) (managementObject.Properties["ProgramId"]?.Value ?? default(string)),
-		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+                     Language = (string) (managementObject.Properties["Language"]?.Value),
+		 MsiPackageCode = (string) (managementObject.Properties["MsiPackageCode"]?.Value),
+		 MsiProductCode = (string) (managementObject.Properties["MsiProductCode"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ProgramId = (string) (managementObject.Properties["ProgramId"]?.Value),
+		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

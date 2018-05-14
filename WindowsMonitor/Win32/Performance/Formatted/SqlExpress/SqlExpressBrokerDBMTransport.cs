@@ -77,11 +77,11 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlExpress
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlExpressBrokerDbmTransport
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CurrentBytesforRecvIo = (ulong) (managementObject.Properties["CurrentBytesforRecvIO"]?.Value ?? default(ulong)),
 		 CurrentBytesforSendIo = (ulong) (managementObject.Properties["CurrentBytesforSendIO"]?.Value ?? default(ulong)),
 		 CurrentMsgFragsforSendIo = (ulong) (managementObject.Properties["CurrentMsgFragsforSendIO"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -99,7 +99,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlExpress
 		 MessageFragmentSendsPersec = (ulong) (managementObject.Properties["MessageFragmentSendsPersec"]?.Value ?? default(ulong)),
 		 MsgFragmentRecvSizeAvg = (ulong) (managementObject.Properties["MsgFragmentRecvSizeAvg"]?.Value ?? default(ulong)),
 		 MsgFragmentSendSizeAvg = (ulong) (managementObject.Properties["MsgFragmentSendSizeAvg"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OpenConnectionCount = (ulong) (managementObject.Properties["OpenConnectionCount"]?.Value ?? default(ulong)),
 		 PendingBytesforRecvIo = (ulong) (managementObject.Properties["PendingBytesforRecvIO"]?.Value ?? default(ulong)),
 		 PendingBytesforSendIo = (ulong) (managementObject.Properties["PendingBytesforSendIO"]?.Value ?? default(ulong)),

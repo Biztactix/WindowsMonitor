@@ -52,17 +52,17 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DeviceErrorCounts
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CriticalErrorCount = (ulong) (managementObject.Properties["CriticalErrorCount"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 DeviceCreationClassName = (string) (managementObject.Properties["DeviceCreationClassName"]?.Value ?? default(string)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 DeviceCreationClassName = (string) (managementObject.Properties["DeviceCreationClassName"]?.Value),
+		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 IndeterminateErrorCount = (ulong) (managementObject.Properties["IndeterminateErrorCount"]?.Value ?? default(ulong)),
 		 MajorErrorCount = (ulong) (managementObject.Properties["MajorErrorCount"]?.Value ?? default(ulong)),
 		 MinorErrorCount = (ulong) (managementObject.Properties["MinorErrorCount"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value ?? default(string)),
-		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
+		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
 		 WarningCount = (ulong) (managementObject.Properties["WarningCount"]?.Value ?? default(ulong))
                 };
         }

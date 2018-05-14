@@ -46,12 +46,12 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new LogicalFileSecuritySetting
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ControlFlags = (uint) (managementObject.Properties["ControlFlags"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 OwnerPermissions = (bool) (managementObject.Properties["OwnerPermissions"]?.Value ?? default(bool)),
-		 Path = (string) (managementObject.Properties["Path"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string))
+		 Path = (string) (managementObject.Properties["Path"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

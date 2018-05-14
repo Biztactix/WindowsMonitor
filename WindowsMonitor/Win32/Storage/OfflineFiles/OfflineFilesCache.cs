@@ -45,7 +45,7 @@ namespace WindowsMonitor.Win32
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 Enabled = (bool) (managementObject.Properties["Enabled"]?.Value ?? default(bool)),
-		 Location = (string) (managementObject.Properties["Location"]?.Value ?? default(string))
+		 Location = (string) (managementObject.Properties["Location"]?.Value)
                 };
         }
     }

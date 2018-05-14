@@ -45,11 +45,11 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Win32Reg_AddRemovePrograms64
                 {
-                     DisplayName = (string) (managementObject.Properties["DisplayName"]?.Value ?? default(string)),
-		 InstallDate = (string) (managementObject.Properties["InstallDate"]?.Value ?? default(string)),
-		 ProdID = (string) (managementObject.Properties["ProdID"]?.Value ?? default(string)),
-		 Publisher = (string) (managementObject.Properties["Publisher"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+                     DisplayName = (string) (managementObject.Properties["DisplayName"]?.Value),
+		 InstallDate = (string) (managementObject.Properties["InstallDate"]?.Value),
+		 ProdID = (string) (managementObject.Properties["ProdID"]?.Value),
+		 Publisher = (string) (managementObject.Properties["Publisher"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

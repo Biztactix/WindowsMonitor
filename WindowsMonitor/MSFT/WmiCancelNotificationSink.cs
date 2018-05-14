@@ -46,9 +46,9 @@ namespace WindowsMonitor.Msft
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new WmiCancelNotificationSink
                 {
-                     Namespace = (string) (managementObject.Properties["Namespace"]?.Value ?? default(string)),
-		 Query = (string) (managementObject.Properties["Query"]?.Value ?? default(string)),
-		 QueryLanguage = (string) (managementObject.Properties["QueryLanguage"]?.Value ?? default(string)),
+                     Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
+		 Query = (string) (managementObject.Properties["Query"]?.Value),
+		 QueryLanguage = (string) (managementObject.Properties["QueryLanguage"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 Sink = (ulong) (managementObject.Properties["Sink"]?.Value ?? default(ulong)),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))

@@ -72,9 +72,9 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlExpress
                 yield return new SqlExpressGeneralStatistics
                 {
                      ActiveTempTables = (ulong) (managementObject.Properties["ActiveTempTables"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConnectionResetPersec = (ulong) (managementObject.Properties["ConnectionResetPersec"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 EventNotificationsDelayedDrop = (ulong) (managementObject.Properties["EventNotificationsDelayedDrop"]?.Value ?? default(ulong)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
@@ -84,7 +84,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlExpress
 		 LoginsPersec = (ulong) (managementObject.Properties["LoginsPersec"]?.Value ?? default(ulong)),
 		 LogoutsPersec = (ulong) (managementObject.Properties["LogoutsPersec"]?.Value ?? default(ulong)),
 		 MarsDeadlocks = (ulong) (managementObject.Properties["MarsDeadlocks"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Nonatomicyieldrate = (ulong) (managementObject.Properties["Nonatomicyieldrate"]?.Value ?? default(ulong)),
 		 Processesblocked = (ulong) (managementObject.Properties["Processesblocked"]?.Value ?? default(ulong)),
 		 SoapEmptyRequests = (ulong) (managementObject.Properties["SOAPEmptyRequests"]?.Value ?? default(ulong)),

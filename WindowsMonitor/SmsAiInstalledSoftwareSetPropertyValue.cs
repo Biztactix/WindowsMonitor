@@ -48,17 +48,17 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SmsAiInstalledSoftwareSetPropertyValue
                 {
-                    EntryNameKey = (string) (managementObject.Properties["EntryNameKey"]?.Value ?? default(string)),
+                    EntryNameKey = (string) (managementObject.Properties["EntryNameKey"]?.Value),
                     IfRegistryCheckPositive =
                         (bool) (managementObject.Properties["IfRegistryCheckPositive"]?.Value ?? default(bool)),
                     PropertyConverter =
-                        (string) (managementObject.Properties["PropertyConverter"]?.Value ?? default(string)),
-                    PropertyName = (string) (managementObject.Properties["PropertyName"]?.Value ?? default(string)),
-                    PropertyValue = (string) (managementObject.Properties["PropertyValue"]?.Value ?? default(string)),
-                    SoftwareMatch = (string) (managementObject.Properties["SoftwareMatch"]?.Value ?? default(string)),
-                    WhenRegData = (string) (managementObject.Properties["WhenRegData"]?.Value ?? default(string)),
-                    WhenRegRoot = (string) (managementObject.Properties["WhenRegRoot"]?.Value ?? default(string)),
-                    WhenRegSubKey = (string) (managementObject.Properties["WhenRegSubKey"]?.Value ?? default(string))
+                        (string) (managementObject.Properties["PropertyConverter"]?.Value),
+                    PropertyName = (string) (managementObject.Properties["PropertyName"]?.Value),
+                    PropertyValue = (string) (managementObject.Properties["PropertyValue"]?.Value),
+                    SoftwareMatch = (string) (managementObject.Properties["SoftwareMatch"]?.Value),
+                    WhenRegData = (string) (managementObject.Properties["WhenRegData"]?.Value),
+                    WhenRegRoot = (string) (managementObject.Properties["WhenRegRoot"]?.Value),
+                    WhenRegSubKey = (string) (managementObject.Properties["WhenRegSubKey"]?.Value)
                 };
         }
     }

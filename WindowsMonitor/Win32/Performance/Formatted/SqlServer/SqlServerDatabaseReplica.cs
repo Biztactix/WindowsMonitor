@@ -71,10 +71,10 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlServerDatabaseReplica
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DatabaseFlowControlDelay = (ulong) (managementObject.Properties["DatabaseFlowControlDelay"]?.Value ?? default(ulong)),
 		 DatabaseFlowControlsPersec = (ulong) (managementObject.Properties["DatabaseFlowControlsPersec"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FileBytesReceivedPersec = (ulong) (managementObject.Properties["FileBytesReceivedPersec"]?.Value ?? default(ulong)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
@@ -93,7 +93,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
 		 Logremainingforundo = (ulong) (managementObject.Properties["Logremainingforundo"]?.Value ?? default(ulong)),
 		 LogSendQueue = (ulong) (managementObject.Properties["LogSendQueue"]?.Value ?? default(ulong)),
 		 MirroredWriteTransactionsPersec = (ulong) (managementObject.Properties["MirroredWriteTransactionsPersec"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RecoveryQueue = (ulong) (managementObject.Properties["RecoveryQueue"]?.Value ?? default(ulong)),
 		 RedoblockedPersec = (ulong) (managementObject.Properties["RedoblockedPersec"]?.Value ?? default(ulong)),
 		 RedoBytesRemaining = (ulong) (managementObject.Properties["RedoBytesRemaining"]?.Value ?? default(ulong)),

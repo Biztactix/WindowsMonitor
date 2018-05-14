@@ -44,7 +44,7 @@ namespace WindowsMonitor
                 yield return new Win32Reg_SMSAdvancedClientPorts
                 {
                      HttpsPortName = (uint) (managementObject.Properties["HttpsPortName"]?.Value ?? default(uint)),
-		 InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value ?? default(string)),
+		 InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value),
 		 PortName = (uint) (managementObject.Properties["PortName"]?.Value ?? default(uint))
                 };
         }

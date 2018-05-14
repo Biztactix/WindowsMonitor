@@ -45,10 +45,10 @@ namespace WindowsMonitor.Msft
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetFirstLogonFailedII
                 {
-                     Account = (string) (managementObject.Properties["Account"]?.Value ?? default(string)),
+                     Account = (string) (managementObject.Properties["Account"]?.Value),
 		 Error = (uint) (managementObject.Properties["Error"]?.Value ?? default(uint)),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }

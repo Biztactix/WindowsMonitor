@@ -53,13 +53,13 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Counters_ThermalZoneInformation
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 HighPrecisionTemperature = (uint) (managementObject.Properties["HighPrecisionTemperature"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PercentPassiveLimit = (uint) (managementObject.Properties["PercentPassiveLimit"]?.Value ?? default(uint)),
 		 Temperature = (uint) (managementObject.Properties["Temperature"]?.Value ?? default(uint)),
 		 ThrottleReasons = (uint) (managementObject.Properties["ThrottleReasons"]?.Value ?? default(uint)),

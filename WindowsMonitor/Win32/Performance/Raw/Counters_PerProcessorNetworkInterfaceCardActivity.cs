@@ -71,8 +71,8 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new Counters_PerProcessorNetworkInterfaceCardActivity
                 {
                      BuildScatterGatherListCallsPersec = (ulong) (managementObject.Properties["BuildScatterGatherListCallsPersec"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DPCsDeferredPersec = (ulong) (managementObject.Properties["DPCsDeferredPersec"]?.Value ?? default(ulong)),
 		 DPCsQueuedonOtherCPUsPersec = (ulong) (managementObject.Properties["DPCsQueuedonOtherCPUsPersec"]?.Value ?? default(ulong)),
 		 DPCsQueuedPersec = (ulong) (managementObject.Properties["DPCsQueuedPersec"]?.Value ?? default(ulong)),
@@ -82,7 +82,7 @@ namespace WindowsMonitor.Performance.Raw
 		 InterruptsPersec = (ulong) (managementObject.Properties["InterruptsPersec"]?.Value ?? default(ulong)),
 		 LowResourceReceivedPacketsPersec = (ulong) (managementObject.Properties["LowResourceReceivedPacketsPersec"]?.Value ?? default(ulong)),
 		 LowResourceReceiveIndicationsPersec = (ulong) (managementObject.Properties["LowResourceReceiveIndicationsPersec"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PacketsCoalescedPersec = (ulong) (managementObject.Properties["PacketsCoalescedPersec"]?.Value ?? default(ulong)),
 		 ReceivedPacketsPersec = (ulong) (managementObject.Properties["ReceivedPacketsPersec"]?.Value ?? default(ulong)),
 		 ReceiveIndicationsPersec = (ulong) (managementObject.Properties["ReceiveIndicationsPersec"]?.Value ?? default(ulong)),

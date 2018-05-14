@@ -52,20 +52,20 @@ namespace WindowsMonitor.Win32.Hardware.Usb
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new USBDevice
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 ClassGuid = (string) (managementObject.Properties["ClassGuid"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 ClassGuid = (string) (managementObject.Properties["ClassGuid"]?.Value),
 		 ConfigManagerErrorCode = (uint) (managementObject.Properties["ConfigManagerErrorCode"]?.Value ?? default(uint)),
 		 ConfigManagerUserConfig = (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
-		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value ?? default(string)),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
-		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value ?? default(string)),
-		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value ?? default(string))
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
+		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
+		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value)
                 };
         }
     }

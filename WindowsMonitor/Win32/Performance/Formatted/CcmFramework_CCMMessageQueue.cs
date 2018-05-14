@@ -54,8 +54,8 @@ namespace WindowsMonitor.Win32.Performance.Formatted
                 yield return new CcmFrameworkCcmMessageQueue
                 {
                      BytesQueued = (ulong) (managementObject.Properties["BytesQueued"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -64,7 +64,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted
 		 MessagesQueued = (ulong) (managementObject.Properties["MessagesQueued"]?.Value ?? default(ulong)),
 		 MessagesReceived = (ulong) (managementObject.Properties["MessagesReceived"]?.Value ?? default(ulong)),
 		 MessagesReceivedPersecond = (uint) (managementObject.Properties["MessagesReceivedPersecond"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
 		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
 		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))

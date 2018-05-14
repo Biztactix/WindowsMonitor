@@ -63,9 +63,9 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new WinNatCounters_WinNAT
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CurrentSessionCount = (uint) (managementObject.Properties["CurrentSessionCount"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DroppedICMPerrorpackets = (uint) (managementObject.Properties["DroppedICMPerrorpackets"]?.Value ?? default(uint)),
 		 DroppedICMPerrorpacketsPersec = (uint) (managementObject.Properties["DroppedICMPerrorpacketsPersec"]?.Value ?? default(uint)),
 		 DroppedPackets = (uint) (managementObject.Properties["DroppedPackets"]?.Value ?? default(uint)),
@@ -77,7 +77,7 @@ namespace WindowsMonitor.Performance.Raw
 		 InterRoutingDomainHairpinnedPacketsPersec = (uint) (managementObject.Properties["InterRoutingDomainHairpinnedPacketsPersec"]?.Value ?? default(uint)),
 		 IntraRoutingDomainHairpinnedPackets = (uint) (managementObject.Properties["IntraRoutingDomainHairpinnedPackets"]?.Value ?? default(uint)),
 		 IntraRoutingDomainHairpinnedPacketsPersec = (uint) (managementObject.Properties["IntraRoutingDomainHairpinnedPacketsPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PacketsExternaltoInternal = (uint) (managementObject.Properties["PacketsExternaltoInternal"]?.Value ?? default(uint)),
 		 PacketsInternaltoExternal = (uint) (managementObject.Properties["PacketsInternaltoExternal"]?.Value ?? default(uint)),
 		 PacketsPersecExternaltoInternal = (uint) (managementObject.Properties["PacketsPersecExternaltoInternal"]?.Value ?? default(uint)),

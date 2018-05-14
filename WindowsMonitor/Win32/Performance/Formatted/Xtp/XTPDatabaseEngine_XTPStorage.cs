@@ -55,11 +55,11 @@ namespace WindowsMonitor.Win32.Performance.Formatted.Xtp
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new XtpDatabaseEngineXtpStorage
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CheckpointsClosed = (ulong) (managementObject.Properties["CheckpointsClosed"]?.Value ?? default(ulong)),
 		 CheckpointsCompleted = (ulong) (managementObject.Properties["CheckpointsCompleted"]?.Value ?? default(ulong)),
 		 CoreMergesCompleted = (ulong) (managementObject.Properties["CoreMergesCompleted"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -67,7 +67,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted.Xtp
 		 MergeRequestsOutstanding = (ulong) (managementObject.Properties["MergeRequestsOutstanding"]?.Value ?? default(ulong)),
 		 MergesAbandoned = (ulong) (managementObject.Properties["MergesAbandoned"]?.Value ?? default(ulong)),
 		 MergesInstalled = (ulong) (managementObject.Properties["MergesInstalled"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
 		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
 		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),

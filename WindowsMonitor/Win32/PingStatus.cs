@@ -64,12 +64,12 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PingStatus
                 {
-                     Address = (string) (managementObject.Properties["Address"]?.Value ?? default(string)),
+                     Address = (string) (managementObject.Properties["Address"]?.Value),
 		 BufferSize = (uint) (managementObject.Properties["BufferSize"]?.Value ?? default(uint)),
 		 NoFragmentation = (bool) (managementObject.Properties["NoFragmentation"]?.Value ?? default(bool)),
 		 PrimaryAddressResolutionStatus = (uint) (managementObject.Properties["PrimaryAddressResolutionStatus"]?.Value ?? default(uint)),
-		 ProtocolAddress = (string) (managementObject.Properties["ProtocolAddress"]?.Value ?? default(string)),
-		 ProtocolAddressResolved = (string) (managementObject.Properties["ProtocolAddressResolved"]?.Value ?? default(string)),
+		 ProtocolAddress = (string) (managementObject.Properties["ProtocolAddress"]?.Value),
+		 ProtocolAddressResolved = (string) (managementObject.Properties["ProtocolAddressResolved"]?.Value),
 		 RecordRoute = (uint) (managementObject.Properties["RecordRoute"]?.Value ?? default(uint)),
 		 ReplyInconsistency = (bool) (managementObject.Properties["ReplyInconsistency"]?.Value ?? default(bool)),
 		 ReplySize = (uint) (managementObject.Properties["ReplySize"]?.Value ?? default(uint)),
@@ -78,7 +78,7 @@ namespace WindowsMonitor.Win32
 		 ResponseTimeToLive = (uint) (managementObject.Properties["ResponseTimeToLive"]?.Value ?? default(uint)),
 		 RouteRecord = (string[]) (managementObject.Properties["RouteRecord"]?.Value ?? new string[0]),
 		 RouteRecordResolved = (string[]) (managementObject.Properties["RouteRecordResolved"]?.Value ?? new string[0]),
-		 SourceRoute = (string) (managementObject.Properties["SourceRoute"]?.Value ?? default(string)),
+		 SourceRoute = (string) (managementObject.Properties["SourceRoute"]?.Value),
 		 SourceRouteType = (uint) (managementObject.Properties["SourceRouteType"]?.Value ?? default(uint)),
 		 StatusCode = (uint) (managementObject.Properties["StatusCode"]?.Value ?? default(uint)),
 		 Timeout = (uint) (managementObject.Properties["Timeout"]?.Value ?? default(uint)),

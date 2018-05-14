@@ -61,18 +61,18 @@ namespace WindowsMonitor.Win32.Performance.Formatted
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SmSvcHost4000
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConnectionsAcceptedovernetpipe = (uint) (managementObject.Properties["ConnectionsAcceptedovernetpipe"]?.Value ?? default(uint)),
 		 ConnectionsAcceptedovernettcp = (uint) (managementObject.Properties["ConnectionsAcceptedovernettcp"]?.Value ?? default(uint)),
 		 ConnectionsDispatchedovernetpipe = (uint) (managementObject.Properties["ConnectionsDispatchedovernetpipe"]?.Value ?? default(uint)),
 		 ConnectionsDispatchedovernettcp = (uint) (managementObject.Properties["ConnectionsDispatchedovernettcp"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DispatchFailuresovernetpipe = (uint) (managementObject.Properties["DispatchFailuresovernetpipe"]?.Value ?? default(uint)),
 		 DispatchFailuresovernettcp = (uint) (managementObject.Properties["DispatchFailuresovernettcp"]?.Value ?? default(uint)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ProtocolFailuresovernetpipe = (uint) (managementObject.Properties["ProtocolFailuresovernetpipe"]?.Value ?? default(uint)),
 		 ProtocolFailuresovernettcp = (uint) (managementObject.Properties["ProtocolFailuresovernettcp"]?.Value ?? default(uint)),
 		 RegistrationsActivefornetpipe = (uint) (managementObject.Properties["RegistrationsActivefornetpipe"]?.Value ?? default(uint)),

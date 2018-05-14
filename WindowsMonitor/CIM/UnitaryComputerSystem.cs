@@ -56,22 +56,22 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new UnitaryComputerSystem
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InitialLoadInfo = (string[]) (managementObject.Properties["InitialLoadInfo"]?.Value ?? new string[0]),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 LastLoadInfo = (string) (managementObject.Properties["LastLoadInfo"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 NameFormat = (string) (managementObject.Properties["NameFormat"]?.Value ?? default(string)),
+		 LastLoadInfo = (string) (managementObject.Properties["LastLoadInfo"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 NameFormat = (string) (managementObject.Properties["NameFormat"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 PowerState = (ushort) (managementObject.Properties["PowerState"]?.Value ?? default(ushort)),
-		 PrimaryOwnerContact = (string) (managementObject.Properties["PrimaryOwnerContact"]?.Value ?? default(string)),
-		 PrimaryOwnerName = (string) (managementObject.Properties["PrimaryOwnerName"]?.Value ?? default(string)),
+		 PrimaryOwnerContact = (string) (managementObject.Properties["PrimaryOwnerContact"]?.Value),
+		 PrimaryOwnerName = (string) (managementObject.Properties["PrimaryOwnerName"]?.Value),
 		 ResetCapability = (ushort) (managementObject.Properties["ResetCapability"]?.Value ?? default(ushort)),
 		 Roles = (string[]) (managementObject.Properties["Roles"]?.Value ?? new string[0]),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

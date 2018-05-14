@@ -54,8 +54,8 @@ namespace WindowsMonitor.Win32.NamedJobs
                 {
                      ActiveProcessLimit = (uint) (managementObject.Properties["ActiveProcessLimit"]?.Value ?? default(uint)),
 		 Affinity = (uint) (managementObject.Properties["Affinity"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 JobMemoryLimit = (uint) (managementObject.Properties["JobMemoryLimit"]?.Value ?? default(uint)),
 		 LimitFlags = (uint) (managementObject.Properties["LimitFlags"]?.Value ?? default(uint)),
 		 MaximumWorkingSetSize = (uint) (managementObject.Properties["MaximumWorkingSetSize"]?.Value ?? default(uint)),
@@ -65,7 +65,7 @@ namespace WindowsMonitor.Win32.NamedJobs
 		 PriorityClass = (uint) (managementObject.Properties["PriorityClass"]?.Value ?? default(uint)),
 		 ProcessMemoryLimit = (uint) (managementObject.Properties["ProcessMemoryLimit"]?.Value ?? default(uint)),
 		 SchedulingClass = (uint) (managementObject.Properties["SchedulingClass"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string))
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

@@ -52,18 +52,18 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PublishComponentAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value ?? default(string)),
-		 AppData = (string) (managementObject.Properties["AppData"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 ComponentID = (string) (managementObject.Properties["ComponentID"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+		 AppData = (string) (managementObject.Properties["AppData"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 ComponentID = (string) (managementObject.Properties["ComponentID"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Qual = (string) (managementObject.Properties["Qual"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Qual = (string) (managementObject.Properties["Qual"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

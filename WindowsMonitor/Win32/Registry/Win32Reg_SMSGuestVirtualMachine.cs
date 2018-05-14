@@ -43,9 +43,9 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Win32Reg_SMSGuestVirtualMachine
                 {
-                     InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value ?? default(string)),
-		 PhysicalHostName = (string) (managementObject.Properties["PhysicalHostName"]?.Value ?? default(string)),
-		 PhysicalHostNameFullyQualified = (string) (managementObject.Properties["PhysicalHostNameFullyQualified"]?.Value ?? default(string))
+                     InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value),
+		 PhysicalHostName = (string) (managementObject.Properties["PhysicalHostName"]?.Value),
+		 PhysicalHostNameFullyQualified = (string) (managementObject.Properties["PhysicalHostNameFullyQualified"]?.Value)
                 };
         }
     }

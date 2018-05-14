@@ -43,7 +43,7 @@ namespace WindowsMonitor.Msft
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetBootSystemDriversFailed
                 {
-                     DriverList = (string) (managementObject.Properties["DriverList"]?.Value ?? default(string)),
+                     DriverList = (string) (managementObject.Properties["DriverList"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };

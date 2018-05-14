@@ -51,17 +51,17 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new EnvironmentSpecification
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value),
 		 CheckMode = (bool) (managementObject.Properties["CheckMode"]?.Value ?? default(bool)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Environment = (string) (managementObject.Properties["Environment"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Environment = (string) (managementObject.Properties["Environment"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Value = (string) (managementObject.Properties["Value"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Value = (string) (managementObject.Properties["Value"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

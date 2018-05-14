@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ReplacementSet
                 {
-                     Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string))
+                     Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value)
                 };
         }
     }

@@ -82,8 +82,8 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Tcpip_ICMPv6
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -92,7 +92,7 @@ namespace WindowsMonitor.Performance.Raw
 		 MessagesReceivedErrors = (uint) (managementObject.Properties["MessagesReceivedErrors"]?.Value ?? default(uint)),
 		 MessagesReceivedPersec = (uint) (managementObject.Properties["MessagesReceivedPersec"]?.Value ?? default(uint)),
 		 MessagesSentPersec = (uint) (managementObject.Properties["MessagesSentPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ReceivedDestUnreachable = (uint) (managementObject.Properties["ReceivedDestUnreachable"]?.Value ?? default(uint)),
 		 ReceivedEchoPersec = (uint) (managementObject.Properties["ReceivedEchoPersec"]?.Value ?? default(uint)),
 		 ReceivedEchoReplyPersec = (uint) (managementObject.Properties["ReceivedEchoReplyPersec"]?.Value ?? default(uint)),

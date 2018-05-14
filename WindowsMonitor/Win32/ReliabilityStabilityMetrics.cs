@@ -46,7 +46,7 @@ namespace WindowsMonitor.Win32
                 yield return new ReliabilityStabilityMetrics
                 {
                      EndMeasurementDate = (DateTime) (managementObject.Properties["EndMeasurementDate"]?.Value ?? default(DateTime)),
-		 RelID = (string) (managementObject.Properties["RelID"]?.Value ?? default(string)),
+		 RelID = (string) (managementObject.Properties["RelID"]?.Value),
 		 StartMeasurementDate = (DateTime) (managementObject.Properties["StartMeasurementDate"]?.Value ?? default(DateTime)),
 		 SystemStabilityIndex = (double) (managementObject.Properties["SystemStabilityIndex"]?.Value ?? default(double)),
 		 TimeGenerated = (DateTime) (managementObject.Properties["TimeGenerated"]?.Value ?? default(DateTime))

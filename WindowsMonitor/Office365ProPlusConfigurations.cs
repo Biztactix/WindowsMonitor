@@ -59,32 +59,32 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Office365ProPlusConfigurations
                 {
-                    AutoUpgrade = (string) (managementObject.Properties["AutoUpgrade"]?.Value ?? default(string)),
-                    CcmManaged = (string) (managementObject.Properties["CCMManaged"]?.Value ?? default(string)),
-                    CdnBaseUrl = (string) (managementObject.Properties["CDNBaseUrl"]?.Value ?? default(string)),
+                    AutoUpgrade = (string) (managementObject.Properties["AutoUpgrade"]?.Value),
+                    CcmManaged = (string) (managementObject.Properties["CCMManaged"]?.Value),
+                    CdnBaseUrl = (string) (managementObject.Properties["CDNBaseUrl"]?.Value),
                     CfgUpdateChannel =
-                        (string) (managementObject.Properties["cfgUpdateChannel"]?.Value ?? default(string)),
-                    ClientCulture = (string) (managementObject.Properties["ClientCulture"]?.Value ?? default(string)),
-                    ClientFolder = (string) (managementObject.Properties["ClientFolder"]?.Value ?? default(string)),
-                    GpoChannel = (string) (managementObject.Properties["GPOChannel"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["cfgUpdateChannel"]?.Value),
+                    ClientCulture = (string) (managementObject.Properties["ClientCulture"]?.Value),
+                    ClientFolder = (string) (managementObject.Properties["ClientFolder"]?.Value),
+                    GpoChannel = (string) (managementObject.Properties["GPOChannel"]?.Value),
                     GpoOfficeMgmtCom =
-                        (string) (managementObject.Properties["GPOOfficeMgmtCOM"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["GPOOfficeMgmtCOM"]?.Value),
                     InstallationPath =
-                        (string) (managementObject.Properties["InstallationPath"]?.Value ?? default(string)),
-                    KeyName = (string) (managementObject.Properties["KeyName"]?.Value ?? default(string)),
-                    LastScenario = (string) (managementObject.Properties["LastScenario"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["InstallationPath"]?.Value),
+                    KeyName = (string) (managementObject.Properties["KeyName"]?.Value),
+                    LastScenario = (string) (managementObject.Properties["LastScenario"]?.Value),
                     LastScenarioResult =
-                        (string) (managementObject.Properties["LastScenarioResult"]?.Value ?? default(string)),
-                    OfficeMgmtCom = (string) (managementObject.Properties["OfficeMgmtCOM"]?.Value ?? default(string)),
-                    Platform = (string) (managementObject.Properties["Platform"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["LastScenarioResult"]?.Value),
+                    OfficeMgmtCom = (string) (managementObject.Properties["OfficeMgmtCOM"]?.Value),
+                    Platform = (string) (managementObject.Properties["Platform"]?.Value),
                     SharedComputerLicensing =
-                        (string) (managementObject.Properties["SharedComputerLicensing"]?.Value ?? default(string)),
-                    UpdateChannel = (string) (managementObject.Properties["UpdateChannel"]?.Value ?? default(string)),
-                    UpdatePath = (string) (managementObject.Properties["UpdatePath"]?.Value ?? default(string)),
-                    UpdatesEnabled = (string) (managementObject.Properties["UpdatesEnabled"]?.Value ?? default(string)),
-                    UpdateUrl = (string) (managementObject.Properties["UpdateUrl"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["SharedComputerLicensing"]?.Value),
+                    UpdateChannel = (string) (managementObject.Properties["UpdateChannel"]?.Value),
+                    UpdatePath = (string) (managementObject.Properties["UpdatePath"]?.Value),
+                    UpdatesEnabled = (string) (managementObject.Properties["UpdatesEnabled"]?.Value),
+                    UpdateUrl = (string) (managementObject.Properties["UpdateUrl"]?.Value),
                     VersionToReport =
-                        (string) (managementObject.Properties["VersionToReport"]?.Value ?? default(string))
+                        (string) (managementObject.Properties["VersionToReport"]?.Value)
                 };
         }
     }

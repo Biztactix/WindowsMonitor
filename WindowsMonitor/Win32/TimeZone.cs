@@ -65,7 +65,7 @@ namespace WindowsMonitor.Win32
                 yield return new TimeZone
                 {
                      Bias = (int) (managementObject.Properties["Bias"]?.Value ?? default(int)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DaylightBias = (int) (managementObject.Properties["DaylightBias"]?.Value ?? default(int)),
 		 DaylightDay = (uint) (managementObject.Properties["DaylightDay"]?.Value ?? default(uint)),
 		 DaylightDayOfWeek = (byte) (managementObject.Properties["DaylightDayOfWeek"]?.Value ?? default(byte)),
@@ -73,11 +73,11 @@ namespace WindowsMonitor.Win32
 		 DaylightMillisecond = (uint) (managementObject.Properties["DaylightMillisecond"]?.Value ?? default(uint)),
 		 DaylightMinute = (uint) (managementObject.Properties["DaylightMinute"]?.Value ?? default(uint)),
 		 DaylightMonth = (uint) (managementObject.Properties["DaylightMonth"]?.Value ?? default(uint)),
-		 DaylightName = (string) (managementObject.Properties["DaylightName"]?.Value ?? default(string)),
+		 DaylightName = (string) (managementObject.Properties["DaylightName"]?.Value),
 		 DaylightSecond = (uint) (managementObject.Properties["DaylightSecond"]?.Value ?? default(uint)),
 		 DaylightYear = (uint) (managementObject.Properties["DaylightYear"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
 		 StandardBias = (uint) (managementObject.Properties["StandardBias"]?.Value ?? default(uint)),
 		 StandardDay = (uint) (managementObject.Properties["StandardDay"]?.Value ?? default(uint)),
 		 StandardDayOfWeek = (byte) (managementObject.Properties["StandardDayOfWeek"]?.Value ?? default(byte)),
@@ -85,7 +85,7 @@ namespace WindowsMonitor.Win32
 		 StandardMillisecond = (uint) (managementObject.Properties["StandardMillisecond"]?.Value ?? default(uint)),
 		 StandardMinute = (uint) (managementObject.Properties["StandardMinute"]?.Value ?? default(uint)),
 		 StandardMonth = (uint) (managementObject.Properties["StandardMonth"]?.Value ?? default(uint)),
-		 StandardName = (string) (managementObject.Properties["StandardName"]?.Value ?? default(string)),
+		 StandardName = (string) (managementObject.Properties["StandardName"]?.Value),
 		 StandardSecond = (uint) (managementObject.Properties["StandardSecond"]?.Value ?? default(uint)),
 		 StandardYear = (uint) (managementObject.Properties["StandardYear"]?.Value ?? default(uint))
                 };

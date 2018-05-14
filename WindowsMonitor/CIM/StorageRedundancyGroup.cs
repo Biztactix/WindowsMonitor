@@ -48,13 +48,13 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new StorageRedundancyGroup
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RedundancyStatus = (ushort) (managementObject.Properties["RedundancyStatus"]?.Value ?? default(ushort)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 TypeOfAlgorithm = (ushort) (managementObject.Properties["TypeOfAlgorithm"]?.Value ?? default(ushort))
                 };
         }

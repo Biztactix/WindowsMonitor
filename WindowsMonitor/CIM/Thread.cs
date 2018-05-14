@@ -57,22 +57,22 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Thread
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value ?? default(string)),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ExecutionState = (ushort) (managementObject.Properties["ExecutionState"]?.Value ?? default(ushort)),
-		 Handle = (string) (managementObject.Properties["Handle"]?.Value ?? default(string)),
+		 Handle = (string) (managementObject.Properties["Handle"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 KernelModeTime = (ulong) (managementObject.Properties["KernelModeTime"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 OSCreationClassName = (string) (managementObject.Properties["OSCreationClassName"]?.Value ?? default(string)),
-		 OSName = (string) (managementObject.Properties["OSName"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 OSCreationClassName = (string) (managementObject.Properties["OSCreationClassName"]?.Value),
+		 OSName = (string) (managementObject.Properties["OSName"]?.Value),
 		 Priority = (uint) (managementObject.Properties["Priority"]?.Value ?? default(uint)),
-		 ProcessCreationClassName = (string) (managementObject.Properties["ProcessCreationClassName"]?.Value ?? default(string)),
-		 ProcessHandle = (string) (managementObject.Properties["ProcessHandle"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 ProcessCreationClassName = (string) (managementObject.Properties["ProcessCreationClassName"]?.Value),
+		 ProcessHandle = (string) (managementObject.Properties["ProcessHandle"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 UserModeTime = (ulong) (managementObject.Properties["UserModeTime"]?.Value ?? default(ulong))
                 };
         }

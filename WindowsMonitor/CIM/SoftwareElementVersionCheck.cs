@@ -54,20 +54,20 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SoftwareElementVersionCheck
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value),
 		 CheckMode = (bool) (managementObject.Properties["CheckMode"]?.Value ?? default(bool)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 LowerSoftwareElementVersion = (string) (managementObject.Properties["LowerSoftwareElementVersion"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
-		 SoftwareElementName = (string) (managementObject.Properties["SoftwareElementName"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 LowerSoftwareElementVersion = (string) (managementObject.Properties["LowerSoftwareElementVersion"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
+		 SoftwareElementName = (string) (managementObject.Properties["SoftwareElementName"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 SoftwareElementStateDesired = (ushort) (managementObject.Properties["SoftwareElementStateDesired"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
 		 TargetOperatingSystemDesired = (ushort) (managementObject.Properties["TargetOperatingSystemDesired"]?.Value ?? default(ushort)),
-		 UpperSoftwareElementVersion = (string) (managementObject.Properties["UpperSoftwareElementVersion"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 UpperSoftwareElementVersion = (string) (managementObject.Properties["UpperSoftwareElementVersion"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

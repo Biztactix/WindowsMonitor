@@ -55,21 +55,21 @@ namespace WindowsMonitor.MSFT.WmiProviders
                 yield return new ExecMethodAsyncEventPost
                 {
                      Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
-		 HostingGroup = (string) (managementObject.Properties["HostingGroup"]?.Value ?? default(string)),
+		 HostingGroup = (string) (managementObject.Properties["HostingGroup"]?.Value),
 		 HostingSpecification = (uint) (managementObject.Properties["HostingSpecification"]?.Value ?? default(uint)),
 		 InputParameters = (dynamic) (managementObject.Properties["InputParameters"]?.Value ?? default(dynamic)),
-		 Locale = (string) (managementObject.Properties["Locale"]?.Value ?? default(string)),
-		 MethodName = (string) (managementObject.Properties["MethodName"]?.Value ?? default(string)),
-		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value ?? default(string)),
+		 Locale = (string) (managementObject.Properties["Locale"]?.Value),
+		 MethodName = (string) (managementObject.Properties["MethodName"]?.Value),
+		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
 		 ObjectParameter = (dynamic) (managementObject.Properties["ObjectParameter"]?.Value ?? default(dynamic)),
-		 ObjectPath = (string) (managementObject.Properties["ObjectPath"]?.Value ?? default(string)),
-		 Provider = (string) (managementObject.Properties["provider"]?.Value ?? default(string)),
+		 ObjectPath = (string) (managementObject.Properties["ObjectPath"]?.Value),
+		 Provider = (string) (managementObject.Properties["provider"]?.Value),
 		 ResultCode = (uint) (managementObject.Properties["ResultCode"]?.Value ?? default(uint)),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 StringParameter = (string) (managementObject.Properties["StringParameter"]?.Value ?? default(string)),
+		 StringParameter = (string) (managementObject.Properties["StringParameter"]?.Value),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
-		 TransactionIdentifer = (string) (managementObject.Properties["TransactionIdentifer"]?.Value ?? default(string)),
-		 User = (string) (managementObject.Properties["User"]?.Value ?? default(string))
+		 TransactionIdentifer = (string) (managementObject.Properties["TransactionIdentifer"]?.Value),
+		 User = (string) (managementObject.Properties["User"]?.Value)
                 };
         }
     }

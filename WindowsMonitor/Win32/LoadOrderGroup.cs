@@ -47,13 +47,13 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new LoadOrderGroup
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DriverEnabled = (bool) (managementObject.Properties["DriverEnabled"]?.Value ?? default(bool)),
 		 GroupOrder = (uint) (managementObject.Properties["GroupOrder"]?.Value ?? default(uint)),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

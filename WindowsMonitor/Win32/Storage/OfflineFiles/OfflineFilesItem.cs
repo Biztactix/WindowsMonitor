@@ -57,10 +57,10 @@ namespace WindowsMonitor.Win32
 		 DirtyInfo = (dynamic) (managementObject.Properties["DirtyInfo"]?.Value ?? default(dynamic)),
 		 Encrypted = (bool) (managementObject.Properties["Encrypted"]?.Value ?? default(bool)),
 		 FileSysInfo = (dynamic) (managementObject.Properties["FileSysInfo"]?.Value ?? default(dynamic)),
-		 ItemName = (string) (managementObject.Properties["ItemName"]?.Value ?? default(string)),
-		 ItemPath = (string) (managementObject.Properties["ItemPath"]?.Value ?? default(string)),
+		 ItemName = (string) (managementObject.Properties["ItemName"]?.Value),
+		 ItemPath = (string) (managementObject.Properties["ItemPath"]?.Value),
 		 ItemType = (uint) (managementObject.Properties["ItemType"]?.Value ?? default(uint)),
-		 ParentItemPath = (string) (managementObject.Properties["ParentItemPath"]?.Value ?? default(string)),
+		 ParentItemPath = (string) (managementObject.Properties["ParentItemPath"]?.Value),
 		 PinInfo = (dynamic) (managementObject.Properties["PinInfo"]?.Value ?? default(dynamic)),
 		 Sparse = (bool) (managementObject.Properties["Sparse"]?.Value ?? default(bool)),
 		 SuspendInfo = (dynamic) (managementObject.Properties["SuspendInfo"]?.Value ?? default(dynamic))

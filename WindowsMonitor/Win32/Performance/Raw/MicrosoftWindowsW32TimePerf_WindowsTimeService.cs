@@ -55,14 +55,14 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new MicrosoftWindowsW32TimePerf_WindowsTimeService
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ClockFrequencyAdjustment = (uint) (managementObject.Properties["ClockFrequencyAdjustment"]?.Value ?? default(uint)),
 		 ComputedTimeOffset = (ulong) (managementObject.Properties["ComputedTimeOffset"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NTPClientTimeSourceCount = (uint) (managementObject.Properties["NTPClientTimeSourceCount"]?.Value ?? default(uint)),
 		 NTPRoundtripDelay = (uint) (managementObject.Properties["NTPRoundtripDelay"]?.Value ?? default(uint)),
 		 NTPServerIncomingRequests = (ulong) (managementObject.Properties["NTPServerIncomingRequests"]?.Value ?? default(ulong)),

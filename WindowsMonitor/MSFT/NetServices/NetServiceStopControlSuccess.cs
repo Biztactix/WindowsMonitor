@@ -46,13 +46,13 @@ namespace WindowsMonitor.MSFT.NetServices
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetServiceStopControlSuccess
                 {
-                     Comment = (string) (managementObject.Properties["Comment"]?.Value ?? default(string)),
-		 Control = (string) (managementObject.Properties["Control"]?.Value ?? default(string)),
-		 Reason = (string) (managementObject.Properties["Reason"]?.Value ?? default(string)),
-		 ReasonText = (string) (managementObject.Properties["ReasonText"]?.Value ?? default(string)),
+                     Comment = (string) (managementObject.Properties["Comment"]?.Value),
+		 Control = (string) (managementObject.Properties["Control"]?.Value),
+		 Reason = (string) (managementObject.Properties["Reason"]?.Value),
+		 ReasonText = (string) (managementObject.Properties["ReasonText"]?.Value),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
-		 Sid = (string) (managementObject.Properties["sid"]?.Value ?? default(string)),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
+		 Sid = (string) (managementObject.Properties["sid"]?.Value),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }

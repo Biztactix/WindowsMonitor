@@ -50,16 +50,16 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ApplicationSystem
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 NameFormat = (string) (managementObject.Properties["NameFormat"]?.Value ?? default(string)),
-		 PrimaryOwnerContact = (string) (managementObject.Properties["PrimaryOwnerContact"]?.Value ?? default(string)),
-		 PrimaryOwnerName = (string) (managementObject.Properties["PrimaryOwnerName"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 NameFormat = (string) (managementObject.Properties["NameFormat"]?.Value),
+		 PrimaryOwnerContact = (string) (managementObject.Properties["PrimaryOwnerContact"]?.Value),
+		 PrimaryOwnerName = (string) (managementObject.Properties["PrimaryOwnerName"]?.Value),
 		 Roles = (string[]) (managementObject.Properties["Roles"]?.Value ?? new string[0]),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

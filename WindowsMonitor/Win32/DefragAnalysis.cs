@@ -92,7 +92,7 @@ namespace WindowsMonitor.Win32
 		 TotalPercentFragmentation = (uint) (managementObject.Properties["TotalPercentFragmentation"]?.Value ?? default(uint)),
 		 TotalUnmovableFiles = (ulong) (managementObject.Properties["TotalUnmovableFiles"]?.Value ?? default(ulong)),
 		 UsedSpace = (ulong) (managementObject.Properties["UsedSpace"]?.Value ?? default(ulong)),
-		 VolumeName = (string) (managementObject.Properties["VolumeName"]?.Value ?? default(string)),
+		 VolumeName = (string) (managementObject.Properties["VolumeName"]?.Value),
 		 VolumeSize = (ulong) (managementObject.Properties["VolumeSize"]?.Value ?? default(ulong))
                 };
         }

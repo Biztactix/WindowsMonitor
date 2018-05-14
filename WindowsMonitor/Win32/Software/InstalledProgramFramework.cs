@@ -46,12 +46,12 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new InstalledProgramFramework
                 {
-                     FrameworkName = (string) (managementObject.Properties["FrameworkName"]?.Value ?? default(string)),
-		 FrameworkPublisher = (string) (managementObject.Properties["FrameworkPublisher"]?.Value ?? default(string)),
-		 FrameworkVersion = (string) (managementObject.Properties["FrameworkVersion"]?.Value ?? default(string)),
-		 FrameworkVersionActual = (string) (managementObject.Properties["FrameworkVersionActual"]?.Value ?? default(string)),
+                     FrameworkName = (string) (managementObject.Properties["FrameworkName"]?.Value),
+		 FrameworkPublisher = (string) (managementObject.Properties["FrameworkPublisher"]?.Value),
+		 FrameworkVersion = (string) (managementObject.Properties["FrameworkVersion"]?.Value),
+		 FrameworkVersionActual = (string) (managementObject.Properties["FrameworkVersionActual"]?.Value),
 		 IsPrivate = (bool) (managementObject.Properties["IsPrivate"]?.Value ?? default(bool)),
-		 ProgramId = (string) (managementObject.Properties["ProgramId"]?.Value ?? default(string))
+		 ProgramId = (string) (managementObject.Properties["ProgramId"]?.Value)
                 };
         }
     }

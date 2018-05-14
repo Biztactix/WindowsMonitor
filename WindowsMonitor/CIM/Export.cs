@@ -44,7 +44,7 @@ namespace WindowsMonitor.CIM
                 yield return new Export
                 {
                      Directory = (short) (managementObject.Properties["Directory"]?.Value ?? default(short)),
-		 ExportedDirectoryName = (string) (managementObject.Properties["ExportedDirectoryName"]?.Value ?? default(string)),
+		 ExportedDirectoryName = (string) (managementObject.Properties["ExportedDirectoryName"]?.Value),
 		 LocalFS = (short) (managementObject.Properties["LocalFS"]?.Value ?? default(short))
                 };
         }

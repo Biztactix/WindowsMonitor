@@ -45,9 +45,9 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new OfflineFilesHealth
                 {
-                     LastSuccessfulSyncTime = (string) (managementObject.Properties["LastSuccessfulSyncTime"]?.Value ?? default(string)),
+                     LastSuccessfulSyncTime = (string) (managementObject.Properties["LastSuccessfulSyncTime"]?.Value),
 		 LastSyncStatus = (byte) (managementObject.Properties["LastSyncStatus"]?.Value ?? default(byte)),
-		 LastSyncTime = (string) (managementObject.Properties["LastSyncTime"]?.Value ?? default(string)),
+		 LastSyncTime = (string) (managementObject.Properties["LastSyncTime"]?.Value),
 		 OfflineAccessEnabled = (bool) (managementObject.Properties["OfflineAccessEnabled"]?.Value ?? default(bool)),
 		 OnlineMode = (bool) (managementObject.Properties["OnlineMode"]?.Value ?? default(bool))
                 };

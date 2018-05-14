@@ -49,7 +49,7 @@ namespace WindowsMonitor.Msft
                      ProcessId = (uint) (managementObject.Properties["ProcessId"]?.Value ?? default(uint)),
 		 PropertyNames = (string[]) (managementObject.Properties["PropertyNames"]?.Value ?? new string[0]),
 		 PropertyValues = (string[]) (managementObject.Properties["PropertyValues"]?.Value ?? new string[0]),
-		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value ?? default(string)),
+		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };

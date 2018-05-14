@@ -57,8 +57,8 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new SQLAgentSQLEXPRESS_SQLAgentSQLEXPRESSJobs
                 {
                      Activejobs = (ulong) (managementObject.Properties["Activejobs"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Failedjobs = (ulong) (managementObject.Properties["Failedjobs"]?.Value ?? default(ulong)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
@@ -66,7 +66,7 @@ namespace WindowsMonitor.Performance.Raw
 		 JobsactivatedPerminute = (ulong) (managementObject.Properties["JobsactivatedPerminute"]?.Value ?? default(ulong)),
 		 Jobsuccessrate = (ulong) (managementObject.Properties["Jobsuccessrate"]?.Value ?? default(ulong)),
 		 Jobsuccessrate_Base = (ulong) (managementObject.Properties["Jobsuccessrate_Base"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Queuedjobs = (ulong) (managementObject.Properties["Queuedjobs"]?.Value ?? default(ulong)),
 		 Successfuljobs = (ulong) (managementObject.Properties["Successfuljobs"]?.Value ?? default(ulong)),
 		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),

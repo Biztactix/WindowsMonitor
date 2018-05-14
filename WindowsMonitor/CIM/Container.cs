@@ -44,7 +44,7 @@ namespace WindowsMonitor.CIM
                 yield return new Container
                 {
                      GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value ?? default(string)),
+		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value),
 		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
                 };
         }

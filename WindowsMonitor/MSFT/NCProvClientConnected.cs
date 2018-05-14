@@ -47,8 +47,8 @@ namespace WindowsMonitor.Msft
                 yield return new NCProvClientConnected
                 {
                      Inproc = (bool) (managementObject.Properties["Inproc"]?.Value ?? default(bool)),
-		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value ?? default(string)),
-		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value ?? default(string)),
+		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
+		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
 		 Result = (uint) (managementObject.Properties["Result"]?.Value ?? default(uint)),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))

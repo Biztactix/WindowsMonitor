@@ -56,21 +56,21 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ShadowContext
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ClientAccessible = (bool) (managementObject.Properties["ClientAccessible"]?.Value ?? default(bool)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Differential = (bool) (managementObject.Properties["Differential"]?.Value ?? default(bool)),
 		 ExposedLocally = (bool) (managementObject.Properties["ExposedLocally"]?.Value ?? default(bool)),
 		 ExposedRemotely = (bool) (managementObject.Properties["ExposedRemotely"]?.Value ?? default(bool)),
 		 HardwareAssisted = (bool) (managementObject.Properties["HardwareAssisted"]?.Value ?? default(bool)),
 		 Imported = (bool) (managementObject.Properties["Imported"]?.Value ?? default(bool)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NoAutoRelease = (bool) (managementObject.Properties["NoAutoRelease"]?.Value ?? default(bool)),
 		 NotSurfaced = (bool) (managementObject.Properties["NotSurfaced"]?.Value ?? default(bool)),
 		 NoWriters = (bool) (managementObject.Properties["NoWriters"]?.Value ?? default(bool)),
 		 Persistent = (bool) (managementObject.Properties["Persistent"]?.Value ?? default(bool)),
 		 Plex = (bool) (managementObject.Properties["Plex"]?.Value ?? default(bool)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
 		 Transportable = (bool) (managementObject.Properties["Transportable"]?.Value ?? default(bool))
                 };
         }

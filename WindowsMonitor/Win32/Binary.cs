@@ -46,12 +46,12 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Binary
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Data = (string) (managementObject.Properties["Data"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string))
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Data = (string) (managementObject.Properties["Data"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

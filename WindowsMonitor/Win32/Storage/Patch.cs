@@ -49,13 +49,13 @@ namespace WindowsMonitor.Win32
                 yield return new Patch
                 {
                      Attributes = (ushort) (managementObject.Properties["Attributes"]?.Value ?? default(ushort)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 File = (string) (managementObject.Properties["File"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 File = (string) (managementObject.Properties["File"]?.Value),
 		 PatchSize = (uint) (managementObject.Properties["PatchSize"]?.Value ?? default(uint)),
-		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value ?? default(string)),
+		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value),
 		 Sequence = (short) (managementObject.Properties["Sequence"]?.Value ?? default(short)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string))
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

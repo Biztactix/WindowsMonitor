@@ -71,8 +71,8 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Counters_TeredoRelay
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -87,7 +87,7 @@ namespace WindowsMonitor.Performance.Raw
 		 InTeredoRelaySuccessPacketsTotal = (ulong) (managementObject.Properties["InTeredoRelaySuccessPacketsTotal"]?.Value ?? default(ulong)),
 		 InTeredoRelayTotalPacketsSuccessError = (uint) (managementObject.Properties["InTeredoRelayTotalPacketsSuccessError"]?.Value ?? default(uint)),
 		 InTeredoRelayTotalPacketsSuccessErrorPersec = (uint) (managementObject.Properties["InTeredoRelayTotalPacketsSuccessErrorPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OutTeredoRelayErrorPackets = (uint) (managementObject.Properties["OutTeredoRelayErrorPackets"]?.Value ?? default(uint)),
 		 OutTeredoRelayErrorPacketsDestinationError = (uint) (managementObject.Properties["OutTeredoRelayErrorPacketsDestinationError"]?.Value ?? default(uint)),
 		 OutTeredoRelayErrorPacketsHeaderError = (uint) (managementObject.Properties["OutTeredoRelayErrorPacketsHeaderError"]?.Value ?? default(uint)),

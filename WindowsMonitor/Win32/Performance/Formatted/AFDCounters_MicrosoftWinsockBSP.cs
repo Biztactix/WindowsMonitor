@@ -51,14 +51,14 @@ namespace WindowsMonitor.Win32.Performance.Formatted
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AfdCountersMicrosoftWinsockBsp
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DroppedDatagrams = (uint) (managementObject.Properties["DroppedDatagrams"]?.Value ?? default(uint)),
 		 DroppedDatagramsPersec = (uint) (managementObject.Properties["DroppedDatagramsPersec"]?.Value ?? default(uint)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RejectedConnections = (uint) (managementObject.Properties["RejectedConnections"]?.Value ?? default(uint)),
 		 RejectedConnectionsPersec = (uint) (managementObject.Properties["RejectedConnectionsPersec"]?.Value ?? default(uint)),
 		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),

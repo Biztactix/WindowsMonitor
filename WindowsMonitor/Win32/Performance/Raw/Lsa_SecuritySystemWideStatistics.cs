@@ -70,8 +70,8 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new Lsa_SecuritySystemWideStatistics
                 {
                      ActiveSchannelSessionCacheEntries = (uint) (managementObject.Properties["ActiveSchannelSessionCacheEntries"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DigestAuthentications = (uint) (managementObject.Properties["DigestAuthentications"]?.Value ?? default(uint)),
 		 ForwardedKerberosRequests = (uint) (managementObject.Properties["ForwardedKerberosRequests"]?.Value ?? default(uint)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
@@ -88,7 +88,7 @@ namespace WindowsMonitor.Performance.Raw
 		 KDCresourcetypeconstraineddelegationTGSRequests = (uint) (managementObject.Properties["KDCresourcetypeconstraineddelegationTGSRequests"]?.Value ?? default(uint)),
 		 KDCTGSRequests = (uint) (managementObject.Properties["KDCTGSRequests"]?.Value ?? default(uint)),
 		 KerberosAuthentications = (uint) (managementObject.Properties["KerberosAuthentications"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NTLMAuthentications = (uint) (managementObject.Properties["NTLMAuthentications"]?.Value ?? default(uint)),
 		 SchannelSessionCacheEntries = (uint) (managementObject.Properties["SchannelSessionCacheEntries"]?.Value ?? default(uint)),
 		 SSLClientSideFullHandshakes = (uint) (managementObject.Properties["SSLClientSideFullHandshakes"]?.Value ?? default(uint)),

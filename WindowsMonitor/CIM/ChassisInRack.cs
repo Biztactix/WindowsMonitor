@@ -46,7 +46,7 @@ namespace WindowsMonitor.CIM
                 {
                      BottomU = (ushort) (managementObject.Properties["BottomU"]?.Value ?? default(ushort)),
 		 GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value ?? default(string)),
+		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value),
 		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
                 };
         }

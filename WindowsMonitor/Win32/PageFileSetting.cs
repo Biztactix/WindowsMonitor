@@ -46,12 +46,12 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PageFileSetting
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InitialSize = (uint) (managementObject.Properties["InitialSize"]?.Value ?? default(uint)),
 		 MaximumSize = (uint) (managementObject.Properties["MaximumSize"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string))
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

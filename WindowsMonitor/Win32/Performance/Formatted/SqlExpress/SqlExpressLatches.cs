@@ -54,13 +54,13 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlExpress
                 yield return new SqlExpressLatches
                 {
                      AverageLatchWaitTimems = (ulong) (managementObject.Properties["AverageLatchWaitTimems"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 LatchWaitsPersec = (ulong) (managementObject.Properties["LatchWaitsPersec"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberofSuperLatches = (ulong) (managementObject.Properties["NumberofSuperLatches"]?.Value ?? default(ulong)),
 		 SuperLatchDemotionsPersec = (ulong) (managementObject.Properties["SuperLatchDemotionsPersec"]?.Value ?? default(ulong)),
 		 SuperLatchPromotionsPersec = (ulong) (managementObject.Properties["SuperLatchPromotionsPersec"]?.Value ?? default(ulong)),

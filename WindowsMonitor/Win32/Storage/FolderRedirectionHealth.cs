@@ -52,7 +52,7 @@ namespace WindowsMonitor.Win32
 		 LastSyncStatus = (byte) (managementObject.Properties["LastSyncStatus"]?.Value ?? default(byte)),
 		 LastSyncTime = (DateTime) (managementObject.Properties["LastSyncTime"]?.Value ?? default(DateTime)),
 		 OfflineAccessEnabled = (bool) (managementObject.Properties["OfflineAccessEnabled"]?.Value ?? default(bool)),
-		 OfflineFileNameFolderGUID = (string) (managementObject.Properties["OfflineFileNameFolderGUID"]?.Value ?? default(string)),
+		 OfflineFileNameFolderGUID = (string) (managementObject.Properties["OfflineFileNameFolderGUID"]?.Value),
 		 Redirected = (bool) (managementObject.Properties["Redirected"]?.Value ?? default(bool))
                 };
         }

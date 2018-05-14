@@ -42,8 +42,8 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new RegistryTreeChangeEvent
                 {
-                    Hive = (string) (managementObject.Properties["Hive"]?.Value ?? default(string)),
-                    RootPath = (string) (managementObject.Properties["RootPath"]?.Value ?? default(string)),
+                    Hive = (string) (managementObject.Properties["Hive"]?.Value),
+                    RootPath = (string) (managementObject.Properties["RootPath"]?.Value),
                     SecurityDescriptor =
                         (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
                     TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))

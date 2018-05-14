@@ -62,9 +62,9 @@ namespace WindowsMonitor.Win32.Network
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetworkProtocol
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConnectionlessService = (bool) (managementObject.Properties["ConnectionlessService"]?.Value ?? default(bool)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 GuaranteesDelivery = (bool) (managementObject.Properties["GuaranteesDelivery"]?.Value ?? default(bool)),
 		 GuaranteesSequencing = (bool) (managementObject.Properties["GuaranteesSequencing"]?.Value ?? default(bool)),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
@@ -72,9 +72,9 @@ namespace WindowsMonitor.Win32.Network
 		 MaximumMessageSize = (uint) (managementObject.Properties["MaximumMessageSize"]?.Value ?? default(uint)),
 		 MessageOriented = (bool) (managementObject.Properties["MessageOriented"]?.Value ?? default(bool)),
 		 MinimumAddressSize = (uint) (managementObject.Properties["MinimumAddressSize"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PseudoStreamOriented = (bool) (managementObject.Properties["PseudoStreamOriented"]?.Value ?? default(bool)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 SupportsBroadcasting = (bool) (managementObject.Properties["SupportsBroadcasting"]?.Value ?? default(bool)),
 		 SupportsConnectData = (bool) (managementObject.Properties["SupportsConnectData"]?.Value ?? default(bool)),
 		 SupportsDisconnectData = (bool) (managementObject.Properties["SupportsDisconnectData"]?.Value ?? default(bool)),

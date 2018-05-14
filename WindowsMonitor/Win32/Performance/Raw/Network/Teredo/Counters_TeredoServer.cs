@@ -63,8 +63,8 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Counters_TeredoServer
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -80,7 +80,7 @@ namespace WindowsMonitor.Performance.Raw
 		 InTeredoServerSuccessPacketsTotal = (uint) (managementObject.Properties["InTeredoServerSuccessPacketsTotal"]?.Value ?? default(uint)),
 		 InTeredoServerTotalPacketsSuccessError = (uint) (managementObject.Properties["InTeredoServerTotalPacketsSuccessError"]?.Value ?? default(uint)),
 		 InTeredoServerTotalPacketsSuccessErrorPersec = (uint) (managementObject.Properties["InTeredoServerTotalPacketsSuccessErrorPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OutTeredoServerRAPrimary = (uint) (managementObject.Properties["OutTeredoServerRAPrimary"]?.Value ?? default(uint)),
 		 OutTeredoServerRASecondary = (uint) (managementObject.Properties["OutTeredoServerRASecondary"]?.Value ?? default(uint)),
 		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),

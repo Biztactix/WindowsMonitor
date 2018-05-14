@@ -54,20 +54,20 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SettingCheck
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value),
 		 CheckMode = (bool) (managementObject.Properties["CheckMode"]?.Value ?? default(bool)),
 		 CheckType = (ushort) (managementObject.Properties["CheckType"]?.Value ?? default(ushort)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 EntryName = (string) (managementObject.Properties["EntryName"]?.Value ?? default(string)),
-		 EntryValue = (string) (managementObject.Properties["EntryValue"]?.Value ?? default(string)),
-		 FileName = (string) (managementObject.Properties["FileName"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SectionKey = (string) (managementObject.Properties["SectionKey"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 EntryName = (string) (managementObject.Properties["EntryName"]?.Value),
+		 EntryValue = (string) (managementObject.Properties["EntryValue"]?.Value),
+		 FileName = (string) (managementObject.Properties["FileName"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SectionKey = (string) (managementObject.Properties["SectionKey"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

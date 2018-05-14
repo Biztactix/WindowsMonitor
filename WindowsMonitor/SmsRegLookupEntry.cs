@@ -44,12 +44,12 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SmsRegLookupEntry
                 {
-                    LookupEntryKey = (string) (managementObject.Properties["LookupEntryKey"]?.Value ?? default(string)),
-                    Match = (string) (managementObject.Properties["Match"]?.Value ?? default(string)),
-                    PropertyName = (string) (managementObject.Properties["PropertyName"]?.Value ?? default(string)),
-                    RegKey = (string) (managementObject.Properties["RegKey"]?.Value ?? default(string)),
-                    RegRoot = (string) (managementObject.Properties["RegRoot"]?.Value ?? default(string)),
-                    RegValue = (string) (managementObject.Properties["RegValue"]?.Value ?? default(string))
+                    LookupEntryKey = (string) (managementObject.Properties["LookupEntryKey"]?.Value),
+                    Match = (string) (managementObject.Properties["Match"]?.Value),
+                    PropertyName = (string) (managementObject.Properties["PropertyName"]?.Value),
+                    RegKey = (string) (managementObject.Properties["RegKey"]?.Value),
+                    RegRoot = (string) (managementObject.Properties["RegRoot"]?.Value),
+                    RegValue = (string) (managementObject.Properties["RegValue"]?.Value)
                 };
         }
     }

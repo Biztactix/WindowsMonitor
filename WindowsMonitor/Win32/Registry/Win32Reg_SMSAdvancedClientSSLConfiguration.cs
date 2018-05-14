@@ -47,12 +47,12 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Win32Reg_SMSAdvancedClientSSLConfiguration
                 {
-                     CertificateSelectionCriteria = (string) (managementObject.Properties["CertificateSelectionCriteria"]?.Value ?? default(string)),
-		 CertificateStore = (string) (managementObject.Properties["CertificateStore"]?.Value ?? default(string)),
+                     CertificateSelectionCriteria = (string) (managementObject.Properties["CertificateSelectionCriteria"]?.Value),
+		 CertificateStore = (string) (managementObject.Properties["CertificateStore"]?.Value),
 		 ClientAlwaysOnInternet = (uint) (managementObject.Properties["ClientAlwaysOnInternet"]?.Value ?? default(uint)),
 		 HttpsStateFlags = (uint) (managementObject.Properties["HttpsStateFlags"]?.Value ?? default(uint)),
-		 InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value ?? default(string)),
-		 InternetMPHostName = (string) (managementObject.Properties["InternetMPHostName"]?.Value ?? default(string)),
+		 InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value),
+		 InternetMPHostName = (string) (managementObject.Properties["InternetMPHostName"]?.Value),
 		 SelectFirstCertificate = (uint) (managementObject.Properties["SelectFirstCertificate"]?.Value ?? default(uint))
                 };
         }

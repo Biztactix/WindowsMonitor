@@ -53,21 +53,21 @@ namespace WindowsMonitor.MSFT.WmiProviders
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ComServerLoadOperationEvent
                 {
-                     Clsid = (string) (managementObject.Properties["Clsid"]?.Value ?? default(string)),
-		 HostingGroup = (string) (managementObject.Properties["HostingGroup"]?.Value ?? default(string)),
+                     Clsid = (string) (managementObject.Properties["Clsid"]?.Value),
+		 HostingGroup = (string) (managementObject.Properties["HostingGroup"]?.Value),
 		 HostingSpecification = (uint) (managementObject.Properties["HostingSpecification"]?.Value ?? default(uint)),
 		 InProcServer = (bool) (managementObject.Properties["InProcServer"]?.Value ?? default(bool)),
-		 InProcServerPath = (string) (managementObject.Properties["InProcServerPath"]?.Value ?? default(string)),
-		 Locale = (string) (managementObject.Properties["Locale"]?.Value ?? default(string)),
+		 InProcServerPath = (string) (managementObject.Properties["InProcServerPath"]?.Value),
+		 Locale = (string) (managementObject.Properties["Locale"]?.Value),
 		 LocalServer = (bool) (managementObject.Properties["LocalServer"]?.Value ?? default(bool)),
-		 LocalServerPath = (string) (managementObject.Properties["LocalServerPath"]?.Value ?? default(string)),
-		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value ?? default(string)),
-		 Provider = (string) (managementObject.Properties["provider"]?.Value ?? default(string)),
+		 LocalServerPath = (string) (managementObject.Properties["LocalServerPath"]?.Value),
+		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
+		 Provider = (string) (managementObject.Properties["provider"]?.Value),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 ServerName = (string) (managementObject.Properties["ServerName"]?.Value ?? default(string)),
+		 ServerName = (string) (managementObject.Properties["ServerName"]?.Value),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
-		 TransactionIdentifer = (string) (managementObject.Properties["TransactionIdentifer"]?.Value ?? default(string)),
-		 User = (string) (managementObject.Properties["User"]?.Value ?? default(string))
+		 TransactionIdentifer = (string) (managementObject.Properties["TransactionIdentifer"]?.Value),
+		 User = (string) (managementObject.Properties["User"]?.Value)
                 };
         }
     }

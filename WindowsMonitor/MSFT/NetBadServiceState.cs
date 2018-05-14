@@ -45,7 +45,7 @@ namespace WindowsMonitor.Msft
                 yield return new NetBadServiceState
                 {
                      SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
 		 State = (uint) (managementObject.Properties["State"]?.Value ?? default(uint)),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };

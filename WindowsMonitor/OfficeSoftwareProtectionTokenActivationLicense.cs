@@ -48,14 +48,14 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new OfficeSoftwareProtectionTokenActivationLicense
                 {
-                    AdditionalInfo = (string) (managementObject.Properties["AdditionalInfo"]?.Value ?? default(string)),
+                    AdditionalInfo = (string) (managementObject.Properties["AdditionalInfo"]?.Value),
                     AuthorizationStatus =
                         (uint) (managementObject.Properties["AuthorizationStatus"]?.Value ?? default(uint)),
-                    Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                    Description = (string) (managementObject.Properties["Description"]?.Value),
                     ExpirationDate =
                         (DateTime) (managementObject.Properties["ExpirationDate"]?.Value ?? default(DateTime)),
-                    Id = (string) (managementObject.Properties["ID"]?.Value ?? default(string)),
-                    Ilid = (string) (managementObject.Properties["ILID"]?.Value ?? default(string)),
+                    Id = (string) (managementObject.Properties["ID"]?.Value),
+                    Ilid = (string) (managementObject.Properties["ILID"]?.Value),
                     Ilvid = (uint) (managementObject.Properties["ILVID"]?.Value ?? default(uint))
                 };
         }

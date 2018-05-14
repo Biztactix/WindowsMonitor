@@ -47,9 +47,9 @@ namespace WindowsMonitor.Msft
                 yield return new WmiConsumerProviderSinkLoaded
                 {
                      Consumer = (short) (managementObject.Properties["Consumer"]?.Value ?? default(short)),
-		 Machine = (string) (managementObject.Properties["Machine"]?.Value ?? default(string)),
-		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value ?? default(string)),
-		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value ?? default(string)),
+		 Machine = (string) (managementObject.Properties["Machine"]?.Value),
+		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
+		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };

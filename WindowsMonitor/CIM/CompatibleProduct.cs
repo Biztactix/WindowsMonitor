@@ -43,7 +43,7 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new CompatibleProduct
                 {
-                     CompatibilityDescription = (string) (managementObject.Properties["CompatibilityDescription"]?.Value ?? default(string)),
+                     CompatibilityDescription = (string) (managementObject.Properties["CompatibilityDescription"]?.Value),
 		 Name = (short) (managementObject.Properties["CompatibleProduct"]?.Value ?? default(short)),
 		 Product = (short) (managementObject.Properties["Product"]?.Value ?? default(short))
                 };

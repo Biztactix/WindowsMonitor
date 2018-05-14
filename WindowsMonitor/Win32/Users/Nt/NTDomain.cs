@@ -67,17 +67,17 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NTDomain
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 ClientSiteName = (string) (managementObject.Properties["ClientSiteName"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 DcSiteName = (string) (managementObject.Properties["DcSiteName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 DnsForestName = (string) (managementObject.Properties["DnsForestName"]?.Value ?? default(string)),
-		 DomainControllerAddress = (string) (managementObject.Properties["DomainControllerAddress"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 ClientSiteName = (string) (managementObject.Properties["ClientSiteName"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 DcSiteName = (string) (managementObject.Properties["DcSiteName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 DnsForestName = (string) (managementObject.Properties["DnsForestName"]?.Value),
+		 DomainControllerAddress = (string) (managementObject.Properties["DomainControllerAddress"]?.Value),
 		 DomainControllerAddressType = (int) (managementObject.Properties["DomainControllerAddressType"]?.Value ?? default(int)),
-		 DomainControllerName = (string) (managementObject.Properties["DomainControllerName"]?.Value ?? default(string)),
-		 DomainGuid = (string) (managementObject.Properties["DomainGuid"]?.Value ?? default(string)),
-		 DomainName = (string) (managementObject.Properties["DomainName"]?.Value ?? default(string)),
+		 DomainControllerName = (string) (managementObject.Properties["DomainControllerName"]?.Value),
+		 DomainGuid = (string) (managementObject.Properties["DomainGuid"]?.Value),
+		 DomainName = (string) (managementObject.Properties["DomainName"]?.Value),
 		 DSDirectoryServiceFlag = (bool) (managementObject.Properties["DSDirectoryServiceFlag"]?.Value ?? default(bool)),
 		 DSDnsControllerFlag = (bool) (managementObject.Properties["DSDnsControllerFlag"]?.Value ?? default(bool)),
 		 DSDnsDomainFlag = (bool) (managementObject.Properties["DSDnsDomainFlag"]?.Value ?? default(bool)),
@@ -88,12 +88,12 @@ namespace WindowsMonitor.Win32
 		 DSTimeServiceFlag = (bool) (managementObject.Properties["DSTimeServiceFlag"]?.Value ?? default(bool)),
 		 DSWritableFlag = (bool) (managementObject.Properties["DSWritableFlag"]?.Value ?? default(bool)),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 NameFormat = (string) (managementObject.Properties["NameFormat"]?.Value ?? default(string)),
-		 PrimaryOwnerContact = (string) (managementObject.Properties["PrimaryOwnerContact"]?.Value ?? default(string)),
-		 PrimaryOwnerName = (string) (managementObject.Properties["PrimaryOwnerName"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 NameFormat = (string) (managementObject.Properties["NameFormat"]?.Value),
+		 PrimaryOwnerContact = (string) (managementObject.Properties["PrimaryOwnerContact"]?.Value),
+		 PrimaryOwnerName = (string) (managementObject.Properties["PrimaryOwnerName"]?.Value),
 		 Roles = (string[]) (managementObject.Properties["Roles"]?.Value ?? new string[0]),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

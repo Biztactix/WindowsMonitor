@@ -61,25 +61,25 @@ namespace WindowsMonitor.Win32
                 yield return new IniFileSpecification
                 {
                      Action = (ushort) (managementObject.Properties["Action"]?.Value ?? default(ushort)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value),
 		 CheckMode = (bool) (managementObject.Properties["CheckMode"]?.Value ?? default(bool)),
 		 CheckSum = (uint) (managementObject.Properties["CheckSum"]?.Value ?? default(uint)),
 		 CRC1 = (uint) (managementObject.Properties["CRC1"]?.Value ?? default(uint)),
 		 CRC2 = (uint) (managementObject.Properties["CRC2"]?.Value ?? default(uint)),
 		 CreateTimeStamp = (DateTime) (managementObject.Properties["CreateTimeStamp"]?.Value ?? default(DateTime)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FileSize = (ulong) (managementObject.Properties["FileSize"]?.Value ?? default(ulong)),
-		 IniFile = (string) (managementObject.Properties["IniFile"]?.Value ?? default(string)),
-		 key = (string) (managementObject.Properties["key"]?.Value ?? default(string)),
-		 MD5Checksum = (string) (managementObject.Properties["MD5Checksum"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Section = (string) (managementObject.Properties["Section"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 IniFile = (string) (managementObject.Properties["IniFile"]?.Value),
+		 key = (string) (managementObject.Properties["key"]?.Value),
+		 MD5Checksum = (string) (managementObject.Properties["MD5Checksum"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Section = (string) (managementObject.Properties["Section"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Value = (string) (managementObject.Properties["Value"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Value = (string) (managementObject.Properties["Value"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

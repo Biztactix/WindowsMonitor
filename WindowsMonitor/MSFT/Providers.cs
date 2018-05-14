@@ -72,12 +72,12 @@ namespace WindowsMonitor.Msft
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Providers
                 {
-                     HostingGroup = (string) (managementObject.Properties["HostingGroup"]?.Value ?? default(string)),
+                     HostingGroup = (string) (managementObject.Properties["HostingGroup"]?.Value),
 		 HostingSpecification = (uint) (managementObject.Properties["HostingSpecification"]?.Value ?? default(uint)),
 		 HostProcessIdentifier = (uint) (managementObject.Properties["HostProcessIdentifier"]?.Value ?? default(uint)),
-		 Locale = (string) (managementObject.Properties["Locale"]?.Value ?? default(string)),
-		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value ?? default(string)),
-		 provider = (string) (managementObject.Properties["provider"]?.Value ?? default(string)),
+		 Locale = (string) (managementObject.Properties["Locale"]?.Value),
+		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
+		 provider = (string) (managementObject.Properties["provider"]?.Value),
 		 ProviderOperation_AccessCheck = (ulong) (managementObject.Properties["ProviderOperation_AccessCheck"]?.Value ?? default(ulong)),
 		 ProviderOperation_CancelQuery = (ulong) (managementObject.Properties["ProviderOperation_CancelQuery"]?.Value ?? default(ulong)),
 		 ProviderOperation_CreateClassEnumAsync = (ulong) (managementObject.Properties["ProviderOperation_CreateClassEnumAsync"]?.Value ?? default(ulong)),
@@ -102,8 +102,8 @@ namespace WindowsMonitor.Msft
 		 ProviderOperation_SetRegistrationObject = (ulong) (managementObject.Properties["ProviderOperation_SetRegistrationObject"]?.Value ?? default(ulong)),
 		 ProviderOperation_StopRefreshing = (ulong) (managementObject.Properties["ProviderOperation_StopRefreshing"]?.Value ?? default(ulong)),
 		 ProviderOperation_ValidateSubscription = (ulong) (managementObject.Properties["ProviderOperation_ValidateSubscription"]?.Value ?? default(ulong)),
-		 TransactionIdentifier = (string) (managementObject.Properties["TransactionIdentifier"]?.Value ?? default(string)),
-		 User = (string) (managementObject.Properties["User"]?.Value ?? default(string))
+		 TransactionIdentifier = (string) (managementObject.Properties["TransactionIdentifier"]?.Value),
+		 User = (string) (managementObject.Properties["User"]?.Value)
                 };
         }
     }

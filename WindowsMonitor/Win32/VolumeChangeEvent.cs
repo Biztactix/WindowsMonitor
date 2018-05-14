@@ -44,7 +44,7 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new VolumeChangeEvent
                 {
-                     DriveName = (string) (managementObject.Properties["DriveName"]?.Value ?? default(string)),
+                     DriveName = (string) (managementObject.Properties["DriveName"]?.Value),
 		 EventType = (ushort) (managementObject.Properties["EventType"]?.Value ?? default(ushort)),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))

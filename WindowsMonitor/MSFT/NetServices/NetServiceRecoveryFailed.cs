@@ -44,11 +44,11 @@ namespace WindowsMonitor.MSFT.NetServices
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetServiceRecoveryFailed
                 {
-                     Action = (string) (managementObject.Properties["Action"]?.Value ?? default(string)),
+                     Action = (string) (managementObject.Properties["Action"]?.Value),
 		 ActionType = (uint) (managementObject.Properties["ActionType"]?.Value ?? default(uint)),
 		 Error = (uint) (managementObject.Properties["Error"]?.Value ?? default(uint)),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }

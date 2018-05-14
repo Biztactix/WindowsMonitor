@@ -62,14 +62,14 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlServer2016XTPGarbageCollection
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DustycornerscanretriesPersecGCissued = (uint) (managementObject.Properties["DustycornerscanretriesPersecGCissued"]?.Value ?? default(uint)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 MainGCworkitemsPersec = (uint) (managementObject.Properties["MainGCworkitemsPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ParallelGCworkitemPersec = (uint) (managementObject.Properties["ParallelGCworkitemPersec"]?.Value ?? default(uint)),
 		 RowsprocessedPersec = (uint) (managementObject.Properties["RowsprocessedPersec"]?.Value ?? default(uint)),
 		 RowsprocessedPersecfirstinbucket = (uint) (managementObject.Properties["RowsprocessedPersecfirstinbucket"]?.Value ?? default(uint)),

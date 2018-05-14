@@ -64,11 +64,11 @@ namespace WindowsMonitor.Performance.Raw
                 {
                      BytesReceived = (ulong) (managementObject.Properties["BytesReceived"]?.Value ?? default(ulong)),
 		 BytesSent = (ulong) (managementObject.Properties["BytesSent"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConnectionsEstablished = (uint) (managementObject.Properties["ConnectionsEstablished"]?.Value ?? default(uint)),
 		 DatagramsReceived = (uint) (managementObject.Properties["DatagramsReceived"]?.Value ?? default(uint)),
 		 DatagramsSent = (uint) (managementObject.Properties["DatagramsSent"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -80,7 +80,7 @@ namespace WindowsMonitor.Performance.Raw
 		 HttpWebRequestsCreatedPerSec = (uint) (managementObject.Properties["HttpWebRequestsCreatedPerSec"]?.Value ?? default(uint)),
 		 HttpWebRequestsFailedPerSec = (uint) (managementObject.Properties["HttpWebRequestsFailedPerSec"]?.Value ?? default(uint)),
 		 HttpWebRequestsQueuedPerSec = (uint) (managementObject.Properties["HttpWebRequestsQueuedPerSec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
 		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
 		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))

@@ -56,18 +56,18 @@ namespace WindowsMonitor.Win32
                 yield return new OSRecoveryConfiguration
                 {
                      AutoReboot = (bool) (managementObject.Properties["AutoReboot"]?.Value ?? default(bool)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 DebugFilePath = (string) (managementObject.Properties["DebugFilePath"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 DebugFilePath = (string) (managementObject.Properties["DebugFilePath"]?.Value),
 		 DebugInfoType = (uint) (managementObject.Properties["DebugInfoType"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 ExpandedDebugFilePath = (string) (managementObject.Properties["ExpandedDebugFilePath"]?.Value ?? default(string)),
-		 ExpandedMiniDumpDirectory = (string) (managementObject.Properties["ExpandedMiniDumpDirectory"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 ExpandedDebugFilePath = (string) (managementObject.Properties["ExpandedDebugFilePath"]?.Value),
+		 ExpandedMiniDumpDirectory = (string) (managementObject.Properties["ExpandedMiniDumpDirectory"]?.Value),
 		 KernelDumpOnly = (bool) (managementObject.Properties["KernelDumpOnly"]?.Value ?? default(bool)),
-		 MiniDumpDirectory = (string) (managementObject.Properties["MiniDumpDirectory"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 MiniDumpDirectory = (string) (managementObject.Properties["MiniDumpDirectory"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OverwriteExistingDebugFile = (bool) (managementObject.Properties["OverwriteExistingDebugFile"]?.Value ?? default(bool)),
 		 SendAdminAlert = (bool) (managementObject.Properties["SendAdminAlert"]?.Value ?? default(bool)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
 		 WriteDebugInfo = (bool) (managementObject.Properties["WriteDebugInfo"]?.Value ?? default(bool)),
 		 WriteToSystemLog = (bool) (managementObject.Properties["WriteToSystemLog"]?.Value ?? default(bool))
                 };

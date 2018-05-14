@@ -43,9 +43,9 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Setting
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string))
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

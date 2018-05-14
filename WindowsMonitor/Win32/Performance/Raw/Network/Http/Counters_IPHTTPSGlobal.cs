@@ -59,8 +59,8 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Counters_IPHTTPSGlobal
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DropsNeighborresolutiontimeouts = (ulong) (managementObject.Properties["DropsNeighborresolutiontimeouts"]?.Value ?? default(ulong)),
 		 ErrorsAuthenticationErrors = (ulong) (managementObject.Properties["ErrorsAuthenticationErrors"]?.Value ?? default(ulong)),
 		 ErrorsReceiveerrorsontheserver = (ulong) (managementObject.Properties["ErrorsReceiveerrorsontheserver"]?.Value ?? default(ulong)),
@@ -70,7 +70,7 @@ namespace WindowsMonitor.Performance.Raw
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 InTotalbytesreceived = (ulong) (managementObject.Properties["InTotalbytesreceived"]?.Value ?? default(ulong)),
 		 InTotalpacketsreceived = (ulong) (managementObject.Properties["InTotalpacketsreceived"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OutTotalbytesforwarded = (ulong) (managementObject.Properties["OutTotalbytesforwarded"]?.Value ?? default(ulong)),
 		 OutTotalbytessent = (ulong) (managementObject.Properties["OutTotalbytessent"]?.Value ?? default(ulong)),
 		 OutTotalpacketssent = (ulong) (managementObject.Properties["OutTotalpacketssent"]?.Value ?? default(ulong)),

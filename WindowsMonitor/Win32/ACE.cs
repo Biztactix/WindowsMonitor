@@ -50,8 +50,8 @@ namespace WindowsMonitor.Win32
                      AccessMask = (uint) (managementObject.Properties["AccessMask"]?.Value ?? default(uint)),
 		 AceFlags = (uint) (managementObject.Properties["AceFlags"]?.Value ?? default(uint)),
 		 AceType = (uint) (managementObject.Properties["AceType"]?.Value ?? default(uint)),
-		 GuidInheritedObjectType = (string) (managementObject.Properties["GuidInheritedObjectType"]?.Value ?? default(string)),
-		 GuidObjectType = (string) (managementObject.Properties["GuidObjectType"]?.Value ?? default(string)),
+		 GuidInheritedObjectType = (string) (managementObject.Properties["GuidInheritedObjectType"]?.Value),
+		 GuidObjectType = (string) (managementObject.Properties["GuidObjectType"]?.Value),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
 		 Trustee = (dynamic) (managementObject.Properties["Trustee"]?.Value ?? default(dynamic))
                 };

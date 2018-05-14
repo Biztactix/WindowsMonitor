@@ -43,9 +43,9 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Location
                 {
-                     Address = (string) (managementObject.Properties["Address"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 PhysicalPosition = (string) (managementObject.Properties["PhysicalPosition"]?.Value ?? default(string))
+                     Address = (string) (managementObject.Properties["Address"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 PhysicalPosition = (string) (managementObject.Properties["PhysicalPosition"]?.Value)
                 };
         }
     }

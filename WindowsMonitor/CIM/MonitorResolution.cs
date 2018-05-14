@@ -49,14 +49,14 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new MonitorResolution
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 HorizontalResolution = (uint) (managementObject.Properties["HorizontalResolution"]?.Value ?? default(uint)),
 		 MaxRefreshRate = (uint) (managementObject.Properties["MaxRefreshRate"]?.Value ?? default(uint)),
 		 MinRefreshRate = (uint) (managementObject.Properties["MinRefreshRate"]?.Value ?? default(uint)),
 		 RefreshRate = (uint) (managementObject.Properties["RefreshRate"]?.Value ?? default(uint)),
 		 ScanMode = (ushort) (managementObject.Properties["ScanMode"]?.Value ?? default(ushort)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
 		 VerticalResolution = (uint) (managementObject.Properties["VerticalResolution"]?.Value ?? default(uint))
                 };
         }

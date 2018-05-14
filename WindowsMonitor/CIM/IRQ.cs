@@ -54,16 +54,16 @@ namespace WindowsMonitor.CIM
                 yield return new IRQ
                 {
                      Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value ?? default(string)),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 IRQNumber = (uint) (managementObject.Properties["IRQNumber"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Shareable = (bool) (managementObject.Properties["Shareable"]?.Value ?? default(bool)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 TriggerLevel = (ushort) (managementObject.Properties["TriggerLevel"]?.Value ?? default(ushort)),
 		 TriggerType = (ushort) (managementObject.Properties["TriggerType"]?.Value ?? default(ushort))
                 };

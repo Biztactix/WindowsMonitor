@@ -47,11 +47,11 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new JobObjectStatus
                 {
-                     AdditionalDescription = (string) (managementObject.Properties["AdditionalDescription"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Operation = (string) (managementObject.Properties["Operation"]?.Value ?? default(string)),
-		 ParameterInfo = (string) (managementObject.Properties["ParameterInfo"]?.Value ?? default(string)),
-		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value ?? default(string)),
+                     AdditionalDescription = (string) (managementObject.Properties["AdditionalDescription"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Operation = (string) (managementObject.Properties["Operation"]?.Value),
+		 ParameterInfo = (string) (managementObject.Properties["ParameterInfo"]?.Value),
+		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
 		 StatusCode = (uint) (managementObject.Properties["StatusCode"]?.Value ?? default(uint)),
 		 Win32ErrorCode = (uint) (managementObject.Properties["Win32ErrorCode"]?.Value ?? default(uint))
                 };

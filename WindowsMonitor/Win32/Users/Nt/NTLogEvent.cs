@@ -57,21 +57,21 @@ namespace WindowsMonitor.Win32
                 yield return new NTLogEvent
                 {
                      Category = (ushort) (managementObject.Properties["Category"]?.Value ?? default(ushort)),
-		 CategoryString = (string) (managementObject.Properties["CategoryString"]?.Value ?? default(string)),
-		 ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value ?? default(string)),
+		 CategoryString = (string) (managementObject.Properties["CategoryString"]?.Value),
+		 ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value),
 		 Data = (byte[]) (managementObject.Properties["Data"]?.Value ?? new byte[0]),
 		 EventCode = (ushort) (managementObject.Properties["EventCode"]?.Value ?? default(ushort)),
 		 EventIdentifier = (uint) (managementObject.Properties["EventIdentifier"]?.Value ?? default(uint)),
 		 EventType = (byte) (managementObject.Properties["EventType"]?.Value ?? default(byte)),
 		 InsertionStrings = (string[]) (managementObject.Properties["InsertionStrings"]?.Value ?? new string[0]),
-		 Logfile = (string) (managementObject.Properties["Logfile"]?.Value ?? default(string)),
-		 Message = (string) (managementObject.Properties["Message"]?.Value ?? default(string)),
+		 Logfile = (string) (managementObject.Properties["Logfile"]?.Value),
+		 Message = (string) (managementObject.Properties["Message"]?.Value),
 		 RecordNumber = (uint) (managementObject.Properties["RecordNumber"]?.Value ?? default(uint)),
-		 SourceName = (string) (managementObject.Properties["SourceName"]?.Value ?? default(string)),
+		 SourceName = (string) (managementObject.Properties["SourceName"]?.Value),
 		 TimeGenerated = (DateTime) (managementObject.Properties["TimeGenerated"]?.Value ?? default(DateTime)),
 		 TimeWritten = (DateTime) (managementObject.Properties["TimeWritten"]?.Value ?? default(DateTime)),
-		 Type = (string) (managementObject.Properties["Type"]?.Value ?? default(string)),
-		 User = (string) (managementObject.Properties["User"]?.Value ?? default(string))
+		 Type = (string) (managementObject.Properties["Type"]?.Value),
+		 User = (string) (managementObject.Properties["User"]?.Value)
                 };
         }
     }

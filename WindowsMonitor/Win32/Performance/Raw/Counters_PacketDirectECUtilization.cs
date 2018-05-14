@@ -65,13 +65,13 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new Counters_PacketDirectECUtilization
                 {
                      BusyWaitIterationsPersec = (uint) (managementObject.Properties["BusyWaitIterationsPersec"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 IterationsPersec = (uint) (managementObject.Properties["IterationsPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PercentBusyWaitingTime = (ulong) (managementObject.Properties["PercentBusyWaitingTime"]?.Value ?? default(ulong)),
 		 PercentBusyWaitingTime_Base = (ulong) (managementObject.Properties["PercentBusyWaitingTime_Base"]?.Value ?? default(ulong)),
 		 PercentBusyWaitIterations = (uint) (managementObject.Properties["PercentBusyWaitIterations"]?.Value ?? default(uint)),

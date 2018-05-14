@@ -67,10 +67,10 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlExpress
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlExpressMemoryManager
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConnectionMemoryKb = (ulong) (managementObject.Properties["ConnectionMemoryKB"]?.Value ?? default(ulong)),
 		 DatabaseCacheMemoryKb = (ulong) (managementObject.Properties["DatabaseCacheMemoryKB"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Externalbenefitofmemory = (ulong) (managementObject.Properties["Externalbenefitofmemory"]?.Value ?? default(ulong)),
 		 FreeMemoryKb = (ulong) (managementObject.Properties["FreeMemoryKB"]?.Value ?? default(ulong)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
@@ -86,7 +86,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlExpress
 		 MaximumWorkspaceMemoryKb = (ulong) (managementObject.Properties["MaximumWorkspaceMemoryKB"]?.Value ?? default(ulong)),
 		 MemoryGrantsOutstanding = (ulong) (managementObject.Properties["MemoryGrantsOutstanding"]?.Value ?? default(ulong)),
 		 MemoryGrantsPending = (ulong) (managementObject.Properties["MemoryGrantsPending"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OptimizerMemoryKb = (ulong) (managementObject.Properties["OptimizerMemoryKB"]?.Value ?? default(ulong)),
 		 ReservedServerMemoryKb = (ulong) (managementObject.Properties["ReservedServerMemoryKB"]?.Value ?? default(ulong)),
 		 SqlCacheMemoryKb = (ulong) (managementObject.Properties["SQLCacheMemoryKB"]?.Value ?? default(ulong)),

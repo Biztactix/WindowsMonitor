@@ -54,13 +54,13 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new Counters_XHCICommonBuffer
                 {
                      AllocationCount = (uint) (managementObject.Properties["AllocationCount"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FreeCount = (uint) (managementObject.Properties["FreeCount"]?.Value ?? default(uint)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PagesInUse = (uint) (managementObject.Properties["PagesInUse"]?.Value ?? default(uint)),
 		 PagesTotal = (uint) (managementObject.Properties["PagesTotal"]?.Value ?? default(uint)),
 		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),

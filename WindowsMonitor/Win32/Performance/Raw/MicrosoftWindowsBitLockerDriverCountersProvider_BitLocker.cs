@@ -57,8 +57,8 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new MicrosoftWindowsBitLockerDriverCountersProvider_BitLocker
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -66,7 +66,7 @@ namespace WindowsMonitor.Performance.Raw
 		 MaxWriteSplitSize = (uint) (managementObject.Properties["MaxWriteSplitSize"]?.Value ?? default(uint)),
 		 MinReadSplitSize = (uint) (managementObject.Properties["MinReadSplitSize"]?.Value ?? default(uint)),
 		 MinWriteSplitSize = (uint) (managementObject.Properties["MinWriteSplitSize"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ReadRequestsPersec = (ulong) (managementObject.Properties["ReadRequestsPersec"]?.Value ?? default(ulong)),
 		 ReadSubrequestsPersec = (ulong) (managementObject.Properties["ReadSubrequestsPersec"]?.Value ?? default(ulong)),
 		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),

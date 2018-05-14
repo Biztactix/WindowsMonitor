@@ -55,21 +55,21 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new MoveFileAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 DestFolder = (string) (managementObject.Properties["DestFolder"]?.Value ?? default(string)),
-		 DestName = (string) (managementObject.Properties["DestName"]?.Value ?? default(string)),
+                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 DestFolder = (string) (managementObject.Properties["DestFolder"]?.Value),
+		 DestName = (string) (managementObject.Properties["DestName"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
-		 FileKey = (string) (managementObject.Properties["FileKey"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 FileKey = (string) (managementObject.Properties["FileKey"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Options = (ushort) (managementObject.Properties["Options"]?.Value ?? default(ushort)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
-		 SourceFolder = (string) (managementObject.Properties["SourceFolder"]?.Value ?? default(string)),
-		 SourceName = (string) (managementObject.Properties["SourceName"]?.Value ?? default(string)),
+		 SourceFolder = (string) (managementObject.Properties["SourceFolder"]?.Value),
+		 SourceName = (string) (managementObject.Properties["SourceName"]?.Value),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

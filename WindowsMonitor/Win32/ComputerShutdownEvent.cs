@@ -44,7 +44,7 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ComputerShutdownEvent
                 {
-                     MachineName = (string) (managementObject.Properties["MachineName"]?.Value ?? default(string)),
+                     MachineName = (string) (managementObject.Properties["MachineName"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
 		 Type = (uint) (managementObject.Properties["Type"]?.Value ?? default(uint))

@@ -55,8 +55,8 @@ namespace WindowsMonitor.Win32.Performance.Formatted.HyperVisor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new HyperVisor
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -64,7 +64,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted.HyperVisor
 		 LogicalProcessors = (ulong) (managementObject.Properties["LogicalProcessors"]?.Value ?? default(ulong)),
 		 ModernStandbyEntries = (ulong) (managementObject.Properties["ModernStandbyEntries"]?.Value ?? default(ulong)),
 		 MonitoredNotifications = (ulong) (managementObject.Properties["MonitoredNotifications"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Partitions = (ulong) (managementObject.Properties["Partitions"]?.Value ?? default(ulong)),
 		 PlatformIdleTransitions = (ulong) (managementObject.Properties["PlatformIdleTransitions"]?.Value ?? default(ulong)),
 		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),

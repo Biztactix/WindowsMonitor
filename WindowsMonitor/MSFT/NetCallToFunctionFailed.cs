@@ -45,7 +45,7 @@ namespace WindowsMonitor.Msft
                 yield return new NetCallToFunctionFailed
                 {
                      Error = (uint) (managementObject.Properties["Error"]?.Value ?? default(uint)),
-		 FunctionName = (string) (managementObject.Properties["FunctionName"]?.Value ?? default(string)),
+		 FunctionName = (string) (managementObject.Properties["FunctionName"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };

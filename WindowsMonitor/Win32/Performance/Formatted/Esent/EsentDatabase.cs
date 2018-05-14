@@ -102,7 +102,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new EsentDatabase
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DatabaseCacheMemoryCommitted = (ulong) (managementObject.Properties["DatabaseCacheMemoryCommitted"]?.Value ?? default(ulong)),
 		 DatabaseCacheMemoryCommittedMb = (ulong) (managementObject.Properties["DatabaseCacheMemoryCommittedMB"]?.Value ?? default(ulong)),
 		 DatabaseCacheMemoryReserved = (ulong) (managementObject.Properties["DatabaseCacheMemoryReserved"]?.Value ?? default(ulong)),
@@ -126,7 +126,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted
 		 DatabasePageFaultStallsPersec = (uint) (managementObject.Properties["DatabasePageFaultStallsPersec"]?.Value ?? default(uint)),
 		 DefragmentationTasks = (uint) (managementObject.Properties["DefragmentationTasks"]?.Value ?? default(uint)),
 		 DefragmentationTasksPending = (uint) (managementObject.Properties["DefragmentationTasksPending"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -153,7 +153,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted
 		 LogRecordStallsPersec = (uint) (managementObject.Properties["LogRecordStallsPersec"]?.Value ?? default(uint)),
 		 LogThreadsWaiting = (uint) (managementObject.Properties["LogThreadsWaiting"]?.Value ?? default(uint)),
 		 LogWritesPersec = (uint) (managementObject.Properties["LogWritesPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 SessionsInUse = (uint) (managementObject.Properties["SessionsInUse"]?.Value ?? default(uint)),
 		 SessionsPercentUsed = (uint) (managementObject.Properties["SessionsPercentUsed"]?.Value ?? default(uint)),
 		 TableClosesPersec = (uint) (managementObject.Properties["TableClosesPersec"]?.Value ?? default(uint)),

@@ -43,9 +43,9 @@ namespace WindowsMonitor.Win32.NamedJobs
                 yield return new NamedJobObject
                 {
                      BasicUIRestrictions = (uint) (managementObject.Properties["BasicUIRestrictions"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CollectionID = (string) (managementObject.Properties["CollectionID"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string))
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CollectionID = (string) (managementObject.Properties["CollectionID"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value)
                 };
         }
     }

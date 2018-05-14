@@ -68,9 +68,9 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new PerfOS_System
                 {
                      AlignmentFixupsPersec = (uint) (managementObject.Properties["AlignmentFixupsPersec"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ContextSwitchesPersec = (uint) (managementObject.Properties["ContextSwitchesPersec"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ExceptionDispatchesPersec = (uint) (managementObject.Properties["ExceptionDispatchesPersec"]?.Value ?? default(uint)),
 		 FileControlBytesPersec = (ulong) (managementObject.Properties["FileControlBytesPersec"]?.Value ?? default(ulong)),
 		 FileControlOperationsPersec = (uint) (managementObject.Properties["FileControlOperationsPersec"]?.Value ?? default(uint)),
@@ -83,7 +83,7 @@ namespace WindowsMonitor.Performance.Raw
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PercentRegistryQuotaInUse = (uint) (managementObject.Properties["PercentRegistryQuotaInUse"]?.Value ?? default(uint)),
 		 PercentRegistryQuotaInUse_Base = (uint) (managementObject.Properties["PercentRegistryQuotaInUse_Base"]?.Value ?? default(uint)),
 		 Processes = (uint) (managementObject.Properties["Processes"]?.Value ?? default(uint)),

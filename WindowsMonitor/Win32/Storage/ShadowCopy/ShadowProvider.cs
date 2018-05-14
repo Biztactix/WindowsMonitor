@@ -50,16 +50,16 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ShadowProvider
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CLSID = (string) (managementObject.Properties["CLSID"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 ID = (string) (managementObject.Properties["ID"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CLSID = (string) (managementObject.Properties["CLSID"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 ID = (string) (managementObject.Properties["ID"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Type = (uint) (managementObject.Properties["Type"]?.Value ?? default(uint)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string)),
-		 VersionID = (string) (managementObject.Properties["VersionID"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value),
+		 VersionID = (string) (managementObject.Properties["VersionID"]?.Value)
                 };
         }
     }

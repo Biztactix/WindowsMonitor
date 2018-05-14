@@ -53,15 +53,15 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlServerMemoryNode
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DatabaseNodeMemoryKb = (ulong) (managementObject.Properties["DatabaseNodeMemoryKB"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ForeignNodeMemoryKb = (ulong) (managementObject.Properties["ForeignNodeMemoryKB"]?.Value ?? default(ulong)),
 		 FreeNodeMemoryKb = (ulong) (managementObject.Properties["FreeNodeMemoryKB"]?.Value ?? default(ulong)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 StolenNodeMemoryKb = (ulong) (managementObject.Properties["StolenNodeMemoryKB"]?.Value ?? default(ulong)),
 		 TargetNodeMemoryKb = (ulong) (managementObject.Properties["TargetNodeMemoryKB"]?.Value ?? default(ulong)),
 		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),

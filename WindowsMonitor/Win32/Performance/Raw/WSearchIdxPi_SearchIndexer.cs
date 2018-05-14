@@ -113,9 +113,9 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new WSearchIdxPi_SearchIndexer
                 {
                      ActiveConnections = (uint) (managementObject.Properties["ActiveConnections"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CleanWidSets = (uint) (managementObject.Properties["CleanWidSets"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DirtyWidSets = (uint) (managementObject.Properties["DirtyWidSets"]?.Value ?? default(uint)),
 		 DocumentsFiltered = (uint) (managementObject.Properties["DocumentsFiltered"]?.Value ?? default(uint)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
@@ -163,7 +163,7 @@ namespace WindowsMonitor.Performance.Raw
 		 MasterMergeProgress = (uint) (managementObject.Properties["MasterMergeProgress"]?.Value ?? default(uint)),
 		 MasterMergesNow = (uint) (managementObject.Properties["MasterMergesNow"]?.Value ?? default(uint)),
 		 MasterMergestoDate = (uint) (managementObject.Properties["MasterMergestoDate"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PersistentIndexes = (uint) (managementObject.Properties["PersistentIndexes"]?.Value ?? default(uint)),
 		 PersistentIndexesL1 = (uint) (managementObject.Properties["PersistentIndexesL1"]?.Value ?? default(uint)),
 		 PersistentIndexesL2 = (uint) (managementObject.Properties["PersistentIndexesL2"]?.Value ?? default(uint)),

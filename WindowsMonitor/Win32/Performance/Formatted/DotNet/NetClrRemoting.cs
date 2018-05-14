@@ -54,17 +54,17 @@ namespace WindowsMonitor.Win32.Performance.Formatted.DotNet
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetClrRemoting
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Channels = (uint) (managementObject.Properties["Channels"]?.Value ?? default(uint)),
 		 ContextBoundClassesLoaded = (uint) (managementObject.Properties["ContextBoundClassesLoaded"]?.Value ?? default(uint)),
 		 ContextBoundObjectsAllocPersec = (uint) (managementObject.Properties["ContextBoundObjectsAllocPersec"]?.Value ?? default(uint)),
 		 ContextProxies = (uint) (managementObject.Properties["ContextProxies"]?.Value ?? default(uint)),
 		 Contexts = (uint) (managementObject.Properties["Contexts"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RemoteCallsPersec = (uint) (managementObject.Properties["RemoteCallsPersec"]?.Value ?? default(uint)),
 		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
 		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),

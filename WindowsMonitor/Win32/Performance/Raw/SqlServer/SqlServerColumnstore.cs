@@ -61,15 +61,15 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlServerColumnstore
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DeltaRowgroupsClosed = (ulong) (managementObject.Properties["DeltaRowgroupsClosed"]?.Value ?? default(ulong)),
 		 DeltaRowgroupsCompressed = (ulong) (managementObject.Properties["DeltaRowgroupsCompressed"]?.Value ?? default(ulong)),
 		 DeltaRowgroupsCreated = (ulong) (managementObject.Properties["DeltaRowgroupsCreated"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 SegmentCacheHitRatio = (ulong) (managementObject.Properties["SegmentCacheHitRatio"]?.Value ?? default(ulong)),
 		 SegmentCacheHitRatio_Base = (ulong) (managementObject.Properties["SegmentCacheHitRatio_Base"]?.Value ?? default(ulong)),
 		 SegmentReadsPerSec = (ulong) (managementObject.Properties["SegmentReadsPerSec"]?.Value ?? default(ulong)),

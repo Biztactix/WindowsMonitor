@@ -54,14 +54,14 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Counters_PhysicalNetworkInterfaceCardActivity
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DevicePowerState = (uint) (managementObject.Properties["DevicePowerState"]?.Value ?? default(uint)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 LowPowerTransitionsLifetime = (uint) (managementObject.Properties["LowPowerTransitionsLifetime"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PercentTimeSuspendedInstantaneous = (ulong) (managementObject.Properties["PercentTimeSuspendedInstantaneous"]?.Value ?? default(ulong)),
 		 PercentTimeSuspendedLifetime = (ulong) (managementObject.Properties["PercentTimeSuspendedLifetime"]?.Value ?? default(ulong)),
 		 PercentTimeSuspendedLifetime_Base = (ulong) (managementObject.Properties["PercentTimeSuspendedLifetime_Base"]?.Value ?? default(ulong)),

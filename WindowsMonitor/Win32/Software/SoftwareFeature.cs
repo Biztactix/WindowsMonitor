@@ -55,17 +55,17 @@ namespace WindowsMonitor.Win32
                 {
                      Accesses = (ushort) (managementObject.Properties["Accesses"]?.Value ?? default(ushort)),
 		 Attributes = (ushort) (managementObject.Properties["Attributes"]?.Value ?? default(ushort)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 InstallState = (short) (managementObject.Properties["InstallState"]?.Value ?? default(short)),
 		 LastUse = (DateTime) (managementObject.Properties["LastUse"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ProductName = (string) (managementObject.Properties["ProductName"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
-		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ProductName = (string) (managementObject.Properties["ProductName"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
+		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

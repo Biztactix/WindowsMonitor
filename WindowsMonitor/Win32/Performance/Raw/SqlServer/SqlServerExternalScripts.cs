@@ -56,14 +56,14 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SqlServerExternalScripts
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ExecutionErrors = (ulong) (managementObject.Properties["ExecutionErrors"]?.Value ?? default(ulong)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 ImpliedAuthLogins = (ulong) (managementObject.Properties["ImpliedAuthLogins"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ParallelExecutions = (ulong) (managementObject.Properties["ParallelExecutions"]?.Value ?? default(ulong)),
 		 SQLCCExecutions = (ulong) (managementObject.Properties["SQLCCExecutions"]?.Value ?? default(ulong)),
 		 StreamingExecutions = (ulong) (managementObject.Properties["StreamingExecutions"]?.Value ?? default(ulong)),

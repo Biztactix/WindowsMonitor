@@ -48,14 +48,14 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new StartupCommand
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Command = (string) (managementObject.Properties["Command"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Location = (string) (managementObject.Properties["Location"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
-		 User = (string) (managementObject.Properties["User"]?.Value ?? default(string)),
-		 UserSID = (string) (managementObject.Properties["UserSID"]?.Value ?? default(string))
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Command = (string) (managementObject.Properties["Command"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Location = (string) (managementObject.Properties["Location"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 User = (string) (managementObject.Properties["User"]?.Value),
+		 UserSID = (string) (managementObject.Properties["UserSID"]?.Value)
                 };
         }
     }

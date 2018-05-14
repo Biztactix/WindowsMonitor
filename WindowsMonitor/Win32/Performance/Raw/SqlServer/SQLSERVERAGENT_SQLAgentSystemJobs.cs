@@ -55,13 +55,13 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new SQLSERVERAGENT_SQLAgentSystemJobs
                 {
                      Activesystemjobs = (ulong) (managementObject.Properties["Activesystemjobs"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Failedsystemjobs = (ulong) (managementObject.Properties["Failedsystemjobs"]?.Value ?? default(ulong)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Queuedsystemjobs = (ulong) (managementObject.Properties["Queuedsystemjobs"]?.Value ?? default(ulong)),
 		 Successfulsystemjobs = (ulong) (managementObject.Properties["Successfulsystemjobs"]?.Value ?? default(ulong)),
 		 SystemJobsactivatedPerminute = (ulong) (managementObject.Properties["SystemJobsactivatedPerminute"]?.Value ?? default(ulong)),

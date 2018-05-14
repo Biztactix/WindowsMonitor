@@ -48,8 +48,8 @@ namespace WindowsMonitor.Win32
                 yield return new LogicalFileAccess
                 {
                      AccessMask = (uint) (managementObject.Properties["AccessMask"]?.Value ?? default(uint)),
-		 GuidInheritedObjectType = (string) (managementObject.Properties["GuidInheritedObjectType"]?.Value ?? default(string)),
-		 GuidObjectType = (string) (managementObject.Properties["GuidObjectType"]?.Value ?? default(string)),
+		 GuidInheritedObjectType = (string) (managementObject.Properties["GuidInheritedObjectType"]?.Value),
+		 GuidObjectType = (string) (managementObject.Properties["GuidObjectType"]?.Value),
 		 Inheritance = (uint) (managementObject.Properties["Inheritance"]?.Value ?? default(uint)),
 		 SecuritySetting = (short) (managementObject.Properties["SecuritySetting"]?.Value ?? default(short)),
 		 Trustee = (short) (managementObject.Properties["Trustee"]?.Value ?? default(short)),

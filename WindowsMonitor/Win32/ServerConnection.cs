@@ -53,17 +53,17 @@ namespace WindowsMonitor.Win32
                 yield return new ServerConnection
                 {
                      ActiveTime = (uint) (managementObject.Properties["ActiveTime"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value),
 		 ConnectionID = (uint) (managementObject.Properties["ConnectionID"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfFiles = (uint) (managementObject.Properties["NumberOfFiles"]?.Value ?? default(uint)),
 		 NumberOfUsers = (uint) (managementObject.Properties["NumberOfUsers"]?.Value ?? default(uint)),
-		 ShareName = (string) (managementObject.Properties["ShareName"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
-		 UserName = (string) (managementObject.Properties["UserName"]?.Value ?? default(string))
+		 ShareName = (string) (managementObject.Properties["ShareName"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
+		 UserName = (string) (managementObject.Properties["UserName"]?.Value)
                 };
         }
     }

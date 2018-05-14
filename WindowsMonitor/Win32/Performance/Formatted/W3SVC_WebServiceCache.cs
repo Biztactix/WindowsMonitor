@@ -88,12 +88,12 @@ namespace WindowsMonitor.Win32.Performance.Formatted
                 yield return new W3SvcWebServiceCache
                 {
                      ActiveFlushedEntries = (uint) (managementObject.Properties["ActiveFlushedEntries"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CurrentFileCacheMemoryUsage = (ulong) (managementObject.Properties["CurrentFileCacheMemoryUsage"]?.Value ?? default(ulong)),
 		 CurrentFilesCached = (uint) (managementObject.Properties["CurrentFilesCached"]?.Value ?? default(uint)),
 		 CurrentMetadataCached = (uint) (managementObject.Properties["CurrentMetadataCached"]?.Value ?? default(uint)),
 		 CurrentUrIsCached = (uint) (managementObject.Properties["CurrentURIsCached"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FileCacheFlushes = (uint) (managementObject.Properties["FileCacheFlushes"]?.Value ?? default(uint)),
 		 FileCacheHits = (uint) (managementObject.Properties["FileCacheHits"]?.Value ?? default(uint)),
 		 FileCacheHitsPercent = (uint) (managementObject.Properties["FileCacheHitsPercent"]?.Value ?? default(uint)),
@@ -114,7 +114,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted
 		 MetadataCacheHits = (uint) (managementObject.Properties["MetadataCacheHits"]?.Value ?? default(uint)),
 		 MetadataCacheHitsPercent = (uint) (managementObject.Properties["MetadataCacheHitsPercent"]?.Value ?? default(uint)),
 		 MetadataCacheMisses = (uint) (managementObject.Properties["MetadataCacheMisses"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OutputCacheCurrentFlushedItems = (uint) (managementObject.Properties["OutputCacheCurrentFlushedItems"]?.Value ?? default(uint)),
 		 OutputCacheCurrentHitsPercent = (uint) (managementObject.Properties["OutputCacheCurrentHitsPercent"]?.Value ?? default(uint)),
 		 OutputCacheCurrentItems = (uint) (managementObject.Properties["OutputCacheCurrentItems"]?.Value ?? default(uint)),

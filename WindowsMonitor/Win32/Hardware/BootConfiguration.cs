@@ -47,15 +47,15 @@ namespace WindowsMonitor.Win32.Hardware
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new BootConfiguration
                 {
-                     BootDirectory = (string) (managementObject.Properties["BootDirectory"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 ConfigurationPath = (string) (managementObject.Properties["ConfigurationPath"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 LastDrive = (string) (managementObject.Properties["LastDrive"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ScratchDirectory = (string) (managementObject.Properties["ScratchDirectory"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
-		 TempDirectory = (string) (managementObject.Properties["TempDirectory"]?.Value ?? default(string))
+                     BootDirectory = (string) (managementObject.Properties["BootDirectory"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 ConfigurationPath = (string) (managementObject.Properties["ConfigurationPath"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 LastDrive = (string) (managementObject.Properties["LastDrive"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ScratchDirectory = (string) (managementObject.Properties["ScratchDirectory"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 TempDirectory = (string) (managementObject.Properties["TempDirectory"]?.Value)
                 };
         }
     }

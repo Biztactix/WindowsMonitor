@@ -45,8 +45,8 @@ namespace WindowsMonitor.CIM
                 yield return new CardOnCard
                 {
                      GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value ?? default(string)),
-		 MountOrSlotDescription = (string) (managementObject.Properties["MountOrSlotDescription"]?.Value ?? default(string)),
+		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value),
+		 MountOrSlotDescription = (string) (managementObject.Properties["MountOrSlotDescription"]?.Value),
 		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
                 };
         }

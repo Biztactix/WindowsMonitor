@@ -67,33 +67,33 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new WMISetting
                 {
-                     ASPScriptDefaultNamespace = (string) (managementObject.Properties["ASPScriptDefaultNamespace"]?.Value ?? default(string)),
+                     ASPScriptDefaultNamespace = (string) (managementObject.Properties["ASPScriptDefaultNamespace"]?.Value),
 		 ASPScriptEnabled = (bool) (managementObject.Properties["ASPScriptEnabled"]?.Value ?? default(bool)),
 		 AutorecoverMofs = (string[]) (managementObject.Properties["AutorecoverMofs"]?.Value ?? new string[0]),
 		 AutoStartWin9X = (uint) (managementObject.Properties["AutoStartWin9X"]?.Value ?? default(uint)),
 		 BackupInterval = (uint) (managementObject.Properties["BackupInterval"]?.Value ?? default(uint)),
 		 BackupLastTime = (DateTime) (managementObject.Properties["BackupLastTime"]?.Value ?? default(DateTime)),
-		 BuildVersion = (string) (managementObject.Properties["BuildVersion"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 DatabaseDirectory = (string) (managementObject.Properties["DatabaseDirectory"]?.Value ?? default(string)),
+		 BuildVersion = (string) (managementObject.Properties["BuildVersion"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 DatabaseDirectory = (string) (managementObject.Properties["DatabaseDirectory"]?.Value),
 		 DatabaseMaxSize = (uint) (managementObject.Properties["DatabaseMaxSize"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 EnableAnonWin9xConnections = (bool) (managementObject.Properties["EnableAnonWin9xConnections"]?.Value ?? default(bool)),
 		 EnableEvents = (bool) (managementObject.Properties["EnableEvents"]?.Value ?? default(bool)),
 		 EnableStartupHeapPreallocation = (bool) (managementObject.Properties["EnableStartupHeapPreallocation"]?.Value ?? default(bool)),
 		 HighThresholdOnClientObjects = (uint) (managementObject.Properties["HighThresholdOnClientObjects"]?.Value ?? default(uint)),
 		 HighThresholdOnEvents = (uint) (managementObject.Properties["HighThresholdOnEvents"]?.Value ?? default(uint)),
-		 InstallationDirectory = (string) (managementObject.Properties["InstallationDirectory"]?.Value ?? default(string)),
+		 InstallationDirectory = (string) (managementObject.Properties["InstallationDirectory"]?.Value),
 		 LastStartupHeapPreallocation = (uint) (managementObject.Properties["LastStartupHeapPreallocation"]?.Value ?? default(uint)),
-		 LoggingDirectory = (string) (managementObject.Properties["LoggingDirectory"]?.Value ?? default(string)),
+		 LoggingDirectory = (string) (managementObject.Properties["LoggingDirectory"]?.Value),
 		 LoggingLevel = (uint) (managementObject.Properties["LoggingLevel"]?.Value ?? default(uint)),
 		 LowThresholdOnClientObjects = (uint) (managementObject.Properties["LowThresholdOnClientObjects"]?.Value ?? default(uint)),
 		 LowThresholdOnEvents = (uint) (managementObject.Properties["LowThresholdOnEvents"]?.Value ?? default(uint)),
 		 MaxLogFileSize = (uint) (managementObject.Properties["MaxLogFileSize"]?.Value ?? default(uint)),
 		 MaxWaitOnClientObjects = (uint) (managementObject.Properties["MaxWaitOnClientObjects"]?.Value ?? default(uint)),
 		 MaxWaitOnEvents = (uint) (managementObject.Properties["MaxWaitOnEvents"]?.Value ?? default(uint)),
-		 MofSelfInstallDirectory = (string) (managementObject.Properties["MofSelfInstallDirectory"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string))
+		 MofSelfInstallDirectory = (string) (managementObject.Properties["MofSelfInstallDirectory"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

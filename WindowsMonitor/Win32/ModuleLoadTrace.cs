@@ -50,7 +50,7 @@ namespace WindowsMonitor.Win32
                 yield return new ModuleLoadTrace
                 {
                      DefaultBase = (ulong) (managementObject.Properties["DefaultBase"]?.Value ?? default(ulong)),
-		 FileName = (string) (managementObject.Properties["FileName"]?.Value ?? default(string)),
+		 FileName = (string) (managementObject.Properties["FileName"]?.Value),
 		 ImageBase = (ulong) (managementObject.Properties["ImageBase"]?.Value ?? default(ulong)),
 		 ImageChecksum = (uint) (managementObject.Properties["ImageChecksum"]?.Value ?? default(uint)),
 		 ImageSize = (ulong) (managementObject.Properties["ImageSize"]?.Value ?? default(ulong)),

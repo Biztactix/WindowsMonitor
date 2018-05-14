@@ -59,8 +59,8 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new Counters_RemoteFXGraphics
                 {
                      AverageEncodingTime = (uint) (managementObject.Properties["AverageEncodingTime"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrameQuality = (uint) (managementObject.Properties["FrameQuality"]?.Value ?? default(uint)),
 		 FramesSkippedPerSecondInsufficientClientResources = (uint) (managementObject.Properties["FramesSkippedPerSecondInsufficientClientResources"]?.Value ?? default(uint)),
 		 FramesSkippedPerSecondInsufficientNetworkResources = (uint) (managementObject.Properties["FramesSkippedPerSecondInsufficientNetworkResources"]?.Value ?? default(uint)),
@@ -70,7 +70,7 @@ namespace WindowsMonitor.Performance.Raw
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 GraphicsCompressionratio = (uint) (managementObject.Properties["GraphicsCompressionratio"]?.Value ?? default(uint)),
 		 InputFramesPerSecond = (uint) (managementObject.Properties["InputFramesPerSecond"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OutputFramesPerSecond = (uint) (managementObject.Properties["OutputFramesPerSecond"]?.Value ?? default(uint)),
 		 SourceFramesPerSecond = (uint) (managementObject.Properties["SourceFramesPerSecond"]?.Value ?? default(uint)),
 		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),

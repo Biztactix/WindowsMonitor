@@ -50,18 +50,18 @@ namespace WindowsMonitor.MSFT.WmiProviders
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AccessCheckPre
                 {
-                     HostingGroup = (string) (managementObject.Properties["HostingGroup"]?.Value ?? default(string)),
+                     HostingGroup = (string) (managementObject.Properties["HostingGroup"]?.Value),
 		 HostingSpecification = (uint) (managementObject.Properties["HostingSpecification"]?.Value ?? default(uint)),
-		 Locale = (string) (managementObject.Properties["Locale"]?.Value ?? default(string)),
-		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value ?? default(string)),
-		 Provider = (string) (managementObject.Properties["provider"]?.Value ?? default(string)),
-		 Query = (string) (managementObject.Properties["Query"]?.Value ?? default(string)),
-		 QueryLanguage = (string) (managementObject.Properties["QueryLanguage"]?.Value ?? default(string)),
+		 Locale = (string) (managementObject.Properties["Locale"]?.Value),
+		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
+		 Provider = (string) (managementObject.Properties["provider"]?.Value),
+		 Query = (string) (managementObject.Properties["Query"]?.Value),
+		 QueryLanguage = (string) (managementObject.Properties["QueryLanguage"]?.Value),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 Sid = (byte[]) (managementObject.Properties["Sid"]?.Value ?? new byte[0]),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
-		 TransactionIdentifer = (string) (managementObject.Properties["TransactionIdentifer"]?.Value ?? default(string)),
-		 User = (string) (managementObject.Properties["User"]?.Value ?? default(string))
+		 TransactionIdentifer = (string) (managementObject.Properties["TransactionIdentifer"]?.Value),
+		 User = (string) (managementObject.Properties["User"]?.Value)
                 };
         }
     }

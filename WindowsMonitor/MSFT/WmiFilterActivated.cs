@@ -46,10 +46,10 @@ namespace WindowsMonitor.Msft
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new WmiFilterActivated
                 {
-                     Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value ?? default(string)),
-		 Query = (string) (managementObject.Properties["Query"]?.Value ?? default(string)),
-		 QueryLanguage = (string) (managementObject.Properties["QueryLanguage"]?.Value ?? default(string)),
+                     Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
+		 Query = (string) (managementObject.Properties["Query"]?.Value),
+		 QueryLanguage = (string) (managementObject.Properties["QueryLanguage"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };

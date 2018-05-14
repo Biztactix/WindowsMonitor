@@ -56,17 +56,17 @@ namespace WindowsMonitor.Win32.Performance.Formatted.Network
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new TcpipTcPv4
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConnectionFailures = (uint) (managementObject.Properties["ConnectionFailures"]?.Value ?? default(uint)),
 		 ConnectionsActive = (uint) (managementObject.Properties["ConnectionsActive"]?.Value ?? default(uint)),
 		 ConnectionsEstablished = (uint) (managementObject.Properties["ConnectionsEstablished"]?.Value ?? default(uint)),
 		 ConnectionsPassive = (uint) (managementObject.Properties["ConnectionsPassive"]?.Value ?? default(uint)),
 		 ConnectionsReset = (uint) (managementObject.Properties["ConnectionsReset"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 SegmentsPersec = (uint) (managementObject.Properties["SegmentsPersec"]?.Value ?? default(uint)),
 		 SegmentsReceivedPersec = (uint) (managementObject.Properties["SegmentsReceivedPersec"]?.Value ?? default(uint)),
 		 SegmentsRetransmittedPersec = (uint) (managementObject.Properties["SegmentsRetransmittedPersec"]?.Value ?? default(uint)),

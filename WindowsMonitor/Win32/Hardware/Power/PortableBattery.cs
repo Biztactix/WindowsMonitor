@@ -79,21 +79,21 @@ namespace WindowsMonitor.Win32.Hardware.Power
                     BatteryStatus = (ushort) (managementObject.Properties["BatteryStatus"]?.Value ?? default(ushort)),
                     CapacityMultiplier =
                         (ushort) (managementObject.Properties["CapacityMultiplier"]?.Value ?? default(ushort)),
-                    Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                    Caption = (string) (managementObject.Properties["Caption"]?.Value),
                     Chemistry = (ushort) (managementObject.Properties["Chemistry"]?.Value ?? default(ushort)),
                     ConfigManagerErrorCode =
                         (uint) (managementObject.Properties["ConfigManagerErrorCode"]?.Value ?? default(uint)),
                     ConfigManagerUserConfig =
                         (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
                     CreationClassName =
-                        (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-                    Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["CreationClassName"]?.Value),
+                    Description = (string) (managementObject.Properties["Description"]?.Value),
                     DesignCapacity = (uint) (managementObject.Properties["DesignCapacity"]?.Value ?? default(uint)),
                     DesignVoltage = (ulong) (managementObject.Properties["DesignVoltage"]?.Value ?? default(ulong)),
-                    DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
+                    DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
                     ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
                     ErrorDescription =
-                        (string) (managementObject.Properties["ErrorDescription"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["ErrorDescription"]?.Value),
                     EstimatedChargeRemaining =
                         (ushort) (managementObject.Properties["EstimatedChargeRemaining"]?.Value ?? default(ushort)),
                     EstimatedRunTime = (uint) (managementObject.Properties["EstimatedRunTime"]?.Value ?? default(uint)),
@@ -102,26 +102,26 @@ namespace WindowsMonitor.Win32.Hardware.Power
                         (uint) (managementObject.Properties["FullChargeCapacity"]?.Value ?? default(uint)),
                     InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
                     LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
-                    Location = (string) (managementObject.Properties["Location"]?.Value ?? default(string)),
+                    Location = (string) (managementObject.Properties["Location"]?.Value),
                     ManufactureDate =
                         (string) (managementObject.Properties["ManufactureDate"]?.Value),
                     Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
                     MaxBatteryError =
                         (ushort) (managementObject.Properties["MaxBatteryError"]?.Value ?? default(ushort)),
                     MaxRechargeTime = (uint) (managementObject.Properties["MaxRechargeTime"]?.Value ?? default(uint)),
-                    Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+                    Name = (string) (managementObject.Properties["Name"]?.Value),
                     PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
                     PowerManagementCapabilities =
                         (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
                     PowerManagementSupported =
                         (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
                     SmartBatteryVersion =
-                        (string) (managementObject.Properties["SmartBatteryVersion"]?.Value ?? default(string)),
-                    Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["SmartBatteryVersion"]?.Value),
+                    Status = (string) (managementObject.Properties["Status"]?.Value),
                     StatusInfo = (ushort) (managementObject.Properties["StatusInfo"]?.Value ?? default(ushort)),
                     SystemCreationClassName =
-                        (string) (managementObject.Properties["SystemCreationClassName"]?.Value ?? default(string)),
-                    SystemName = (string) (managementObject.Properties["SystemName"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
+                    SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
                     TimeOnBattery = (uint) (managementObject.Properties["TimeOnBattery"]?.Value ?? default(uint)),
                     TimeToFullCharge = (uint) (managementObject.Properties["TimeToFullCharge"]?.Value ?? default(uint))
                 };

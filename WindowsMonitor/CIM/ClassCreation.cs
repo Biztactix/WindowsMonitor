@@ -51,12 +51,12 @@ namespace WindowsMonitor.CIM
                 {
                      ClassDefinition = (dynamic) (managementObject.Properties["ClassDefinition"]?.Value ?? default(dynamic)),
 		 CorrelatedIndications = (string[]) (managementObject.Properties["CorrelatedIndications"]?.Value ?? new string[0]),
-		 IndicationFilterName = (string) (managementObject.Properties["IndicationFilterName"]?.Value ?? default(string)),
-		 IndicationIdentifier = (string) (managementObject.Properties["IndicationIdentifier"]?.Value ?? default(string)),
+		 IndicationFilterName = (string) (managementObject.Properties["IndicationFilterName"]?.Value),
+		 IndicationIdentifier = (string) (managementObject.Properties["IndicationIdentifier"]?.Value),
 		 IndicationTime = (DateTime) (managementObject.Properties["IndicationTime"]?.Value ?? default(DateTime)),
-		 OtherSeverity = (string) (managementObject.Properties["OtherSeverity"]?.Value ?? default(string)),
+		 OtherSeverity = (string) (managementObject.Properties["OtherSeverity"]?.Value),
 		 PerceivedSeverity = (ushort) (managementObject.Properties["PerceivedSeverity"]?.Value ?? default(ushort)),
-		 SequenceContext = (string) (managementObject.Properties["SequenceContext"]?.Value ?? default(string)),
+		 SequenceContext = (string) (managementObject.Properties["SequenceContext"]?.Value),
 		 SequenceNumber = (long) (managementObject.Properties["SequenceNumber"]?.Value ?? default(long))
                 };
         }

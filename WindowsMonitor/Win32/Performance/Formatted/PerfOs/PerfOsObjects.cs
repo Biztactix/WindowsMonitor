@@ -53,14 +53,14 @@ namespace WindowsMonitor.Win32.Performance.Formatted.PerfOs
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PerfOsObjects
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Events = (uint) (managementObject.Properties["Events"]?.Value ?? default(uint)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Mutexes = (uint) (managementObject.Properties["Mutexes"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Processes = (uint) (managementObject.Properties["Processes"]?.Value ?? default(uint)),
 		 Sections = (uint) (managementObject.Properties["Sections"]?.Value ?? default(uint)),
 		 Semaphores = (uint) (managementObject.Properties["Semaphores"]?.Value ?? default(uint)),

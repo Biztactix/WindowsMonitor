@@ -44,9 +44,9 @@ namespace WindowsMonitor.Win32.Hardware.PnP
                 yield return new PnPDevicePropertyUint32
                 {
                      Data = (uint) (managementObject.Properties["Data"]?.Value ?? default(uint)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
-		 key = (string) (managementObject.Properties["key"]?.Value ?? default(string)),
-		 KeyName = (string) (managementObject.Properties["KeyName"]?.Value ?? default(string)),
+		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 key = (string) (managementObject.Properties["key"]?.Value),
+		 KeyName = (string) (managementObject.Properties["KeyName"]?.Value),
 		 Type = (uint) (managementObject.Properties["Type"]?.Value ?? default(uint))
                 };
         }

@@ -60,14 +60,14 @@ namespace WindowsMonitor.Win32.Performance.Formatted.Xtp
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new XtpDatabaseEngineXtpGarbageCollection
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DustycornerscanretriesPersecGCissued = (uint) (managementObject.Properties["DustycornerscanretriesPersecGCissued"]?.Value ?? default(uint)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 MainGCworkitemsPersec = (uint) (managementObject.Properties["MainGCworkitemsPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ParallelGCworkitemPersec = (uint) (managementObject.Properties["ParallelGCworkitemPersec"]?.Value ?? default(uint)),
 		 RowsprocessedPersec = (uint) (managementObject.Properties["RowsprocessedPersec"]?.Value ?? default(uint)),
 		 RowsprocessedPersecfirstinbucket = (uint) (managementObject.Properties["RowsprocessedPersecfirstinbucket"]?.Value ?? default(uint)),

@@ -44,11 +44,11 @@ namespace WindowsMonitor.MSFT.NetServices
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetServiceStartTypeChanged
                 {
-                     NewStartType = (string) (managementObject.Properties["NewStartType"]?.Value ?? default(string)),
-		 OldStartType = (string) (managementObject.Properties["OldStartType"]?.Value ?? default(string)),
+                     NewStartType = (string) (managementObject.Properties["NewStartType"]?.Value),
+		 OldStartType = (string) (managementObject.Properties["OldStartType"]?.Value),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
-		 Sid = (string) (managementObject.Properties["sid"]?.Value ?? default(string)),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
+		 Sid = (string) (managementObject.Properties["sid"]?.Value),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }

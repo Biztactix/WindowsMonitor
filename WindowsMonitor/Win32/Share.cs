@@ -52,13 +52,13 @@ namespace WindowsMonitor.Win32
                 {
                      AccessMask = (uint) (managementObject.Properties["AccessMask"]?.Value ?? default(uint)),
 		 AllowMaximum = (bool) (managementObject.Properties["AllowMaximum"]?.Value ?? default(bool)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 MaximumAllowed = (uint) (managementObject.Properties["MaximumAllowed"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Path = (string) (managementObject.Properties["Path"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Path = (string) (managementObject.Properties["Path"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Type = (uint) (managementObject.Properties["Type"]?.Value ?? default(uint))
                 };
         }

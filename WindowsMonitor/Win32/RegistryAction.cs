@@ -54,20 +54,20 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new RegistryAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
-		 EntryName = (string) (managementObject.Properties["EntryName"]?.Value ?? default(string)),
-		 EntryValue = (string) (managementObject.Properties["EntryValue"]?.Value ?? default(string)),
-		 key = (string) (managementObject.Properties["key"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Registry = (string) (managementObject.Properties["Registry"]?.Value ?? default(string)),
+		 EntryName = (string) (managementObject.Properties["EntryName"]?.Value),
+		 EntryValue = (string) (managementObject.Properties["EntryValue"]?.Value),
+		 key = (string) (managementObject.Properties["key"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Registry = (string) (managementObject.Properties["Registry"]?.Value),
 		 Root = (short) (managementObject.Properties["Root"]?.Value ?? default(short)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

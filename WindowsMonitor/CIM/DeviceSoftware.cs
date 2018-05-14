@@ -47,7 +47,7 @@ namespace WindowsMonitor.CIM
                      Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
 		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short)),
 		 Purpose = (ushort) (managementObject.Properties["Purpose"]?.Value ?? default(ushort)),
-		 PurposeDescription = (string) (managementObject.Properties["PurposeDescription"]?.Value ?? default(string))
+		 PurposeDescription = (string) (managementObject.Properties["PurposeDescription"]?.Value)
                 };
         }
     }

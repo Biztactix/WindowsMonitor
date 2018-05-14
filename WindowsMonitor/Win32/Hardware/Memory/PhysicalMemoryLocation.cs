@@ -42,7 +42,7 @@ namespace WindowsMonitor.Win32.Hardware.Memory
                 yield return new PhysicalMemoryLocation
                 {
                      GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value ?? default(string)),
+		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value),
 		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
                 };
         }

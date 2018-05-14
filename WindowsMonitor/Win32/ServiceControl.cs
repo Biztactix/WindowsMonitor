@@ -49,14 +49,14 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ServiceControl
                 {
-                     Arguments = (string) (managementObject.Properties["Arguments"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Event = (string) (managementObject.Properties["Event"]?.Value ?? default(string)),
-		 ID = (string) (managementObject.Properties["ID"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+                     Arguments = (string) (managementObject.Properties["Arguments"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Event = (string) (managementObject.Properties["Event"]?.Value),
+		 ID = (string) (managementObject.Properties["ID"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
 		 Wait = (ushort) (managementObject.Properties["Wait"]?.Value ?? default(ushort))
                 };
         }

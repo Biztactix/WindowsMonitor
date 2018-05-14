@@ -43,9 +43,9 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new CollectionOfMSEs
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CollectionID = (string) (managementObject.Properties["CollectionID"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string))
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CollectionID = (string) (managementObject.Properties["CollectionID"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value)
                 };
         }
     }

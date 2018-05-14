@@ -47,12 +47,12 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PrivilegesStatus
                 {
-                     Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Operation = (string) (managementObject.Properties["Operation"]?.Value ?? default(string)),
-		 ParameterInfo = (string) (managementObject.Properties["ParameterInfo"]?.Value ?? default(string)),
+                     Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Operation = (string) (managementObject.Properties["Operation"]?.Value),
+		 ParameterInfo = (string) (managementObject.Properties["ParameterInfo"]?.Value),
 		 PrivilegesNotHeld = (string[]) (managementObject.Properties["PrivilegesNotHeld"]?.Value ?? new string[0]),
 		 PrivilegesRequired = (string[]) (managementObject.Properties["PrivilegesRequired"]?.Value ?? new string[0]),
-		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value ?? default(string)),
+		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
 		 StatusCode = (uint) (managementObject.Properties["StatusCode"]?.Value ?? default(uint))
                 };
         }

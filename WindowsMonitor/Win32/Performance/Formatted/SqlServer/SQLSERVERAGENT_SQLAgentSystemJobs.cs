@@ -53,13 +53,13 @@ namespace WindowsMonitor.Win32.Performance.Formatted.SqlServer
                 yield return new SqlserveragentSqlAgentSystemJobs
                 {
                      Activesystemjobs = (ulong) (managementObject.Properties["Activesystemjobs"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Failedsystemjobs = (ulong) (managementObject.Properties["Failedsystemjobs"]?.Value ?? default(ulong)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Queuedsystemjobs = (ulong) (managementObject.Properties["Queuedsystemjobs"]?.Value ?? default(ulong)),
 		 Successfulsystemjobs = (ulong) (managementObject.Properties["Successfulsystemjobs"]?.Value ?? default(ulong)),
 		 SystemJobsactivatedPerminute = (ulong) (managementObject.Properties["SystemJobsactivatedPerminute"]?.Value ?? default(ulong)),

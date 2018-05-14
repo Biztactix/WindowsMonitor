@@ -61,23 +61,23 @@ namespace WindowsMonitor.CIM
                 {
                      AvailableSpace = (ulong) (managementObject.Properties["AvailableSpace"]?.Value ?? default(ulong)),
 		 BlockSize = (ulong) (managementObject.Properties["BlockSize"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CasePreserved = (bool) (managementObject.Properties["CasePreserved"]?.Value ?? default(bool)),
 		 CaseSensitive = (bool) (managementObject.Properties["CaseSensitive"]?.Value ?? default(bool)),
 		 CodeSet = (ushort[]) (managementObject.Properties["CodeSet"]?.Value ?? new ushort[0]),
-		 CompressionMethod = (string) (managementObject.Properties["CompressionMethod"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value ?? default(string)),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 EncryptionMethod = (string) (managementObject.Properties["EncryptionMethod"]?.Value ?? default(string)),
+		 CompressionMethod = (string) (managementObject.Properties["CompressionMethod"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 EncryptionMethod = (string) (managementObject.Properties["EncryptionMethod"]?.Value),
 		 FileSystemSize = (ulong) (managementObject.Properties["FileSystemSize"]?.Value ?? default(ulong)),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 MaxFileNameLength = (uint) (managementObject.Properties["MaxFileNameLength"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ReadOnly = (bool) (managementObject.Properties["ReadOnly"]?.Value ?? default(bool)),
-		 Root = (string) (managementObject.Properties["Root"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Root = (string) (managementObject.Properties["Root"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

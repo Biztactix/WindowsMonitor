@@ -51,17 +51,17 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new QuickFixEngineering
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 FixComments = (string) (managementObject.Properties["FixComments"]?.Value ?? default(string)),
-		 HotFixID = (string) (managementObject.Properties["HotFixID"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 FixComments = (string) (managementObject.Properties["FixComments"]?.Value),
+		 HotFixID = (string) (managementObject.Properties["HotFixID"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 InstalledBy = (string) (managementObject.Properties["InstalledBy"]?.Value ?? default(string)),
-		 InstalledOn = (string) (managementObject.Properties["InstalledOn"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ServicePackInEffect = (string) (managementObject.Properties["ServicePackInEffect"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 InstalledBy = (string) (managementObject.Properties["InstalledBy"]?.Value),
+		 InstalledOn = (string) (managementObject.Properties["InstalledOn"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ServicePackInEffect = (string) (managementObject.Properties["ServicePackInEffect"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

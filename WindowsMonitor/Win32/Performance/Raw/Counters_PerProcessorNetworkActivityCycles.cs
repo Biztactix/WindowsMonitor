@@ -63,8 +63,8 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new Counters_PerProcessorNetworkActivityCycles
                 {
                      BuildScatterGatherCyclesPersec = (ulong) (managementObject.Properties["BuildScatterGatherCyclesPersec"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -74,7 +74,7 @@ namespace WindowsMonitor.Performance.Raw
 		 MiniportReturnPacketCyclesPersec = (ulong) (managementObject.Properties["MiniportReturnPacketCyclesPersec"]?.Value ?? default(ulong)),
 		 MiniportRSSIndirectionTableChangeCycles = (ulong) (managementObject.Properties["MiniportRSSIndirectionTableChangeCycles"]?.Value ?? default(ulong)),
 		 MiniportSendCyclesPersec = (ulong) (managementObject.Properties["MiniportSendCyclesPersec"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NDISReceiveIndicationCyclesPersec = (ulong) (managementObject.Properties["NDISReceiveIndicationCyclesPersec"]?.Value ?? default(ulong)),
 		 NDISReturnPacketCyclesPersec = (ulong) (managementObject.Properties["NDISReturnPacketCyclesPersec"]?.Value ?? default(ulong)),
 		 NDISSendCompleteCyclesPersec = (ulong) (managementObject.Properties["NDISSendCompleteCyclesPersec"]?.Value ?? default(ulong)),

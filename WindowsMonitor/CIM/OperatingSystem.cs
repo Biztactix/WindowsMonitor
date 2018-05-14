@@ -67,12 +67,12 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new OperatingSystem
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value ?? default(string)),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
 		 CurrentTimeZone = (short) (managementObject.Properties["CurrentTimeZone"]?.Value ?? default(short)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Distributed = (bool) (managementObject.Properties["Distributed"]?.Value ?? default(bool)),
 		 FreePhysicalMemory = (ulong) (managementObject.Properties["FreePhysicalMemory"]?.Value ?? default(ulong)),
 		 FreeSpaceInPagingFiles = (ulong) (managementObject.Properties["FreeSpaceInPagingFiles"]?.Value ?? default(ulong)),
@@ -82,18 +82,18 @@ namespace WindowsMonitor.CIM
 		 LocalDateTime = (DateTime) (managementObject.Properties["LocalDateTime"]?.Value ?? default(DateTime)),
 		 MaxNumberOfProcesses = (uint) (managementObject.Properties["MaxNumberOfProcesses"]?.Value ?? default(uint)),
 		 MaxProcessMemorySize = (ulong) (managementObject.Properties["MaxProcessMemorySize"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfLicensedUsers = (uint) (managementObject.Properties["NumberOfLicensedUsers"]?.Value ?? default(uint)),
 		 NumberOfProcesses = (uint) (managementObject.Properties["NumberOfProcesses"]?.Value ?? default(uint)),
 		 NumberOfUsers = (uint) (managementObject.Properties["NumberOfUsers"]?.Value ?? default(uint)),
 		 OSType = (ushort) (managementObject.Properties["OSType"]?.Value ?? default(ushort)),
-		 OtherTypeDescription = (string) (managementObject.Properties["OtherTypeDescription"]?.Value ?? default(string)),
+		 OtherTypeDescription = (string) (managementObject.Properties["OtherTypeDescription"]?.Value),
 		 SizeStoredInPagingFiles = (ulong) (managementObject.Properties["SizeStoredInPagingFiles"]?.Value ?? default(ulong)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 TotalSwapSpaceSize = (ulong) (managementObject.Properties["TotalSwapSpaceSize"]?.Value ?? default(ulong)),
 		 TotalVirtualMemorySize = (ulong) (managementObject.Properties["TotalVirtualMemorySize"]?.Value ?? default(ulong)),
 		 TotalVisibleMemorySize = (ulong) (managementObject.Properties["TotalVisibleMemorySize"]?.Value ?? default(ulong)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

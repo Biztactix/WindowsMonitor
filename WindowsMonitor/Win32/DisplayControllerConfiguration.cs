@@ -55,19 +55,19 @@ namespace WindowsMonitor.Win32
                 yield return new DisplayControllerConfiguration
                 {
                      BitsPerPixel = (uint) (managementObject.Properties["BitsPerPixel"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ColorPlanes = (uint) (managementObject.Properties["ColorPlanes"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DeviceEntriesInAColorTable = (uint) (managementObject.Properties["DeviceEntriesInAColorTable"]?.Value ?? default(uint)),
 		 DeviceSpecificPens = (uint) (managementObject.Properties["DeviceSpecificPens"]?.Value ?? default(uint)),
 		 HorizontalResolution = (uint) (managementObject.Properties["HorizontalResolution"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RefreshRate = (int) (managementObject.Properties["RefreshRate"]?.Value ?? default(int)),
 		 ReservedSystemPaletteEntries = (uint) (managementObject.Properties["ReservedSystemPaletteEntries"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
 		 SystemPaletteEntries = (uint) (managementObject.Properties["SystemPaletteEntries"]?.Value ?? default(uint)),
 		 VerticalResolution = (uint) (managementObject.Properties["VerticalResolution"]?.Value ?? default(uint)),
-		 VideoMode = (string) (managementObject.Properties["VideoMode"]?.Value ?? default(string))
+		 VideoMode = (string) (managementObject.Properties["VideoMode"]?.Value)
                 };
         }
     }

@@ -68,34 +68,34 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ShadowCopy
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ClientAccessible = (bool) (managementObject.Properties["ClientAccessible"]?.Value ?? default(bool)),
 		 Count = (uint) (managementObject.Properties["Count"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 DeviceObject = (string) (managementObject.Properties["DeviceObject"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 DeviceObject = (string) (managementObject.Properties["DeviceObject"]?.Value),
 		 Differential = (bool) (managementObject.Properties["Differential"]?.Value ?? default(bool)),
 		 ExposedLocally = (bool) (managementObject.Properties["ExposedLocally"]?.Value ?? default(bool)),
-		 ExposedName = (string) (managementObject.Properties["ExposedName"]?.Value ?? default(string)),
-		 ExposedPath = (string) (managementObject.Properties["ExposedPath"]?.Value ?? default(string)),
+		 ExposedName = (string) (managementObject.Properties["ExposedName"]?.Value),
+		 ExposedPath = (string) (managementObject.Properties["ExposedPath"]?.Value),
 		 ExposedRemotely = (bool) (managementObject.Properties["ExposedRemotely"]?.Value ?? default(bool)),
 		 HardwareAssisted = (bool) (managementObject.Properties["HardwareAssisted"]?.Value ?? default(bool)),
-		 ID = (string) (managementObject.Properties["ID"]?.Value ?? default(string)),
+		 ID = (string) (managementObject.Properties["ID"]?.Value),
 		 Imported = (bool) (managementObject.Properties["Imported"]?.Value ?? default(bool)),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NoAutoRelease = (bool) (managementObject.Properties["NoAutoRelease"]?.Value ?? default(bool)),
 		 NotSurfaced = (bool) (managementObject.Properties["NotSurfaced"]?.Value ?? default(bool)),
 		 NoWriters = (bool) (managementObject.Properties["NoWriters"]?.Value ?? default(bool)),
-		 OriginatingMachine = (string) (managementObject.Properties["OriginatingMachine"]?.Value ?? default(string)),
+		 OriginatingMachine = (string) (managementObject.Properties["OriginatingMachine"]?.Value),
 		 Persistent = (bool) (managementObject.Properties["Persistent"]?.Value ?? default(bool)),
 		 Plex = (bool) (managementObject.Properties["Plex"]?.Value ?? default(bool)),
-		 ProviderID = (string) (managementObject.Properties["ProviderID"]?.Value ?? default(string)),
-		 ServiceMachine = (string) (managementObject.Properties["ServiceMachine"]?.Value ?? default(string)),
-		 SetID = (string) (managementObject.Properties["SetID"]?.Value ?? default(string)),
+		 ProviderID = (string) (managementObject.Properties["ProviderID"]?.Value),
+		 ServiceMachine = (string) (managementObject.Properties["ServiceMachine"]?.Value),
+		 SetID = (string) (managementObject.Properties["SetID"]?.Value),
 		 State = (uint) (managementObject.Properties["State"]?.Value ?? default(uint)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Transportable = (bool) (managementObject.Properties["Transportable"]?.Value ?? default(bool)),
-		 VolumeName = (string) (managementObject.Properties["VolumeName"]?.Value ?? default(string))
+		 VolumeName = (string) (managementObject.Properties["VolumeName"]?.Value)
                 };
         }
     }

@@ -56,13 +56,13 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NETFramework_NETCLRJit
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 ILBytesJittedPersec = (uint) (managementObject.Properties["ILBytesJittedPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberofILBytesJitted = (uint) (managementObject.Properties["NumberofILBytesJitted"]?.Value ?? default(uint)),
 		 NumberofMethodsJitted = (uint) (managementObject.Properties["NumberofMethodsJitted"]?.Value ?? default(uint)),
 		 PercentTimeinJit = (uint) (managementObject.Properties["PercentTimeinJit"]?.Value ?? default(uint)),

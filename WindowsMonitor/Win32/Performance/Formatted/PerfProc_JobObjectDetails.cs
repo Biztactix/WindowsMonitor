@@ -74,9 +74,9 @@ namespace WindowsMonitor.Win32.Performance.Formatted
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PerfProcJobObjectDetails
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CreatingProcessId = (ulong) (managementObject.Properties["CreatingProcessID"]?.Value ?? default(ulong)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ElapsedTime = (ulong) (managementObject.Properties["ElapsedTime"]?.Value ?? default(ulong)),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
@@ -91,7 +91,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted
 		 IoReadOperationsPersec = (ulong) (managementObject.Properties["IOReadOperationsPersec"]?.Value ?? default(ulong)),
 		 IoWriteBytesPersec = (ulong) (managementObject.Properties["IOWriteBytesPersec"]?.Value ?? default(ulong)),
 		 IoWriteOperationsPersec = (ulong) (managementObject.Properties["IOWriteOperationsPersec"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PageFaultsPersec = (uint) (managementObject.Properties["PageFaultsPersec"]?.Value ?? default(uint)),
 		 PageFileBytes = (ulong) (managementObject.Properties["PageFileBytes"]?.Value ?? default(ulong)),
 		 PageFileBytesPeak = (ulong) (managementObject.Properties["PageFileBytesPeak"]?.Value ?? default(ulong)),

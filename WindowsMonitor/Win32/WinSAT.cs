@@ -53,7 +53,7 @@ namespace WindowsMonitor.Win32
 		 DiskScore = (float) (managementObject.Properties["DiskScore"]?.Value ?? default(float)),
 		 GraphicsScore = (float) (managementObject.Properties["GraphicsScore"]?.Value ?? default(float)),
 		 MemoryScore = (float) (managementObject.Properties["MemoryScore"]?.Value ?? default(float)),
-		 TimeTaken = (string) (managementObject.Properties["TimeTaken"]?.Value ?? default(string)),
+		 TimeTaken = (string) (managementObject.Properties["TimeTaken"]?.Value),
 		 WinSATAssessmentState = (uint) (managementObject.Properties["WinSATAssessmentState"]?.Value ?? default(uint)),
 		 WinSPRLevel = (float) (managementObject.Properties["WinSPRLevel"]?.Value ?? default(float))
                 };

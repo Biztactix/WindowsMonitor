@@ -46,12 +46,12 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ODBCSourceAttribute
                 {
-                     Attribute = (string) (managementObject.Properties["Attribute"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 DataSource = (string) (managementObject.Properties["DataSource"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
-		 Value = (string) (managementObject.Properties["Value"]?.Value ?? default(string))
+                     Attribute = (string) (managementObject.Properties["Attribute"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 DataSource = (string) (managementObject.Properties["DataSource"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 Value = (string) (managementObject.Properties["Value"]?.Value)
                 };
         }
     }

@@ -49,14 +49,14 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new QuotaSetting
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DefaultLimit = (long) (managementObject.Properties["DefaultLimit"]?.Value ?? default(long)),
 		 DefaultWarningLimit = (long) (managementObject.Properties["DefaultWarningLimit"]?.Value ?? default(long)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ExceededNotification = (bool) (managementObject.Properties["ExceededNotification"]?.Value ?? default(bool)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
 		 State = (uint) (managementObject.Properties["State"]?.Value ?? default(uint)),
-		 VolumePath = (string) (managementObject.Properties["VolumePath"]?.Value ?? default(string)),
+		 VolumePath = (string) (managementObject.Properties["VolumePath"]?.Value),
 		 WarningExceededNotification = (bool) (managementObject.Properties["WarningExceededNotification"]?.Value ?? default(bool))
                 };
         }

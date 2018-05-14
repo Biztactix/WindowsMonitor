@@ -58,22 +58,22 @@ namespace WindowsMonitor.Win32.Network
                 yield return new IP4RouteTable
                 {
                      Age = (uint) (managementObject.Properties["Age"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Destination = (string) (managementObject.Properties["Destination"]?.Value ?? default(string)),
-		 Information = (string) (managementObject.Properties["Information"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Destination = (string) (managementObject.Properties["Destination"]?.Value),
+		 Information = (string) (managementObject.Properties["Information"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 InterfaceIndex = (int) (managementObject.Properties["InterfaceIndex"]?.Value ?? default(int)),
-		 Mask = (string) (managementObject.Properties["Mask"]?.Value ?? default(string)),
+		 Mask = (string) (managementObject.Properties["Mask"]?.Value),
 		 Metric1 = (int) (managementObject.Properties["Metric1"]?.Value ?? default(int)),
 		 Metric2 = (int) (managementObject.Properties["Metric2"]?.Value ?? default(int)),
 		 Metric3 = (int) (managementObject.Properties["Metric3"]?.Value ?? default(int)),
 		 Metric4 = (int) (managementObject.Properties["Metric4"]?.Value ?? default(int)),
 		 Metric5 = (int) (managementObject.Properties["Metric5"]?.Value ?? default(int)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 NextHop = (string) (managementObject.Properties["NextHop"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 NextHop = (string) (managementObject.Properties["NextHop"]?.Value),
 		 Protocol = (uint) (managementObject.Properties["Protocol"]?.Value ?? default(uint)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Type = (uint) (managementObject.Properties["Type"]?.Value ?? default(uint))
                 };
         }

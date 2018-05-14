@@ -57,8 +57,8 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new Counters_XHCITransferRing
                 {
                      BytesPerSec = (uint) (managementObject.Properties["BytesPerSec"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FailedTransferCount = (uint) (managementObject.Properties["FailedTransferCount"]?.Value ?? default(uint)),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
@@ -66,7 +66,7 @@ namespace WindowsMonitor.Performance.Raw
 		 IsochTDFailuresPersec = (uint) (managementObject.Properties["IsochTDFailuresPersec"]?.Value ?? default(uint)),
 		 IsochTDPersec = (uint) (managementObject.Properties["IsochTDPersec"]?.Value ?? default(uint)),
 		 MissedServiceErrorCount = (uint) (managementObject.Properties["MissedServiceErrorCount"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
 		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
 		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),

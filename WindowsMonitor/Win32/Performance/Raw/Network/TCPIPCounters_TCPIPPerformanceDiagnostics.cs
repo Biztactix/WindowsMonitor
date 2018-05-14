@@ -70,9 +70,9 @@ namespace WindowsMonitor.Performance.Raw
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new TCPIPCounters_TCPIPPerformanceDiagnostics
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Deniedconnectorsendrequestsinlowpowermode = (uint) (managementObject.Properties["Deniedconnectorsendrequestsinlowpowermode"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
@@ -92,7 +92,7 @@ namespace WindowsMonitor.Performance.Raw
 		 IPv6NBLstreatedasnonprevalidated = (uint) (managementObject.Properties["IPv6NBLstreatedasnonprevalidated"]?.Value ?? default(uint)),
 		 IPv6outboundNBLsnotprocessedviafastpath = (uint) (managementObject.Properties["IPv6outboundNBLsnotprocessedviafastpath"]?.Value ?? default(uint)),
 		 IPv6outboundNBLsPersecnotprocessedviafastpath = (uint) (managementObject.Properties["IPv6outboundNBLsPersecnotprocessedviafastpath"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 TCPconnectrequestsfallenoffloopbackfastpath = (uint) (managementObject.Properties["TCPconnectrequestsfallenoffloopbackfastpath"]?.Value ?? default(uint)),
 		 TCPconnectrequestsPersecfallenoffloopbackfastpath = (uint) (managementObject.Properties["TCPconnectrequestsPersecfallenoffloopbackfastpath"]?.Value ?? default(uint)),
 		 TCPinboundsegmentsnotprocessedviafastpath = (uint) (managementObject.Properties["TCPinboundsegmentsnotprocessedviafastpath"]?.Value ?? default(uint)),

@@ -45,12 +45,12 @@ namespace WindowsMonitor.Win32.Network
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetworkClient
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

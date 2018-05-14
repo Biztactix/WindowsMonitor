@@ -53,12 +53,12 @@ namespace WindowsMonitor.Win32.Performance.Formatted.DotNet
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetClrData
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 SqlClientCurrentNumberconnectionpools = (uint) (managementObject.Properties["SqlClientCurrentNumberconnectionpools"]?.Value ?? default(uint)),
 		 SqlClientCurrentNumberpooledandnonpooledconnections = (uint) (managementObject.Properties["SqlClientCurrentNumberpooledandnonpooledconnections"]?.Value ?? default(uint)),
 		 SqlClientCurrentNumberpooledconnections = (uint) (managementObject.Properties["SqlClientCurrentNumberpooledconnections"]?.Value ?? default(uint)),

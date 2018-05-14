@@ -42,9 +42,9 @@ namespace WindowsMonitor.MSFT.NetServices
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetServiceStartFailedGroup
                 {
-                     Group = (string) (managementObject.Properties["Group"]?.Value ?? default(string)),
+                     Group = (string) (managementObject.Properties["Group"]?.Value),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }

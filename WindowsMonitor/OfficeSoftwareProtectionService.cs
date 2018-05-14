@@ -63,7 +63,7 @@ namespace WindowsMonitor
                 yield return new OfficeSoftwareProtectionService
                 {
                     ClientMachineId =
-                        (string) (managementObject.Properties["ClientMachineID"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["ClientMachineID"]?.Value),
                     IsKeyManagementServiceMachine =
                         (uint) (managementObject.Properties["IsKeyManagementServiceMachine"]?.Value ?? default(uint)),
                     KeyManagementServiceActivationDisabled =
@@ -89,7 +89,7 @@ namespace WindowsMonitor
                     KeyManagementServiceLowPriority =
                         (bool) (managementObject.Properties["KeyManagementServiceLowPriority"]?.Value ?? default(bool)),
                     KeyManagementServiceMachine =
-                        (string) (managementObject.Properties["KeyManagementServiceMachine"]?.Value ?? default(string)),
+                        (string) (managementObject.Properties["KeyManagementServiceMachine"]?.Value),
                     KeyManagementServiceNonGenuineGraceRequests =
                         (uint) (managementObject.Properties["KeyManagementServiceNonGenuineGraceRequests"]?.Value ??
                                 default(uint)),
@@ -114,7 +114,7 @@ namespace WindowsMonitor
                         (uint) (managementObject.Properties["PolicyCacheRefreshRequired"]?.Value ?? default(uint)),
                     RequiredClientCount =
                         (uint) (managementObject.Properties["RequiredClientCount"]?.Value ?? default(uint)),
-                    Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string)),
+                    Version = (string) (managementObject.Properties["Version"]?.Value),
                     VlActivationInterval =
                         (uint) (managementObject.Properties["VLActivationInterval"]?.Value ?? default(uint)),
                     VlRenewalInterval =

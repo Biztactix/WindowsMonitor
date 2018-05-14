@@ -56,19 +56,19 @@ namespace WindowsMonitor.Win32
                 yield return new DisplayConfiguration
                 {
                      BitsPerPel = (uint) (managementObject.Properties["BitsPerPel"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 DeviceName = (string) (managementObject.Properties["DeviceName"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 DeviceName = (string) (managementObject.Properties["DeviceName"]?.Value),
 		 DisplayFlags = (uint) (managementObject.Properties["DisplayFlags"]?.Value ?? default(uint)),
 		 DisplayFrequency = (uint) (managementObject.Properties["DisplayFrequency"]?.Value ?? default(uint)),
 		 DitherType = (uint) (managementObject.Properties["DitherType"]?.Value ?? default(uint)),
-		 DriverVersion = (string) (managementObject.Properties["DriverVersion"]?.Value ?? default(string)),
+		 DriverVersion = (string) (managementObject.Properties["DriverVersion"]?.Value),
 		 IcmIntent = (uint) (managementObject.Properties["ICMIntent"]?.Value ?? default(uint)),
 		 IcmMethod = (uint) (managementObject.Properties["ICMMethod"]?.Value ?? default(uint)),
 		 LogPixels = (uint) (managementObject.Properties["LogPixels"]?.Value ?? default(uint)),
 		 PelsHeight = (uint) (managementObject.Properties["PelsHeight"]?.Value ?? default(uint)),
 		 PelsWidth = (uint) (managementObject.Properties["PelsWidth"]?.Value ?? default(uint)),
-		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 SpecificationVersion = (uint) (managementObject.Properties["SpecificationVersion"]?.Value ?? default(uint))
                 };
         }

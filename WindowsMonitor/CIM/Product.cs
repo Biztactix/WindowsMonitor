@@ -47,13 +47,13 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Product
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SKUNumber = (string) (managementObject.Properties["SKUNumber"]?.Value ?? default(string)),
-		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SKUNumber = (string) (managementObject.Properties["SKUNumber"]?.Value),
+		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

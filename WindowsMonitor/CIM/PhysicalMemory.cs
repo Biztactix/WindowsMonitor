@@ -67,33 +67,33 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PhysicalMemory
                 {
-                     BankLabel = (string) (managementObject.Properties["BankLabel"]?.Value ?? default(string)),
+                     BankLabel = (string) (managementObject.Properties["BankLabel"]?.Value),
 		 Capacity = (ulong) (managementObject.Properties["Capacity"]?.Value ?? default(ulong)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 DataWidth = (ushort) (managementObject.Properties["DataWidth"]?.Value ?? default(ushort)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FormFactor = (ushort) (managementObject.Properties["FormFactor"]?.Value ?? default(ushort)),
 		 HotSwappable = (bool) (managementObject.Properties["HotSwappable"]?.Value ?? default(bool)),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
 		 InterleavePosition = (uint) (managementObject.Properties["InterleavePosition"]?.Value ?? default(uint)),
-		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value ?? default(string)),
+		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 MemoryType = (ushort) (managementObject.Properties["MemoryType"]?.Value ?? default(ushort)),
-		 Model = (string) (managementObject.Properties["Model"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 OtherIdentifyingInfo = (string) (managementObject.Properties["OtherIdentifyingInfo"]?.Value ?? default(string)),
-		 PartNumber = (string) (managementObject.Properties["PartNumber"]?.Value ?? default(string)),
+		 Model = (string) (managementObject.Properties["Model"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 OtherIdentifyingInfo = (string) (managementObject.Properties["OtherIdentifyingInfo"]?.Value),
+		 PartNumber = (string) (managementObject.Properties["PartNumber"]?.Value),
 		 PositionInRow = (uint) (managementObject.Properties["PositionInRow"]?.Value ?? default(uint)),
 		 PoweredOn = (bool) (managementObject.Properties["PoweredOn"]?.Value ?? default(bool)),
 		 Removable = (bool) (managementObject.Properties["Removable"]?.Value ?? default(bool)),
 		 Replaceable = (bool) (managementObject.Properties["Replaceable"]?.Value ?? default(bool)),
-		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value ?? default(string)),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value ?? default(string)),
+		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
+		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
 		 Speed = (uint) (managementObject.Properties["Speed"]?.Value ?? default(uint)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
-		 Tag = (string) (managementObject.Properties["Tag"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
+		 Tag = (string) (managementObject.Properties["Tag"]?.Value),
 		 TotalWidth = (ushort) (managementObject.Properties["TotalWidth"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

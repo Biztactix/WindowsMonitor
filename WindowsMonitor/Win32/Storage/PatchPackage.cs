@@ -45,11 +45,11 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PatchPackage
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 PatchID = (string) (managementObject.Properties["PatchID"]?.Value ?? default(string)),
-		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string))
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 PatchID = (string) (managementObject.Properties["PatchID"]?.Value),
+		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

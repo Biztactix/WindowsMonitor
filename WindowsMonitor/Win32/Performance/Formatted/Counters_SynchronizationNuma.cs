@@ -89,8 +89,8 @@ namespace WindowsMonitor.Win32.Performance.Formatted
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new CountersSynchronizationNuma
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ExecResourceAcquiresAcqExclLitePersec = (uint) (managementObject.Properties["ExecResourceAcquiresAcqExclLitePersec"]?.Value ?? default(uint)),
 		 ExecResourceAcquiresAcqShrdLitePersec = (uint) (managementObject.Properties["ExecResourceAcquiresAcqShrdLitePersec"]?.Value ?? default(uint)),
 		 ExecResourceAcquiresAcqShrdStarveExclPersec = (uint) (managementObject.Properties["ExecResourceAcquiresAcqShrdStarveExclPersec"]?.Value ?? default(uint)),
@@ -133,7 +133,7 @@ namespace WindowsMonitor.Win32.Performance.Formatted
 		 IpiSendBroadcastRequestsPersec = (uint) (managementObject.Properties["IPISendBroadcastRequestsPersec"]?.Value ?? default(uint)),
 		 IpiSendRoutineRequestsPersec = (uint) (managementObject.Properties["IPISendRoutineRequestsPersec"]?.Value ?? default(uint)),
 		 IpiSendSoftwareInterruptsPersec = (uint) (managementObject.Properties["IPISendSoftwareInterruptsPersec"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 SpinlockAcquiresPersec = (uint) (managementObject.Properties["SpinlockAcquiresPersec"]?.Value ?? default(uint)),
 		 SpinlockContentionsPersec = (uint) (managementObject.Properties["SpinlockContentionsPersec"]?.Value ?? default(uint)),
 		 SpinlockSpinsPersec = (uint) (managementObject.Properties["SpinlockSpinsPersec"]?.Value ?? default(uint)),

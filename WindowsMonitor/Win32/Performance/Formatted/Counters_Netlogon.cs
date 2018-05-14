@@ -54,13 +54,13 @@ namespace WindowsMonitor.Win32.Performance.Formatted
                 yield return new CountersNetlogon
                 {
                      AverageSemaphoreHoldTime = (uint) (managementObject.Properties["AverageSemaphoreHoldTime"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 LastAuthenticationTime = (uint) (managementObject.Properties["LastAuthenticationTime"]?.Value ?? default(uint)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 SemaphoreAcquires = (ulong) (managementObject.Properties["SemaphoreAcquires"]?.Value ?? default(ulong)),
 		 SemaphoreHolders = (uint) (managementObject.Properties["SemaphoreHolders"]?.Value ?? default(uint)),
 		 SemaphoreTimeouts = (ulong) (managementObject.Properties["SemaphoreTimeouts"]?.Value ?? default(ulong)),

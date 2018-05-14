@@ -56,22 +56,22 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ShortcutAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value ?? default(string)),
-		 Arguments = (string) (managementObject.Properties["Arguments"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+		 Arguments = (string) (managementObject.Properties["Arguments"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
 		 HotKey = (ushort) (managementObject.Properties["HotKey"]?.Value ?? default(ushort)),
-		 IconIndex = (string) (managementObject.Properties["IconIndex"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 Shortcut = (string) (managementObject.Properties["Shortcut"]?.Value ?? default(string)),
+		 IconIndex = (string) (managementObject.Properties["IconIndex"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 Shortcut = (string) (managementObject.Properties["Shortcut"]?.Value),
 		 ShowCmd = (ushort) (managementObject.Properties["ShowCmd"]?.Value ?? default(ushort)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
-		 Target = (string) (managementObject.Properties["Target"]?.Value ?? default(string)),
+		 Target = (string) (managementObject.Properties["Target"]?.Value),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string)),
-		 WkDir = (string) (managementObject.Properties["WkDir"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value),
+		 WkDir = (string) (managementObject.Properties["WkDir"]?.Value)
                 };
         }
     }

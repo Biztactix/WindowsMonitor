@@ -43,10 +43,10 @@ namespace WindowsMonitor.MSFT.NetServices
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetServiceControlSuccess
                 {
-                     Control = (string) (managementObject.Properties["Control"]?.Value ?? default(string)),
+                     Control = (string) (managementObject.Properties["Control"]?.Value),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
-		 Sid = (string) (managementObject.Properties["sid"]?.Value ?? default(string)),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
+		 Sid = (string) (managementObject.Properties["sid"]?.Value),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }

@@ -66,7 +66,7 @@ namespace WindowsMonitor.Win32
 		 DetectSlowLinkDisabled = (bool) (managementObject.Properties["DetectSlowLinkDisabled"]?.Value ?? default(bool)),
 		 ForceUnloadDisabled = (bool) (managementObject.Properties["ForceUnloadDisabled"]?.Value ?? default(bool)),
 		 IsConfiguredByWMI = (bool) (managementObject.Properties["IsConfiguredByWMI"]?.Value ?? default(bool)),
-		 MachineProfilePath = (string) (managementObject.Properties["MachineProfilePath"]?.Value ?? default(string)),
+		 MachineProfilePath = (string) (managementObject.Properties["MachineProfilePath"]?.Value),
 		 OnlyAllowLocalProfiles = (bool) (managementObject.Properties["OnlyAllowLocalProfiles"]?.Value ?? default(bool)),
 		 OwnerCheckDisabled = (bool) (managementObject.Properties["OwnerCheckDisabled"]?.Value ?? default(bool)),
 		 PrimaryComputerEnabled = (bool) (managementObject.Properties["PrimaryComputerEnabled"]?.Value ?? default(bool)),

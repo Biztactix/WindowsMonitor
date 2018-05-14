@@ -60,23 +60,23 @@ namespace WindowsMonitor.Msft
                 yield return new WmiError
                 {
                      CIMStatusCode = (uint) (managementObject.Properties["CIMStatusCode"]?.Value ?? default(uint)),
-		 CIMStatusCodeDescription = (string) (managementObject.Properties["CIMStatusCodeDescription"]?.Value ?? default(string)),
+		 CIMStatusCodeDescription = (string) (managementObject.Properties["CIMStatusCodeDescription"]?.Value),
 		 error_Category = (ushort) (managementObject.Properties["error_Category"]?.Value ?? default(ushort)),
 		 error_Code = (uint) (managementObject.Properties["error_Code"]?.Value ?? default(uint)),
-		 error_Type = (string) (managementObject.Properties["error_Type"]?.Value ?? default(string)),
-		 error_WindowsErrorMessage = (string) (managementObject.Properties["error_WindowsErrorMessage"]?.Value ?? default(string)),
-		 ErrorSource = (string) (managementObject.Properties["ErrorSource"]?.Value ?? default(string)),
+		 error_Type = (string) (managementObject.Properties["error_Type"]?.Value),
+		 error_WindowsErrorMessage = (string) (managementObject.Properties["error_WindowsErrorMessage"]?.Value),
+		 ErrorSource = (string) (managementObject.Properties["ErrorSource"]?.Value),
 		 ErrorSourceFormat = (ushort) (managementObject.Properties["ErrorSourceFormat"]?.Value ?? default(ushort)),
 		 ErrorType = (ushort) (managementObject.Properties["ErrorType"]?.Value ?? default(ushort)),
-		 Message = (string) (managementObject.Properties["Message"]?.Value ?? default(string)),
+		 Message = (string) (managementObject.Properties["Message"]?.Value),
 		 MessageArguments = (string[]) (managementObject.Properties["MessageArguments"]?.Value ?? new string[0]),
-		 MessageID = (string) (managementObject.Properties["MessageID"]?.Value ?? default(string)),
-		 OtherErrorSourceFormat = (string) (managementObject.Properties["OtherErrorSourceFormat"]?.Value ?? default(string)),
-		 OtherErrorType = (string) (managementObject.Properties["OtherErrorType"]?.Value ?? default(string)),
-		 OWningEntity = (string) (managementObject.Properties["OWningEntity"]?.Value ?? default(string)),
+		 MessageID = (string) (managementObject.Properties["MessageID"]?.Value),
+		 OtherErrorSourceFormat = (string) (managementObject.Properties["OtherErrorSourceFormat"]?.Value),
+		 OtherErrorType = (string) (managementObject.Properties["OtherErrorType"]?.Value),
+		 OWningEntity = (string) (managementObject.Properties["OWningEntity"]?.Value),
 		 PerceivedSeverity = (ushort) (managementObject.Properties["PerceivedSeverity"]?.Value ?? default(ushort)),
 		 ProbableCause = (ushort) (managementObject.Properties["ProbableCause"]?.Value ?? default(ushort)),
-		 ProbableCauseDescription = (string) (managementObject.Properties["ProbableCauseDescription"]?.Value ?? default(string)),
+		 ProbableCauseDescription = (string) (managementObject.Properties["ProbableCauseDescription"]?.Value),
 		 RecommendedActions = (string[]) (managementObject.Properties["RecommendedActions"]?.Value ?? new string[0])
                 };
         }

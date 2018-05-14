@@ -56,23 +56,23 @@ namespace WindowsMonitor.CIM.Bios
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new BiosElement
                 {
-                     BuildNumber = (string) (managementObject.Properties["BuildNumber"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CodeSet = (string) (managementObject.Properties["CodeSet"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 IdentificationCode = (string) (managementObject.Properties["IdentificationCode"]?.Value ?? default(string)),
+                     BuildNumber = (string) (managementObject.Properties["BuildNumber"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CodeSet = (string) (managementObject.Properties["CodeSet"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 IdentificationCode = (string) (managementObject.Properties["IdentificationCode"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 LanguageEdition = (string) (managementObject.Properties["LanguageEdition"]?.Value ?? default(string)),
-		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 OtherTargetOs = (string) (managementObject.Properties["OtherTargetOS"]?.Value ?? default(string)),
+		 LanguageEdition = (string) (managementObject.Properties["LanguageEdition"]?.Value),
+		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 OtherTargetOs = (string) (managementObject.Properties["OtherTargetOS"]?.Value),
 		 PrimaryBios = (bool) (managementObject.Properties["PrimaryBIOS"]?.Value ?? default(bool)),
-		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value ?? default(string)),
-		 SoftwareElementId = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
+		 SoftwareElementId = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

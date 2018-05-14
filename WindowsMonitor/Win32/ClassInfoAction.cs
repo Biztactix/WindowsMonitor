@@ -59,25 +59,25 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ClassInfoAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value ?? default(string)),
-		 AppID = (string) (managementObject.Properties["AppID"]?.Value ?? default(string)),
-		 Argument = (string) (managementObject.Properties["Argument"]?.Value ?? default(string)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CLSID = (string) (managementObject.Properties["CLSID"]?.Value ?? default(string)),
-		 Context = (string) (managementObject.Properties["Context"]?.Value ?? default(string)),
-		 DefInprocHandler = (string) (managementObject.Properties["DefInprocHandler"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+		 AppID = (string) (managementObject.Properties["AppID"]?.Value),
+		 Argument = (string) (managementObject.Properties["Argument"]?.Value),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CLSID = (string) (managementObject.Properties["CLSID"]?.Value),
+		 Context = (string) (managementObject.Properties["Context"]?.Value),
+		 DefInprocHandler = (string) (managementObject.Properties["DefInprocHandler"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
-		 FileTypeMask = (string) (managementObject.Properties["FileTypeMask"]?.Value ?? default(string)),
+		 FileTypeMask = (string) (managementObject.Properties["FileTypeMask"]?.Value),
 		 Insertable = (ushort) (managementObject.Properties["Insertable"]?.Value ?? default(ushort)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ProgID = (string) (managementObject.Properties["ProgID"]?.Value ?? default(string)),
-		 RemoteName = (string) (managementObject.Properties["RemoteName"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ProgID = (string) (managementObject.Properties["ProgID"]?.Value),
+		 RemoteName = (string) (managementObject.Properties["RemoteName"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string)),
-		 VIProgID = (string) (managementObject.Properties["VIProgID"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value),
+		 VIProgID = (string) (managementObject.Properties["VIProgID"]?.Value)
                 };
         }
     }

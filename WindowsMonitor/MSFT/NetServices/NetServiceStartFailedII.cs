@@ -43,10 +43,10 @@ namespace WindowsMonitor.MSFT.NetServices
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetServiceStartFailedIi
                 {
-                     DependedOnService = (string) (managementObject.Properties["DependedOnService"]?.Value ?? default(string)),
+                     DependedOnService = (string) (managementObject.Properties["DependedOnService"]?.Value),
 		 Error = (uint) (managementObject.Properties["Error"]?.Value ?? default(uint)),
 		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 Service = (string) (managementObject.Properties["Service"]?.Value ?? default(string)),
+		 Service = (string) (managementObject.Properties["Service"]?.Value),
 		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }

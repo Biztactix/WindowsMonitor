@@ -46,11 +46,11 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Trustee
                 {
-                     Domain = (string) (managementObject.Properties["Domain"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+                     Domain = (string) (managementObject.Properties["Domain"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 SID = (byte[]) (managementObject.Properties["SID"]?.Value ?? new byte[0]),
 		 SidLength = (uint) (managementObject.Properties["SidLength"]?.Value ?? default(uint)),
-		 SIDString = (string) (managementObject.Properties["SIDString"]?.Value ?? default(string)),
+		 SIDString = (string) (managementObject.Properties["SIDString"]?.Value),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }

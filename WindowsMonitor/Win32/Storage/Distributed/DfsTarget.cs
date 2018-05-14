@@ -49,15 +49,15 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DfsTarget
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 LinkName = (string) (managementObject.Properties["LinkName"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ServerName = (string) (managementObject.Properties["ServerName"]?.Value ?? default(string)),
-		 ShareName = (string) (managementObject.Properties["ShareName"]?.Value ?? default(string)),
+		 LinkName = (string) (managementObject.Properties["LinkName"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ServerName = (string) (managementObject.Properties["ServerName"]?.Value),
+		 ShareName = (string) (managementObject.Properties["ShareName"]?.Value),
 		 State = (uint) (managementObject.Properties["State"]?.Value ?? default(uint)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string))
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

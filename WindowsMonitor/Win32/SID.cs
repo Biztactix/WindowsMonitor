@@ -45,10 +45,10 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SID
                 {
-                     AccountName = (string) (managementObject.Properties["AccountName"]?.Value ?? default(string)),
+                     AccountName = (string) (managementObject.Properties["AccountName"]?.Value),
 		 BinaryRepresentation = (byte[]) (managementObject.Properties["BinaryRepresentation"]?.Value ?? new byte[0]),
-		 ReferencedDomainName = (string) (managementObject.Properties["ReferencedDomainName"]?.Value ?? default(string)),
-		 Value = (string) (managementObject.Properties["SID"]?.Value ?? default(string)),
+		 ReferencedDomainName = (string) (managementObject.Properties["ReferencedDomainName"]?.Value),
+		 Value = (string) (managementObject.Properties["SID"]?.Value),
 		 SidLength = (uint) (managementObject.Properties["SidLength"]?.Value ?? default(uint))
                 };
         }

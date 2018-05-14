@@ -44,10 +44,10 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ScriptingStandardConsumerSetting
                 {
-                    Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-                    Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+                    Caption = (string) (managementObject.Properties["Caption"]?.Value),
+                    Description = (string) (managementObject.Properties["Description"]?.Value),
                     MaximumScripts = (uint) (managementObject.Properties["MaximumScripts"]?.Value ?? default(uint)),
-                    SettingId = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+                    SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
                     Timeout = (uint) (managementObject.Properties["Timeout"]?.Value ?? default(uint))
                 };
         }

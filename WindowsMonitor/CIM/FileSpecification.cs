@@ -55,21 +55,21 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new FileSpecification
                 {
-                     Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value ?? default(string)),
+                     Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value),
 		 CheckMode = (bool) (managementObject.Properties["CheckMode"]?.Value ?? default(bool)),
 		 CheckSum = (uint) (managementObject.Properties["CheckSum"]?.Value ?? default(uint)),
 		 CRC1 = (uint) (managementObject.Properties["CRC1"]?.Value ?? default(uint)),
 		 CRC2 = (uint) (managementObject.Properties["CRC2"]?.Value ?? default(uint)),
 		 CreateTimeStamp = (DateTime) (managementObject.Properties["CreateTimeStamp"]?.Value ?? default(DateTime)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FileSize = (ulong) (managementObject.Properties["FileSize"]?.Value ?? default(ulong)),
-		 MD5Checksum = (string) (managementObject.Properties["MD5Checksum"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value ?? default(string)),
+		 MD5Checksum = (string) (managementObject.Properties["MD5Checksum"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

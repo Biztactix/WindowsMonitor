@@ -57,21 +57,21 @@ namespace WindowsMonitor.Win32.Hardware.Printers
                 yield return new TCPIPPrinterPort
                 {
                      ByteCount = (bool) (managementObject.Properties["ByteCount"]?.Value ?? default(bool)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 HostAddress = (string) (managementObject.Properties["HostAddress"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 HostAddress = (string) (managementObject.Properties["HostAddress"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PortNumber = (uint) (managementObject.Properties["PortNumber"]?.Value ?? default(uint)),
 		 Protocol = (uint) (managementObject.Properties["Protocol"]?.Value ?? default(uint)),
-		 Queue = (string) (managementObject.Properties["Queue"]?.Value ?? default(string)),
-		 SNMPCommunity = (string) (managementObject.Properties["SNMPCommunity"]?.Value ?? default(string)),
+		 Queue = (string) (managementObject.Properties["Queue"]?.Value),
+		 SNMPCommunity = (string) (managementObject.Properties["SNMPCommunity"]?.Value),
 		 SNMPDevIndex = (uint) (managementObject.Properties["SNMPDevIndex"]?.Value ?? default(uint)),
 		 SNMPEnabled = (bool) (managementObject.Properties["SNMPEnabled"]?.Value ?? default(bool)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
-		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value ?? default(string)),
-		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
+		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
+		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
 		 Type = (uint) (managementObject.Properties["Type"]?.Value ?? default(uint))
                 };
         }

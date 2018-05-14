@@ -45,11 +45,11 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SupportAccess
                 {
-                     CommunicationInfo = (string) (managementObject.Properties["CommunicationInfo"]?.Value ?? default(string)),
+                     CommunicationInfo = (string) (managementObject.Properties["CommunicationInfo"]?.Value),
 		 CommunicationMode = (ushort) (managementObject.Properties["CommunicationMode"]?.Value ?? default(ushort)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
-		 Locale = (string) (managementObject.Properties["Locale"]?.Value ?? default(string)),
-		 SupportAccessId = (string) (managementObject.Properties["SupportAccessId"]?.Value ?? default(string))
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
+		 Locale = (string) (managementObject.Properties["Locale"]?.Value),
+		 SupportAccessId = (string) (managementObject.Properties["SupportAccessId"]?.Value)
                 };
         }
     }

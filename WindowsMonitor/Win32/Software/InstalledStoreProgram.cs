@@ -46,12 +46,12 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new InstalledStoreProgram
                 {
-                     Architecture = (string) (managementObject.Properties["Architecture"]?.Value ?? default(string)),
-		 Language = (string) (managementObject.Properties["Language"]?.Value ?? default(string)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
-		 ProgramId = (string) (managementObject.Properties["ProgramId"]?.Value ?? default(string)),
-		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value ?? default(string)),
-		 Version = (string) (managementObject.Properties["Version"]?.Value ?? default(string))
+                     Architecture = (string) (managementObject.Properties["Architecture"]?.Value),
+		 Language = (string) (managementObject.Properties["Language"]?.Value),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
+		 ProgramId = (string) (managementObject.Properties["ProgramId"]?.Value),
+		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value),
+		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };
         }
     }

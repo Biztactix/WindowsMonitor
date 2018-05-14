@@ -52,17 +52,17 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DCOMApplicationSetting
                 {
-                     AppID = (string) (managementObject.Properties["AppID"]?.Value ?? default(string)),
+                     AppID = (string) (managementObject.Properties["AppID"]?.Value),
 		 AuthenticationLevel = (uint) (managementObject.Properties["AuthenticationLevel"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
-		 CustomSurrogate = (string) (managementObject.Properties["CustomSurrogate"]?.Value ?? default(string)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
+		 CustomSurrogate = (string) (managementObject.Properties["CustomSurrogate"]?.Value),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 EnableAtStorageActivation = (bool) (managementObject.Properties["EnableAtStorageActivation"]?.Value ?? default(bool)),
-		 LocalService = (string) (managementObject.Properties["LocalService"]?.Value ?? default(string)),
-		 RemoteServerName = (string) (managementObject.Properties["RemoteServerName"]?.Value ?? default(string)),
-		 RunAsUser = (string) (managementObject.Properties["RunAsUser"]?.Value ?? default(string)),
-		 ServiceParameters = (string) (managementObject.Properties["ServiceParameters"]?.Value ?? default(string)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value ?? default(string)),
+		 LocalService = (string) (managementObject.Properties["LocalService"]?.Value),
+		 RemoteServerName = (string) (managementObject.Properties["RemoteServerName"]?.Value),
+		 RunAsUser = (string) (managementObject.Properties["RunAsUser"]?.Value),
+		 ServiceParameters = (string) (managementObject.Properties["ServiceParameters"]?.Value),
+		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
 		 UseSurrogate = (bool) (managementObject.Properties["UseSurrogate"]?.Value ?? default(bool))
                 };
         }

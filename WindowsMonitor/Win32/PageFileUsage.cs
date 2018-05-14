@@ -50,13 +50,13 @@ namespace WindowsMonitor.Win32
                 yield return new PageFileUsage
                 {
                      AllocatedBaseSize = (uint) (managementObject.Properties["AllocatedBaseSize"]?.Value ?? default(uint)),
-		 Caption = (string) (managementObject.Properties["Caption"]?.Value ?? default(string)),
+		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CurrentUsage = (uint) (managementObject.Properties["CurrentUsage"]?.Value ?? default(uint)),
-		 Description = (string) (managementObject.Properties["Description"]?.Value ?? default(string)),
+		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = (DateTime) (managementObject.Properties["InstallDate"]?.Value ?? default(DateTime)),
-		 Name = (string) (managementObject.Properties["Name"]?.Value ?? default(string)),
+		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PeakUsage = (uint) (managementObject.Properties["PeakUsage"]?.Value ?? default(uint)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value ?? default(string)),
+		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 TempPageFile = (bool) (managementObject.Properties["TempPageFile"]?.Value ?? default(bool))
                 };
         }

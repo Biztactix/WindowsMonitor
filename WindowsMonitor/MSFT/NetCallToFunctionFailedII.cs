@@ -45,9 +45,9 @@ namespace WindowsMonitor.Msft
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NetCallToFunctionFailedII
                 {
-                     Argument = (string) (managementObject.Properties["Argument"]?.Value ?? default(string)),
+                     Argument = (string) (managementObject.Properties["Argument"]?.Value),
 		 Error = (uint) (managementObject.Properties["Error"]?.Value ?? default(uint)),
-		 FunctionName = (string) (managementObject.Properties["FunctionName"]?.Value ?? default(string)),
+		 FunctionName = (string) (managementObject.Properties["FunctionName"]?.Value),
 		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
