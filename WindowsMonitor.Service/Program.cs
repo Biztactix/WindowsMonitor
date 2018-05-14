@@ -5,7 +5,10 @@ using System.Management;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsMonitor.CIM.Sensors;
 using WindowsMonitor.Win32;
+using WindowsMonitor.Win32.Hardware.Cooling;
+using WindowsMonitor.Win32.Hardware.Probes;
 
 namespace WindowsMonitor.Service
 {
@@ -13,14 +16,16 @@ namespace WindowsMonitor.Service
     {
         static void Main(string[] args)
         {
+            var os = Win32.OperatingSystem.Retrieve().ToArray();
+            var currents = CurrentSensor.Retrieve().ToArray();
+            var voltages = VoltageSensor.Retrieve().ToArray();
+            var temperatures = TemperatureSensor.Retrieve().ToArray();
+
+            var kkk = CurrentProbe.Retrieve().ToArray();
+            var temp = TemperatureProbe.Retrieve().ToArray();
+
             try
             {
-                var kk = ManagementDateTimeConverter.ToDmtfDateTime(DateTime.MinValue).ToString();
-
-                var os = Win32.OperatingSystem.Retrieve().ToArray();
-                
-
-                Console.ReadLine();
             }
             catch (Exception e)
             {
