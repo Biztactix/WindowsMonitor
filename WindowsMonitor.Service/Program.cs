@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Management;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Permissions;
+using WindowsMonitor.CIM.Hardware;
 using WindowsMonitor.CIM.Hardware.Sensors;
-using WindowsMonitor.Win32;
 using WindowsMonitor.Win32.Hardware.Cooling;
 using WindowsMonitor.Win32.Hardware.Probes;
 using WindowsMonitor.Win32.Performance.Raw;
@@ -15,17 +11,16 @@ namespace WindowsMonitor.Service
 {
     class Program
     {
+        [SecurityPermission(SecurityAction.LinkDemand, UnmanagedCode = true)]
         static void Main(string[] args)
         {
             var os = Win32.OperatingSystem.Retrieve().ToArray();
-            var currents = CurrentSensor.Retrieve().ToArray();
-            var voltages = VoltageSensor.Retrieve().ToArray();
-            var temperatures = TemperatureSensor.Retrieve().ToArray();
+            var currents = CurrentProbe.Retrieve().ToArray();
+            var voltages = VoltageProbe.Retrieve().ToArray();
+            var temperatures = TemperatureProbe.Retrieve().ToArray();
 
-            var kkk = CurrentProbe.Retrieve().ToArray();
-            var temp = TemperatureProbe.Retrieve().ToArray();
-
-            var power = CounterPowerMeter.Retrieve().ToArray();
+            var processors = Processor.Retrieve().ToArray();
+            var processors2 = Win32.Hardware.Processor.Retrieve().ToArray();
 
             try
             {
