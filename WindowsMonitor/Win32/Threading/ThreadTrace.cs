@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32
+namespace WindowsMonitor.Win32.Threading
 {
     /// <summary>
     /// </summary>
     public sealed class ThreadTrace
     {
-		public uint ProcessID { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public uint ThreadID { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public uint ProcessId { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public uint ThreadId { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<ThreadTrace> Retrieve(string remote, string username, string password)
         {
@@ -44,10 +42,10 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ThreadTrace
                 {
-                     ProcessID = (uint) (managementObject.Properties["ProcessID"]?.Value ?? default(uint)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 ThreadID = (uint) (managementObject.Properties["ThreadID"]?.Value ?? default(uint)),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+                     ProcessId = (uint) (managementObject.Properties["ProcessID"]?.Value ?? default(uint)),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 ThreadId = (uint) (managementObject.Properties["ThreadID"]?.Value ?? default(uint)),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

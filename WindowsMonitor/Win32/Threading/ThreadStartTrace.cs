@@ -1,21 +1,19 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32
+namespace WindowsMonitor.Win32.Threading
 {
     /// <summary>
     /// </summary>
     public sealed class ThreadStartTrace
     {
-		public uint ProcessID { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
+		public uint ProcessId { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
 		public ulong StackBase { get; private set; }
 		public ulong StackLimit { get; private set; }
 		public ulong StartAddr { get; private set; }
-		public uint ThreadID { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public uint ThreadId { get; private set; }
+		public ulong TimeCreated { get; private set; }
 		public ulong UserStackBase { get; private set; }
 		public ulong UserStackLimit { get; private set; }
 		public uint WaitMode { get; private set; }
@@ -51,13 +49,13 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ThreadStartTrace
                 {
-                     ProcessID = (uint) (managementObject.Properties["ProcessID"]?.Value ?? default(uint)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+                     ProcessId = (uint) (managementObject.Properties["ProcessID"]?.Value ?? default(uint)),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 StackBase = (ulong) (managementObject.Properties["StackBase"]?.Value ?? default(ulong)),
 		 StackLimit = (ulong) (managementObject.Properties["StackLimit"]?.Value ?? default(ulong)),
 		 StartAddr = (ulong) (managementObject.Properties["StartAddr"]?.Value ?? default(ulong)),
-		 ThreadID = (uint) (managementObject.Properties["ThreadID"]?.Value ?? default(uint)),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
+		 ThreadId = (uint) (managementObject.Properties["ThreadID"]?.Value ?? default(uint)),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
 		 UserStackBase = (ulong) (managementObject.Properties["UserStackBase"]?.Value ?? default(ulong)),
 		 UserStackLimit = (ulong) (managementObject.Properties["UserStackLimit"]?.Value ?? default(ulong)),
 		 WaitMode = (uint) (managementObject.Properties["WaitMode"]?.Value ?? default(uint)),

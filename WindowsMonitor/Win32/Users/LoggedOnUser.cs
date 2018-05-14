@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32
+namespace WindowsMonitor.Win32.Users
 {
     /// <summary>
     /// </summary>
-    public sealed class LogonSessionMappedDisk
+    public sealed class LoggedOnUser
     {
 		public short Antecedent { get; private set; }
 		public short Dependent { get; private set; }
 
-        public static IEnumerable<LogonSessionMappedDisk> Retrieve(string remote, string username, string password)
+        public static IEnumerable<LoggedOnUser> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +25,20 @@ namespace WindowsMonitor.Win32
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<LogonSessionMappedDisk> Retrieve()
+        public static IEnumerable<LoggedOnUser> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<LogonSessionMappedDisk> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<LoggedOnUser> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM Win32_LogonSessionMappedDisk");
+            var objectQuery = new ObjectQuery("SELECT * FROM Win32_LoggedOnUser");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new LogonSessionMappedDisk
+                yield return new LoggedOnUser
                 {
                      Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
 		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short))

@@ -5,27 +5,25 @@ namespace WindowsMonitor.Win32.Performance.Raw
 {
     /// <summary>
     /// </summary>
-    public sealed class MicrosoftWindowsBitLockerDriverCountersProviderBitLocker
+    public sealed class RemoteFxSynth3DvscvmDevice
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
 		public ulong FrequencyObject { get; private set; }
 		public ulong FrequencyPerfTime { get; private set; }
 		public ulong FrequencySys100Ns { get; private set; }
-		public uint MaxReadSplitSize { get; private set; }
-		public uint MaxWriteSplitSize { get; private set; }
-		public uint MinReadSplitSize { get; private set; }
-		public uint MinWriteSplitSize { get; private set; }
 		public string Name { get; private set; }
-		public ulong ReadRequestsPersec { get; private set; }
-		public ulong ReadSubrequestsPersec { get; private set; }
+		public uint NumberofconnectedVmTchannels { get; private set; }
+		public uint NumberofcreatedVmTchannels { get; private set; }
+		public uint NumberofdisconnectedVmTchannels { get; private set; }
+		public uint NumberofRdvgMrestartednotifications { get; private set; }
+		public uint NumberofwaitingVmTchannels { get; private set; }
 		public ulong TimestampObject { get; private set; }
 		public ulong TimestampPerfTime { get; private set; }
 		public ulong TimestampSys100Ns { get; private set; }
-		public ulong WriteRequestsPersec { get; private set; }
-		public ulong WriteSubrequestsPersec { get; private set; }
+		public uint TotalnumberofcreatedVmTchannels { get; private set; }
 
-        public static IEnumerable<MicrosoftWindowsBitLockerDriverCountersProviderBitLocker> Retrieve(string remote, string username, string password)
+        public static IEnumerable<RemoteFxSynth3DvscvmDevice> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -40,38 +38,36 @@ namespace WindowsMonitor.Win32.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MicrosoftWindowsBitLockerDriverCountersProviderBitLocker> Retrieve()
+        public static IEnumerable<RemoteFxSynth3DvscvmDevice> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MicrosoftWindowsBitLockerDriverCountersProviderBitLocker> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<RemoteFxSynth3DvscvmDevice> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_MicrosoftWindowsBitLockerDriverCountersProvider_BitLocker");
+            var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_MicrosoftWindowsRemoteDesktopServicesRemoteFXSynth3dvsc_RemoteFXSynth3DVSCVMDevice");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MicrosoftWindowsBitLockerDriverCountersProviderBitLocker
+                yield return new RemoteFxSynth3DvscvmDevice
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
 		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
 		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 MaxReadSplitSize = (uint) (managementObject.Properties["MaxReadSplitSize"]?.Value ?? default(uint)),
-		 MaxWriteSplitSize = (uint) (managementObject.Properties["MaxWriteSplitSize"]?.Value ?? default(uint)),
-		 MinReadSplitSize = (uint) (managementObject.Properties["MinReadSplitSize"]?.Value ?? default(uint)),
-		 MinWriteSplitSize = (uint) (managementObject.Properties["MinWriteSplitSize"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 ReadRequestsPersec = (ulong) (managementObject.Properties["ReadRequestsPersec"]?.Value ?? default(ulong)),
-		 ReadSubrequestsPersec = (ulong) (managementObject.Properties["ReadSubrequestsPersec"]?.Value ?? default(ulong)),
+		 NumberofconnectedVmTchannels = (uint) (managementObject.Properties["NumberofconnectedVMTchannels"]?.Value ?? default(uint)),
+		 NumberofcreatedVmTchannels = (uint) (managementObject.Properties["NumberofcreatedVMTchannels"]?.Value ?? default(uint)),
+		 NumberofdisconnectedVmTchannels = (uint) (managementObject.Properties["NumberofdisconnectedVMTchannels"]?.Value ?? default(uint)),
+		 NumberofRdvgMrestartednotifications = (uint) (managementObject.Properties["NumberofRDVGMrestartednotifications"]?.Value ?? default(uint)),
+		 NumberofwaitingVmTchannels = (uint) (managementObject.Properties["NumberofwaitingVMTchannels"]?.Value ?? default(uint)),
 		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
 		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
 		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
-		 WriteRequestsPersec = (ulong) (managementObject.Properties["WriteRequestsPersec"]?.Value ?? default(ulong)),
-		 WriteSubrequestsPersec = (ulong) (managementObject.Properties["WriteSubrequestsPersec"]?.Value ?? default(ulong))
+		 TotalnumberofcreatedVmTchannels = (uint) (managementObject.Properties["TotalnumberofcreatedVMTchannels"]?.Value ?? default(uint))
                 };
         }
     }

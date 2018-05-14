@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32
+namespace WindowsMonitor.Win32.Paging
 {
     /// <summary>
     /// </summary>
@@ -14,7 +12,7 @@ namespace WindowsMonitor.Win32
 		public uint InitialSize { get; private set; }
 		public uint MaximumSize { get; private set; }
 		public string Name { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 
         public static IEnumerable<PageFileSetting> Retrieve(string remote, string username, string password)
         {
@@ -51,7 +49,7 @@ namespace WindowsMonitor.Win32
 		 InitialSize = (uint) (managementObject.Properties["InitialSize"]?.Value ?? default(uint)),
 		 MaximumSize = (uint) (managementObject.Properties["MaximumSize"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

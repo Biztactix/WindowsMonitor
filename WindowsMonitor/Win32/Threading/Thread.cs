@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32
+namespace WindowsMonitor.Win32.Threading
 {
     /// <summary>
     /// </summary>
@@ -11,8 +10,8 @@ namespace WindowsMonitor.Win32
     {
 		public string Caption { get; private set; }
 		public string CreationClassName { get; private set; }
-		public string CSCreationClassName { get; private set; }
-		public string CSName { get; private set; }
+		public string CsCreationClassName { get; private set; }
+		public string CsName { get; private set; }
 		public string Description { get; private set; }
 		public ulong ElapsedTime { get; private set; }
 		public ushort ExecutionState { get; private set; }
@@ -20,8 +19,8 @@ namespace WindowsMonitor.Win32
 		public DateTime InstallDate { get; private set; }
 		public ulong KernelModeTime { get; private set; }
 		public string Name { get; private set; }
-		public string OSCreationClassName { get; private set; }
-		public string OSName { get; private set; }
+		public string OsCreationClassName { get; private set; }
+		public string OsName { get; private set; }
 		public uint Priority { get; private set; }
 		public uint PriorityBase { get; private set; }
 		public string ProcessCreationClassName { get; private set; }
@@ -64,8 +63,8 @@ namespace WindowsMonitor.Win32
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ElapsedTime = (ulong) (managementObject.Properties["ElapsedTime"]?.Value ?? default(ulong)),
 		 ExecutionState = (ushort) (managementObject.Properties["ExecutionState"]?.Value ?? default(ushort)),
@@ -73,8 +72,8 @@ namespace WindowsMonitor.Win32
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
 		 KernelModeTime = (ulong) (managementObject.Properties["KernelModeTime"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 OSCreationClassName = (string) (managementObject.Properties["OSCreationClassName"]?.Value),
-		 OSName = (string) (managementObject.Properties["OSName"]?.Value),
+		 OsCreationClassName = (string) (managementObject.Properties["OSCreationClassName"]?.Value),
+		 OsName = (string) (managementObject.Properties["OSName"]?.Value),
 		 Priority = (uint) (managementObject.Properties["Priority"]?.Value ?? default(uint)),
 		 PriorityBase = (uint) (managementObject.Properties["PriorityBase"]?.Value ?? default(uint)),
 		 ProcessCreationClassName = (string) (managementObject.Properties["ProcessCreationClassName"]?.Value),

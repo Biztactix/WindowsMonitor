@@ -5,7 +5,7 @@ namespace WindowsMonitor.Win32.Performance.Raw
 {
     /// <summary>
     /// </summary>
-    public sealed class MicrosoftWindowsRemoteDesktopServicesRemoteFxSynth3DvscRemoteFxSynth3DvscvmTransportChannel
+    public sealed class RemoteFXSynth3DVSCVMTransportChannel
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
@@ -29,7 +29,7 @@ namespace WindowsMonitor.Win32.Performance.Raw
 		public ulong TimestampPerfTime { get; private set; }
 		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<MicrosoftWindowsRemoteDesktopServicesRemoteFxSynth3DvscRemoteFxSynth3DvscvmTransportChannel> Retrieve(string remote, string username, string password)
+        public static IEnumerable<RemoteFXSynth3DVSCVMTransportChannel> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -44,20 +44,20 @@ namespace WindowsMonitor.Win32.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MicrosoftWindowsRemoteDesktopServicesRemoteFxSynth3DvscRemoteFxSynth3DvscvmTransportChannel> Retrieve()
+        public static IEnumerable<RemoteFXSynth3DVSCVMTransportChannel> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MicrosoftWindowsRemoteDesktopServicesRemoteFxSynth3DvscRemoteFxSynth3DvscvmTransportChannel> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<RemoteFXSynth3DVSCVMTransportChannel> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_MicrosoftWindowsRemoteDesktopServicesRemoteFXSynth3dvsc_RemoteFXSynth3DVSCVMTransportChannel");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MicrosoftWindowsRemoteDesktopServicesRemoteFxSynth3DvscRemoteFxSynth3DvscvmTransportChannel
+                yield return new RemoteFXSynth3DVSCVMTransportChannel
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),

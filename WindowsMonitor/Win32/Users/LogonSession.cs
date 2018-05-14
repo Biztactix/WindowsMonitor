@@ -1,25 +1,24 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32
+namespace WindowsMonitor.Win32.Users
 {
     /// <summary>
     /// </summary>
-    public sealed class PageFileUsage
+    public sealed class LogonSession
     {
-		public uint AllocatedBaseSize { get; private set; }
+		public string AuthenticationPackage { get; private set; }
 		public string Caption { get; private set; }
-		public uint CurrentUsage { get; private set; }
 		public string Description { get; private set; }
 		public DateTime InstallDate { get; private set; }
+		public string LogonId { get; private set; }
+		public uint LogonType { get; private set; }
 		public string Name { get; private set; }
-		public uint PeakUsage { get; private set; }
+		public DateTime StartTime { get; private set; }
 		public string Status { get; private set; }
-		public bool TempPageFile { get; private set; }
 
-        public static IEnumerable<PageFileUsage> Retrieve(string remote, string username, string password)
+        public static IEnumerable<LogonSession> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -34,30 +33,30 @@ namespace WindowsMonitor.Win32
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PageFileUsage> Retrieve()
+        public static IEnumerable<LogonSession> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PageFileUsage> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<LogonSession> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM Win32_PageFileUsage");
+            var objectQuery = new ObjectQuery("SELECT * FROM Win32_LogonSession");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PageFileUsage
+                yield return new LogonSession
                 {
-                     AllocatedBaseSize = (uint) (managementObject.Properties["AllocatedBaseSize"]?.Value ?? default(uint)),
+                     AuthenticationPackage = (string) (managementObject.Properties["AuthenticationPackage"]?.Value),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
-		 CurrentUsage = (uint) (managementObject.Properties["CurrentUsage"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 LogonId = (string) (managementObject.Properties["LogonId"]?.Value),
+		 LogonType = (uint) (managementObject.Properties["LogonType"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 PeakUsage = (uint) (managementObject.Properties["PeakUsage"]?.Value ?? default(uint)),
-		 Status = (string) (managementObject.Properties["Status"]?.Value),
-		 TempPageFile = (bool) (managementObject.Properties["TempPageFile"]?.Value ?? default(bool))
+		 StartTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["StartTime"]?.Value as string ?? "00010101000000.000000+060"),
+		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }
     }

@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32
+namespace WindowsMonitor.Win32.Paging
 {
     /// <summary>
     /// </summary>
@@ -16,8 +15,8 @@ namespace WindowsMonitor.Win32
 		public string CompressionMethod { get; private set; }
 		public string CreationClassName { get; private set; }
 		public DateTime CreationDate { get; private set; }
-		public string CSCreationClassName { get; private set; }
-		public string CSName { get; private set; }
+		public string CsCreationClassName { get; private set; }
+		public string CsName { get; private set; }
 		public string Description { get; private set; }
 		public string Drive { get; private set; }
 		public string EightDotThreeFileName { get; private set; }
@@ -28,8 +27,8 @@ namespace WindowsMonitor.Win32
 		public ulong FileSize { get; private set; }
 		public string FileType { get; private set; }
 		public uint FreeSpace { get; private set; }
-		public string FSCreationClassName { get; private set; }
-		public string FSName { get; private set; }
+		public string FsCreationClassName { get; private set; }
+		public string FsName { get; private set; }
 		public bool Hidden { get; private set; }
 		public uint InitialSize { get; private set; }
 		public DateTime InstallDate { get; private set; }
@@ -83,8 +82,8 @@ namespace WindowsMonitor.Win32
 		 CompressionMethod = (string) (managementObject.Properties["CompressionMethod"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 CreationDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["CreationDate"]?.Value as string ?? "00010101000000.000000+060"),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Drive = (string) (managementObject.Properties["Drive"]?.Value),
 		 EightDotThreeFileName = (string) (managementObject.Properties["EightDotThreeFileName"]?.Value),
@@ -95,8 +94,8 @@ namespace WindowsMonitor.Win32
 		 FileSize = (ulong) (managementObject.Properties["FileSize"]?.Value ?? default(ulong)),
 		 FileType = (string) (managementObject.Properties["FileType"]?.Value),
 		 FreeSpace = (uint) (managementObject.Properties["FreeSpace"]?.Value ?? default(uint)),
-		 FSCreationClassName = (string) (managementObject.Properties["FSCreationClassName"]?.Value),
-		 FSName = (string) (managementObject.Properties["FSName"]?.Value),
+		 FsCreationClassName = (string) (managementObject.Properties["FSCreationClassName"]?.Value),
+		 FsName = (string) (managementObject.Properties["FSName"]?.Value),
 		 Hidden = (bool) (managementObject.Properties["Hidden"]?.Value ?? default(bool)),
 		 InitialSize = (uint) (managementObject.Properties["InitialSize"]?.Value ?? default(uint)),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),

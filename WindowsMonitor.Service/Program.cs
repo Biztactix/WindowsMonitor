@@ -9,6 +9,7 @@ using WindowsMonitor.CIM.Hardware.Sensors;
 using WindowsMonitor.Win32;
 using WindowsMonitor.Win32.Hardware.Cooling;
 using WindowsMonitor.Win32.Hardware.Probes;
+using WindowsMonitor.Win32.Performance.Raw;
 
 namespace WindowsMonitor.Service
 {
@@ -23,6 +24,8 @@ namespace WindowsMonitor.Service
 
             var kkk = CurrentProbe.Retrieve().ToArray();
             var temp = TemperatureProbe.Retrieve().ToArray();
+
+            var power = CounterPowerMeter.Retrieve().ToArray();
 
             try
             {

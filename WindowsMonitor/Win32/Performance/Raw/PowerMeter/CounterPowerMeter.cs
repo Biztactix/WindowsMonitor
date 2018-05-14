@@ -5,7 +5,7 @@ namespace WindowsMonitor.Win32.Performance.Raw
 {
     /// <summary>
     /// </summary>
-    public sealed class PowerMeterCounterPowerMeter
+    public sealed class CounterPowerMeter
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
@@ -19,7 +19,7 @@ namespace WindowsMonitor.Win32.Performance.Raw
 		public ulong TimestampPerfTime { get; private set; }
 		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<PowerMeterCounterPowerMeter> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CounterPowerMeter> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -34,20 +34,20 @@ namespace WindowsMonitor.Win32.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PowerMeterCounterPowerMeter> Retrieve()
+        public static IEnumerable<CounterPowerMeter> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PowerMeterCounterPowerMeter> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CounterPowerMeter> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_PowerMeterCounter_PowerMeter");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PowerMeterCounterPowerMeter
+                yield return new CounterPowerMeter
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
