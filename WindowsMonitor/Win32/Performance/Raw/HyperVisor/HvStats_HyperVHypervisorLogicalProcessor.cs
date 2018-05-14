@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.HyperVisor
 {
     /// <summary>
     /// </summary>
-    public sealed class HvStats_HyperVHypervisorLogicalProcessor
+    public sealed class HvStatsHyperVHypervisorLogicalProcessor
     {
 		public ulong C1TransitionsPersec { get; private set; }
 		public ulong C2TransitionsPersec { get; private set; }
@@ -16,9 +14,9 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong ContextSwitchesPersec { get; private set; }
 		public string Description { get; private set; }
 		public ulong Frequency { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong HardwareInterruptsPersec { get; private set; }
 		public ulong InterProcessorInterruptsPersec { get; private set; }
 		public ulong InterProcessorInterruptsSentPersec { get; private set; }
@@ -26,30 +24,30 @@ namespace WindowsMonitor.Performance.Raw
 		public string Name { get; private set; }
 		public ulong ParkingStatus { get; private set; }
 		public ulong PercentC1Time { get; private set; }
-		public ulong PercentC1Time_Base { get; private set; }
+		public ulong PercentC1TimeBase { get; private set; }
 		public ulong PercentC2Time { get; private set; }
-		public ulong PercentC2Time_Base { get; private set; }
+		public ulong PercentC2TimeBase { get; private set; }
 		public ulong PercentC3Time { get; private set; }
-		public ulong PercentC3Time_Base { get; private set; }
+		public ulong PercentC3TimeBase { get; private set; }
 		public ulong PercentGuestRunTime { get; private set; }
-		public ulong PercentGuestRunTime_Base { get; private set; }
+		public ulong PercentGuestRunTimeBase { get; private set; }
 		public ulong PercentHypervisorRunTime { get; private set; }
-		public ulong PercentHypervisorRunTime_Base { get; private set; }
+		public ulong PercentHypervisorRunTimeBase { get; private set; }
 		public ulong PercentIdleTime { get; private set; }
-		public ulong PercentIdleTime_Base { get; private set; }
+		public ulong PercentIdleTimeBase { get; private set; }
 		public ulong PercentofMaxFrequency { get; private set; }
 		public ulong PercentTotalRunTime { get; private set; }
-		public ulong PercentTotalRunTime_Base { get; private set; }
+		public ulong PercentTotalRunTimeBase { get; private set; }
 		public ulong ProcessorStateFlags { get; private set; }
 		public ulong RootVpIndex { get; private set; }
 		public ulong SchedulerInterruptsPersec { get; private set; }
 		public ulong TimerInterruptsPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong TotalInterruptsPersec { get; private set; }
 
-        public static IEnumerable<HvStats_HyperVHypervisorLogicalProcessor> Retrieve(string remote, string username, string password)
+        public static IEnumerable<HvStatsHyperVHypervisorLogicalProcessor> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -64,20 +62,20 @@ namespace WindowsMonitor.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HvStats_HyperVHypervisorLogicalProcessor> Retrieve()
+        public static IEnumerable<HvStatsHyperVHypervisorLogicalProcessor> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HvStats_HyperVHypervisorLogicalProcessor> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<HvStatsHyperVHypervisorLogicalProcessor> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_HvStats_HyperVHypervisorLogicalProcessor");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new HvStats_HyperVHypervisorLogicalProcessor
+                yield return new HvStatsHyperVHypervisorLogicalProcessor
                 {
                      C1TransitionsPersec = (ulong) (managementObject.Properties["C1TransitionsPersec"]?.Value ?? default(ulong)),
 		 C2TransitionsPersec = (ulong) (managementObject.Properties["C2TransitionsPersec"]?.Value ?? default(ulong)),
@@ -86,9 +84,9 @@ namespace WindowsMonitor.Performance.Raw
 		 ContextSwitchesPersec = (ulong) (managementObject.Properties["ContextSwitchesPersec"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Frequency = (ulong) (managementObject.Properties["Frequency"]?.Value ?? default(ulong)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 HardwareInterruptsPersec = (ulong) (managementObject.Properties["HardwareInterruptsPersec"]?.Value ?? default(ulong)),
 		 InterProcessorInterruptsPersec = (ulong) (managementObject.Properties["InterProcessorInterruptsPersec"]?.Value ?? default(ulong)),
 		 InterProcessorInterruptsSentPersec = (ulong) (managementObject.Properties["InterProcessorInterruptsSentPersec"]?.Value ?? default(ulong)),
@@ -96,27 +94,27 @@ namespace WindowsMonitor.Performance.Raw
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ParkingStatus = (ulong) (managementObject.Properties["ParkingStatus"]?.Value ?? default(ulong)),
 		 PercentC1Time = (ulong) (managementObject.Properties["PercentC1Time"]?.Value ?? default(ulong)),
-		 PercentC1Time_Base = (ulong) (managementObject.Properties["PercentC1Time_Base"]?.Value ?? default(ulong)),
+		 PercentC1TimeBase = (ulong) (managementObject.Properties["PercentC1Time_Base"]?.Value ?? default(ulong)),
 		 PercentC2Time = (ulong) (managementObject.Properties["PercentC2Time"]?.Value ?? default(ulong)),
-		 PercentC2Time_Base = (ulong) (managementObject.Properties["PercentC2Time_Base"]?.Value ?? default(ulong)),
+		 PercentC2TimeBase = (ulong) (managementObject.Properties["PercentC2Time_Base"]?.Value ?? default(ulong)),
 		 PercentC3Time = (ulong) (managementObject.Properties["PercentC3Time"]?.Value ?? default(ulong)),
-		 PercentC3Time_Base = (ulong) (managementObject.Properties["PercentC3Time_Base"]?.Value ?? default(ulong)),
+		 PercentC3TimeBase = (ulong) (managementObject.Properties["PercentC3Time_Base"]?.Value ?? default(ulong)),
 		 PercentGuestRunTime = (ulong) (managementObject.Properties["PercentGuestRunTime"]?.Value ?? default(ulong)),
-		 PercentGuestRunTime_Base = (ulong) (managementObject.Properties["PercentGuestRunTime_Base"]?.Value ?? default(ulong)),
+		 PercentGuestRunTimeBase = (ulong) (managementObject.Properties["PercentGuestRunTime_Base"]?.Value ?? default(ulong)),
 		 PercentHypervisorRunTime = (ulong) (managementObject.Properties["PercentHypervisorRunTime"]?.Value ?? default(ulong)),
-		 PercentHypervisorRunTime_Base = (ulong) (managementObject.Properties["PercentHypervisorRunTime_Base"]?.Value ?? default(ulong)),
+		 PercentHypervisorRunTimeBase = (ulong) (managementObject.Properties["PercentHypervisorRunTime_Base"]?.Value ?? default(ulong)),
 		 PercentIdleTime = (ulong) (managementObject.Properties["PercentIdleTime"]?.Value ?? default(ulong)),
-		 PercentIdleTime_Base = (ulong) (managementObject.Properties["PercentIdleTime_Base"]?.Value ?? default(ulong)),
+		 PercentIdleTimeBase = (ulong) (managementObject.Properties["PercentIdleTime_Base"]?.Value ?? default(ulong)),
 		 PercentofMaxFrequency = (ulong) (managementObject.Properties["PercentofMaxFrequency"]?.Value ?? default(ulong)),
 		 PercentTotalRunTime = (ulong) (managementObject.Properties["PercentTotalRunTime"]?.Value ?? default(ulong)),
-		 PercentTotalRunTime_Base = (ulong) (managementObject.Properties["PercentTotalRunTime_Base"]?.Value ?? default(ulong)),
+		 PercentTotalRunTimeBase = (ulong) (managementObject.Properties["PercentTotalRunTime_Base"]?.Value ?? default(ulong)),
 		 ProcessorStateFlags = (ulong) (managementObject.Properties["ProcessorStateFlags"]?.Value ?? default(ulong)),
 		 RootVpIndex = (ulong) (managementObject.Properties["RootVpIndex"]?.Value ?? default(ulong)),
 		 SchedulerInterruptsPersec = (ulong) (managementObject.Properties["SchedulerInterruptsPersec"]?.Value ?? default(ulong)),
 		 TimerInterruptsPersec = (ulong) (managementObject.Properties["TimerInterruptsPersec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalInterruptsPersec = (ulong) (managementObject.Properties["TotalInterruptsPersec"]?.Value ?? default(ulong))
                 };
         }

@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.SqlServer
 {
     /// <summary>
     /// </summary>
@@ -14,9 +12,9 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong DatabaseFlowControlsPersec { get; private set; }
 		public string Description { get; private set; }
 		public ulong FileBytesReceivedPersec { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong GroupCommitsPerSec { get; private set; }
 		public ulong GroupCommitTime { get; private set; }
 		public ulong LogApplyPendingQueue { get; private set; }
@@ -37,9 +35,9 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong RedoBytesRemaining { get; private set; }
 		public ulong RedoneBytesPersec { get; private set; }
 		public ulong RedonesPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong TotalLogrequiringundo { get; private set; }
 		public ulong TransactionDelay { get; private set; }
 
@@ -78,9 +76,9 @@ namespace WindowsMonitor.Performance.Raw
 		 DatabaseFlowControlsPersec = (ulong) (managementObject.Properties["DatabaseFlowControlsPersec"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FileBytesReceivedPersec = (ulong) (managementObject.Properties["FileBytesReceivedPersec"]?.Value ?? default(ulong)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 GroupCommitsPerSec = (ulong) (managementObject.Properties["GroupCommitsPerSec"]?.Value ?? default(ulong)),
 		 GroupCommitTime = (ulong) (managementObject.Properties["GroupCommitTime"]?.Value ?? default(ulong)),
 		 LogApplyPendingQueue = (ulong) (managementObject.Properties["LogApplyPendingQueue"]?.Value ?? default(ulong)),
@@ -101,9 +99,9 @@ namespace WindowsMonitor.Performance.Raw
 		 RedoBytesRemaining = (ulong) (managementObject.Properties["RedoBytesRemaining"]?.Value ?? default(ulong)),
 		 RedoneBytesPersec = (ulong) (managementObject.Properties["RedoneBytesPersec"]?.Value ?? default(ulong)),
 		 RedonesPersec = (ulong) (managementObject.Properties["RedonesPersec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalLogrequiringundo = (ulong) (managementObject.Properties["TotalLogrequiringundo"]?.Value ?? default(ulong)),
 		 TransactionDelay = (ulong) (managementObject.Properties["TransactionDelay"]?.Value ?? default(ulong))
                 };

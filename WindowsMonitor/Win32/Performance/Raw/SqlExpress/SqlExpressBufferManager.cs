@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.SqlExpress
 {
     /// <summary>
     /// </summary>
@@ -11,7 +9,7 @@ namespace WindowsMonitor.Performance.Raw
     {
 		public ulong BackgroundwriterpagesPersec { get; private set; }
 		public ulong Buffercachehitratio { get; private set; }
-		public ulong Buffercachehitratio_Base { get; private set; }
+		public ulong BuffercachehitratioBase { get; private set; }
 		public string Caption { get; private set; }
 		public ulong CheckpointpagesPersec { get; private set; }
 		public ulong Databasepages { get; private set; }
@@ -25,9 +23,9 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong Extensionpageunreferencedtime { get; private set; }
 		public ulong ExtensionpagewritesPersec { get; private set; }
 		public ulong FreeliststallsPersec { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong IntegralControllerSlope { get; private set; }
 		public ulong LazywritesPersec { get; private set; }
 		public string Name { get; private set; }
@@ -38,9 +36,9 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong ReadaheadpagesPersec { get; private set; }
 		public ulong ReadaheadtimePersec { get; private set; }
 		public ulong Targetpages { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
         public static IEnumerable<SqlExpressBufferManager> Retrieve(string remote, string username, string password)
         {
@@ -74,7 +72,7 @@ namespace WindowsMonitor.Performance.Raw
                 {
                      BackgroundwriterpagesPersec = (ulong) (managementObject.Properties["BackgroundwriterpagesPersec"]?.Value ?? default(ulong)),
 		 Buffercachehitratio = (ulong) (managementObject.Properties["Buffercachehitratio"]?.Value ?? default(ulong)),
-		 Buffercachehitratio_Base = (ulong) (managementObject.Properties["Buffercachehitratio_Base"]?.Value ?? default(ulong)),
+		 BuffercachehitratioBase = (ulong) (managementObject.Properties["Buffercachehitratio_Base"]?.Value ?? default(ulong)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CheckpointpagesPersec = (ulong) (managementObject.Properties["CheckpointpagesPersec"]?.Value ?? default(ulong)),
 		 Databasepages = (ulong) (managementObject.Properties["Databasepages"]?.Value ?? default(ulong)),
@@ -88,9 +86,9 @@ namespace WindowsMonitor.Performance.Raw
 		 Extensionpageunreferencedtime = (ulong) (managementObject.Properties["Extensionpageunreferencedtime"]?.Value ?? default(ulong)),
 		 ExtensionpagewritesPersec = (ulong) (managementObject.Properties["ExtensionpagewritesPersec"]?.Value ?? default(ulong)),
 		 FreeliststallsPersec = (ulong) (managementObject.Properties["FreeliststallsPersec"]?.Value ?? default(ulong)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 IntegralControllerSlope = (ulong) (managementObject.Properties["IntegralControllerSlope"]?.Value ?? default(ulong)),
 		 LazywritesPersec = (ulong) (managementObject.Properties["LazywritesPersec"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
@@ -101,9 +99,9 @@ namespace WindowsMonitor.Performance.Raw
 		 ReadaheadpagesPersec = (ulong) (managementObject.Properties["ReadaheadpagesPersec"]?.Value ?? default(ulong)),
 		 ReadaheadtimePersec = (ulong) (managementObject.Properties["ReadaheadtimePersec"]?.Value ?? default(ulong)),
 		 Targetpages = (ulong) (managementObject.Properties["Targetpages"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

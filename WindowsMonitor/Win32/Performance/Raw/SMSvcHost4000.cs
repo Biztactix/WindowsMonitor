@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw
 {
     /// <summary>
     /// </summary>
-    public sealed class SMSvcHost4000
+    public sealed class SmSvcHost4000
     {
 		public string Caption { get; private set; }
 		public uint ConnectionsAcceptedovernetpipe { get; private set; }
@@ -17,23 +15,23 @@ namespace WindowsMonitor.Performance.Raw
 		public string Description { get; private set; }
 		public uint DispatchFailuresovernetpipe { get; private set; }
 		public uint DispatchFailuresovernettcp { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public string Name { get; private set; }
 		public uint ProtocolFailuresovernetpipe { get; private set; }
 		public uint ProtocolFailuresovernettcp { get; private set; }
 		public uint RegistrationsActivefornetpipe { get; private set; }
 		public uint RegistrationsActivefornettcp { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint UrisRegisteredfornetpipe { get; private set; }
 		public uint UrisRegisteredfornettcp { get; private set; }
 		public uint UrisUnregisteredfornetpipe { get; private set; }
 		public uint UrisUnregisteredfornettcp { get; private set; }
 
-        public static IEnumerable<SMSvcHost4000> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SmSvcHost4000> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -48,20 +46,20 @@ namespace WindowsMonitor.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMSvcHost4000> Retrieve()
+        public static IEnumerable<SmSvcHost4000> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMSvcHost4000> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SmSvcHost4000> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_SMSvcHost4000_SMSvcHost4000");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SMSvcHost4000
+                yield return new SmSvcHost4000
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConnectionsAcceptedovernetpipe = (uint) (managementObject.Properties["ConnectionsAcceptedovernetpipe"]?.Value ?? default(uint)),
@@ -71,17 +69,17 @@ namespace WindowsMonitor.Performance.Raw
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DispatchFailuresovernetpipe = (uint) (managementObject.Properties["DispatchFailuresovernetpipe"]?.Value ?? default(uint)),
 		 DispatchFailuresovernettcp = (uint) (managementObject.Properties["DispatchFailuresovernettcp"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ProtocolFailuresovernetpipe = (uint) (managementObject.Properties["ProtocolFailuresovernetpipe"]?.Value ?? default(uint)),
 		 ProtocolFailuresovernettcp = (uint) (managementObject.Properties["ProtocolFailuresovernettcp"]?.Value ?? default(uint)),
 		 RegistrationsActivefornetpipe = (uint) (managementObject.Properties["RegistrationsActivefornetpipe"]?.Value ?? default(uint)),
 		 RegistrationsActivefornettcp = (uint) (managementObject.Properties["RegistrationsActivefornettcp"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 UrisRegisteredfornetpipe = (uint) (managementObject.Properties["UrisRegisteredfornetpipe"]?.Value ?? default(uint)),
 		 UrisRegisteredfornettcp = (uint) (managementObject.Properties["UrisRegisteredfornettcp"]?.Value ?? default(uint)),
 		 UrisUnregisteredfornetpipe = (uint) (managementObject.Properties["UrisUnregisteredfornetpipe"]?.Value ?? default(uint)),

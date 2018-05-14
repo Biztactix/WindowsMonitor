@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.Asp
 {
     /// <summary>
     /// </summary>
-    public sealed class ASPNET2050727_ASPNETv2050727
+    public sealed class Aspnet2050727AspneTv2050727
     {
 		public uint ApplicationRestarts { get; private set; }
 		public uint ApplicationsRunning { get; private set; }
@@ -16,9 +14,9 @@ namespace WindowsMonitor.Performance.Raw
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
 		public uint ErrorEventsRaised { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint InfrastructureErrorEventsRaised { get; private set; }
 		public string Name { get; private set; }
 		public uint RequestErrorEventsRaised { get; private set; }
@@ -32,13 +30,13 @@ namespace WindowsMonitor.Performance.Raw
 		public uint StateServerSessionsActive { get; private set; }
 		public uint StateServerSessionsTimedOut { get; private set; }
 		public uint StateServerSessionsTotal { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint WorkerProcessesRunning { get; private set; }
 		public uint WorkerProcessRestarts { get; private set; }
 
-        public static IEnumerable<ASPNET2050727_ASPNETv2050727> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Aspnet2050727AspneTv2050727> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -53,20 +51,20 @@ namespace WindowsMonitor.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ASPNET2050727_ASPNETv2050727> Retrieve()
+        public static IEnumerable<Aspnet2050727AspneTv2050727> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ASPNET2050727_ASPNETv2050727> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Aspnet2050727AspneTv2050727> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_ASPNET2050727_ASPNETv2050727");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ASPNET2050727_ASPNETv2050727
+                yield return new Aspnet2050727AspneTv2050727
                 {
                      ApplicationRestarts = (uint) (managementObject.Properties["ApplicationRestarts"]?.Value ?? default(uint)),
 		 ApplicationsRunning = (uint) (managementObject.Properties["ApplicationsRunning"]?.Value ?? default(uint)),
@@ -75,9 +73,9 @@ namespace WindowsMonitor.Performance.Raw
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ErrorEventsRaised = (uint) (managementObject.Properties["ErrorEventsRaised"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 InfrastructureErrorEventsRaised = (uint) (managementObject.Properties["InfrastructureErrorEventsRaised"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RequestErrorEventsRaised = (uint) (managementObject.Properties["RequestErrorEventsRaised"]?.Value ?? default(uint)),
@@ -91,9 +89,9 @@ namespace WindowsMonitor.Performance.Raw
 		 StateServerSessionsActive = (uint) (managementObject.Properties["StateServerSessionsActive"]?.Value ?? default(uint)),
 		 StateServerSessionsTimedOut = (uint) (managementObject.Properties["StateServerSessionsTimedOut"]?.Value ?? default(uint)),
 		 StateServerSessionsTotal = (uint) (managementObject.Properties["StateServerSessionsTotal"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 WorkerProcessesRunning = (uint) (managementObject.Properties["WorkerProcessesRunning"]?.Value ?? default(uint)),
 		 WorkerProcessRestarts = (uint) (managementObject.Properties["WorkerProcessRestarts"]?.Value ?? default(uint))
                 };

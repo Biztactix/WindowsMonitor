@@ -1,19 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.Network
 {
     /// <summary>
     /// </summary>
-    public sealed class Tcpip_ICMPv6
+    public sealed class TcpipIcmPv6
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint MessagesOutboundErrors { get; private set; }
 		public uint MessagesPersec { get; private set; }
 		public uint MessagesReceivedErrors { get; private set; }
@@ -48,11 +46,11 @@ namespace WindowsMonitor.Performance.Raw
 		public uint SentRouterAdvert { get; private set; }
 		public uint SentRouterSolicit { get; private set; }
 		public uint SentTimeExceeded { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<Tcpip_ICMPv6> Retrieve(string remote, string username, string password)
+        public static IEnumerable<TcpipIcmPv6> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -67,26 +65,26 @@ namespace WindowsMonitor.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Tcpip_ICMPv6> Retrieve()
+        public static IEnumerable<TcpipIcmPv6> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Tcpip_ICMPv6> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<TcpipIcmPv6> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_Tcpip_ICMPv6");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Tcpip_ICMPv6
+                yield return new TcpipIcmPv6
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 MessagesOutboundErrors = (uint) (managementObject.Properties["MessagesOutboundErrors"]?.Value ?? default(uint)),
 		 MessagesPersec = (uint) (managementObject.Properties["MessagesPersec"]?.Value ?? default(uint)),
 		 MessagesReceivedErrors = (uint) (managementObject.Properties["MessagesReceivedErrors"]?.Value ?? default(uint)),
@@ -121,9 +119,9 @@ namespace WindowsMonitor.Performance.Raw
 		 SentRouterAdvert = (uint) (managementObject.Properties["SentRouterAdvert"]?.Value ?? default(uint)),
 		 SentRouterSolicit = (uint) (managementObject.Properties["SentRouterSolicit"]?.Value ?? default(uint)),
 		 SentTimeExceeded = (uint) (managementObject.Properties["SentTimeExceeded"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

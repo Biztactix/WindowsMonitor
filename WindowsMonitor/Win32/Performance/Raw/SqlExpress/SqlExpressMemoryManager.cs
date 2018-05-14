@@ -1,43 +1,41 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.SqlExpress
 {
     /// <summary>
     /// </summary>
     public sealed class SqlExpressMemoryManager
     {
 		public string Caption { get; private set; }
-		public ulong ConnectionMemoryKB { get; private set; }
-		public ulong DatabaseCacheMemoryKB { get; private set; }
+		public ulong ConnectionMemoryKb { get; private set; }
+		public ulong DatabaseCacheMemoryKb { get; private set; }
 		public string Description { get; private set; }
 		public ulong Externalbenefitofmemory { get; private set; }
-		public ulong FreeMemoryKB { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
-		public ulong GrantedWorkspaceMemoryKB { get; private set; }
+		public ulong FreeMemoryKb { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
+		public ulong GrantedWorkspaceMemoryKb { get; private set; }
 		public ulong LockBlocks { get; private set; }
 		public ulong LockBlocksAllocated { get; private set; }
-		public ulong LockMemoryKB { get; private set; }
+		public ulong LockMemoryKb { get; private set; }
 		public ulong LockOwnerBlocks { get; private set; }
 		public ulong LockOwnerBlocksAllocated { get; private set; }
-		public ulong LogPoolMemoryKB { get; private set; }
-		public ulong MaximumWorkspaceMemoryKB { get; private set; }
+		public ulong LogPoolMemoryKb { get; private set; }
+		public ulong MaximumWorkspaceMemoryKb { get; private set; }
 		public ulong MemoryGrantsOutstanding { get; private set; }
 		public ulong MemoryGrantsPending { get; private set; }
 		public string Name { get; private set; }
-		public ulong OptimizerMemoryKB { get; private set; }
-		public ulong ReservedServerMemoryKB { get; private set; }
-		public ulong SQLCacheMemoryKB { get; private set; }
-		public ulong StolenServerMemoryKB { get; private set; }
-		public ulong TargetServerMemoryKB { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
-		public ulong TotalServerMemoryKB { get; private set; }
+		public ulong OptimizerMemoryKb { get; private set; }
+		public ulong ReservedServerMemoryKb { get; private set; }
+		public ulong SqlCacheMemoryKb { get; private set; }
+		public ulong StolenServerMemoryKb { get; private set; }
+		public ulong TargetServerMemoryKb { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
+		public ulong TotalServerMemoryKb { get; private set; }
 
         public static IEnumerable<SqlExpressMemoryManager> Retrieve(string remote, string username, string password)
         {
@@ -70,34 +68,34 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new SqlExpressMemoryManager
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
-		 ConnectionMemoryKB = (ulong) (managementObject.Properties["ConnectionMemoryKB"]?.Value ?? default(ulong)),
-		 DatabaseCacheMemoryKB = (ulong) (managementObject.Properties["DatabaseCacheMemoryKB"]?.Value ?? default(ulong)),
+		 ConnectionMemoryKb = (ulong) (managementObject.Properties["ConnectionMemoryKB"]?.Value ?? default(ulong)),
+		 DatabaseCacheMemoryKb = (ulong) (managementObject.Properties["DatabaseCacheMemoryKB"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Externalbenefitofmemory = (ulong) (managementObject.Properties["Externalbenefitofmemory"]?.Value ?? default(ulong)),
-		 FreeMemoryKB = (ulong) (managementObject.Properties["FreeMemoryKB"]?.Value ?? default(ulong)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
-		 GrantedWorkspaceMemoryKB = (ulong) (managementObject.Properties["GrantedWorkspaceMemoryKB"]?.Value ?? default(ulong)),
+		 FreeMemoryKb = (ulong) (managementObject.Properties["FreeMemoryKB"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 GrantedWorkspaceMemoryKb = (ulong) (managementObject.Properties["GrantedWorkspaceMemoryKB"]?.Value ?? default(ulong)),
 		 LockBlocks = (ulong) (managementObject.Properties["LockBlocks"]?.Value ?? default(ulong)),
 		 LockBlocksAllocated = (ulong) (managementObject.Properties["LockBlocksAllocated"]?.Value ?? default(ulong)),
-		 LockMemoryKB = (ulong) (managementObject.Properties["LockMemoryKB"]?.Value ?? default(ulong)),
+		 LockMemoryKb = (ulong) (managementObject.Properties["LockMemoryKB"]?.Value ?? default(ulong)),
 		 LockOwnerBlocks = (ulong) (managementObject.Properties["LockOwnerBlocks"]?.Value ?? default(ulong)),
 		 LockOwnerBlocksAllocated = (ulong) (managementObject.Properties["LockOwnerBlocksAllocated"]?.Value ?? default(ulong)),
-		 LogPoolMemoryKB = (ulong) (managementObject.Properties["LogPoolMemoryKB"]?.Value ?? default(ulong)),
-		 MaximumWorkspaceMemoryKB = (ulong) (managementObject.Properties["MaximumWorkspaceMemoryKB"]?.Value ?? default(ulong)),
+		 LogPoolMemoryKb = (ulong) (managementObject.Properties["LogPoolMemoryKB"]?.Value ?? default(ulong)),
+		 MaximumWorkspaceMemoryKb = (ulong) (managementObject.Properties["MaximumWorkspaceMemoryKB"]?.Value ?? default(ulong)),
 		 MemoryGrantsOutstanding = (ulong) (managementObject.Properties["MemoryGrantsOutstanding"]?.Value ?? default(ulong)),
 		 MemoryGrantsPending = (ulong) (managementObject.Properties["MemoryGrantsPending"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 OptimizerMemoryKB = (ulong) (managementObject.Properties["OptimizerMemoryKB"]?.Value ?? default(ulong)),
-		 ReservedServerMemoryKB = (ulong) (managementObject.Properties["ReservedServerMemoryKB"]?.Value ?? default(ulong)),
-		 SQLCacheMemoryKB = (ulong) (managementObject.Properties["SQLCacheMemoryKB"]?.Value ?? default(ulong)),
-		 StolenServerMemoryKB = (ulong) (managementObject.Properties["StolenServerMemoryKB"]?.Value ?? default(ulong)),
-		 TargetServerMemoryKB = (ulong) (managementObject.Properties["TargetServerMemoryKB"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
-		 TotalServerMemoryKB = (ulong) (managementObject.Properties["TotalServerMemoryKB"]?.Value ?? default(ulong))
+		 OptimizerMemoryKb = (ulong) (managementObject.Properties["OptimizerMemoryKB"]?.Value ?? default(ulong)),
+		 ReservedServerMemoryKb = (ulong) (managementObject.Properties["ReservedServerMemoryKB"]?.Value ?? default(ulong)),
+		 SqlCacheMemoryKb = (ulong) (managementObject.Properties["SQLCacheMemoryKB"]?.Value ?? default(ulong)),
+		 StolenServerMemoryKb = (ulong) (managementObject.Properties["StolenServerMemoryKB"]?.Value ?? default(ulong)),
+		 TargetServerMemoryKb = (ulong) (managementObject.Properties["TargetServerMemoryKB"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TotalServerMemoryKb = (ulong) (managementObject.Properties["TotalServerMemoryKB"]?.Value ?? default(ulong))
                 };
         }
     }

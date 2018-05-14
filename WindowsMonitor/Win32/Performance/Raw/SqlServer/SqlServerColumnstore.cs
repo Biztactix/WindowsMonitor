@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.SqlServer
 {
     /// <summary>
     /// </summary>
@@ -14,16 +12,16 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong DeltaRowgroupsCompressed { get; private set; }
 		public ulong DeltaRowgroupsCreated { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public string Name { get; private set; }
 		public ulong SegmentCacheHitRatio { get; private set; }
-		public ulong SegmentCacheHitRatio_Base { get; private set; }
+		public ulong SegmentCacheHitRatioBase { get; private set; }
 		public ulong SegmentReadsPerSec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong TotalDeleteBuffersMigrated { get; private set; }
 		public ulong TotalMergePolicyEvaluations { get; private set; }
 		public ulong TotalRowgroupsCompressed { get; private set; }
@@ -66,16 +64,16 @@ namespace WindowsMonitor.Performance.Raw
 		 DeltaRowgroupsCompressed = (ulong) (managementObject.Properties["DeltaRowgroupsCompressed"]?.Value ?? default(ulong)),
 		 DeltaRowgroupsCreated = (ulong) (managementObject.Properties["DeltaRowgroupsCreated"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 SegmentCacheHitRatio = (ulong) (managementObject.Properties["SegmentCacheHitRatio"]?.Value ?? default(ulong)),
-		 SegmentCacheHitRatio_Base = (ulong) (managementObject.Properties["SegmentCacheHitRatio_Base"]?.Value ?? default(ulong)),
+		 SegmentCacheHitRatioBase = (ulong) (managementObject.Properties["SegmentCacheHitRatio_Base"]?.Value ?? default(ulong)),
 		 SegmentReadsPerSec = (ulong) (managementObject.Properties["SegmentReadsPerSec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalDeleteBuffersMigrated = (ulong) (managementObject.Properties["TotalDeleteBuffersMigrated"]?.Value ?? default(ulong)),
 		 TotalMergePolicyEvaluations = (ulong) (managementObject.Properties["TotalMergePolicyEvaluations"]?.Value ?? default(ulong)),
 		 TotalRowgroupsCompressed = (ulong) (managementObject.Properties["TotalRowgroupsCompressed"]?.Value ?? default(ulong)),

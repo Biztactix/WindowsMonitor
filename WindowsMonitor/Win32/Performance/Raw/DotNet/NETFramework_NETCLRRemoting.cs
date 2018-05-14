@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.DotNet
 {
     /// <summary>
     /// </summary>
-    public sealed class NETFramework_NETCLRRemoting
+    public sealed class NetFrameworkNetclrRemoting
     {
 		public string Caption { get; private set; }
 		public uint Channels { get; private set; }
@@ -16,17 +14,17 @@ namespace WindowsMonitor.Performance.Raw
 		public uint ContextProxies { get; private set; }
 		public uint Contexts { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public string Name { get; private set; }
 		public uint RemoteCallsPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint TotalRemoteCalls { get; private set; }
 
-        public static IEnumerable<NETFramework_NETCLRRemoting> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NetFrameworkNetclrRemoting> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -41,20 +39,20 @@ namespace WindowsMonitor.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NETFramework_NETCLRRemoting> Retrieve()
+        public static IEnumerable<NetFrameworkNetclrRemoting> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NETFramework_NETCLRRemoting> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NetFrameworkNetclrRemoting> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_NETFramework_NETCLRRemoting");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NETFramework_NETCLRRemoting
+                yield return new NetFrameworkNetclrRemoting
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Channels = (uint) (managementObject.Properties["Channels"]?.Value ?? default(uint)),
@@ -63,14 +61,14 @@ namespace WindowsMonitor.Performance.Raw
 		 ContextProxies = (uint) (managementObject.Properties["ContextProxies"]?.Value ?? default(uint)),
 		 Contexts = (uint) (managementObject.Properties["Contexts"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RemoteCallsPersec = (uint) (managementObject.Properties["RemoteCallsPersec"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalRemoteCalls = (uint) (managementObject.Properties["TotalRemoteCalls"]?.Value ?? default(uint))
                 };
         }

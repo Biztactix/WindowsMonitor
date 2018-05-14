@@ -1,35 +1,33 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.SqlServer
 {
     /// <summary>
     /// </summary>
     public sealed class SqlServerDatabases
     {
 		public ulong ActiveTransactions { get; private set; }
-		public ulong AvgDistFromEOLLPRequest { get; private set; }
-		public uint AvgDistFromEOLLPRequest_Base { get; private set; }
+		public ulong AvgDistFromEollpRequest { get; private set; }
+		public uint AvgDistFromEollpRequestBase { get; private set; }
 		public ulong BackupPerRestoreThroughputPersec { get; private set; }
 		public ulong BulkCopyRowsPersec { get; private set; }
 		public ulong BulkCopyThroughputPersec { get; private set; }
 		public string Caption { get; private set; }
 		public ulong Committableentries { get; private set; }
-		public ulong DataFilesSizeKB { get; private set; }
-		public ulong DBCCLogicalScanBytesPersec { get; private set; }
+		public ulong DataFilesSizeKb { get; private set; }
+		public ulong DbccLogicalScanBytesPersec { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong GroupCommitTimePersec { get; private set; }
 		public ulong LogBytesFlushedPersec { get; private set; }
 		public ulong LogCacheHitRatio { get; private set; }
-		public ulong LogCacheHitRatio_Base { get; private set; }
+		public ulong LogCacheHitRatioBase { get; private set; }
 		public ulong LogCacheReadsPersec { get; private set; }
-		public ulong LogFilesSizeKB { get; private set; }
-		public ulong LogFilesUsedSizeKB { get; private set; }
+		public ulong LogFilesSizeKb { get; private set; }
+		public ulong LogFilesUsedSizeKb { get; private set; }
 		public ulong LogFlushesPersec { get; private set; }
 		public ulong LogFlushWaitsPersec { get; private set; }
 		public ulong LogFlushWaitTime { get; private set; }
@@ -46,7 +44,7 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong LogPoolPushLowMemoryPersec { get; private set; }
 		public ulong LogPoolPushNoFreeBufferPersec { get; private set; }
 		public ulong LogPoolReqBehindTruncPersec { get; private set; }
-		public ulong LogPoolRequestsOldVLFPersec { get; private set; }
+		public ulong LogPoolRequestsOldVlfPersec { get; private set; }
 		public ulong LogPoolRequestsPersec { get; private set; }
 		public ulong LogPoolTotalActiveLogSize { get; private set; }
 		public ulong LogPoolTotalSharedPoolSize { get; private set; }
@@ -57,17 +55,17 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong ReplPendingXacts { get; private set; }
 		public ulong ReplTransRate { get; private set; }
 		public ulong ShrinkDataMovementBytesPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong TrackedtransactionsPersec { get; private set; }
 		public ulong TransactionsPersec { get; private set; }
 		public ulong WriteTransactionsPersec { get; private set; }
-		public ulong XTPControllerDLCLatencyPerFetch { get; private set; }
-		public uint XTPControllerDLCLatencyPerFetch_Base { get; private set; }
-		public ulong XTPControllerDLCPeakLatency { get; private set; }
-		public ulong XTPControllerLogProcessedPersec { get; private set; }
-		public ulong XTPMemoryUsedKB { get; private set; }
+		public ulong XtpControllerDlcLatencyPerFetch { get; private set; }
+		public uint XtpControllerDlcLatencyPerFetchBase { get; private set; }
+		public ulong XtpControllerDlcPeakLatency { get; private set; }
+		public ulong XtpControllerLogProcessedPersec { get; private set; }
+		public ulong XtpMemoryUsedKb { get; private set; }
 
         public static IEnumerable<SqlServerDatabases> Retrieve(string remote, string username, string password)
         {
@@ -100,26 +98,26 @@ namespace WindowsMonitor.Performance.Raw
                 yield return new SqlServerDatabases
                 {
                      ActiveTransactions = (ulong) (managementObject.Properties["ActiveTransactions"]?.Value ?? default(ulong)),
-		 AvgDistFromEOLLPRequest = (ulong) (managementObject.Properties["AvgDistFromEOLLPRequest"]?.Value ?? default(ulong)),
-		 AvgDistFromEOLLPRequest_Base = (uint) (managementObject.Properties["AvgDistFromEOLLPRequest_Base"]?.Value ?? default(uint)),
+		 AvgDistFromEollpRequest = (ulong) (managementObject.Properties["AvgDistFromEOLLPRequest"]?.Value ?? default(ulong)),
+		 AvgDistFromEollpRequestBase = (uint) (managementObject.Properties["AvgDistFromEOLLPRequest_Base"]?.Value ?? default(uint)),
 		 BackupPerRestoreThroughputPersec = (ulong) (managementObject.Properties["BackupPerRestoreThroughputPersec"]?.Value ?? default(ulong)),
 		 BulkCopyRowsPersec = (ulong) (managementObject.Properties["BulkCopyRowsPersec"]?.Value ?? default(ulong)),
 		 BulkCopyThroughputPersec = (ulong) (managementObject.Properties["BulkCopyThroughputPersec"]?.Value ?? default(ulong)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Committableentries = (ulong) (managementObject.Properties["Committableentries"]?.Value ?? default(ulong)),
-		 DataFilesSizeKB = (ulong) (managementObject.Properties["DataFilesSizeKB"]?.Value ?? default(ulong)),
-		 DBCCLogicalScanBytesPersec = (ulong) (managementObject.Properties["DBCCLogicalScanBytesPersec"]?.Value ?? default(ulong)),
+		 DataFilesSizeKb = (ulong) (managementObject.Properties["DataFilesSizeKB"]?.Value ?? default(ulong)),
+		 DbccLogicalScanBytesPersec = (ulong) (managementObject.Properties["DBCCLogicalScanBytesPersec"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 GroupCommitTimePersec = (ulong) (managementObject.Properties["GroupCommitTimePersec"]?.Value ?? default(ulong)),
 		 LogBytesFlushedPersec = (ulong) (managementObject.Properties["LogBytesFlushedPersec"]?.Value ?? default(ulong)),
 		 LogCacheHitRatio = (ulong) (managementObject.Properties["LogCacheHitRatio"]?.Value ?? default(ulong)),
-		 LogCacheHitRatio_Base = (ulong) (managementObject.Properties["LogCacheHitRatio_Base"]?.Value ?? default(ulong)),
+		 LogCacheHitRatioBase = (ulong) (managementObject.Properties["LogCacheHitRatio_Base"]?.Value ?? default(ulong)),
 		 LogCacheReadsPersec = (ulong) (managementObject.Properties["LogCacheReadsPersec"]?.Value ?? default(ulong)),
-		 LogFilesSizeKB = (ulong) (managementObject.Properties["LogFilesSizeKB"]?.Value ?? default(ulong)),
-		 LogFilesUsedSizeKB = (ulong) (managementObject.Properties["LogFilesUsedSizeKB"]?.Value ?? default(ulong)),
+		 LogFilesSizeKb = (ulong) (managementObject.Properties["LogFilesSizeKB"]?.Value ?? default(ulong)),
+		 LogFilesUsedSizeKb = (ulong) (managementObject.Properties["LogFilesUsedSizeKB"]?.Value ?? default(ulong)),
 		 LogFlushesPersec = (ulong) (managementObject.Properties["LogFlushesPersec"]?.Value ?? default(ulong)),
 		 LogFlushWaitsPersec = (ulong) (managementObject.Properties["LogFlushWaitsPersec"]?.Value ?? default(ulong)),
 		 LogFlushWaitTime = (ulong) (managementObject.Properties["LogFlushWaitTime"]?.Value ?? default(ulong)),
@@ -136,7 +134,7 @@ namespace WindowsMonitor.Performance.Raw
 		 LogPoolPushLowMemoryPersec = (ulong) (managementObject.Properties["LogPoolPushLowMemoryPersec"]?.Value ?? default(ulong)),
 		 LogPoolPushNoFreeBufferPersec = (ulong) (managementObject.Properties["LogPoolPushNoFreeBufferPersec"]?.Value ?? default(ulong)),
 		 LogPoolReqBehindTruncPersec = (ulong) (managementObject.Properties["LogPoolReqBehindTruncPersec"]?.Value ?? default(ulong)),
-		 LogPoolRequestsOldVLFPersec = (ulong) (managementObject.Properties["LogPoolRequestsOldVLFPersec"]?.Value ?? default(ulong)),
+		 LogPoolRequestsOldVlfPersec = (ulong) (managementObject.Properties["LogPoolRequestsOldVLFPersec"]?.Value ?? default(ulong)),
 		 LogPoolRequestsPersec = (ulong) (managementObject.Properties["LogPoolRequestsPersec"]?.Value ?? default(ulong)),
 		 LogPoolTotalActiveLogSize = (ulong) (managementObject.Properties["LogPoolTotalActiveLogSize"]?.Value ?? default(ulong)),
 		 LogPoolTotalSharedPoolSize = (ulong) (managementObject.Properties["LogPoolTotalSharedPoolSize"]?.Value ?? default(ulong)),
@@ -147,17 +145,17 @@ namespace WindowsMonitor.Performance.Raw
 		 ReplPendingXacts = (ulong) (managementObject.Properties["ReplPendingXacts"]?.Value ?? default(ulong)),
 		 ReplTransRate = (ulong) (managementObject.Properties["ReplTransRate"]?.Value ?? default(ulong)),
 		 ShrinkDataMovementBytesPersec = (ulong) (managementObject.Properties["ShrinkDataMovementBytesPersec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TrackedtransactionsPersec = (ulong) (managementObject.Properties["TrackedtransactionsPersec"]?.Value ?? default(ulong)),
 		 TransactionsPersec = (ulong) (managementObject.Properties["TransactionsPersec"]?.Value ?? default(ulong)),
 		 WriteTransactionsPersec = (ulong) (managementObject.Properties["WriteTransactionsPersec"]?.Value ?? default(ulong)),
-		 XTPControllerDLCLatencyPerFetch = (ulong) (managementObject.Properties["XTPControllerDLCLatencyPerFetch"]?.Value ?? default(ulong)),
-		 XTPControllerDLCLatencyPerFetch_Base = (uint) (managementObject.Properties["XTPControllerDLCLatencyPerFetch_Base"]?.Value ?? default(uint)),
-		 XTPControllerDLCPeakLatency = (ulong) (managementObject.Properties["XTPControllerDLCPeakLatency"]?.Value ?? default(ulong)),
-		 XTPControllerLogProcessedPersec = (ulong) (managementObject.Properties["XTPControllerLogProcessedPersec"]?.Value ?? default(ulong)),
-		 XTPMemoryUsedKB = (ulong) (managementObject.Properties["XTPMemoryUsedKB"]?.Value ?? default(ulong))
+		 XtpControllerDlcLatencyPerFetch = (ulong) (managementObject.Properties["XTPControllerDLCLatencyPerFetch"]?.Value ?? default(ulong)),
+		 XtpControllerDlcLatencyPerFetchBase = (uint) (managementObject.Properties["XTPControllerDLCLatencyPerFetch_Base"]?.Value ?? default(uint)),
+		 XtpControllerDlcPeakLatency = (ulong) (managementObject.Properties["XTPControllerDLCPeakLatency"]?.Value ?? default(ulong)),
+		 XtpControllerLogProcessedPersec = (ulong) (managementObject.Properties["XTPControllerLogProcessedPersec"]?.Value ?? default(ulong)),
+		 XtpMemoryUsedKb = (ulong) (managementObject.Properties["XTPMemoryUsedKB"]?.Value ?? default(ulong))
                 };
         }
     }

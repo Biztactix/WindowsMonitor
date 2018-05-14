@@ -5,7 +5,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 {
     /// <summary>
     /// </summary>
-    public sealed class PerfNet_Browser
+    public sealed class PerfNetBrowser
     {
 		public ulong AnnouncementsDomainPersec { get; private set; }
 		public ulong AnnouncementsServerPersec { get; private set; }
@@ -18,9 +18,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public uint EnumerationsOtherPersec { get; private set; }
 		public uint EnumerationsServerPersec { get; private set; }
 		public uint EnumerationsTotalPersec { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong IllegalDatagramsPersec { get; private set; }
 		public uint MailslotAllocationsFailed { get; private set; }
 		public uint MailslotOpensFailedPersec { get; private set; }
@@ -33,11 +33,11 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public string Name { get; private set; }
 		public uint ServerAnnounceAllocationsFailedPersec { get; private set; }
 		public uint ServerListRequestsPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<PerfNet_Browser> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PerfNetBrowser> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -52,20 +52,20 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfNet_Browser> Retrieve()
+        public static IEnumerable<PerfNetBrowser> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfNet_Browser> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PerfNetBrowser> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_PerfNet_Browser");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PerfNet_Browser
+                yield return new PerfNetBrowser
                 {
                      AnnouncementsDomainPersec = (ulong) (managementObject.Properties["AnnouncementsDomainPersec"]?.Value ?? default(ulong)),
 		 AnnouncementsServerPersec = (ulong) (managementObject.Properties["AnnouncementsServerPersec"]?.Value ?? default(ulong)),
@@ -78,9 +78,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 EnumerationsOtherPersec = (uint) (managementObject.Properties["EnumerationsOtherPersec"]?.Value ?? default(uint)),
 		 EnumerationsServerPersec = (uint) (managementObject.Properties["EnumerationsServerPersec"]?.Value ?? default(uint)),
 		 EnumerationsTotalPersec = (uint) (managementObject.Properties["EnumerationsTotalPersec"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 IllegalDatagramsPersec = (ulong) (managementObject.Properties["IllegalDatagramsPersec"]?.Value ?? default(ulong)),
 		 MailslotAllocationsFailed = (uint) (managementObject.Properties["MailslotAllocationsFailed"]?.Value ?? default(uint)),
 		 MailslotOpensFailedPersec = (uint) (managementObject.Properties["MailslotOpensFailedPersec"]?.Value ?? default(uint)),
@@ -93,9 +93,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ServerAnnounceAllocationsFailedPersec = (uint) (managementObject.Properties["ServerAnnounceAllocationsFailedPersec"]?.Value ?? default(uint)),
 		 ServerListRequestsPersec = (uint) (managementObject.Properties["ServerListRequestsPersec"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

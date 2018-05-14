@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.Network
 {
     /// <summary>
     /// </summary>
-    public sealed class Tcpip_NetworkInterface
+    public sealed class TcpipNetworkInterface
     {
 		public ulong BytesReceivedPersec { get; private set; }
 		public ulong BytesSentPersec { get; private set; }
@@ -15,9 +13,9 @@ namespace WindowsMonitor.Performance.Raw
 		public string Caption { get; private set; }
 		public ulong CurrentBandwidth { get; private set; }
 		public string Description { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public string Name { get; private set; }
 		public ulong OffloadedConnections { get; private set; }
 		public ulong OutputQueueLength { get; private set; }
@@ -33,15 +31,15 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong PacketsSentNonUnicastPersec { get; private set; }
 		public ulong PacketsSentPersec { get; private set; }
 		public ulong PacketsSentUnicastPersec { get; private set; }
-		public ulong TCPActiveRSCConnections { get; private set; }
-		public ulong TCPRSCAveragePacketSize { get; private set; }
-		public ulong TCPRSCCoalescedPacketsPersec { get; private set; }
-		public ulong TCPRSCExceptionsPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TcpActiveRscConnections { get; private set; }
+		public ulong TcprscAveragePacketSize { get; private set; }
+		public ulong TcprscCoalescedPacketsPersec { get; private set; }
+		public ulong TcprscExceptionsPersec { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<Tcpip_NetworkInterface> Retrieve(string remote, string username, string password)
+        public static IEnumerable<TcpipNetworkInterface> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -56,20 +54,20 @@ namespace WindowsMonitor.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Tcpip_NetworkInterface> Retrieve()
+        public static IEnumerable<TcpipNetworkInterface> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Tcpip_NetworkInterface> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<TcpipNetworkInterface> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_Tcpip_NetworkInterface");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Tcpip_NetworkInterface
+                yield return new TcpipNetworkInterface
                 {
                      BytesReceivedPersec = (ulong) (managementObject.Properties["BytesReceivedPersec"]?.Value ?? default(ulong)),
 		 BytesSentPersec = (ulong) (managementObject.Properties["BytesSentPersec"]?.Value ?? default(ulong)),
@@ -77,9 +75,9 @@ namespace WindowsMonitor.Performance.Raw
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CurrentBandwidth = (ulong) (managementObject.Properties["CurrentBandwidth"]?.Value ?? default(ulong)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OffloadedConnections = (ulong) (managementObject.Properties["OffloadedConnections"]?.Value ?? default(ulong)),
 		 OutputQueueLength = (ulong) (managementObject.Properties["OutputQueueLength"]?.Value ?? default(ulong)),
@@ -95,13 +93,13 @@ namespace WindowsMonitor.Performance.Raw
 		 PacketsSentNonUnicastPersec = (ulong) (managementObject.Properties["PacketsSentNonUnicastPersec"]?.Value ?? default(ulong)),
 		 PacketsSentPersec = (ulong) (managementObject.Properties["PacketsSentPersec"]?.Value ?? default(ulong)),
 		 PacketsSentUnicastPersec = (ulong) (managementObject.Properties["PacketsSentUnicastPersec"]?.Value ?? default(ulong)),
-		 TCPActiveRSCConnections = (ulong) (managementObject.Properties["TCPActiveRSCConnections"]?.Value ?? default(ulong)),
-		 TCPRSCAveragePacketSize = (ulong) (managementObject.Properties["TCPRSCAveragePacketSize"]?.Value ?? default(ulong)),
-		 TCPRSCCoalescedPacketsPersec = (ulong) (managementObject.Properties["TCPRSCCoalescedPacketsPersec"]?.Value ?? default(ulong)),
-		 TCPRSCExceptionsPersec = (ulong) (managementObject.Properties["TCPRSCExceptionsPersec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 TcpActiveRscConnections = (ulong) (managementObject.Properties["TCPActiveRSCConnections"]?.Value ?? default(ulong)),
+		 TcprscAveragePacketSize = (ulong) (managementObject.Properties["TCPRSCAveragePacketSize"]?.Value ?? default(ulong)),
+		 TcprscCoalescedPacketsPersec = (ulong) (managementObject.Properties["TCPRSCCoalescedPacketsPersec"]?.Value ?? default(ulong)),
+		 TcprscExceptionsPersec = (ulong) (managementObject.Properties["TCPRSCExceptionsPersec"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

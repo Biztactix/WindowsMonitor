@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.SqlServer
 {
     /// <summary>
     /// </summary>
@@ -30,17 +28,17 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong ForwardedRecordsPersec { get; private set; }
 		public ulong FreeSpacePageFetchesPersec { get; private set; }
 		public ulong FreeSpaceScansPersec { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong FullScansPersec { get; private set; }
 		public ulong IndexSearchesPersec { get; private set; }
 		public ulong InSysXactwaitsPersec { get; private set; }
 		public ulong LobHandleCreateCount { get; private set; }
 		public ulong LobHandleDestroyCount { get; private set; }
-		public ulong LobSSProviderCreateCount { get; private set; }
-		public ulong LobSSProviderDestroyCount { get; private set; }
-		public ulong LobSSProviderTruncationCount { get; private set; }
+		public ulong LobSsProviderCreateCount { get; private set; }
+		public ulong LobSsProviderDestroyCount { get; private set; }
+		public ulong LobSsProviderTruncationCount { get; private set; }
 		public ulong MixedpageallocationsPersec { get; private set; }
 		public string Name { get; private set; }
 		public ulong PagecompressionattemptsPersec { get; private set; }
@@ -53,15 +51,15 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong ScanPointRevalidationsPersec { get; private set; }
 		public ulong SkippedGhostedRecordsPersec { get; private set; }
 		public ulong TableLockEscalationsPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong Usedleafpagecookie { get; private set; }
 		public ulong Usedtreepagecookie { get; private set; }
 		public ulong WorkfilesCreatedPersec { get; private set; }
 		public ulong WorktablesCreatedPersec { get; private set; }
 		public ulong WorktablesFromCacheRatio { get; private set; }
-		public ulong WorktablesFromCacheRatio_Base { get; private set; }
+		public ulong WorktablesFromCacheRatioBase { get; private set; }
 
         public static IEnumerable<SqlServerAccessMethods> Retrieve(string remote, string username, string password)
         {
@@ -114,17 +112,17 @@ namespace WindowsMonitor.Performance.Raw
 		 ForwardedRecordsPersec = (ulong) (managementObject.Properties["ForwardedRecordsPersec"]?.Value ?? default(ulong)),
 		 FreeSpacePageFetchesPersec = (ulong) (managementObject.Properties["FreeSpacePageFetchesPersec"]?.Value ?? default(ulong)),
 		 FreeSpaceScansPersec = (ulong) (managementObject.Properties["FreeSpaceScansPersec"]?.Value ?? default(ulong)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 FullScansPersec = (ulong) (managementObject.Properties["FullScansPersec"]?.Value ?? default(ulong)),
 		 IndexSearchesPersec = (ulong) (managementObject.Properties["IndexSearchesPersec"]?.Value ?? default(ulong)),
 		 InSysXactwaitsPersec = (ulong) (managementObject.Properties["InSysXactwaitsPersec"]?.Value ?? default(ulong)),
 		 LobHandleCreateCount = (ulong) (managementObject.Properties["LobHandleCreateCount"]?.Value ?? default(ulong)),
 		 LobHandleDestroyCount = (ulong) (managementObject.Properties["LobHandleDestroyCount"]?.Value ?? default(ulong)),
-		 LobSSProviderCreateCount = (ulong) (managementObject.Properties["LobSSProviderCreateCount"]?.Value ?? default(ulong)),
-		 LobSSProviderDestroyCount = (ulong) (managementObject.Properties["LobSSProviderDestroyCount"]?.Value ?? default(ulong)),
-		 LobSSProviderTruncationCount = (ulong) (managementObject.Properties["LobSSProviderTruncationCount"]?.Value ?? default(ulong)),
+		 LobSsProviderCreateCount = (ulong) (managementObject.Properties["LobSSProviderCreateCount"]?.Value ?? default(ulong)),
+		 LobSsProviderDestroyCount = (ulong) (managementObject.Properties["LobSSProviderDestroyCount"]?.Value ?? default(ulong)),
+		 LobSsProviderTruncationCount = (ulong) (managementObject.Properties["LobSSProviderTruncationCount"]?.Value ?? default(ulong)),
 		 MixedpageallocationsPersec = (ulong) (managementObject.Properties["MixedpageallocationsPersec"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PagecompressionattemptsPersec = (ulong) (managementObject.Properties["PagecompressionattemptsPersec"]?.Value ?? default(ulong)),
@@ -137,15 +135,15 @@ namespace WindowsMonitor.Performance.Raw
 		 ScanPointRevalidationsPersec = (ulong) (managementObject.Properties["ScanPointRevalidationsPersec"]?.Value ?? default(ulong)),
 		 SkippedGhostedRecordsPersec = (ulong) (managementObject.Properties["SkippedGhostedRecordsPersec"]?.Value ?? default(ulong)),
 		 TableLockEscalationsPersec = (ulong) (managementObject.Properties["TableLockEscalationsPersec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 Usedleafpagecookie = (ulong) (managementObject.Properties["Usedleafpagecookie"]?.Value ?? default(ulong)),
 		 Usedtreepagecookie = (ulong) (managementObject.Properties["Usedtreepagecookie"]?.Value ?? default(ulong)),
 		 WorkfilesCreatedPersec = (ulong) (managementObject.Properties["WorkfilesCreatedPersec"]?.Value ?? default(ulong)),
 		 WorktablesCreatedPersec = (ulong) (managementObject.Properties["WorktablesCreatedPersec"]?.Value ?? default(ulong)),
 		 WorktablesFromCacheRatio = (ulong) (managementObject.Properties["WorktablesFromCacheRatio"]?.Value ?? default(ulong)),
-		 WorktablesFromCacheRatio_Base = (ulong) (managementObject.Properties["WorktablesFromCacheRatio_Base"]?.Value ?? default(ulong))
+		 WorktablesFromCacheRatioBase = (ulong) (managementObject.Properties["WorktablesFromCacheRatio_Base"]?.Value ?? default(ulong))
                 };
         }
     }

@@ -5,7 +5,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 {
     /// <summary>
     /// </summary>
-    public sealed class PerfNet_Redirector
+    public sealed class PerfNetRedirector
     {
 		public ulong BytesReceivedPersec { get; private set; }
 		public ulong BytesTotalPersec { get; private set; }
@@ -14,15 +14,15 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public uint ConnectsCore { get; private set; }
 		public uint ConnectsLanManager20 { get; private set; }
 		public uint ConnectsLanManager21 { get; private set; }
-		public uint ConnectsWindowsNT { get; private set; }
+		public uint ConnectsWindowsNt { get; private set; }
 		public uint CurrentCommands { get; private set; }
 		public string Description { get; private set; }
 		public uint FileDataOperationsPersec { get; private set; }
 		public uint FileReadOperationsPersec { get; private set; }
 		public uint FileWriteOperationsPersec { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public string Name { get; private set; }
 		public uint NetworkErrorsPersec { get; private set; }
 		public ulong PacketsPersec { get; private set; }
@@ -41,9 +41,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public uint ServerReconnects { get; private set; }
 		public uint ServerSessions { get; private set; }
 		public uint ServerSessionsHung { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong WriteBytesCachePersec { get; private set; }
 		public ulong WriteBytesNetworkPersec { get; private set; }
 		public ulong WriteBytesNonPagingPersec { get; private set; }
@@ -54,7 +54,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public uint WritesDeniedPersec { get; private set; }
 		public uint WritesLargePersec { get; private set; }
 
-        public static IEnumerable<PerfNet_Redirector> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PerfNetRedirector> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -69,20 +69,20 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfNet_Redirector> Retrieve()
+        public static IEnumerable<PerfNetRedirector> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfNet_Redirector> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PerfNetRedirector> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_PerfNet_Redirector");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PerfNet_Redirector
+                yield return new PerfNetRedirector
                 {
                      BytesReceivedPersec = (ulong) (managementObject.Properties["BytesReceivedPersec"]?.Value ?? default(ulong)),
 		 BytesTotalPersec = (ulong) (managementObject.Properties["BytesTotalPersec"]?.Value ?? default(ulong)),
@@ -91,15 +91,15 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 ConnectsCore = (uint) (managementObject.Properties["ConnectsCore"]?.Value ?? default(uint)),
 		 ConnectsLanManager20 = (uint) (managementObject.Properties["ConnectsLanManager20"]?.Value ?? default(uint)),
 		 ConnectsLanManager21 = (uint) (managementObject.Properties["ConnectsLanManager21"]?.Value ?? default(uint)),
-		 ConnectsWindowsNT = (uint) (managementObject.Properties["ConnectsWindowsNT"]?.Value ?? default(uint)),
+		 ConnectsWindowsNt = (uint) (managementObject.Properties["ConnectsWindowsNT"]?.Value ?? default(uint)),
 		 CurrentCommands = (uint) (managementObject.Properties["CurrentCommands"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FileDataOperationsPersec = (uint) (managementObject.Properties["FileDataOperationsPersec"]?.Value ?? default(uint)),
 		 FileReadOperationsPersec = (uint) (managementObject.Properties["FileReadOperationsPersec"]?.Value ?? default(uint)),
 		 FileWriteOperationsPersec = (uint) (managementObject.Properties["FileWriteOperationsPersec"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NetworkErrorsPersec = (uint) (managementObject.Properties["NetworkErrorsPersec"]?.Value ?? default(uint)),
 		 PacketsPersec = (ulong) (managementObject.Properties["PacketsPersec"]?.Value ?? default(ulong)),
@@ -118,9 +118,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 ServerReconnects = (uint) (managementObject.Properties["ServerReconnects"]?.Value ?? default(uint)),
 		 ServerSessions = (uint) (managementObject.Properties["ServerSessions"]?.Value ?? default(uint)),
 		 ServerSessionsHung = (uint) (managementObject.Properties["ServerSessionsHung"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 WriteBytesCachePersec = (ulong) (managementObject.Properties["WriteBytesCachePersec"]?.Value ?? default(ulong)),
 		 WriteBytesNetworkPersec = (ulong) (managementObject.Properties["WriteBytesNetworkPersec"]?.Value ?? default(ulong)),
 		 WriteBytesNonPagingPersec = (ulong) (managementObject.Properties["WriteBytesNonPagingPersec"]?.Value ?? default(ulong)),

@@ -5,7 +5,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 {
     /// <summary>
     /// </summary>
-    public sealed class PerfNet_Server
+    public sealed class PerfNetServer
     {
 		public uint BlockingRequestsRejected { get; private set; }
 		public ulong BytesReceivedPersec { get; private set; }
@@ -21,9 +21,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public uint FileDirectorySearches { get; private set; }
 		public uint FilesOpen { get; private set; }
 		public uint FilesOpenedTotal { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint LogonPersec { get; private set; }
 		public uint LogonTotal { get; private set; }
 		public string Name { get; private set; }
@@ -40,25 +40,25 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public uint SessionsForcedOff { get; private set; }
 		public uint SessionsLoggedOff { get; private set; }
 		public uint SessionsTimedOut { get; private set; }
-		public ulong SMBBranchCacheHashBytesSent { get; private set; }
-		public uint SMBBranchCacheHashGenerationRequests { get; private set; }
-		public uint SMBBranchCacheHashHeaderRequests { get; private set; }
-		public uint SMBBranchCacheHashRequestsReceived { get; private set; }
-		public uint SMBBranchCacheHashResponsesSent { get; private set; }
-		public ulong SMBBranchCacheHashV2BytesSent { get; private set; }
-		public uint SMBBranchCacheHashV2GenerationRequests { get; private set; }
-		public uint SMBBranchCacheHashV2HeaderRequests { get; private set; }
-		public uint SMBBranchCacheHashV2RequestsReceived { get; private set; }
-		public uint SMBBranchCacheHashV2RequestsServedFromDedup { get; private set; }
-		public uint SMBBranchCacheHashV2ResponsesSent { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong SmbBranchCacheHashBytesSent { get; private set; }
+		public uint SmbBranchCacheHashGenerationRequests { get; private set; }
+		public uint SmbBranchCacheHashHeaderRequests { get; private set; }
+		public uint SmbBranchCacheHashRequestsReceived { get; private set; }
+		public uint SmbBranchCacheHashResponsesSent { get; private set; }
+		public ulong SmbBranchCacheHashV2BytesSent { get; private set; }
+		public uint SmbBranchCacheHashV2GenerationRequests { get; private set; }
+		public uint SmbBranchCacheHashV2HeaderRequests { get; private set; }
+		public uint SmbBranchCacheHashV2RequestsReceived { get; private set; }
+		public uint SmbBranchCacheHashV2RequestsServedFromDedup { get; private set; }
+		public uint SmbBranchCacheHashV2ResponsesSent { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint TotalDurableHandles { get; private set; }
 		public uint TotalResilientHandles { get; private set; }
 		public uint WorkItemShortages { get; private set; }
 
-        public static IEnumerable<PerfNet_Server> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PerfNetServer> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -73,20 +73,20 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfNet_Server> Retrieve()
+        public static IEnumerable<PerfNetServer> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfNet_Server> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PerfNetServer> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_PerfNet_Server");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PerfNet_Server
+                yield return new PerfNetServer
                 {
                      BlockingRequestsRejected = (uint) (managementObject.Properties["BlockingRequestsRejected"]?.Value ?? default(uint)),
 		 BytesReceivedPersec = (ulong) (managementObject.Properties["BytesReceivedPersec"]?.Value ?? default(ulong)),
@@ -102,9 +102,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 FileDirectorySearches = (uint) (managementObject.Properties["FileDirectorySearches"]?.Value ?? default(uint)),
 		 FilesOpen = (uint) (managementObject.Properties["FilesOpen"]?.Value ?? default(uint)),
 		 FilesOpenedTotal = (uint) (managementObject.Properties["FilesOpenedTotal"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 LogonPersec = (uint) (managementObject.Properties["LogonPersec"]?.Value ?? default(uint)),
 		 LogonTotal = (uint) (managementObject.Properties["LogonTotal"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
@@ -121,20 +121,20 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 SessionsForcedOff = (uint) (managementObject.Properties["SessionsForcedOff"]?.Value ?? default(uint)),
 		 SessionsLoggedOff = (uint) (managementObject.Properties["SessionsLoggedOff"]?.Value ?? default(uint)),
 		 SessionsTimedOut = (uint) (managementObject.Properties["SessionsTimedOut"]?.Value ?? default(uint)),
-		 SMBBranchCacheHashBytesSent = (ulong) (managementObject.Properties["SMBBranchCacheHashBytesSent"]?.Value ?? default(ulong)),
-		 SMBBranchCacheHashGenerationRequests = (uint) (managementObject.Properties["SMBBranchCacheHashGenerationRequests"]?.Value ?? default(uint)),
-		 SMBBranchCacheHashHeaderRequests = (uint) (managementObject.Properties["SMBBranchCacheHashHeaderRequests"]?.Value ?? default(uint)),
-		 SMBBranchCacheHashRequestsReceived = (uint) (managementObject.Properties["SMBBranchCacheHashRequestsReceived"]?.Value ?? default(uint)),
-		 SMBBranchCacheHashResponsesSent = (uint) (managementObject.Properties["SMBBranchCacheHashResponsesSent"]?.Value ?? default(uint)),
-		 SMBBranchCacheHashV2BytesSent = (ulong) (managementObject.Properties["SMBBranchCacheHashV2BytesSent"]?.Value ?? default(ulong)),
-		 SMBBranchCacheHashV2GenerationRequests = (uint) (managementObject.Properties["SMBBranchCacheHashV2GenerationRequests"]?.Value ?? default(uint)),
-		 SMBBranchCacheHashV2HeaderRequests = (uint) (managementObject.Properties["SMBBranchCacheHashV2HeaderRequests"]?.Value ?? default(uint)),
-		 SMBBranchCacheHashV2RequestsReceived = (uint) (managementObject.Properties["SMBBranchCacheHashV2RequestsReceived"]?.Value ?? default(uint)),
-		 SMBBranchCacheHashV2RequestsServedFromDedup = (uint) (managementObject.Properties["SMBBranchCacheHashV2RequestsServedFromDedup"]?.Value ?? default(uint)),
-		 SMBBranchCacheHashV2ResponsesSent = (uint) (managementObject.Properties["SMBBranchCacheHashV2ResponsesSent"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 SmbBranchCacheHashBytesSent = (ulong) (managementObject.Properties["SMBBranchCacheHashBytesSent"]?.Value ?? default(ulong)),
+		 SmbBranchCacheHashGenerationRequests = (uint) (managementObject.Properties["SMBBranchCacheHashGenerationRequests"]?.Value ?? default(uint)),
+		 SmbBranchCacheHashHeaderRequests = (uint) (managementObject.Properties["SMBBranchCacheHashHeaderRequests"]?.Value ?? default(uint)),
+		 SmbBranchCacheHashRequestsReceived = (uint) (managementObject.Properties["SMBBranchCacheHashRequestsReceived"]?.Value ?? default(uint)),
+		 SmbBranchCacheHashResponsesSent = (uint) (managementObject.Properties["SMBBranchCacheHashResponsesSent"]?.Value ?? default(uint)),
+		 SmbBranchCacheHashV2BytesSent = (ulong) (managementObject.Properties["SMBBranchCacheHashV2BytesSent"]?.Value ?? default(ulong)),
+		 SmbBranchCacheHashV2GenerationRequests = (uint) (managementObject.Properties["SMBBranchCacheHashV2GenerationRequests"]?.Value ?? default(uint)),
+		 SmbBranchCacheHashV2HeaderRequests = (uint) (managementObject.Properties["SMBBranchCacheHashV2HeaderRequests"]?.Value ?? default(uint)),
+		 SmbBranchCacheHashV2RequestsReceived = (uint) (managementObject.Properties["SMBBranchCacheHashV2RequestsReceived"]?.Value ?? default(uint)),
+		 SmbBranchCacheHashV2RequestsServedFromDedup = (uint) (managementObject.Properties["SMBBranchCacheHashV2RequestsServedFromDedup"]?.Value ?? default(uint)),
+		 SmbBranchCacheHashV2ResponsesSent = (uint) (managementObject.Properties["SMBBranchCacheHashV2ResponsesSent"]?.Value ?? default(uint)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalDurableHandles = (uint) (managementObject.Properties["TotalDurableHandles"]?.Value ?? default(uint)),
 		 TotalResilientHandles = (uint) (managementObject.Properties["TotalResilientHandles"]?.Value ?? default(uint)),
 		 WorkItemShortages = (uint) (managementObject.Properties["WorkItemShortages"]?.Value ?? default(uint))

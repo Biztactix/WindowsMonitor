@@ -5,22 +5,22 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 {
     /// <summary>
     /// </summary>
-    public sealed class PerfDisk_LogicalDisk
+    public sealed class PerfDiskLogicalDisk
     {
 		public ulong AvgDiskBytesPerRead { get; private set; }
-		public uint AvgDiskBytesPerRead_Base { get; private set; }
+		public uint AvgDiskBytesPerReadBase { get; private set; }
 		public ulong AvgDiskBytesPerTransfer { get; private set; }
-		public uint AvgDiskBytesPerTransfer_Base { get; private set; }
+		public uint AvgDiskBytesPerTransferBase { get; private set; }
 		public ulong AvgDiskBytesPerWrite { get; private set; }
-		public uint AvgDiskBytesPerWrite_Base { get; private set; }
+		public uint AvgDiskBytesPerWriteBase { get; private set; }
 		public ulong AvgDiskQueueLength { get; private set; }
 		public ulong AvgDiskReadQueueLength { get; private set; }
 		public uint AvgDisksecPerRead { get; private set; }
-		public uint AvgDisksecPerRead_Base { get; private set; }
+		public uint AvgDisksecPerReadBase { get; private set; }
 		public uint AvgDisksecPerTransfer { get; private set; }
-		public uint AvgDisksecPerTransfer_Base { get; private set; }
+		public uint AvgDisksecPerTransferBase { get; private set; }
 		public uint AvgDisksecPerWrite { get; private set; }
-		public uint AvgDisksecPerWrite_Base { get; private set; }
+		public uint AvgDisksecPerWriteBase { get; private set; }
 		public ulong AvgDiskWriteQueueLength { get; private set; }
 		public string Caption { get; private set; }
 		public uint CurrentDiskQueueLength { get; private set; }
@@ -32,26 +32,26 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public ulong DiskWriteBytesPersec { get; private set; }
 		public uint DiskWritesPersec { get; private set; }
 		public uint FreeMegabytes { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public string Name { get; private set; }
 		public ulong PercentDiskReadTime { get; private set; }
-		public ulong PercentDiskReadTime_Base { get; private set; }
+		public ulong PercentDiskReadTimeBase { get; private set; }
 		public ulong PercentDiskTime { get; private set; }
-		public ulong PercentDiskTime_Base { get; private set; }
+		public ulong PercentDiskTimeBase { get; private set; }
 		public ulong PercentDiskWriteTime { get; private set; }
-		public ulong PercentDiskWriteTime_Base { get; private set; }
+		public ulong PercentDiskWriteTimeBase { get; private set; }
 		public uint PercentFreeSpace { get; private set; }
-		public uint PercentFreeSpace_Base { get; private set; }
+		public uint PercentFreeSpaceBase { get; private set; }
 		public ulong PercentIdleTime { get; private set; }
-		public ulong PercentIdleTime_Base { get; private set; }
-		public uint SplitIOPerSec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong PercentIdleTimeBase { get; private set; }
+		public uint SplitIoPerSec { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<PerfDisk_LogicalDisk> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PerfDiskLogicalDisk> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -66,35 +66,35 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfDisk_LogicalDisk> Retrieve()
+        public static IEnumerable<PerfDiskLogicalDisk> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfDisk_LogicalDisk> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PerfDiskLogicalDisk> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_PerfDisk_LogicalDisk");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PerfDisk_LogicalDisk
+                yield return new PerfDiskLogicalDisk
                 {
                      AvgDiskBytesPerRead = (ulong) (managementObject.Properties["AvgDiskBytesPerRead"]?.Value ?? default(ulong)),
-		 AvgDiskBytesPerRead_Base = (uint) (managementObject.Properties["AvgDiskBytesPerRead_Base"]?.Value ?? default(uint)),
+		 AvgDiskBytesPerReadBase = (uint) (managementObject.Properties["AvgDiskBytesPerRead_Base"]?.Value ?? default(uint)),
 		 AvgDiskBytesPerTransfer = (ulong) (managementObject.Properties["AvgDiskBytesPerTransfer"]?.Value ?? default(ulong)),
-		 AvgDiskBytesPerTransfer_Base = (uint) (managementObject.Properties["AvgDiskBytesPerTransfer_Base"]?.Value ?? default(uint)),
+		 AvgDiskBytesPerTransferBase = (uint) (managementObject.Properties["AvgDiskBytesPerTransfer_Base"]?.Value ?? default(uint)),
 		 AvgDiskBytesPerWrite = (ulong) (managementObject.Properties["AvgDiskBytesPerWrite"]?.Value ?? default(ulong)),
-		 AvgDiskBytesPerWrite_Base = (uint) (managementObject.Properties["AvgDiskBytesPerWrite_Base"]?.Value ?? default(uint)),
+		 AvgDiskBytesPerWriteBase = (uint) (managementObject.Properties["AvgDiskBytesPerWrite_Base"]?.Value ?? default(uint)),
 		 AvgDiskQueueLength = (ulong) (managementObject.Properties["AvgDiskQueueLength"]?.Value ?? default(ulong)),
 		 AvgDiskReadQueueLength = (ulong) (managementObject.Properties["AvgDiskReadQueueLength"]?.Value ?? default(ulong)),
 		 AvgDisksecPerRead = (uint) (managementObject.Properties["AvgDisksecPerRead"]?.Value ?? default(uint)),
-		 AvgDisksecPerRead_Base = (uint) (managementObject.Properties["AvgDisksecPerRead_Base"]?.Value ?? default(uint)),
+		 AvgDisksecPerReadBase = (uint) (managementObject.Properties["AvgDisksecPerRead_Base"]?.Value ?? default(uint)),
 		 AvgDisksecPerTransfer = (uint) (managementObject.Properties["AvgDisksecPerTransfer"]?.Value ?? default(uint)),
-		 AvgDisksecPerTransfer_Base = (uint) (managementObject.Properties["AvgDisksecPerTransfer_Base"]?.Value ?? default(uint)),
+		 AvgDisksecPerTransferBase = (uint) (managementObject.Properties["AvgDisksecPerTransfer_Base"]?.Value ?? default(uint)),
 		 AvgDisksecPerWrite = (uint) (managementObject.Properties["AvgDisksecPerWrite"]?.Value ?? default(uint)),
-		 AvgDisksecPerWrite_Base = (uint) (managementObject.Properties["AvgDisksecPerWrite_Base"]?.Value ?? default(uint)),
+		 AvgDisksecPerWriteBase = (uint) (managementObject.Properties["AvgDisksecPerWrite_Base"]?.Value ?? default(uint)),
 		 AvgDiskWriteQueueLength = (ulong) (managementObject.Properties["AvgDiskWriteQueueLength"]?.Value ?? default(ulong)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CurrentDiskQueueLength = (uint) (managementObject.Properties["CurrentDiskQueueLength"]?.Value ?? default(uint)),
@@ -106,24 +106,24 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 DiskWriteBytesPersec = (ulong) (managementObject.Properties["DiskWriteBytesPersec"]?.Value ?? default(ulong)),
 		 DiskWritesPersec = (uint) (managementObject.Properties["DiskWritesPersec"]?.Value ?? default(uint)),
 		 FreeMegabytes = (uint) (managementObject.Properties["FreeMegabytes"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PercentDiskReadTime = (ulong) (managementObject.Properties["PercentDiskReadTime"]?.Value ?? default(ulong)),
-		 PercentDiskReadTime_Base = (ulong) (managementObject.Properties["PercentDiskReadTime_Base"]?.Value ?? default(ulong)),
+		 PercentDiskReadTimeBase = (ulong) (managementObject.Properties["PercentDiskReadTime_Base"]?.Value ?? default(ulong)),
 		 PercentDiskTime = (ulong) (managementObject.Properties["PercentDiskTime"]?.Value ?? default(ulong)),
-		 PercentDiskTime_Base = (ulong) (managementObject.Properties["PercentDiskTime_Base"]?.Value ?? default(ulong)),
+		 PercentDiskTimeBase = (ulong) (managementObject.Properties["PercentDiskTime_Base"]?.Value ?? default(ulong)),
 		 PercentDiskWriteTime = (ulong) (managementObject.Properties["PercentDiskWriteTime"]?.Value ?? default(ulong)),
-		 PercentDiskWriteTime_Base = (ulong) (managementObject.Properties["PercentDiskWriteTime_Base"]?.Value ?? default(ulong)),
+		 PercentDiskWriteTimeBase = (ulong) (managementObject.Properties["PercentDiskWriteTime_Base"]?.Value ?? default(ulong)),
 		 PercentFreeSpace = (uint) (managementObject.Properties["PercentFreeSpace"]?.Value ?? default(uint)),
-		 PercentFreeSpace_Base = (uint) (managementObject.Properties["PercentFreeSpace_Base"]?.Value ?? default(uint)),
+		 PercentFreeSpaceBase = (uint) (managementObject.Properties["PercentFreeSpace_Base"]?.Value ?? default(uint)),
 		 PercentIdleTime = (ulong) (managementObject.Properties["PercentIdleTime"]?.Value ?? default(ulong)),
-		 PercentIdleTime_Base = (ulong) (managementObject.Properties["PercentIdleTime_Base"]?.Value ?? default(ulong)),
-		 SplitIOPerSec = (uint) (managementObject.Properties["SplitIOPerSec"]?.Value ?? default(uint)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
+		 PercentIdleTimeBase = (ulong) (managementObject.Properties["PercentIdleTime_Base"]?.Value ?? default(ulong)),
+		 SplitIoPerSec = (uint) (managementObject.Properties["SplitIOPerSec"]?.Value ?? default(uint)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong))
                 };
         }
     }

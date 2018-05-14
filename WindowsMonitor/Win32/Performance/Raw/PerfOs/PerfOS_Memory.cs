@@ -5,7 +5,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 {
     /// <summary>
     /// </summary>
-    public sealed class PerfOS_Memory
+    public sealed class PerfOsMemory
     {
 		public ulong AvailableBytes { get; private set; }
 		public ulong AvailableKBytes { get; private set; }
@@ -20,9 +20,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public string Description { get; private set; }
 		public ulong FreeAndZeroPageListBytes { get; private set; }
 		public uint FreeSystemPageTableEntries { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public uint LongTermAverageStandbyCacheLifetimes { get; private set; }
 		public ulong ModifiedPageListBytes { get; private set; }
 		public string Name { get; private set; }
@@ -33,7 +33,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public uint PagesPersec { get; private set; }
 		public uint PageWritesPersec { get; private set; }
 		public uint PercentCommittedBytesInUse { get; private set; }
-		public uint PercentCommittedBytesInUse_Base { get; private set; }
+		public uint PercentCommittedBytesInUseBase { get; private set; }
 		public uint PoolNonpagedAllocs { get; private set; }
 		public ulong PoolNonpagedBytes { get; private set; }
 		public uint PoolPagedAllocs { get; private set; }
@@ -47,14 +47,14 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		public ulong SystemCodeTotalBytes { get; private set; }
 		public ulong SystemDriverResidentBytes { get; private set; }
 		public ulong SystemDriverTotalBytes { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public uint TransitionFaultsPersec { get; private set; }
 		public uint TransitionPagesRePurposedPersec { get; private set; }
 		public uint WriteCopiesPersec { get; private set; }
 
-        public static IEnumerable<PerfOS_Memory> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PerfOsMemory> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -69,20 +69,20 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfOS_Memory> Retrieve()
+        public static IEnumerable<PerfOsMemory> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PerfOS_Memory> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PerfOsMemory> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_PerfOS_Memory");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PerfOS_Memory
+                yield return new PerfOsMemory
                 {
                      AvailableBytes = (ulong) (managementObject.Properties["AvailableBytes"]?.Value ?? default(ulong)),
 		 AvailableKBytes = (ulong) (managementObject.Properties["AvailableKBytes"]?.Value ?? default(ulong)),
@@ -97,9 +97,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FreeAndZeroPageListBytes = (ulong) (managementObject.Properties["FreeAndZeroPageListBytes"]?.Value ?? default(ulong)),
 		 FreeSystemPageTableEntries = (uint) (managementObject.Properties["FreeSystemPageTableEntries"]?.Value ?? default(uint)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 LongTermAverageStandbyCacheLifetimes = (uint) (managementObject.Properties["LongTermAverageStandbyCacheLifetimes"]?.Value ?? default(uint)),
 		 ModifiedPageListBytes = (ulong) (managementObject.Properties["ModifiedPageListBytes"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
@@ -110,7 +110,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 PagesPersec = (uint) (managementObject.Properties["PagesPersec"]?.Value ?? default(uint)),
 		 PageWritesPersec = (uint) (managementObject.Properties["PageWritesPersec"]?.Value ?? default(uint)),
 		 PercentCommittedBytesInUse = (uint) (managementObject.Properties["PercentCommittedBytesInUse"]?.Value ?? default(uint)),
-		 PercentCommittedBytesInUse_Base = (uint) (managementObject.Properties["PercentCommittedBytesInUse_Base"]?.Value ?? default(uint)),
+		 PercentCommittedBytesInUseBase = (uint) (managementObject.Properties["PercentCommittedBytesInUse_Base"]?.Value ?? default(uint)),
 		 PoolNonpagedAllocs = (uint) (managementObject.Properties["PoolNonpagedAllocs"]?.Value ?? default(uint)),
 		 PoolNonpagedBytes = (ulong) (managementObject.Properties["PoolNonpagedBytes"]?.Value ?? default(ulong)),
 		 PoolPagedAllocs = (uint) (managementObject.Properties["PoolPagedAllocs"]?.Value ?? default(uint)),
@@ -124,9 +124,9 @@ namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
 		 SystemCodeTotalBytes = (ulong) (managementObject.Properties["SystemCodeTotalBytes"]?.Value ?? default(ulong)),
 		 SystemDriverResidentBytes = (ulong) (managementObject.Properties["SystemDriverResidentBytes"]?.Value ?? default(ulong)),
 		 SystemDriverTotalBytes = (ulong) (managementObject.Properties["SystemDriverTotalBytes"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TransitionFaultsPersec = (uint) (managementObject.Properties["TransitionFaultsPersec"]?.Value ?? default(uint)),
 		 TransitionPagesRePurposedPersec = (uint) (managementObject.Properties["TransitionPagesRePurposedPersec"]?.Value ?? default(uint)),
 		 WriteCopiesPersec = (uint) (managementObject.Properties["WriteCopiesPersec"]?.Value ?? default(uint))

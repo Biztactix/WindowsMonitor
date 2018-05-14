@@ -1,30 +1,28 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Performance.Raw
+namespace WindowsMonitor.Win32.Performance.Raw.Network.Smb
 {
     /// <summary>
     /// </summary>
-    public sealed class Counters_SMBServerSessions
+    public sealed class CountersSmbServerSessions
     {
 		public ulong AvgBytesPerRead { get; private set; }
-		public uint AvgBytesPerRead_Base { get; private set; }
+		public uint AvgBytesPerReadBase { get; private set; }
 		public ulong AvgBytesPerWrite { get; private set; }
-		public uint AvgBytesPerWrite_Base { get; private set; }
+		public uint AvgBytesPerWriteBase { get; private set; }
 		public ulong AvgDataBytesPerRequest { get; private set; }
-		public uint AvgDataBytesPerRequest_Base { get; private set; }
+		public uint AvgDataBytesPerRequestBase { get; private set; }
 		public ulong AvgDataQueueLength { get; private set; }
 		public ulong AvgReadQueueLength { get; private set; }
 		public uint AvgsecPerDataRequest { get; private set; }
-		public uint AvgsecPerDataRequest_Base { get; private set; }
+		public uint AvgsecPerDataRequestBase { get; private set; }
 		public uint AvgsecPerRead { get; private set; }
-		public uint AvgsecPerRead_Base { get; private set; }
+		public uint AvgsecPerReadBase { get; private set; }
 		public uint AvgsecPerRequest { get; private set; }
-		public uint AvgsecPerRequest_Base { get; private set; }
+		public uint AvgsecPerRequestBase { get; private set; }
 		public uint AvgsecPerWrite { get; private set; }
-		public uint AvgsecPerWrite_Base { get; private set; }
+		public uint AvgsecPerWriteBase { get; private set; }
 		public ulong AvgWriteQueueLength { get; private set; }
 		public string Caption { get; private set; }
 		public ulong CurrentDataQueueLength { get; private set; }
@@ -35,23 +33,23 @@ namespace WindowsMonitor.Performance.Raw
 		public uint DataRequestsPersec { get; private set; }
 		public string Description { get; private set; }
 		public ulong FilesOpenedPersec { get; private set; }
-		public ulong Frequency_Object { get; private set; }
-		public ulong Frequency_PerfTime { get; private set; }
-		public ulong Frequency_Sys100NS { get; private set; }
+		public ulong FrequencyObject { get; private set; }
+		public ulong FrequencyPerfTime { get; private set; }
+		public ulong FrequencySys100Ns { get; private set; }
 		public ulong MetadataRequestsPersec { get; private set; }
 		public string Name { get; private set; }
 		public ulong PercentPersistentHandles { get; private set; }
-		public ulong PercentPersistentHandles_Base { get; private set; }
+		public ulong PercentPersistentHandlesBase { get; private set; }
 		public ulong PercentResilientHandles { get; private set; }
-		public ulong PercentResilientHandles_Base { get; private set; }
+		public ulong PercentResilientHandlesBase { get; private set; }
 		public ulong ReadBytesPersec { get; private set; }
 		public uint ReadRequestsPersec { get; private set; }
 		public ulong ReceivedBytesPersec { get; private set; }
 		public ulong RequestsPersec { get; private set; }
 		public ulong SentBytesPersec { get; private set; }
-		public ulong Timestamp_Object { get; private set; }
-		public ulong Timestamp_PerfTime { get; private set; }
-		public ulong Timestamp_Sys100NS { get; private set; }
+		public ulong TimestampObject { get; private set; }
+		public ulong TimestampPerfTime { get; private set; }
+		public ulong TimestampSys100Ns { get; private set; }
 		public ulong TotalDurableHandleReopenCount { get; private set; }
 		public ulong TotalFailedDurableHandleReopenCount { get; private set; }
 		public ulong TotalFailedPersistentHandleReopenCount { get; private set; }
@@ -64,7 +62,7 @@ namespace WindowsMonitor.Performance.Raw
 		public ulong WriteBytesPersec { get; private set; }
 		public uint WriteRequestsPersec { get; private set; }
 
-        public static IEnumerable<Counters_SMBServerSessions> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CountersSmbServerSessions> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -79,37 +77,37 @@ namespace WindowsMonitor.Performance.Raw
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_SMBServerSessions> Retrieve()
+        public static IEnumerable<CountersSmbServerSessions> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Counters_SMBServerSessions> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CountersSmbServerSessions> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_Counters_SMBServerSessions");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Counters_SMBServerSessions
+                yield return new CountersSmbServerSessions
                 {
                      AvgBytesPerRead = (ulong) (managementObject.Properties["AvgBytesPerRead"]?.Value ?? default(ulong)),
-		 AvgBytesPerRead_Base = (uint) (managementObject.Properties["AvgBytesPerRead_Base"]?.Value ?? default(uint)),
+		 AvgBytesPerReadBase = (uint) (managementObject.Properties["AvgBytesPerRead_Base"]?.Value ?? default(uint)),
 		 AvgBytesPerWrite = (ulong) (managementObject.Properties["AvgBytesPerWrite"]?.Value ?? default(ulong)),
-		 AvgBytesPerWrite_Base = (uint) (managementObject.Properties["AvgBytesPerWrite_Base"]?.Value ?? default(uint)),
+		 AvgBytesPerWriteBase = (uint) (managementObject.Properties["AvgBytesPerWrite_Base"]?.Value ?? default(uint)),
 		 AvgDataBytesPerRequest = (ulong) (managementObject.Properties["AvgDataBytesPerRequest"]?.Value ?? default(ulong)),
-		 AvgDataBytesPerRequest_Base = (uint) (managementObject.Properties["AvgDataBytesPerRequest_Base"]?.Value ?? default(uint)),
+		 AvgDataBytesPerRequestBase = (uint) (managementObject.Properties["AvgDataBytesPerRequest_Base"]?.Value ?? default(uint)),
 		 AvgDataQueueLength = (ulong) (managementObject.Properties["AvgDataQueueLength"]?.Value ?? default(ulong)),
 		 AvgReadQueueLength = (ulong) (managementObject.Properties["AvgReadQueueLength"]?.Value ?? default(ulong)),
 		 AvgsecPerDataRequest = (uint) (managementObject.Properties["AvgsecPerDataRequest"]?.Value ?? default(uint)),
-		 AvgsecPerDataRequest_Base = (uint) (managementObject.Properties["AvgsecPerDataRequest_Base"]?.Value ?? default(uint)),
+		 AvgsecPerDataRequestBase = (uint) (managementObject.Properties["AvgsecPerDataRequest_Base"]?.Value ?? default(uint)),
 		 AvgsecPerRead = (uint) (managementObject.Properties["AvgsecPerRead"]?.Value ?? default(uint)),
-		 AvgsecPerRead_Base = (uint) (managementObject.Properties["AvgsecPerRead_Base"]?.Value ?? default(uint)),
+		 AvgsecPerReadBase = (uint) (managementObject.Properties["AvgsecPerRead_Base"]?.Value ?? default(uint)),
 		 AvgsecPerRequest = (uint) (managementObject.Properties["AvgsecPerRequest"]?.Value ?? default(uint)),
-		 AvgsecPerRequest_Base = (uint) (managementObject.Properties["AvgsecPerRequest_Base"]?.Value ?? default(uint)),
+		 AvgsecPerRequestBase = (uint) (managementObject.Properties["AvgsecPerRequest_Base"]?.Value ?? default(uint)),
 		 AvgsecPerWrite = (uint) (managementObject.Properties["AvgsecPerWrite"]?.Value ?? default(uint)),
-		 AvgsecPerWrite_Base = (uint) (managementObject.Properties["AvgsecPerWrite_Base"]?.Value ?? default(uint)),
+		 AvgsecPerWriteBase = (uint) (managementObject.Properties["AvgsecPerWrite_Base"]?.Value ?? default(uint)),
 		 AvgWriteQueueLength = (ulong) (managementObject.Properties["AvgWriteQueueLength"]?.Value ?? default(ulong)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CurrentDataQueueLength = (ulong) (managementObject.Properties["CurrentDataQueueLength"]?.Value ?? default(ulong)),
@@ -120,23 +118,23 @@ namespace WindowsMonitor.Performance.Raw
 		 DataRequestsPersec = (uint) (managementObject.Properties["DataRequestsPersec"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FilesOpenedPersec = (ulong) (managementObject.Properties["FilesOpenedPersec"]?.Value ?? default(ulong)),
-		 Frequency_Object = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
-		 Frequency_PerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
-		 Frequency_Sys100NS = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
+		 FrequencyObject = (ulong) (managementObject.Properties["Frequency_Object"]?.Value ?? default(ulong)),
+		 FrequencyPerfTime = (ulong) (managementObject.Properties["Frequency_PerfTime"]?.Value ?? default(ulong)),
+		 FrequencySys100Ns = (ulong) (managementObject.Properties["Frequency_Sys100NS"]?.Value ?? default(ulong)),
 		 MetadataRequestsPersec = (ulong) (managementObject.Properties["MetadataRequestsPersec"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PercentPersistentHandles = (ulong) (managementObject.Properties["PercentPersistentHandles"]?.Value ?? default(ulong)),
-		 PercentPersistentHandles_Base = (ulong) (managementObject.Properties["PercentPersistentHandles_Base"]?.Value ?? default(ulong)),
+		 PercentPersistentHandlesBase = (ulong) (managementObject.Properties["PercentPersistentHandles_Base"]?.Value ?? default(ulong)),
 		 PercentResilientHandles = (ulong) (managementObject.Properties["PercentResilientHandles"]?.Value ?? default(ulong)),
-		 PercentResilientHandles_Base = (ulong) (managementObject.Properties["PercentResilientHandles_Base"]?.Value ?? default(ulong)),
+		 PercentResilientHandlesBase = (ulong) (managementObject.Properties["PercentResilientHandles_Base"]?.Value ?? default(ulong)),
 		 ReadBytesPersec = (ulong) (managementObject.Properties["ReadBytesPersec"]?.Value ?? default(ulong)),
 		 ReadRequestsPersec = (uint) (managementObject.Properties["ReadRequestsPersec"]?.Value ?? default(uint)),
 		 ReceivedBytesPersec = (ulong) (managementObject.Properties["ReceivedBytesPersec"]?.Value ?? default(ulong)),
 		 RequestsPersec = (ulong) (managementObject.Properties["RequestsPersec"]?.Value ?? default(ulong)),
 		 SentBytesPersec = (ulong) (managementObject.Properties["SentBytesPersec"]?.Value ?? default(ulong)),
-		 Timestamp_Object = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
-		 Timestamp_PerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
-		 Timestamp_Sys100NS = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
+		 TimestampObject = (ulong) (managementObject.Properties["Timestamp_Object"]?.Value ?? default(ulong)),
+		 TimestampPerfTime = (ulong) (managementObject.Properties["Timestamp_PerfTime"]?.Value ?? default(ulong)),
+		 TimestampSys100Ns = (ulong) (managementObject.Properties["Timestamp_Sys100NS"]?.Value ?? default(ulong)),
 		 TotalDurableHandleReopenCount = (ulong) (managementObject.Properties["TotalDurableHandleReopenCount"]?.Value ?? default(ulong)),
 		 TotalFailedDurableHandleReopenCount = (ulong) (managementObject.Properties["TotalFailedDurableHandleReopenCount"]?.Value ?? default(ulong)),
 		 TotalFailedPersistentHandleReopenCount = (ulong) (managementObject.Properties["TotalFailedPersistentHandleReopenCount"]?.Value ?? default(ulong)),
