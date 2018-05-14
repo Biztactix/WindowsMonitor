@@ -33,7 +33,6 @@ namespace WindowsMonitor.Service
                 Console.WriteLine(n);
                 throw;
             }
-
         }
     }
 }
