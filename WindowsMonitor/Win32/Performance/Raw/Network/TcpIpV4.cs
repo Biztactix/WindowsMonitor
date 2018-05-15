@@ -5,7 +5,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.Network
 {
     /// <summary>
     /// </summary>
-    public sealed class TcpipTcPv6
+    public sealed class TcpIpV4
     {
 		public string Caption { get; private set; }
 		public uint ConnectionFailures { get; private set; }
@@ -26,7 +26,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.Network
 		public ulong TimestampPerfTime { get; private set; }
 		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<TcpipTcPv6> Retrieve(string remote, string username, string password)
+        public static IEnumerable<TcpIpV4> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -41,20 +41,20 @@ namespace WindowsMonitor.Win32.Performance.Raw.Network
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TcpipTcPv6> Retrieve()
+        public static IEnumerable<TcpIpV4> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TcpipTcPv6> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<TcpIpV4> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_Tcpip_TCPv6");
+            var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_Tcpip_TCPv4");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new TcpipTcPv6
+                yield return new TcpIpV4
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ConnectionFailures = (uint) (managementObject.Properties["ConnectionFailures"]?.Value ?? default(uint)),

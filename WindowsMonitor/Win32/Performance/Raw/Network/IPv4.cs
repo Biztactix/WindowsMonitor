@@ -5,7 +5,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.Network
 {
     /// <summary>
     /// </summary>
-    public sealed class TcpipIPv6
+    public sealed class IpV4
     {
 		public string Caption { get; private set; }
 		public uint DatagramsForwardedPersec { get; private set; }
@@ -34,7 +34,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.Network
 		public ulong TimestampPerfTime { get; private set; }
 		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<TcpipIPv6> Retrieve(string remote, string username, string password)
+        public static IEnumerable<IpV4> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -49,20 +49,20 @@ namespace WindowsMonitor.Win32.Performance.Raw.Network
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TcpipIPv6> Retrieve()
+        public static IEnumerable<IpV4> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TcpipIPv6> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<IpV4> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_Tcpip_IPv6");
+            var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_Tcpip_IPv4");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new TcpipIPv6
+                yield return new IpV4
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 DatagramsForwardedPersec = (uint) (managementObject.Properties["DatagramsForwardedPersec"]?.Value ?? default(uint)),

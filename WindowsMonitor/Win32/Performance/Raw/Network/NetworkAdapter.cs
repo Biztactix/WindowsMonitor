@@ -5,7 +5,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.Network
 {
     /// <summary>
     /// </summary>
-    public sealed class TcpipNetworkAdapter
+    public sealed class NetworkAdapter
     {
 		public ulong BytesReceivedPersec { get; private set; }
 		public ulong BytesSentPersec { get; private set; }
@@ -39,7 +39,7 @@ namespace WindowsMonitor.Win32.Performance.Raw.Network
 		public ulong TimestampPerfTime { get; private set; }
 		public ulong TimestampSys100Ns { get; private set; }
 
-        public static IEnumerable<TcpipNetworkAdapter> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NetworkAdapter> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -54,20 +54,20 @@ namespace WindowsMonitor.Win32.Performance.Raw.Network
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TcpipNetworkAdapter> Retrieve()
+        public static IEnumerable<NetworkAdapter> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TcpipNetworkAdapter> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NetworkAdapter> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_PerfRawData_Tcpip_NetworkAdapter");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new TcpipNetworkAdapter
+                yield return new NetworkAdapter
                 {
                      BytesReceivedPersec = (ulong) (managementObject.Properties["BytesReceivedPersec"]?.Value ?? default(ulong)),
 		 BytesSentPersec = (ulong) (managementObject.Properties["BytesSentPersec"]?.Value ?? default(ulong)),
