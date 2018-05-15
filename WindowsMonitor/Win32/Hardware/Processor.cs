@@ -115,7 +115,7 @@ namespace WindowsMonitor.Win32.Hardware
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 ExtClock = (uint) (managementObject.Properties["ExtClock"]?.Value ?? default(uint)),
 		 Family = (ushort) (managementObject.Properties["Family"]?.Value ?? default(ushort)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 L2CacheSize = (uint) (managementObject.Properties["L2CacheSize"]?.Value ?? default(uint)),
 		 L2CacheSpeed = (uint) (managementObject.Properties["L2CacheSpeed"]?.Value ?? default(uint)),
 		 L3CacheSize = (uint) (managementObject.Properties["L3CacheSize"]?.Value ?? default(uint)),

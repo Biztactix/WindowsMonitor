@@ -106,7 +106,7 @@ namespace WindowsMonitor.Win32
 		 FileSystem = (string) (managementObject.Properties["FileSystem"]?.Value),
 		 FreeSpace = (ulong) (managementObject.Properties["FreeSpace"]?.Value ?? default(ulong)),
 		 IndexingEnabled = (bool) (managementObject.Properties["IndexingEnabled"]?.Value ?? default(bool)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 Label = (string) (managementObject.Properties["Label"]?.Value),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 MaximumFileNameLength = (uint) (managementObject.Properties["MaximumFileNameLength"]?.Value ?? default(uint)),

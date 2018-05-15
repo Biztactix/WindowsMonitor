@@ -61,7 +61,7 @@ namespace WindowsMonitor.CIM.Hardware
 		 ConnectorType = (ushort[]) (managementObject.Properties["ConnectorType"]?.Value ?? new ushort[0]),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Model = (string) (managementObject.Properties["Model"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),

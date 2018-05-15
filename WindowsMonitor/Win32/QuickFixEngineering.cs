@@ -56,7 +56,7 @@ namespace WindowsMonitor.Win32
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FixComments = (string) (managementObject.Properties["FixComments"]?.Value),
 		 HotFixID = (string) (managementObject.Properties["HotFixID"]?.Value),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 InstalledBy = (string) (managementObject.Properties["InstalledBy"]?.Value),
 		 InstalledOn = (string) (managementObject.Properties["InstalledOn"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),

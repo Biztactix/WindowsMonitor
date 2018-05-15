@@ -51,7 +51,7 @@ namespace WindowsMonitor.Win32.Users
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Domain = (string) (managementObject.Properties["Domain"]?.Value),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 LocalAccount = (bool) (managementObject.Properties["LocalAccount"]?.Value ?? default(bool)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 SID = (string) (managementObject.Properties["SID"]?.Value),

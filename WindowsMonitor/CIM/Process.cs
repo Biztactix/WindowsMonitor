@@ -60,20 +60,20 @@ namespace WindowsMonitor.CIM
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CreationDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["CreationDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 CreationDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["CreationDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
 		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ExecutionState = (ushort) (managementObject.Properties["ExecutionState"]?.Value ?? default(ushort)),
 		 Handle = (string) (managementObject.Properties["Handle"]?.Value),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 KernelModeTime = (ulong) (managementObject.Properties["KernelModeTime"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OsCreationClassName = (string) (managementObject.Properties["OSCreationClassName"]?.Value),
 		 OsName = (string) (managementObject.Properties["OSName"]?.Value),
 		 Priority = (uint) (managementObject.Properties["Priority"]?.Value ?? default(uint)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
-		 TerminationDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TerminationDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 TerminationDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TerminationDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 UserModeTime = (ulong) (managementObject.Properties["UserModeTime"]?.Value ?? default(ulong)),
 		 WorkingSetSize = (ulong) (managementObject.Properties["WorkingSetSize"]?.Value ?? default(ulong))
                 };

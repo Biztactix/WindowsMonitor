@@ -66,7 +66,7 @@ namespace WindowsMonitor.Win32
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ExternalReferenceDesignator = (string) (managementObject.Properties["ExternalReferenceDesignator"]?.Value),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 InternalReferenceDesignator = (string) (managementObject.Properties["InternalReferenceDesignator"]?.Value),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Model = (string) (managementObject.Properties["Model"]?.Value),

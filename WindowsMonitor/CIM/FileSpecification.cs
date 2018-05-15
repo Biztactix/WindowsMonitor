@@ -61,7 +61,7 @@ namespace WindowsMonitor.CIM
 		 CheckSum = (uint) (managementObject.Properties["CheckSum"]?.Value ?? default(uint)),
 		 Crc1 = (uint) (managementObject.Properties["CRC1"]?.Value ?? default(uint)),
 		 Crc2 = (uint) (managementObject.Properties["CRC2"]?.Value ?? default(uint)),
-		 CreateTimeStamp = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["CreateTimeStamp"]?.Value as string ?? "00010101000000.000000+060"),
+		 CreateTimeStamp = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["CreateTimeStamp"]?.Value as string ?? "00010102000000.000000+060"),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FileSize = (ulong) (managementObject.Properties["FileSize"]?.Value ?? default(ulong)),
 		 Md5Checksum = (string) (managementObject.Properties["MD5Checksum"]?.Value),

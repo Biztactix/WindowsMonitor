@@ -61,7 +61,7 @@ namespace WindowsMonitor.Win32.Hardware.OnBoard
 		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Hardware = (bool) (managementObject.Properties["Hardware"]?.Value ?? default(bool)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 IRQNumber = (uint) (managementObject.Properties["IRQNumber"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Shareable = (bool) (managementObject.Properties["Shareable"]?.Value ?? default(bool)),

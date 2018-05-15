@@ -61,7 +61,7 @@ namespace WindowsMonitor.CIM.Hardware.Video
 		 CodeSet = (string) (managementObject.Properties["CodeSet"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 IdentificationCode = (string) (managementObject.Properties["IdentificationCode"]?.Value),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 IsShadowed = (bool) (managementObject.Properties["IsShadowed"]?.Value ?? default(bool)),
 		 LanguageEdition = (string) (managementObject.Properties["LanguageEdition"]?.Value),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),

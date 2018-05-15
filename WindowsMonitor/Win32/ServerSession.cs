@@ -59,7 +59,7 @@ namespace WindowsMonitor.Win32
 		 ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 IdleTime = (uint) (managementObject.Properties["IdleTime"]?.Value ?? default(uint)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ResourcesOpened = (uint) (managementObject.Properties["ResourcesOpened"]?.Value ?? default(uint)),
 		 SessionType = (uint) (managementObject.Properties["SessionType"]?.Value ?? default(uint)),

@@ -67,8 +67,8 @@ namespace WindowsMonitor.Win32.Users.Nt
 		 Message = (string) (managementObject.Properties["Message"]?.Value),
 		 RecordNumber = (uint) (managementObject.Properties["RecordNumber"]?.Value ?? default(uint)),
 		 SourceName = (string) (managementObject.Properties["SourceName"]?.Value),
-		 TimeGenerated = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeGenerated"]?.Value as string ?? "00010101000000.000000+060"),
-		 TimeWritten = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeWritten"]?.Value as string ?? "00010101000000.000000+060"),
+		 TimeGenerated = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeGenerated"]?.Value as string ?? "00010102000000.000000+060"),
+		 TimeWritten = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeWritten"]?.Value as string ?? "00010102000000.000000+060"),
 		 Type = (string) (managementObject.Properties["Type"]?.Value),
 		 User = (string) (managementObject.Properties["User"]?.Value)
                 };

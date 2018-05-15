@@ -55,7 +55,7 @@ namespace WindowsMonitor.Win32
 		 AllowMaximum = (bool) (managementObject.Properties["AllowMaximum"]?.Value ?? default(bool)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 MaximumAllowed = (uint) (managementObject.Properties["MaximumAllowed"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Path = (string) (managementObject.Properties["Path"]?.Value),

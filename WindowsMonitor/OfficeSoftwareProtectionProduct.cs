@@ -94,7 +94,7 @@ namespace WindowsMonitor
                     EvaluationEndDate =
                         ManagementDateTimeConverter.ToDateTime(
                             managementObject.Properties["EvaluationEndDate"]?.Value as string ??
-                            "00010101000000.000000+060"),
+                            "00010102000000.000000+060"),
                     ExtendedGrace = (uint) (managementObject.Properties["ExtendedGrace"]?.Value ?? default(uint)),
                     GenuineStatus = (uint) (managementObject.Properties["GenuineStatus"]?.Value ?? default(uint)),
                     GracePeriodRemaining =
@@ -168,7 +168,7 @@ namespace WindowsMonitor
                         (uint) (managementObject.Properties["TokenActivationILVID"]?.Value ?? default(uint)),
                     TrustedTime =
                         ManagementDateTimeConverter.ToDateTime(
-                            managementObject.Properties["TrustedTime"]?.Value as string ?? "00010101000000.000000+060"),
+                            managementObject.Properties["TrustedTime"]?.Value as string ?? "00010102000000.000000+060"),
                     UseLicenseUrl = (string) managementObject.Properties["UseLicenseURL"]?.Value,
                     VlActivationInterval =
                         (uint) (managementObject.Properties["VLActivationInterval"]?.Value ?? default(uint)),

@@ -80,7 +80,7 @@ namespace WindowsMonitor
                     CaptureTaskSequenceVersion =
                         (string) (managementObject.Properties["CaptureTaskSequenceVersion"]?.Value),
                     CaptureTimestamp =
-                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["CaptureTimestamp"]?.Value as string ?? "00010101000000.000000+060"),
+                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["CaptureTimestamp"]?.Value as string ?? "00010102000000.000000+060"),
                     CaptureToolkitVersion =
                         (string) (managementObject.Properties["CaptureToolkitVersion"]?.Value),
                     DeploymentMethod =
@@ -88,7 +88,7 @@ namespace WindowsMonitor
                     DeploymentSource =
                         (string) (managementObject.Properties["DeploymentSource"]?.Value),
                     DeploymentTimestamp =
-                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["DeploymentTimestamp"]?.Value as string ?? "00010101000000.000000+060"),
+                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["DeploymentTimestamp"]?.Value as string ?? "00010102000000.000000+060"),
                     DeploymentToolkitVersion =
                         (string) (managementObject.Properties["DeploymentToolkitVersion"]?.Value),
                     DeploymentType = (string) (managementObject.Properties["DeploymentType"]?.Value),

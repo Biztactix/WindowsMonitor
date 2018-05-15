@@ -63,7 +63,7 @@ namespace WindowsMonitor.Win32.Network
 		 ConnectionType = (string) (managementObject.Properties["ConnectionType"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DisplayType = (string) (managementObject.Properties["DisplayType"]?.Value),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 LocalName = (string) (managementObject.Properties["LocalName"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Persistent = (bool) (managementObject.Properties["Persistent"]?.Value ?? default(bool)),

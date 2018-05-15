@@ -118,7 +118,7 @@ namespace WindowsMonitor.CIM.Hardware
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 ErrorInformation = (string[]) (managementObject.Properties["ErrorInformation"]?.Value ?? new string[0]),
 		 HorizontalResolution = (uint) (managementObject.Properties["HorizontalResolution"]?.Value ?? default(uint)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 JobCountSinceLastReset = (uint) (managementObject.Properties["JobCountSinceLastReset"]?.Value ?? default(uint)),
 		 LanguagesSupported = (ushort[]) (managementObject.Properties["LanguagesSupported"]?.Value ?? new ushort[0]),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
@@ -139,7 +139,7 @@ namespace WindowsMonitor.CIM.Hardware
 		 StatusInfo = (ushort) (managementObject.Properties["StatusInfo"]?.Value ?? default(ushort)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
-		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010101000000.000000+060"),
+		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010102000000.000000+060"),
 		 VerticalResolution = (uint) (managementObject.Properties["VerticalResolution"]?.Value ?? default(uint))
                 };
         }

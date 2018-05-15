@@ -86,7 +86,7 @@ namespace WindowsMonitor.Win32.Users.Nt
 		 DSPrimaryDomainControllerFlag = (bool) (managementObject.Properties["DSPrimaryDomainControllerFlag"]?.Value ?? default(bool)),
 		 DSTimeServiceFlag = (bool) (managementObject.Properties["DSTimeServiceFlag"]?.Value ?? default(bool)),
 		 DSWritableFlag = (bool) (managementObject.Properties["DSWritableFlag"]?.Value ?? default(bool)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NameFormat = (string) (managementObject.Properties["NameFormat"]?.Value),
 		 PrimaryOwnerContact = (string) (managementObject.Properties["PrimaryOwnerContact"]?.Value),

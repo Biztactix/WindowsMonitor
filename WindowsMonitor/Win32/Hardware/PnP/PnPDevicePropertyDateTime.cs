@@ -44,7 +44,7 @@ namespace WindowsMonitor.Win32.Hardware.PnP
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PnPDevicePropertyDateTime
                 {
-                     Data = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["Data"]?.Value as string ?? "00010101000000.000000+060"),
+                     Data = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["Data"]?.Value as string ?? "00010102000000.000000+060"),
 		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 key = (string) (managementObject.Properties["key"]?.Value),
 		 KeyName = (string) (managementObject.Properties["KeyName"]?.Value),

@@ -87,7 +87,7 @@ namespace WindowsMonitor.Win32.Hardware.Memory
 		 DeviceLocator = (string) (managementObject.Properties["DeviceLocator"]?.Value),
 		 FormFactor = (ushort) (managementObject.Properties["FormFactor"]?.Value ?? default(ushort)),
 		 HotSwappable = (bool) (managementObject.Properties["HotSwappable"]?.Value ?? default(bool)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 InterleaveDataDepth = (ushort) (managementObject.Properties["InterleaveDataDepth"]?.Value ?? default(ushort)),
 		 InterleavePosition = (uint) (managementObject.Properties["InterleavePosition"]?.Value ?? default(uint)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),

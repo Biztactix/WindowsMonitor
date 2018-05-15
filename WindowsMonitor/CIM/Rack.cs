@@ -82,7 +82,7 @@ namespace WindowsMonitor.CIM
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Height = (float) (managementObject.Properties["Height"]?.Value ?? default(float)),
 		 HotSwappable = (bool) (managementObject.Properties["HotSwappable"]?.Value ?? default(bool)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 LockPresent = (bool) (managementObject.Properties["LockPresent"]?.Value ?? default(bool)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Model = (string) (managementObject.Properties["Model"]?.Value),

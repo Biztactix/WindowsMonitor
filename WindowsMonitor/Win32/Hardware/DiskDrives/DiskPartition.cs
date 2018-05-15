@@ -90,7 +90,7 @@ namespace WindowsMonitor.Win32.Hardware.DiskDrives
 		 ErrorMethodology = (string) (managementObject.Properties["ErrorMethodology"]?.Value),
 		 HiddenSectors = (uint) (managementObject.Properties["HiddenSectors"]?.Value ?? default(uint)),
 		 Index = (uint) (managementObject.Properties["Index"]?.Value ?? default(uint)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfBlocks = (ulong) (managementObject.Properties["NumberOfBlocks"]?.Value ?? default(ulong)),

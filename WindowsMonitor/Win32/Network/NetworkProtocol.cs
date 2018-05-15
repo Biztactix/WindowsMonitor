@@ -67,7 +67,7 @@ namespace WindowsMonitor.Win32.Network
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 GuaranteesDelivery = (bool) (managementObject.Properties["GuaranteesDelivery"]?.Value ?? default(bool)),
 		 GuaranteesSequencing = (bool) (managementObject.Properties["GuaranteesSequencing"]?.Value ?? default(bool)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 MaximumAddressSize = (uint) (managementObject.Properties["MaximumAddressSize"]?.Value ?? default(uint)),
 		 MaximumMessageSize = (uint) (managementObject.Properties["MaximumMessageSize"]?.Value ?? default(uint)),
 		 MessageOriented = (bool) (managementObject.Properties["MessageOriented"]?.Value ?? default(bool)),

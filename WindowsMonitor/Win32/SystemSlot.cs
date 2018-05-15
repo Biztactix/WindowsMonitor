@@ -85,7 +85,7 @@ namespace WindowsMonitor.Win32
 		 DeviceNumber = (uint) (managementObject.Properties["DeviceNumber"]?.Value ?? default(uint)),
 		 FunctionNumber = (uint) (managementObject.Properties["FunctionNumber"]?.Value ?? default(uint)),
 		 HeightAllowed = (float) (managementObject.Properties["HeightAllowed"]?.Value ?? default(float)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 LengthAllowed = (float) (managementObject.Properties["LengthAllowed"]?.Value ?? default(float)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 MaxDataWidth = (ushort) (managementObject.Properties["MaxDataWidth"]?.Value ?? default(ushort)),

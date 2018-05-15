@@ -69,7 +69,7 @@ namespace WindowsMonitor.Win32.Hardware
 		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Channel = (uint) (managementObject.Properties["DMAChannel"]?.Value ?? default(uint)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 MaxTransferSize = (uint) (managementObject.Properties["MaxTransferSize"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Port = (uint) (managementObject.Properties["Port"]?.Value ?? default(uint)),

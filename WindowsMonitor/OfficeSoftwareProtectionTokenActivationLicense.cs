@@ -53,7 +53,7 @@ namespace WindowsMonitor
                         (uint) (managementObject.Properties["AuthorizationStatus"]?.Value ?? default(uint)),
                     Description = (string) (managementObject.Properties["Description"]?.Value),
                     ExpirationDate =
-                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["ExpirationDate"]?.Value as string ?? "00010101000000.000000+060"),
+                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["ExpirationDate"]?.Value as string ?? "00010102000000.000000+060"),
                     Id = (string) (managementObject.Properties["ID"]?.Value),
                     Ilid = (string) (managementObject.Properties["ILID"]?.Value),
                     Ilvid = (uint) (managementObject.Properties["ILVID"]?.Value ?? default(uint))

@@ -92,7 +92,7 @@ namespace WindowsMonitor.CIM.Hardware
 		 ErrorControlInfo = (ushort) (managementObject.Properties["ErrorControlInfo"]?.Value ?? default(ushort)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 InactivityTimeout = (uint) (managementObject.Properties["InactivityTimeout"]?.Value ?? default(uint)),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 MaxBaudRateToPhone = (uint) (managementObject.Properties["MaxBaudRateToPhone"]?.Value ?? default(uint)),
 		 MaxBaudRateToSerialPort = (uint) (managementObject.Properties["MaxBaudRateToSerialPort"]?.Value ?? default(uint)),
@@ -110,7 +110,7 @@ namespace WindowsMonitor.CIM.Hardware
 		 SupportsSynchronousConnect = (bool) (managementObject.Properties["SupportsSynchronousConnect"]?.Value ?? default(bool)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
-		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010101000000.000000+060")
+		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010102000000.000000+060")
                 };
         }
     }

@@ -62,7 +62,7 @@ namespace WindowsMonitor.Win32.Network
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Destination = (string) (managementObject.Properties["Destination"]?.Value),
 		 Information = (string) (managementObject.Properties["Information"]?.Value),
-		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010101000000.000000+060"),
+		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 InterfaceIndex = (int) (managementObject.Properties["InterfaceIndex"]?.Value ?? default(int)),
 		 Mask = (string) (managementObject.Properties["Mask"]?.Value),
 		 Metric1 = (int) (managementObject.Properties["Metric1"]?.Value ?? default(int)),
