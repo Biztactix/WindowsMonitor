@@ -87,7 +87,7 @@ namespace WindowsMonitor
                     ApplicationId = (string) managementObject.Properties["ApplicationID"]?.Value,
                     Description = (string) managementObject.Properties["Description"]?.Value,
                     DiscoveredKeyManagementServiceMachineName =
-                        (string) (managementObject.Properties["DiscoveredKeyManagementServiceMachineName"]?.Value),
+                        (string) managementObject.Properties["DiscoveredKeyManagementServiceMachineName"]?.Value,
                     DiscoveredKeyManagementServiceMachinePort =
                         (uint) (managementObject.Properties["DiscoveredKeyManagementServiceMachinePort"]?.Value ??
                                 default(uint)),

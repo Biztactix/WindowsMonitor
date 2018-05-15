@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Management;
 
@@ -49,13 +48,13 @@ namespace WindowsMonitor
                 {
                     IsReadOnly = (bool) (managementObject.Properties["IsReadOnly"]?.Value ?? default(bool)),
                     PropertyIndex = (uint) (managementObject.Properties["PropertyIndex"]?.Value ?? default(uint)),
-                    PropertyName = (string) (managementObject.Properties["PropertyName"]?.Value),
+                    PropertyName = (string) managementObject.Properties["PropertyName"]?.Value,
                     PropertyNumValue = (uint) (managementObject.Properties["PropertyNumValue"]?.Value ?? default(uint)),
                     PropertyStrValue =
-                        (string) (managementObject.Properties["PropertyStrValue"]?.Value),
+                        (string) managementObject.Properties["PropertyStrValue"]?.Value,
                     PropertyValueType =
                         (uint) (managementObject.Properties["PropertyValueType"]?.Value ?? default(uint)),
-                    ServiceName = (string) (managementObject.Properties["ServiceName"]?.Value),
+                    ServiceName = (string) managementObject.Properties["ServiceName"]?.Value,
                     SqlServiceType = (uint) (managementObject.Properties["SqlServiceType"]?.Value ?? default(uint))
                 };
         }

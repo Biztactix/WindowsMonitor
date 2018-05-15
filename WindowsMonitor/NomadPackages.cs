@@ -62,32 +62,32 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NomadPackages
                 {
-                    AlreadyCached = (string) (managementObject.Properties["AlreadyCached"]?.Value),
-                    BackOffSeconds = (string) (managementObject.Properties["BackOffSeconds"]?.Value),
-                    BytesFromDp = (string) (managementObject.Properties["BytesFromDP"]?.Value),
-                    BytesFromPeer = (string) (managementObject.Properties["BytesFromPeer"]?.Value),
-                    CachePriority = (string) (managementObject.Properties["CachePriority"]?.Value),
-                    CacheToFolder = (string) (managementObject.Properties["CacheToFolder"]?.Value),
-                    CachingSeconds = (string) (managementObject.Properties["CachingSeconds"]?.Value),
+                    AlreadyCached = (string) managementObject.Properties["AlreadyCached"]?.Value,
+                    BackOffSeconds = (string) managementObject.Properties["BackOffSeconds"]?.Value,
+                    BytesFromDp = (string) managementObject.Properties["BytesFromDP"]?.Value,
+                    BytesFromPeer = (string) managementObject.Properties["BytesFromPeer"]?.Value,
+                    CachePriority = (string) managementObject.Properties["CachePriority"]?.Value,
+                    CacheToFolder = (string) managementObject.Properties["CacheToFolder"]?.Value,
+                    CachingSeconds = (string) managementObject.Properties["CachingSeconds"]?.Value,
                     DisconnectedSeconds =
-                        (string) (managementObject.Properties["DisconnectedSeconds"]?.Value),
-                    DiskUsageKb = (string) (managementObject.Properties["DiskUsageKB"]?.Value),
-                    ElapsedSeconds = (string) (managementObject.Properties["ElapsedSeconds"]?.Value),
-                    FinishTimeUtc = (string) (managementObject.Properties["FinishTimeUTC"]?.Value),
-                    LastElectedUtc = (string) (managementObject.Properties["LastElectedUTC"]?.Value),
+                        (string) managementObject.Properties["DisconnectedSeconds"]?.Value,
+                    DiskUsageKb = (string) managementObject.Properties["DiskUsageKB"]?.Value,
+                    ElapsedSeconds = (string) managementObject.Properties["ElapsedSeconds"]?.Value,
+                    FinishTimeUtc = (string) managementObject.Properties["FinishTimeUTC"]?.Value,
+                    LastElectedUtc = (string) managementObject.Properties["LastElectedUTC"]?.Value,
                     LastElectionUtc =
-                        (string) (managementObject.Properties["LastElectionUTC"]?.Value),
-                    LstFileTimeUtc = (string) (managementObject.Properties["LstFileTimeUTC"]?.Value),
-                    OptInfo = (string) (managementObject.Properties["OptInfo"]?.Value),
-                    PackageId = (string) (managementObject.Properties["PackageID"]?.Value),
-                    Percent = (string) (managementObject.Properties["Percent"]?.Value),
-                    ReconnectCount = (string) (managementObject.Properties["ReconnectCount"]?.Value),
-                    ReturnCode = (string) (managementObject.Properties["ReturnCode"]?.Value),
-                    ReturnStatus = (string) (managementObject.Properties["ReturnStatus"]?.Value),
-                    StartTimeUtc = (string) (managementObject.Properties["StartTimeUTC"]?.Value),
-                    VerifiedUtc = (string) (managementObject.Properties["VerifiedUTC"]?.Value),
-                    Version = (string) (managementObject.Properties["Version"]?.Value),
-                    WorkRate = (string) (managementObject.Properties["WorkRate"]?.Value)
+                        (string) managementObject.Properties["LastElectionUTC"]?.Value,
+                    LstFileTimeUtc = (string) managementObject.Properties["LstFileTimeUTC"]?.Value,
+                    OptInfo = (string) managementObject.Properties["OptInfo"]?.Value,
+                    PackageId = (string) managementObject.Properties["PackageID"]?.Value,
+                    Percent = (string) managementObject.Properties["Percent"]?.Value,
+                    ReconnectCount = (string) managementObject.Properties["ReconnectCount"]?.Value,
+                    ReturnCode = (string) managementObject.Properties["ReturnCode"]?.Value,
+                    ReturnStatus = (string) managementObject.Properties["ReturnStatus"]?.Value,
+                    StartTimeUtc = (string) managementObject.Properties["StartTimeUTC"]?.Value,
+                    VerifiedUtc = (string) managementObject.Properties["VerifiedUTC"]?.Value,
+                    Version = (string) managementObject.Properties["Version"]?.Value,
+                    WorkRate = (string) managementObject.Properties["WorkRate"]?.Value
                 };
         }
     }

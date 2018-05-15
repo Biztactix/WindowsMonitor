@@ -113,31 +113,31 @@ namespace WindowsMonitor
                     AuthenticatedUsers =
                         (uint) (managementObject.Properties["AuthenticatedUsers"]?.Value ?? default(uint)),
                     BlockSize = (uint) (managementObject.Properties["BlockSize"]?.Value ?? default(uint)),
-                    CachePath = (string) (managementObject.Properties["CachePath"]?.Value),
-                    CertIssuer = (string) (managementObject.Properties["CertIssuer"]?.Value),
-                    CertSubject = (string) (managementObject.Properties["CertSubject"]?.Value),
+                    CachePath = (string) managementObject.Properties["CachePath"]?.Value,
+                    CertIssuer = (string) managementObject.Properties["CertIssuer"]?.Value,
+                    CertSubject = (string) managementObject.Properties["CertSubject"]?.Value,
                     CompatibilityFlags =
                         (uint) (managementObject.Properties["CompatibilityFlags"]?.Value ?? default(uint)),
                     Debug = (uint) (managementObject.Properties["Debug"]?.Value ?? default(uint)),
                     DebugMask = (uint) (managementObject.Properties["DebugMask"]?.Value ?? default(uint)),
                     DownloadTimeout = (uint) (managementObject.Properties["DownloadTimeout"]?.Value ?? default(uint)),
                     DpNotAvailableCodes =
-                        (string) (managementObject.Properties["DpNotAvailableCodes"]?.Value),
+                        (string) managementObject.Properties["DpNotAvailableCodes"]?.Value,
                     EncryptionLevel = (uint) (managementObject.Properties["EncryptionLevel"]?.Value ?? default(uint)),
                     EnforceQuotas = (uint) (managementObject.Properties["EnforceQuotas"]?.Value ?? default(uint)),
-                    FriMaxWorkRate = (string) (managementObject.Properties["FriMaxWorkRate"]?.Value),
+                    FriMaxWorkRate = (string) managementObject.Properties["FriMaxWorkRate"]?.Value,
                     GenerateWerEvents =
                         (uint) (managementObject.Properties["GenerateWEREvents"]?.Value ?? default(uint)),
                     HaackTimeoutMins = (uint) (managementObject.Properties["HAACKTimeoutMins"]?.Value ?? default(uint)),
                     InstallationDirectory =
-                        (string) (managementObject.Properties["InstallationDirectory"]?.Value),
-                    Ipv4Subnet = (string) (managementObject.Properties["ipv4Subnet"]?.Value),
+                        (string) managementObject.Properties["InstallationDirectory"]?.Value,
+                    Ipv4Subnet = (string) managementObject.Properties["ipv4Subnet"]?.Value,
                     JobResetSleepMSecs =
                         (uint) (managementObject.Properties["JobResetSleepMSecs"]?.Value ?? default(uint)),
                     KnownMobileDevices =
-                        (string) (managementObject.Properties["KnownMobileDevices"]?.Value),
-                    LocalCachePath = (string) (managementObject.Properties["LocalCachePath"]?.Value),
-                    LogFileName = (string) (managementObject.Properties["LogFileName"]?.Value),
+                        (string) managementObject.Properties["KnownMobileDevices"]?.Value,
+                    LocalCachePath = (string) managementObject.Properties["LocalCachePath"]?.Value,
+                    LogFileName = (string) managementObject.Properties["LogFileName"]?.Value,
                     LogFormat = (uint) (managementObject.Properties["LogFormat"]?.Value ?? default(uint)),
                     MaxAllocRequest = (uint) (managementObject.Properties["MaxAllocRequest"]?.Value ?? default(uint)),
                     MaxBusyBackoffSecs =
@@ -154,55 +154,55 @@ namespace WindowsMonitor
                         (uint) (managementObject.Properties["MaxPacketsPerSecond"]?.Value ?? default(uint)),
                     MaxStatusFrequency =
                         (uint) (managementObject.Properties["MaxStatusFrequency"]?.Value ?? default(uint)),
-                    MCastMsipidKey = (string) (managementObject.Properties["MCastMSIPIDKey"]?.Value),
-                    MonMaxWorkRate = (string) (managementObject.Properties["MonMaxWorkRate"]?.Value),
-                    MsipidKey = (string) (managementObject.Properties["MSIPIDKey"]?.Value),
+                    MCastMsipidKey = (string) managementObject.Properties["MCastMSIPIDKey"]?.Value,
+                    MonMaxWorkRate = (string) managementObject.Properties["MonMaxWorkRate"]?.Value,
+                    MsipidKey = (string) managementObject.Properties["MSIPIDKey"]?.Value,
                     MultiCastMadcapScope =
-                        (string) (managementObject.Properties["MultiCastMADCAPScope"]?.Value),
+                        (string) managementObject.Properties["MultiCastMADCAPScope"]?.Value,
                     MultiCastResilFactor =
                         (uint) (managementObject.Properties["MultiCastResilFactor"]?.Value ?? default(uint)),
                     MultiCastTtl = (uint) (managementObject.Properties["MultiCastTTL"]?.Value ?? default(uint)),
                     MutiCastSupport = (uint) (managementObject.Properties["MutiCastSupport"]?.Value ?? default(uint)),
                     NoHardlink = (uint) (managementObject.Properties["NoHardlink"]?.Value ?? default(uint)),
                     NomadInhibitedAdSites =
-                        (string) (managementObject.Properties["NomadInhibitedADSites"]?.Value),
+                        (string) managementObject.Properties["NomadInhibitedADSites"]?.Value,
                     NomadInhibitedSubnets =
-                        (string) (managementObject.Properties["NomadInhibitedSubnets"]?.Value),
+                        (string) managementObject.Properties["NomadInhibitedSubnets"]?.Value,
                     NomadNeverUseSubnets =
-                        (string) (managementObject.Properties["NomadNeverUseSubnets"]?.Value),
+                        (string) managementObject.Properties["NomadNeverUseSubnets"]?.Value,
                     P2PPort = (uint) (managementObject.Properties["P2P_Port"]?.Value ?? default(uint)),
                     P2Penabled = (uint) (managementObject.Properties["P2Penabled"]?.Value ?? default(uint)),
                     P2PMulticastMode = (uint) (managementObject.Properties["P2PMulticastMode"]?.Value ?? default(uint)),
-                    PatchLevel = (string) (managementObject.Properties["PatchLevel"]?.Value),
+                    PatchLevel = (string) managementObject.Properties["PatchLevel"]?.Value,
                     PercentAvailableDisk =
                         (uint) (managementObject.Properties["PercentAvailableDisk"]?.Value ?? default(uint)),
                     PermittedLsZShares =
-                        (string) (managementObject.Properties["PermittedLsZShares"]?.Value),
-                    PlatformUrl = (string) (managementObject.Properties["PlatformUrl"]?.Value),
+                        (string) managementObject.Properties["PermittedLsZShares"]?.Value,
+                    PlatformUrl = (string) managementObject.Properties["PlatformUrl"]?.Value,
                     PostCompleteTimeoutHours =
                         (uint) (managementObject.Properties["PostCompleteTimeoutHours"]?.Value ?? default(uint)),
                     PreCompleteTimeoutHours =
                         (uint) (managementObject.Properties["PreCompleteTimeoutHours"]?.Value ?? default(uint)),
-                    Product = (string) (managementObject.Properties["Product"]?.Value),
-                    ProductVersion = (string) (managementObject.Properties["ProductVersion"]?.Value),
+                    Product = (string) managementObject.Properties["Product"]?.Value,
+                    ProductVersion = (string) managementObject.Properties["ProductVersion"]?.Value,
                     RecycleDpDelay = (uint) (managementObject.Properties["RecycleDPDelay"]?.Value ?? default(uint)),
                     RunHidden = (uint) (managementObject.Properties["RunHidden"]?.Value ?? default(uint)),
-                    SatMaxWorkRate = (string) (managementObject.Properties["SatMaxWorkRate"]?.Value),
-                    SigsFolder = (string) (managementObject.Properties["SigsFolder"]?.Value),
+                    SatMaxWorkRate = (string) managementObject.Properties["SatMaxWorkRate"]?.Value,
+                    SigsFolder = (string) managementObject.Properties["SigsFolder"]?.Value,
                     SpecialNetShare = (uint) (managementObject.Properties["SpecialNetShare"]?.Value ?? default(uint)),
                     SsdEnabled = (uint) (managementObject.Properties["SSDEnabled"]?.Value ?? default(uint)),
                     SspbaEnabled = (uint) (managementObject.Properties["SSPBAEnabled"]?.Value ?? default(uint)),
                     StatusMsgEvents =
-                        (string) (managementObject.Properties["StatusMsgEvents"]?.Value),
-                    SuccessCodes = (string) (managementObject.Properties["SuccessCodes"]?.Value),
-                    SunMaxWorkRate = (string) (managementObject.Properties["SunMaxWorkRate"]?.Value),
-                    ThuMaxWorkRate = (string) (managementObject.Properties["ThuMaxWorkRate"]?.Value),
-                    TueMaxWorkRate = (string) (managementObject.Properties["TueMaxWorkRate"]?.Value),
+                        (string) managementObject.Properties["StatusMsgEvents"]?.Value,
+                    SuccessCodes = (string) managementObject.Properties["SuccessCodes"]?.Value,
+                    SunMaxWorkRate = (string) managementObject.Properties["SunMaxWorkRate"]?.Value,
+                    ThuMaxWorkRate = (string) managementObject.Properties["ThuMaxWorkRate"]?.Value,
+                    TueMaxWorkRate = (string) managementObject.Properties["TueMaxWorkRate"]?.Value,
                     Ui = (uint) (managementObject.Properties["UI"]?.Value ?? default(uint)),
-                    WedMaxWorkRate = (string) (managementObject.Properties["WedMaxWorkRate"]?.Value),
+                    WedMaxWorkRate = (string) managementObject.Properties["WedMaxWorkRate"]?.Value,
                     WlanBlipSecs = (uint) (managementObject.Properties["WlanBlipSecs"]?.Value ?? default(uint)),
                     WlanProfileList =
-                        (string) (managementObject.Properties["WlanProfileList"]?.Value)
+                        (string) managementObject.Properties["WlanProfileList"]?.Value
                 };
         }
     }

@@ -41,7 +41,9 @@ namespace WindowsMonitor
                 yield return new NtEventlogProviderConfig
                 {
                     LastBootUpTime =
-                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LastBootUpTime"]?.Value as string ?? "00010102000000.000000+060")
+                        ManagementDateTimeConverter.ToDateTime(
+                            managementObject.Properties["LastBootUpTime"]?.Value as string ??
+                            "00010102000000.000000+060")
                 };
         }
     }

@@ -42,9 +42,9 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SmsAiInstalledSoftwareDupDetect
                 {
-                    EntryNameKey = (string) (managementObject.Properties["EntryNameKey"]?.Value),
-                    Software1 = (string) (managementObject.Properties["Software1"]?.Value),
-                    Software2 = (string) (managementObject.Properties["Software2"]?.Value)
+                    EntryNameKey = (string) managementObject.Properties["EntryNameKey"]?.Value,
+                    Software1 = (string) managementObject.Properties["Software1"]?.Value,
+                    Software2 = (string) managementObject.Properties["Software2"]?.Value
                 };
         }
     }

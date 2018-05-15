@@ -42,8 +42,8 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new RegistryKeyChangeEvent
                 {
-                    Hive = (string) (managementObject.Properties["Hive"]?.Value),
-                    KeyPath = (string) (managementObject.Properties["KeyPath"]?.Value),
+                    Hive = (string) managementObject.Properties["Hive"]?.Value,
+                    KeyPath = (string) managementObject.Properties["KeyPath"]?.Value,
                     SecurityDescriptor =
                         (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
                     TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))

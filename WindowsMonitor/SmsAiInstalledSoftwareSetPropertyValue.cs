@@ -48,17 +48,17 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SmsAiInstalledSoftwareSetPropertyValue
                 {
-                    EntryNameKey = (string) (managementObject.Properties["EntryNameKey"]?.Value),
+                    EntryNameKey = (string) managementObject.Properties["EntryNameKey"]?.Value,
                     IfRegistryCheckPositive =
                         (bool) (managementObject.Properties["IfRegistryCheckPositive"]?.Value ?? default(bool)),
                     PropertyConverter =
-                        (string) (managementObject.Properties["PropertyConverter"]?.Value),
-                    PropertyName = (string) (managementObject.Properties["PropertyName"]?.Value),
-                    PropertyValue = (string) (managementObject.Properties["PropertyValue"]?.Value),
-                    SoftwareMatch = (string) (managementObject.Properties["SoftwareMatch"]?.Value),
-                    WhenRegData = (string) (managementObject.Properties["WhenRegData"]?.Value),
-                    WhenRegRoot = (string) (managementObject.Properties["WhenRegRoot"]?.Value),
-                    WhenRegSubKey = (string) (managementObject.Properties["WhenRegSubKey"]?.Value)
+                        (string) managementObject.Properties["PropertyConverter"]?.Value,
+                    PropertyName = (string) managementObject.Properties["PropertyName"]?.Value,
+                    PropertyValue = (string) managementObject.Properties["PropertyValue"]?.Value,
+                    SoftwareMatch = (string) managementObject.Properties["SoftwareMatch"]?.Value,
+                    WhenRegData = (string) managementObject.Properties["WhenRegData"]?.Value,
+                    WhenRegRoot = (string) managementObject.Properties["WhenRegRoot"]?.Value,
+                    WhenRegSubKey = (string) managementObject.Properties["WhenRegSubKey"]?.Value
                 };
         }
     }

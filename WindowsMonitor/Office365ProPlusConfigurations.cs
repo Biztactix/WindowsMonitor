@@ -59,32 +59,32 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Office365ProPlusConfigurations
                 {
-                    AutoUpgrade = (string) (managementObject.Properties["AutoUpgrade"]?.Value),
-                    CcmManaged = (string) (managementObject.Properties["CCMManaged"]?.Value),
-                    CdnBaseUrl = (string) (managementObject.Properties["CDNBaseUrl"]?.Value),
+                    AutoUpgrade = (string) managementObject.Properties["AutoUpgrade"]?.Value,
+                    CcmManaged = (string) managementObject.Properties["CCMManaged"]?.Value,
+                    CdnBaseUrl = (string) managementObject.Properties["CDNBaseUrl"]?.Value,
                     CfgUpdateChannel =
-                        (string) (managementObject.Properties["cfgUpdateChannel"]?.Value),
-                    ClientCulture = (string) (managementObject.Properties["ClientCulture"]?.Value),
-                    ClientFolder = (string) (managementObject.Properties["ClientFolder"]?.Value),
-                    GpoChannel = (string) (managementObject.Properties["GPOChannel"]?.Value),
+                        (string) managementObject.Properties["cfgUpdateChannel"]?.Value,
+                    ClientCulture = (string) managementObject.Properties["ClientCulture"]?.Value,
+                    ClientFolder = (string) managementObject.Properties["ClientFolder"]?.Value,
+                    GpoChannel = (string) managementObject.Properties["GPOChannel"]?.Value,
                     GpoOfficeMgmtCom =
-                        (string) (managementObject.Properties["GPOOfficeMgmtCOM"]?.Value),
+                        (string) managementObject.Properties["GPOOfficeMgmtCOM"]?.Value,
                     InstallationPath =
-                        (string) (managementObject.Properties["InstallationPath"]?.Value),
-                    KeyName = (string) (managementObject.Properties["KeyName"]?.Value),
-                    LastScenario = (string) (managementObject.Properties["LastScenario"]?.Value),
+                        (string) managementObject.Properties["InstallationPath"]?.Value,
+                    KeyName = (string) managementObject.Properties["KeyName"]?.Value,
+                    LastScenario = (string) managementObject.Properties["LastScenario"]?.Value,
                     LastScenarioResult =
-                        (string) (managementObject.Properties["LastScenarioResult"]?.Value),
-                    OfficeMgmtCom = (string) (managementObject.Properties["OfficeMgmtCOM"]?.Value),
-                    Platform = (string) (managementObject.Properties["Platform"]?.Value),
+                        (string) managementObject.Properties["LastScenarioResult"]?.Value,
+                    OfficeMgmtCom = (string) managementObject.Properties["OfficeMgmtCOM"]?.Value,
+                    Platform = (string) managementObject.Properties["Platform"]?.Value,
                     SharedComputerLicensing =
-                        (string) (managementObject.Properties["SharedComputerLicensing"]?.Value),
-                    UpdateChannel = (string) (managementObject.Properties["UpdateChannel"]?.Value),
-                    UpdatePath = (string) (managementObject.Properties["UpdatePath"]?.Value),
-                    UpdatesEnabled = (string) (managementObject.Properties["UpdatesEnabled"]?.Value),
-                    UpdateUrl = (string) (managementObject.Properties["UpdateUrl"]?.Value),
+                        (string) managementObject.Properties["SharedComputerLicensing"]?.Value,
+                    UpdateChannel = (string) managementObject.Properties["UpdateChannel"]?.Value,
+                    UpdatePath = (string) managementObject.Properties["UpdatePath"]?.Value,
+                    UpdatesEnabled = (string) managementObject.Properties["UpdatesEnabled"]?.Value,
+                    UpdateUrl = (string) managementObject.Properties["UpdateUrl"]?.Value,
                     VersionToReport =
-                        (string) (managementObject.Properties["VersionToReport"]?.Value)
+                        (string) managementObject.Properties["VersionToReport"]?.Value
                 };
         }
     }

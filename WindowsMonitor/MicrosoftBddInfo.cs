@@ -63,45 +63,49 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new MicrosoftBddInfo
                 {
-                    BuildId = (string) (managementObject.Properties["BuildID"]?.Value),
-                    BuildName = (string) (managementObject.Properties["BuildName"]?.Value),
-                    BuildVersion = (string) (managementObject.Properties["BuildVersion"]?.Value),
-                    CaptureMethod = (string) (managementObject.Properties["CaptureMethod"]?.Value),
+                    BuildId = (string) managementObject.Properties["BuildID"]?.Value,
+                    BuildName = (string) managementObject.Properties["BuildName"]?.Value,
+                    BuildVersion = (string) managementObject.Properties["BuildVersion"]?.Value,
+                    CaptureMethod = (string) managementObject.Properties["CaptureMethod"]?.Value,
                     CaptureOsdAdvertisementId =
-                        (string) (managementObject.Properties["CaptureOSDAdvertisementID"]?.Value),
+                        (string) managementObject.Properties["CaptureOSDAdvertisementID"]?.Value,
                     CaptureOsdPackageId =
-                        (string) (managementObject.Properties["CaptureOSDPackageID"]?.Value),
+                        (string) managementObject.Properties["CaptureOSDPackageID"]?.Value,
                     CaptureOsdProgramName =
-                        (string) (managementObject.Properties["CaptureOSDProgramName"]?.Value),
+                        (string) managementObject.Properties["CaptureOSDProgramName"]?.Value,
                     CaptureTaskSequenceId =
-                        (string) (managementObject.Properties["CaptureTaskSequenceID"]?.Value),
+                        (string) managementObject.Properties["CaptureTaskSequenceID"]?.Value,
                     CaptureTaskSequenceName =
-                        (string) (managementObject.Properties["CaptureTaskSequenceName"]?.Value),
+                        (string) managementObject.Properties["CaptureTaskSequenceName"]?.Value,
                     CaptureTaskSequenceVersion =
-                        (string) (managementObject.Properties["CaptureTaskSequenceVersion"]?.Value),
+                        (string) managementObject.Properties["CaptureTaskSequenceVersion"]?.Value,
                     CaptureTimestamp =
-                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["CaptureTimestamp"]?.Value as string ?? "00010102000000.000000+060"),
+                        ManagementDateTimeConverter.ToDateTime(
+                            managementObject.Properties["CaptureTimestamp"]?.Value as string ??
+                            "00010102000000.000000+060"),
                     CaptureToolkitVersion =
-                        (string) (managementObject.Properties["CaptureToolkitVersion"]?.Value),
+                        (string) managementObject.Properties["CaptureToolkitVersion"]?.Value,
                     DeploymentMethod =
-                        (string) (managementObject.Properties["DeploymentMethod"]?.Value),
+                        (string) managementObject.Properties["DeploymentMethod"]?.Value,
                     DeploymentSource =
-                        (string) (managementObject.Properties["DeploymentSource"]?.Value),
+                        (string) managementObject.Properties["DeploymentSource"]?.Value,
                     DeploymentTimestamp =
-                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["DeploymentTimestamp"]?.Value as string ?? "00010102000000.000000+060"),
+                        ManagementDateTimeConverter.ToDateTime(
+                            managementObject.Properties["DeploymentTimestamp"]?.Value as string ??
+                            "00010102000000.000000+060"),
                     DeploymentToolkitVersion =
-                        (string) (managementObject.Properties["DeploymentToolkitVersion"]?.Value),
-                    DeploymentType = (string) (managementObject.Properties["DeploymentType"]?.Value),
-                    InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value),
+                        (string) managementObject.Properties["DeploymentToolkitVersion"]?.Value,
+                    DeploymentType = (string) managementObject.Properties["DeploymentType"]?.Value,
+                    InstanceKey = (string) managementObject.Properties["InstanceKey"]?.Value,
                     OsdAdvertisementId =
-                        (string) (managementObject.Properties["OSDAdvertisementID"]?.Value),
-                    OsdPackageId = (string) (managementObject.Properties["OSDPackageID"]?.Value),
-                    OsdProgramName = (string) (managementObject.Properties["OSDProgramName"]?.Value),
-                    TaskSequenceId = (string) (managementObject.Properties["TaskSequenceID"]?.Value),
+                        (string) managementObject.Properties["OSDAdvertisementID"]?.Value,
+                    OsdPackageId = (string) managementObject.Properties["OSDPackageID"]?.Value,
+                    OsdProgramName = (string) managementObject.Properties["OSDProgramName"]?.Value,
+                    TaskSequenceId = (string) managementObject.Properties["TaskSequenceID"]?.Value,
                     TaskSequenceName =
-                        (string) (managementObject.Properties["TaskSequenceName"]?.Value),
+                        (string) managementObject.Properties["TaskSequenceName"]?.Value,
                     TaskSequenceVersion =
-                        (string) (managementObject.Properties["TaskSequenceVersion"]?.Value)
+                        (string) managementObject.Properties["TaskSequenceVersion"]?.Value
                 };
         }
     }

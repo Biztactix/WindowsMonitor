@@ -41,9 +41,9 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SmsAiOffice14ProductMapping
                 {
-                    Id = (string) (managementObject.Properties["ID"]?.Value),
-                    Mpc = (string) (managementObject.Properties["MPC"]?.Value),
-                    ProductName = (string) (managementObject.Properties["ProductName"]?.Value)
+                    Id = (string) managementObject.Properties["ID"]?.Value,
+                    Mpc = (string) managementObject.Properties["MPC"]?.Value,
+                    ProductName = (string) managementObject.Properties["ProductName"]?.Value
                 };
         }
     }
