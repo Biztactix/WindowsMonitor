@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{75549EFF-4DE0-49B9-9671-6CFED54178CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTestProject1\UnitTests.csproj", "{75549EFF-4DE0-49B9-9671-6CFED54178CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsMonitor", "WindowsMonitor\WindowsMonitor.csproj", "{848B1365-89F6-4581-80CE-03045C5A2D6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsMonitor.Service", "WindowsMonitor.Service\WindowsMonitor.Service.csproj", "{44C36BE6-0C64-4D1E-B8ED-1C61BB976DF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsMonitor.Service", "WindowsMonitor.Service\WindowsMonitor.Service.csproj", "{44C36BE6-0C64-4D1E-B8ED-1C61BB976DF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
