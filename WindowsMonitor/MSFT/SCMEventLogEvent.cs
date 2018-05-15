@@ -7,12 +7,12 @@ namespace WindowsMonitor.Msft
 {
     /// <summary>
     /// </summary>
-    public sealed class SCMEventLogEvent
+    public sealed class ScmEventLogEvent
     {
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
-        public static IEnumerable<SCMEventLogEvent> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ScmEventLogEvent> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,23 +27,23 @@ namespace WindowsMonitor.Msft
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SCMEventLogEvent> Retrieve()
+        public static IEnumerable<ScmEventLogEvent> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SCMEventLogEvent> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ScmEventLogEvent> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSFT_SCMEventLogEvent");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SCMEventLogEvent
+                yield return new ScmEventLogEvent
                 {
-                     SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+                     SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

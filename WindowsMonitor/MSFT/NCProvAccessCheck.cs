@@ -7,18 +7,18 @@ namespace WindowsMonitor.Msft
 {
     /// <summary>
     /// </summary>
-    public sealed class NCProvAccessCheck
+    public sealed class NcProvAccessCheck
     {
 		public string Namespace { get; private set; }
 		public string ProviderName { get; private set; }
 		public string Query { get; private set; }
 		public string QueryLanguage { get; private set; }
 		public uint Result { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
 		public byte[] Sid { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
-        public static IEnumerable<NCProvAccessCheck> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NcProvAccessCheck> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -33,29 +33,29 @@ namespace WindowsMonitor.Msft
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NCProvAccessCheck> Retrieve()
+        public static IEnumerable<NcProvAccessCheck> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NCProvAccessCheck> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NcProvAccessCheck> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSFT_NCProvAccessCheck");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NCProvAccessCheck
+                yield return new NcProvAccessCheck
                 {
                      Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
 		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
 		 Query = (string) (managementObject.Properties["Query"]?.Value),
 		 QueryLanguage = (string) (managementObject.Properties["QueryLanguage"]?.Value),
 		 Result = (uint) (managementObject.Properties["Result"]?.Value ?? default(uint)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 Sid = (byte[]) (managementObject.Properties["Sid"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

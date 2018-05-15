@@ -14,31 +14,31 @@ namespace WindowsMonitor.Msft
 		public uint HostProcessIdentifier { get; private set; }
 		public string Locale { get; private set; }
 		public string Namespace { get; private set; }
-		public string provider { get; private set; }
-		public ulong ProviderOperation_AccessCheck { get; private set; }
-		public ulong ProviderOperation_CancelQuery { get; private set; }
-		public ulong ProviderOperation_CreateClassEnumAsync { get; private set; }
-		public ulong ProviderOperation_CreateInstanceEnumAsync { get; private set; }
-		public ulong ProviderOperation_CreateRefreshableEnum { get; private set; }
-		public ulong ProviderOperation_CreateRefreshableObject { get; private set; }
-		public ulong ProviderOperation_CreateRefresher { get; private set; }
-		public ulong ProviderOperation_DeleteClassAsync { get; private set; }
-		public ulong ProviderOperation_DeleteInstanceAsync { get; private set; }
-		public ulong ProviderOperation_ExecMethodAsync { get; private set; }
-		public ulong ProviderOperation_ExecQueryAsync { get; private set; }
-		public ulong ProviderOperation_FindConsumer { get; private set; }
-		public ulong ProviderOperation_GetObjectAsync { get; private set; }
-		public ulong ProviderOperation_GetObjects { get; private set; }
-		public ulong ProviderOperation_GetProperty { get; private set; }
-		public ulong ProviderOperation_NewQuery { get; private set; }
-		public ulong ProviderOperation_ProvideEvents { get; private set; }
-		public ulong ProviderOperation_PutClassAsync { get; private set; }
-		public ulong ProviderOperation_PutInstanceAsync { get; private set; }
-		public ulong ProviderOperation_PutProperty { get; private set; }
-		public ulong ProviderOperation_QueryInstances { get; private set; }
-		public ulong ProviderOperation_SetRegistrationObject { get; private set; }
-		public ulong ProviderOperation_StopRefreshing { get; private set; }
-		public ulong ProviderOperation_ValidateSubscription { get; private set; }
+		public string Provider { get; private set; }
+		public ulong ProviderOperationAccessCheck { get; private set; }
+		public ulong ProviderOperationCancelQuery { get; private set; }
+		public ulong ProviderOperationCreateClassEnumAsync { get; private set; }
+		public ulong ProviderOperationCreateInstanceEnumAsync { get; private set; }
+		public ulong ProviderOperationCreateRefreshableEnum { get; private set; }
+		public ulong ProviderOperationCreateRefreshableObject { get; private set; }
+		public ulong ProviderOperationCreateRefresher { get; private set; }
+		public ulong ProviderOperationDeleteClassAsync { get; private set; }
+		public ulong ProviderOperationDeleteInstanceAsync { get; private set; }
+		public ulong ProviderOperationExecMethodAsync { get; private set; }
+		public ulong ProviderOperationExecQueryAsync { get; private set; }
+		public ulong ProviderOperationFindConsumer { get; private set; }
+		public ulong ProviderOperationGetObjectAsync { get; private set; }
+		public ulong ProviderOperationGetObjects { get; private set; }
+		public ulong ProviderOperationGetProperty { get; private set; }
+		public ulong ProviderOperationNewQuery { get; private set; }
+		public ulong ProviderOperationProvideEvents { get; private set; }
+		public ulong ProviderOperationPutClassAsync { get; private set; }
+		public ulong ProviderOperationPutInstanceAsync { get; private set; }
+		public ulong ProviderOperationPutProperty { get; private set; }
+		public ulong ProviderOperationQueryInstances { get; private set; }
+		public ulong ProviderOperationSetRegistrationObject { get; private set; }
+		public ulong ProviderOperationStopRefreshing { get; private set; }
+		public ulong ProviderOperationValidateSubscription { get; private set; }
 		public string TransactionIdentifier { get; private set; }
 		public string User { get; private set; }
 
@@ -77,31 +77,31 @@ namespace WindowsMonitor.Msft
 		 HostProcessIdentifier = (uint) (managementObject.Properties["HostProcessIdentifier"]?.Value ?? default(uint)),
 		 Locale = (string) (managementObject.Properties["Locale"]?.Value),
 		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
-		 provider = (string) (managementObject.Properties["provider"]?.Value),
-		 ProviderOperation_AccessCheck = (ulong) (managementObject.Properties["ProviderOperation_AccessCheck"]?.Value ?? default(ulong)),
-		 ProviderOperation_CancelQuery = (ulong) (managementObject.Properties["ProviderOperation_CancelQuery"]?.Value ?? default(ulong)),
-		 ProviderOperation_CreateClassEnumAsync = (ulong) (managementObject.Properties["ProviderOperation_CreateClassEnumAsync"]?.Value ?? default(ulong)),
-		 ProviderOperation_CreateInstanceEnumAsync = (ulong) (managementObject.Properties["ProviderOperation_CreateInstanceEnumAsync"]?.Value ?? default(ulong)),
-		 ProviderOperation_CreateRefreshableEnum = (ulong) (managementObject.Properties["ProviderOperation_CreateRefreshableEnum"]?.Value ?? default(ulong)),
-		 ProviderOperation_CreateRefreshableObject = (ulong) (managementObject.Properties["ProviderOperation_CreateRefreshableObject"]?.Value ?? default(ulong)),
-		 ProviderOperation_CreateRefresher = (ulong) (managementObject.Properties["ProviderOperation_CreateRefresher"]?.Value ?? default(ulong)),
-		 ProviderOperation_DeleteClassAsync = (ulong) (managementObject.Properties["ProviderOperation_DeleteClassAsync"]?.Value ?? default(ulong)),
-		 ProviderOperation_DeleteInstanceAsync = (ulong) (managementObject.Properties["ProviderOperation_DeleteInstanceAsync"]?.Value ?? default(ulong)),
-		 ProviderOperation_ExecMethodAsync = (ulong) (managementObject.Properties["ProviderOperation_ExecMethodAsync"]?.Value ?? default(ulong)),
-		 ProviderOperation_ExecQueryAsync = (ulong) (managementObject.Properties["ProviderOperation_ExecQueryAsync"]?.Value ?? default(ulong)),
-		 ProviderOperation_FindConsumer = (ulong) (managementObject.Properties["ProviderOperation_FindConsumer"]?.Value ?? default(ulong)),
-		 ProviderOperation_GetObjectAsync = (ulong) (managementObject.Properties["ProviderOperation_GetObjectAsync"]?.Value ?? default(ulong)),
-		 ProviderOperation_GetObjects = (ulong) (managementObject.Properties["ProviderOperation_GetObjects"]?.Value ?? default(ulong)),
-		 ProviderOperation_GetProperty = (ulong) (managementObject.Properties["ProviderOperation_GetProperty"]?.Value ?? default(ulong)),
-		 ProviderOperation_NewQuery = (ulong) (managementObject.Properties["ProviderOperation_NewQuery"]?.Value ?? default(ulong)),
-		 ProviderOperation_ProvideEvents = (ulong) (managementObject.Properties["ProviderOperation_ProvideEvents"]?.Value ?? default(ulong)),
-		 ProviderOperation_PutClassAsync = (ulong) (managementObject.Properties["ProviderOperation_PutClassAsync"]?.Value ?? default(ulong)),
-		 ProviderOperation_PutInstanceAsync = (ulong) (managementObject.Properties["ProviderOperation_PutInstanceAsync"]?.Value ?? default(ulong)),
-		 ProviderOperation_PutProperty = (ulong) (managementObject.Properties["ProviderOperation_PutProperty"]?.Value ?? default(ulong)),
-		 ProviderOperation_QueryInstances = (ulong) (managementObject.Properties["ProviderOperation_QueryInstances"]?.Value ?? default(ulong)),
-		 ProviderOperation_SetRegistrationObject = (ulong) (managementObject.Properties["ProviderOperation_SetRegistrationObject"]?.Value ?? default(ulong)),
-		 ProviderOperation_StopRefreshing = (ulong) (managementObject.Properties["ProviderOperation_StopRefreshing"]?.Value ?? default(ulong)),
-		 ProviderOperation_ValidateSubscription = (ulong) (managementObject.Properties["ProviderOperation_ValidateSubscription"]?.Value ?? default(ulong)),
+		 Provider = (string) (managementObject.Properties["provider"]?.Value),
+		 ProviderOperationAccessCheck = (ulong) (managementObject.Properties["ProviderOperation_AccessCheck"]?.Value ?? default(ulong)),
+		 ProviderOperationCancelQuery = (ulong) (managementObject.Properties["ProviderOperation_CancelQuery"]?.Value ?? default(ulong)),
+		 ProviderOperationCreateClassEnumAsync = (ulong) (managementObject.Properties["ProviderOperation_CreateClassEnumAsync"]?.Value ?? default(ulong)),
+		 ProviderOperationCreateInstanceEnumAsync = (ulong) (managementObject.Properties["ProviderOperation_CreateInstanceEnumAsync"]?.Value ?? default(ulong)),
+		 ProviderOperationCreateRefreshableEnum = (ulong) (managementObject.Properties["ProviderOperation_CreateRefreshableEnum"]?.Value ?? default(ulong)),
+		 ProviderOperationCreateRefreshableObject = (ulong) (managementObject.Properties["ProviderOperation_CreateRefreshableObject"]?.Value ?? default(ulong)),
+		 ProviderOperationCreateRefresher = (ulong) (managementObject.Properties["ProviderOperation_CreateRefresher"]?.Value ?? default(ulong)),
+		 ProviderOperationDeleteClassAsync = (ulong) (managementObject.Properties["ProviderOperation_DeleteClassAsync"]?.Value ?? default(ulong)),
+		 ProviderOperationDeleteInstanceAsync = (ulong) (managementObject.Properties["ProviderOperation_DeleteInstanceAsync"]?.Value ?? default(ulong)),
+		 ProviderOperationExecMethodAsync = (ulong) (managementObject.Properties["ProviderOperation_ExecMethodAsync"]?.Value ?? default(ulong)),
+		 ProviderOperationExecQueryAsync = (ulong) (managementObject.Properties["ProviderOperation_ExecQueryAsync"]?.Value ?? default(ulong)),
+		 ProviderOperationFindConsumer = (ulong) (managementObject.Properties["ProviderOperation_FindConsumer"]?.Value ?? default(ulong)),
+		 ProviderOperationGetObjectAsync = (ulong) (managementObject.Properties["ProviderOperation_GetObjectAsync"]?.Value ?? default(ulong)),
+		 ProviderOperationGetObjects = (ulong) (managementObject.Properties["ProviderOperation_GetObjects"]?.Value ?? default(ulong)),
+		 ProviderOperationGetProperty = (ulong) (managementObject.Properties["ProviderOperation_GetProperty"]?.Value ?? default(ulong)),
+		 ProviderOperationNewQuery = (ulong) (managementObject.Properties["ProviderOperation_NewQuery"]?.Value ?? default(ulong)),
+		 ProviderOperationProvideEvents = (ulong) (managementObject.Properties["ProviderOperation_ProvideEvents"]?.Value ?? default(ulong)),
+		 ProviderOperationPutClassAsync = (ulong) (managementObject.Properties["ProviderOperation_PutClassAsync"]?.Value ?? default(ulong)),
+		 ProviderOperationPutInstanceAsync = (ulong) (managementObject.Properties["ProviderOperation_PutInstanceAsync"]?.Value ?? default(ulong)),
+		 ProviderOperationPutProperty = (ulong) (managementObject.Properties["ProviderOperation_PutProperty"]?.Value ?? default(ulong)),
+		 ProviderOperationQueryInstances = (ulong) (managementObject.Properties["ProviderOperation_QueryInstances"]?.Value ?? default(ulong)),
+		 ProviderOperationSetRegistrationObject = (ulong) (managementObject.Properties["ProviderOperation_SetRegistrationObject"]?.Value ?? default(ulong)),
+		 ProviderOperationStopRefreshing = (ulong) (managementObject.Properties["ProviderOperation_StopRefreshing"]?.Value ?? default(ulong)),
+		 ProviderOperationValidateSubscription = (ulong) (managementObject.Properties["ProviderOperation_ValidateSubscription"]?.Value ?? default(ulong)),
 		 TransactionIdentifier = (string) (managementObject.Properties["TransactionIdentifier"]?.Value),
 		 User = (string) (managementObject.Properties["User"]?.Value)
                 };

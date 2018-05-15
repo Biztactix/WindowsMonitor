@@ -7,16 +7,16 @@ namespace WindowsMonitor.Msft
 {
     /// <summary>
     /// </summary>
-    public sealed class NCProvClientConnected
+    public sealed class NcProvClientConnected
     {
 		public bool Inproc { get; private set; }
 		public string Namespace { get; private set; }
 		public string ProviderName { get; private set; }
 		public uint Result { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
-        public static IEnumerable<NCProvClientConnected> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NcProvClientConnected> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -31,27 +31,27 @@ namespace WindowsMonitor.Msft
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NCProvClientConnected> Retrieve()
+        public static IEnumerable<NcProvClientConnected> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NCProvClientConnected> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NcProvClientConnected> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSFT_NCProvClientConnected");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NCProvClientConnected
+                yield return new NcProvClientConnected
                 {
                      Inproc = (bool) (managementObject.Properties["Inproc"]?.Value ?? default(bool)),
 		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
 		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
 		 Result = (uint) (managementObject.Properties["Result"]?.Value ?? default(uint)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

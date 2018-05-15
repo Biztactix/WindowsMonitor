@@ -10,8 +10,8 @@ namespace WindowsMonitor.Msft
     public sealed class NetReadfileTimeout
     {
 		public uint Milliseconds { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<NetReadfileTimeout> Retrieve(string remote, string username, string password)
         {
@@ -44,8 +44,8 @@ namespace WindowsMonitor.Msft
                 yield return new NetReadfileTimeout
                 {
                      Milliseconds = (uint) (managementObject.Properties["Milliseconds"]?.Value ?? default(uint)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

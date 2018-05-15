@@ -7,16 +7,16 @@ namespace WindowsMonitor.Msft
 {
     /// <summary>
     /// </summary>
-    public sealed class NCProvCancelQuery
+    public sealed class NcProvCancelQuery
     {
-		public uint ID { get; private set; }
+		public uint Id { get; private set; }
 		public string Namespace { get; private set; }
 		public string ProviderName { get; private set; }
 		public uint Result { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
-        public static IEnumerable<NCProvCancelQuery> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NcProvCancelQuery> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -31,27 +31,27 @@ namespace WindowsMonitor.Msft
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NCProvCancelQuery> Retrieve()
+        public static IEnumerable<NcProvCancelQuery> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NCProvCancelQuery> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NcProvCancelQuery> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSFT_NCProvCancelQuery");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NCProvCancelQuery
+                yield return new NcProvCancelQuery
                 {
-                     ID = (uint) (managementObject.Properties["ID"]?.Value ?? default(uint)),
+                     Id = (uint) (managementObject.Properties["ID"]?.Value ?? default(uint)),
 		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
 		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),
 		 Result = (uint) (managementObject.Properties["Result"]?.Value ?? default(uint)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

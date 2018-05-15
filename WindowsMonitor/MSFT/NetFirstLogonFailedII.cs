@@ -7,15 +7,15 @@ namespace WindowsMonitor.Msft
 {
     /// <summary>
     /// </summary>
-    public sealed class NetFirstLogonFailedII
+    public sealed class NetFirstLogonFailedIi
     {
 		public string Account { get; private set; }
 		public uint Error { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
 		public string Service { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
-        public static IEnumerable<NetFirstLogonFailedII> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NetFirstLogonFailedIi> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,26 +30,26 @@ namespace WindowsMonitor.Msft
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NetFirstLogonFailedII> Retrieve()
+        public static IEnumerable<NetFirstLogonFailedIi> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NetFirstLogonFailedII> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NetFirstLogonFailedIi> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSFT_NetFirstLogonFailedII");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NetFirstLogonFailedII
+                yield return new NetFirstLogonFailedIi
                 {
                      Account = (string) (managementObject.Properties["Account"]?.Value),
 		 Error = (uint) (managementObject.Properties["Error"]?.Value ?? default(uint)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 Service = (string) (managementObject.Properties["Service"]?.Value),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

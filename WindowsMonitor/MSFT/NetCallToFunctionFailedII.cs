@@ -7,15 +7,15 @@ namespace WindowsMonitor.Msft
 {
     /// <summary>
     /// </summary>
-    public sealed class NetCallToFunctionFailedII
+    public sealed class NetCallToFunctionFailedIi
     {
 		public string Argument { get; private set; }
 		public uint Error { get; private set; }
 		public string FunctionName { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
-        public static IEnumerable<NetCallToFunctionFailedII> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NetCallToFunctionFailedIi> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,26 +30,26 @@ namespace WindowsMonitor.Msft
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NetCallToFunctionFailedII> Retrieve()
+        public static IEnumerable<NetCallToFunctionFailedIi> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NetCallToFunctionFailedII> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NetCallToFunctionFailedIi> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSFT_NetCallToFunctionFailedII");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NetCallToFunctionFailedII
+                yield return new NetCallToFunctionFailedIi
                 {
                      Argument = (string) (managementObject.Properties["Argument"]?.Value),
 		 Error = (uint) (managementObject.Properties["Error"]?.Value ?? default(uint)),
 		 FunctionName = (string) (managementObject.Properties["FunctionName"]?.Value),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

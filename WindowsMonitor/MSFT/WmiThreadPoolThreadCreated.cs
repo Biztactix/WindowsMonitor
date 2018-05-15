@@ -9,9 +9,9 @@ namespace WindowsMonitor.Msft
     /// </summary>
     public sealed class WmiThreadPoolThreadCreated
     {
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
 		public uint ThreadId { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<WmiThreadPoolThreadCreated> Retrieve(string remote, string username, string password)
         {
@@ -43,9 +43,9 @@ namespace WindowsMonitor.Msft
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new WmiThreadPoolThreadCreated
                 {
-                     SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+                     SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 ThreadId = (uint) (managementObject.Properties["ThreadId"]?.Value ?? default(uint)),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }
