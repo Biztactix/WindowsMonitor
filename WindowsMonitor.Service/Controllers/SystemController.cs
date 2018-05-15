@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace WindowsMonitor.Service.Controllers
 {
@@ -13,12 +8,12 @@ namespace WindowsMonitor.Service.Controllers
     {
         public IActionResult Index()
         {
-            return Json(WindowsMonitor.Win32.OperatingSystem.Retrieve());
+            return Json(Win32.OperatingSystem.Retrieve());
         }
 
         public IActionResult Fans()
         {
-            return Json(WindowsMonitor.Win32.Hardware.Cooling.Fan.Retrieve());
+            return Json(Win32.Hardware.DiskDrives.DiskDrivePhysicalMedia.Retrieve());
         }
     }
 }
