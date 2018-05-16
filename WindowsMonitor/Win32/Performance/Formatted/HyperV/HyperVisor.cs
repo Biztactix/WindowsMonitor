@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Formatted.HyperVisor
+namespace WindowsMonitor.Win32.Performance.Formatted.HyperV
 {
     /// <summary>
     /// </summary>

@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Msft
+namespace WindowsMonitor.MSFT
 {
     /// <summary>
     /// </summary>
