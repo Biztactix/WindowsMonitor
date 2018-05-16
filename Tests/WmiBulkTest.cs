@@ -31,9 +31,9 @@ namespace UnitTestProject1
                     }
                     System.Diagnostics.Debug.WriteLine(type.Name);
                 }
-                catch (InvalidCastException e)
+                catch (InvalidCastException)
                 {
-                    Console.WriteLine();
+                    throw new Exception(type.Name);
                 }
                 catch (Exception e)
                 {
