@@ -9,8 +9,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class SystemProgramGroups
     {
-		public short Element { get; private set; }
-		public short Setting { get; private set; }
+		public string Element { get; private set; }
+		public string Setting { get; private set; }
 
         public static IEnumerable<SystemProgramGroups> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SystemProgramGroups
                 {
-                     Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short)),
-		 Setting = (short) (managementObject.Properties["Setting"]?.Value ?? default(short))
+                     Element = (string) (managementObject.Properties["Element"]?.Value ?? default(string)),
+		 Setting = (string) (managementObject.Properties["Setting"]?.Value ?? default(string))
                 };
         }
     }

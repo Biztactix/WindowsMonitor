@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,10 +7,11 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class OperatingSystemAutochkSetting
     {
-		public short Element { get; private set; }
-		public short Setting { get; private set; }
+        public string Element { get; private set; }
+        public string Setting { get; private set; }
 
-        public static IEnumerable<OperatingSystemAutochkSetting> Retrieve(string remote, string username, string password)
+        public static IEnumerable<OperatingSystemAutochkSetting> Retrieve(string remote, string username,
+            string password)
         {
             var options = new ConnectionOptions
             {
@@ -42,8 +41,8 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new OperatingSystemAutochkSetting
                 {
-                     Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short)),
-		 Setting = (short) (managementObject.Properties["Setting"]?.Value ?? default(short))
+                    Element = (string) (managementObject.Properties["Element"]?.Value ?? default(string)),
+                    Setting = (string) (managementObject.Properties["Setting"]?.Value ?? default(string))
                 };
         }
     }

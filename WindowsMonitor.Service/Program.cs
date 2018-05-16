@@ -13,14 +13,9 @@ namespace WindowsMonitor.Service
     {
         public static void Main(string[] args)
         {
-            var ll = CacheMemory.Retrieve().ToArray();
+            var i = 213;
+            var types = typeof(Processor).Assembly.GetTypes().Skip(i).ToArray();
 
-            var kkk = Sql2000And2005.Retrieve().ToArray();
-
-
-
-            var types = typeof(Processor).Assembly.GetTypes();
-            var i = 0;
             foreach (var type in types)
             {
                 var info = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
@@ -33,18 +28,19 @@ namespace WindowsMonitor.Service
 
                     foreach (var item in res)
                     {
-
+                        break;
                     }
                     System.Diagnostics.Debug.WriteLine(type.Name);
                 }
                 catch (InvalidCastException)
                 {
+                    Console.WriteLine(type.Name);
                     //throw new Exception(type.Name);
                 }
                 catch (Exception e)
                 {
                     var n = e.GetType().Name;
-                    Console.WriteLine(n);
+                   //Console.WriteLine(n);
                 }
 
                 i++;

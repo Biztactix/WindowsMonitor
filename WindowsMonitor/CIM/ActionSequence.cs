@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ActionSequence
     {
-		public short Next { get; private set; }
-		public short Prior { get; private set; }
+		public string Next { get; private set; }
+		public string Prior { get; private set; }
 
         public static IEnumerable<ActionSequence> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ActionSequence
                 {
-                     Next = (short) (managementObject.Properties["Next"]?.Value ?? default(short)),
-		 Prior = (short) (managementObject.Properties["Prior"]?.Value ?? default(short))
+                     Next = (string) (managementObject.Properties["Next"]?.Value ?? default(string)),
+		 Prior = (string) (managementObject.Properties["Prior"]?.Value ?? default(string))
                 };
         }
     }

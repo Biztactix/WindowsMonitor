@@ -7,9 +7,9 @@ namespace WindowsMonitor.Win32.Hardware.Memory
     /// </summary>
     public sealed class PhysicalMemoryLocation
     {
-		public short GroupComponent { get; private set; }
+		public string GroupComponent { get; private set; }
 		public string LocationWithinContainer { get; private set; }
-		public short PartComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
         public static IEnumerable<PhysicalMemoryLocation> Retrieve(string remote, string username, string password)
         {
@@ -41,9 +41,9 @@ namespace WindowsMonitor.Win32.Hardware.Memory
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PhysicalMemoryLocation
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
+                     GroupComponent =  (managementObject.Properties["GroupComponent"]?.Value?.ToString()),
 		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+		 PartComponent =  (managementObject.Properties["PartComponent"]?.Value?.ToString())
                 };
         }
     }

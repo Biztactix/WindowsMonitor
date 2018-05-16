@@ -13,7 +13,7 @@ namespace WindowsMonitor.Win32.Storage
 		public string File { get; private set; }
 		public uint PatchSize { get; private set; }
 		public string ProductCode { get; private set; }
-		public short Sequence { get; private set; }
+		public string Sequence { get; private set; }
 		public string SettingID { get; private set; }
 
         public static IEnumerable<Patch> Retrieve(string remote, string username, string password)
@@ -52,7 +52,7 @@ namespace WindowsMonitor.Win32.Storage
 		 File = (string) (managementObject.Properties["File"]?.Value),
 		 PatchSize = (uint) (managementObject.Properties["PatchSize"]?.Value ?? default(uint)),
 		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value),
-		 Sequence = (short) (managementObject.Properties["Sequence"]?.Value ?? default(short)),
+		 Sequence =  (managementObject.Properties["Sequence"]?.Value?.ToString()),
 		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }

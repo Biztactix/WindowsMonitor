@@ -9,9 +9,9 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class ProtocolBinding
     {
-		public short Antecedent { get; private set; }
-		public short Dependent { get; private set; }
-		public short Device { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
+		public string Device { get; private set; }
 
         public static IEnumerable<ProtocolBinding> Retrieve(string remote, string username, string password)
         {
@@ -43,9 +43,9 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ProtocolBinding
                 {
-                     Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short)),
-		 Device = (short) (managementObject.Properties["Device"]?.Value ?? default(short))
+                     Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
+		 Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string)),
+		 Device = (string) (managementObject.Properties["Device"]?.Value ?? default(string))
                 };
         }
     }

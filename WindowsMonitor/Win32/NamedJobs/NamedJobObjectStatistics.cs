@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.NamedJobs
     /// </summary>
     public sealed class NamedJobObjectStatistics
     {
-		public short Collection { get; private set; }
-		public short Stats { get; private set; }
+		public string Collection { get; private set; }
+		public string Stats { get; private set; }
 
         public static IEnumerable<NamedJobObjectStatistics> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.NamedJobs
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NamedJobObjectStatistics
                 {
-                     Collection = (short) (managementObject.Properties["Collection"]?.Value ?? default(short)),
-		 Stats = (short) (managementObject.Properties["Stats"]?.Value ?? default(short))
+                     Collection =  (managementObject.Properties["Collection"]?.Value?.ToString()),
+		 Stats =  (managementObject.Properties["Stats"]?.Value?.ToString())
                 };
         }
     }

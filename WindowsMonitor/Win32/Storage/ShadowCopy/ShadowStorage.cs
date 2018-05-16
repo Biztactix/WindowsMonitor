@@ -8,10 +8,10 @@ namespace WindowsMonitor.Win32.Storage.ShadowCopy
     public sealed class ShadowStorage
     {
 		public ulong AllocatedSpace { get; private set; }
-		public short DiffVolume { get; private set; }
+		public string DiffVolume { get; private set; }
 		public ulong MaxSpace { get; private set; }
 		public ulong UsedSpace { get; private set; }
-		public short Volume { get; private set; }
+		public string Volume { get; private set; }
 
         public static IEnumerable<ShadowStorage> Retrieve(string remote, string username, string password)
         {
@@ -44,10 +44,10 @@ namespace WindowsMonitor.Win32.Storage.ShadowCopy
                 yield return new ShadowStorage
                 {
                      AllocatedSpace = (ulong) (managementObject.Properties["AllocatedSpace"]?.Value ?? default(ulong)),
-		 DiffVolume = (short) (managementObject.Properties["DiffVolume"]?.Value ?? default(short)),
+		 DiffVolume =  (managementObject.Properties["DiffVolume"]?.Value?.ToString()),
 		 MaxSpace = (ulong) (managementObject.Properties["MaxSpace"]?.Value ?? default(ulong)),
 		 UsedSpace = (ulong) (managementObject.Properties["UsedSpace"]?.Value ?? default(ulong)),
-		 Volume = (short) (managementObject.Properties["Volume"]?.Value ?? default(short))
+		 Volume =  (managementObject.Properties["Volume"]?.Value?.ToString())
                 };
         }
     }

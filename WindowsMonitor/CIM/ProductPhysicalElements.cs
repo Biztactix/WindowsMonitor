@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ProductPhysicalElements
     {
-		public short Component { get; private set; }
-		public short Product { get; private set; }
+		public string Component { get; private set; }
+		public string Product { get; private set; }
 
         public static IEnumerable<ProductPhysicalElements> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ProductPhysicalElements
                 {
-                     Component = (short) (managementObject.Properties["Component"]?.Value ?? default(short)),
-		 Product = (short) (managementObject.Properties["Product"]?.Value ?? default(short))
+                     Component =  (managementObject.Properties["Component"]?.Value?.ToString()),
+		 Product =  (managementObject.Properties["Product"]?.Value?.ToString())
                 };
         }
     }

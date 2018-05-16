@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Users
     /// </summary>
     public sealed class AccountSID
     {
-		public short Element { get; private set; }
-		public short Setting { get; private set; }
+		public string Element { get; private set; }
+		public string Setting { get; private set; }
 
         public static IEnumerable<AccountSID> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Users
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AccountSID
                 {
-                     Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short)),
-		 Setting = (short) (managementObject.Properties["Setting"]?.Value ?? default(short))
+                     Element =  (managementObject.Properties["Element"]?.Value?.ToString()),
+		 Setting =  (managementObject.Properties["Setting"]?.Value?.ToString())
                 };
         }
     }

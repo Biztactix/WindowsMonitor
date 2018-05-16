@@ -9,9 +9,9 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class PackageInChassis
     {
-		public short GroupComponent { get; private set; }
+		public string GroupComponent { get; private set; }
 		public string LocationWithinContainer { get; private set; }
-		public short PartComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
         public static IEnumerable<PackageInChassis> Retrieve(string remote, string username, string password)
         {
@@ -43,9 +43,9 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PackageInChassis
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
+                     GroupComponent =  (managementObject.Properties["GroupComponent"]?.Value?.ToString()),
 		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+		 PartComponent =  (managementObject.Properties["PartComponent"]?.Value?.ToString())
                 };
         }
     }

@@ -7,8 +7,8 @@ namespace WindowsMonitor.CIM.Hardware.Power
     /// </summary>
     public sealed class AssociatedBattery
     {
-		public short Antecedent { get; private set; }
-		public short Dependent { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
 
         public static IEnumerable<AssociatedBattery> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.CIM.Hardware.Power
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AssociatedBattery
                 {
-                     Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short))
+                     Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
+		 Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string))
                 };
         }
     }

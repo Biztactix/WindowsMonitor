@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,9 +7,9 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ActsAsSpare
     {
-		public short Group { get; private set; }
-		public bool HotStandby { get; private set; }
-		public short Spare { get; private set; }
+        public string Group { get; private set; }
+        public bool HotStandby { get; private set; }
+        public string Spare { get; private set; }
 
         public static IEnumerable<ActsAsSpare> Retrieve(string remote, string username, string password)
         {
@@ -43,9 +41,9 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ActsAsSpare
                 {
-                     Group = (short) (managementObject.Properties["Group"]?.Value ?? default(short)),
-		 HotStandby = (bool) (managementObject.Properties["HotStandby"]?.Value ?? default(bool)),
-		 Spare = (short) (managementObject.Properties["Spare"]?.Value ?? default(short))
+                    Group = (string) (managementObject.Properties["Group"]?.Value ?? default(string)),
+                    HotStandby = (bool) (managementObject.Properties["HotStandby"]?.Value ?? default(bool)),
+                    Spare = (string) (managementObject.Properties["Spare"]?.Value ?? default(string))
                 };
         }
     }

@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class StorageDefect
     {
-		public short Error { get; private set; }
-		public short Extent { get; private set; }
+		public string Error { get; private set; }
+		public string Extent { get; private set; }
 
         public static IEnumerable<StorageDefect> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new StorageDefect
                 {
-                     Error = (short) (managementObject.Properties["Error"]?.Value ?? default(short)),
-		 Extent = (short) (managementObject.Properties["Extent"]?.Value ?? default(short))
+                     Error =  (managementObject.Properties["Error"]?.Value?.ToString()),
+		 Extent =  (managementObject.Properties["Extent"]?.Value?.ToString())
                 };
         }
     }

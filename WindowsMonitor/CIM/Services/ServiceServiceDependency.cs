@@ -7,8 +7,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ServiceServiceDependency
     {
-        public short Antecedent { get; private set; }
-        public short Dependent { get; private set; }
+        public string Antecedent { get; private set; }
+        public string Dependent { get; private set; }
         public ushort TypeOfDependency { get; private set; }
 
         public static IEnumerable<ServiceServiceDependency> Retrieve(string remote, string username, string password)
@@ -41,8 +41,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ServiceServiceDependency
                 {
-                    Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-                    Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short)),
+                    Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
+                    Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string)),
                     TypeOfDependency =
                         (ushort) (managementObject.Properties["TypeOfDependency"]?.Value ?? default(ushort))
                 };

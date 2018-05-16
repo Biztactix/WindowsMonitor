@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ProductProductDependency
     {
-		public short DependentProduct { get; private set; }
-		public short RequiredProduct { get; private set; }
+		public string DependentProduct { get; private set; }
+		public string RequiredProduct { get; private set; }
 		public ushort TypeOfDependency { get; private set; }
 
         public static IEnumerable<ProductProductDependency> Retrieve(string remote, string username, string password)
@@ -43,8 +43,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ProductProductDependency
                 {
-                     DependentProduct = (short) (managementObject.Properties["DependentProduct"]?.Value ?? default(short)),
-		 RequiredProduct = (short) (managementObject.Properties["RequiredProduct"]?.Value ?? default(short)),
+                     DependentProduct =  (managementObject.Properties["DependentProduct"]?.Value?.ToString()),
+		 RequiredProduct =  (managementObject.Properties["RequiredProduct"]?.Value?.ToString()),
 		 TypeOfDependency = (ushort) (managementObject.Properties["TypeOfDependency"]?.Value ?? default(ushort))
                 };
         }

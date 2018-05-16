@@ -10,8 +10,8 @@ namespace WindowsMonitor.CIM
     public sealed class CompatibleProduct
     {
 		public string CompatibilityDescription { get; private set; }
-		public short Name { get; private set; }
-		public short Product { get; private set; }
+		public string Name { get; private set; }
+		public string Product { get; private set; }
 
         public static IEnumerable<CompatibleProduct> Retrieve(string remote, string username, string password)
         {
@@ -44,8 +44,8 @@ namespace WindowsMonitor.CIM
                 yield return new CompatibleProduct
                 {
                      CompatibilityDescription = (string) (managementObject.Properties["CompatibilityDescription"]?.Value),
-		 Name = (short) (managementObject.Properties["CompatibleProduct"]?.Value ?? default(short)),
-		 Product = (short) (managementObject.Properties["Product"]?.Value ?? default(short))
+		 Name = (string) (managementObject.Properties["CompatibleProduct"]?.Value ?? default(string)),
+		 Product = (string) (managementObject.Properties["Product"]?.Value ?? default(string))
                 };
         }
     }

@@ -15,7 +15,7 @@ namespace WindowsMonitor.Win32
 		public string Caption { get; private set; }
 		public ushort[] ChassisTypes { get; private set; }
 		public string CreationClassName { get; private set; }
-		public short CurrentRequiredOrProduced { get; private set; }
+		public string CurrentRequiredOrProduced { get; private set; }
 		public float Depth { get; private set; }
 		public string Description { get; private set; }
 		public ushort HeatGeneration { get; private set; }
@@ -83,7 +83,7 @@ namespace WindowsMonitor.Win32
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ChassisTypes = (ushort[]) (managementObject.Properties["ChassisTypes"]?.Value ?? new ushort[0]),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CurrentRequiredOrProduced = (short) (managementObject.Properties["CurrentRequiredOrProduced"]?.Value ?? default(short)),
+		 CurrentRequiredOrProduced =  (managementObject.Properties["CurrentRequiredOrProduced"]?.Value?.ToString()),
 		 Depth = (float) (managementObject.Properties["Depth"]?.Value ?? default(float)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 HeatGeneration = (ushort) (managementObject.Properties["HeatGeneration"]?.Value ?? default(ushort)),

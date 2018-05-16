@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Hardware.DiskDrives
     /// </summary>
     public sealed class DiskDriveToDiskPartition
     {
-		public short Antecedent { get; private set; }
-		public short Dependent { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
 
         public static IEnumerable<DiskDriveToDiskPartition> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Hardware.DiskDrives
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DiskDriveToDiskPartition
                 {
-                     Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short))
+                     Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),
+		 Dependent =  (managementObject.Properties["Dependent"]?.Value?.ToString())
                 };
         }
     }

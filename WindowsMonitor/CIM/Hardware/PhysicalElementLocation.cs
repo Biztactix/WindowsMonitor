@@ -7,8 +7,8 @@ namespace WindowsMonitor.CIM.Hardware
     /// </summary>
     public sealed class PhysicalElementLocation
     {
-		public short Element { get; private set; }
-		public short PhysicalLocation { get; private set; }
+		public string Element { get; private set; }
+		public string PhysicalLocation { get; private set; }
 
         public static IEnumerable<PhysicalElementLocation> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.CIM.Hardware
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PhysicalElementLocation
                 {
-                     Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short)),
-		 PhysicalLocation = (short) (managementObject.Properties["PhysicalLocation"]?.Value ?? default(short))
+                     Element = (string) (managementObject.Properties["Element"]?.Value ?? default(string)),
+		 PhysicalLocation = (string) (managementObject.Properties["PhysicalLocation"]?.Value ?? default(string))
                 };
         }
     }

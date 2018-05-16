@@ -14,7 +14,7 @@ namespace WindowsMonitor.Win32.Software
 		public string Description { get; private set; }
 		public string IdentifyingNumber { get; private set; }
 		public DateTime InstallDate { get; private set; }
-		public short InstallState { get; private set; }
+		public string InstallState { get; private set; }
 		public DateTime LastUse { get; private set; }
 		public string Name { get; private set; }
 		public string ProductName { get; private set; }
@@ -58,7 +58,7 @@ namespace WindowsMonitor.Win32.Software
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
-		 InstallState = (short) (managementObject.Properties["InstallState"]?.Value ?? default(short)),
+		 InstallState =  (managementObject.Properties["InstallState"]?.Value?.ToString()),
 		 LastUse = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LastUse"]?.Value as string ?? "00010102000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ProductName = (string) (managementObject.Properties["ProductName"]?.Value),

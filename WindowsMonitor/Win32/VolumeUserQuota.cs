@@ -9,11 +9,11 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class VolumeUserQuota
     {
-		public short Account { get; private set; }
+		public string Account { get; private set; }
 		public ulong DiskSpaceUsed { get; private set; }
 		public ulong Limit { get; private set; }
 		public uint Status { get; private set; }
-		public short Volume { get; private set; }
+		public string Volume { get; private set; }
 		public ulong WarningLimit { get; private set; }
 
         public static IEnumerable<VolumeUserQuota> Retrieve(string remote, string username, string password)
@@ -46,11 +46,11 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new VolumeUserQuota
                 {
-                     Account = (short) (managementObject.Properties["Account"]?.Value ?? default(short)),
+                     Account =  (managementObject.Properties["Account"]?.Value?.ToString()),
 		 DiskSpaceUsed = (ulong) (managementObject.Properties["DiskSpaceUsed"]?.Value ?? default(ulong)),
 		 Limit = (ulong) (managementObject.Properties["Limit"]?.Value ?? default(ulong)),
 		 Status = (uint) (managementObject.Properties["Status"]?.Value ?? default(uint)),
-		 Volume = (short) (managementObject.Properties["Volume"]?.Value ?? default(short)),
+		 Volume =  (managementObject.Properties["Volume"]?.Value?.ToString()),
 		 WarningLimit = (ulong) (managementObject.Properties["WarningLimit"]?.Value ?? default(ulong))
                 };
         }

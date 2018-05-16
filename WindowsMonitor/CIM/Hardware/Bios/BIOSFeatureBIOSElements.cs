@@ -7,8 +7,8 @@ namespace WindowsMonitor.CIM.Hardware.Bios
     /// </summary>
     public sealed class BiosFeatureBiosElements
     {
-		public short GroupComponent { get; private set; }
-		public short PartComponent { get; private set; }
+		public string GroupComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
         public static IEnumerable<BiosFeatureBiosElements> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.CIM.Hardware.Bios
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new BiosFeatureBiosElements
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+                     GroupComponent = (string) (managementObject.Properties["GroupComponent"]?.Value ?? default(string)),
+		 PartComponent = (string) (managementObject.Properties["PartComponent"]?.Value ?? default(string))
                 };
         }
     }

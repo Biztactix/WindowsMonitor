@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Software.COM
     /// </summary>
     public sealed class ComClassEmulator
     {
-		public short NewVersion { get; private set; }
-		public short OldVersion { get; private set; }
+		public string NewVersion { get; private set; }
+		public string OldVersion { get; private set; }
 
         public static IEnumerable<ComClassEmulator> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Software.COM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ComClassEmulator
                 {
-                     NewVersion = (short) (managementObject.Properties["NewVersion"]?.Value ?? default(short)),
-		 OldVersion = (short) (managementObject.Properties["OldVersion"]?.Value ?? default(short))
+                     NewVersion =  (managementObject.Properties["NewVersion"]?.Value?.ToString()),
+		 OldVersion =  (managementObject.Properties["OldVersion"]?.Value?.ToString())
                 };
         }
     }

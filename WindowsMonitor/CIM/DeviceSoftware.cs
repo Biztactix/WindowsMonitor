@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class DeviceSoftware
     {
-		public short Antecedent { get; private set; }
-		public short Dependent { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
 		public ushort Purpose { get; private set; }
 		public string PurposeDescription { get; private set; }
 
@@ -44,8 +44,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DeviceSoftware
                 {
-                     Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short)),
+                     Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
+		 Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string)),
 		 Purpose = (ushort) (managementObject.Properties["Purpose"]?.Value ?? default(ushort)),
 		 PurposeDescription = (string) (managementObject.Properties["PurposeDescription"]?.Value)
                 };

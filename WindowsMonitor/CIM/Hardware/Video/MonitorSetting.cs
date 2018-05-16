@@ -7,8 +7,8 @@ namespace WindowsMonitor.CIM.Hardware.Video
     /// </summary>
     public sealed class MonitorSetting
     {
-		public short Element { get; private set; }
-		public short Setting { get; private set; }
+		public string Element { get; private set; }
+		public string Setting { get; private set; }
 
         public static IEnumerable<MonitorSetting> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.CIM.Hardware.Video
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new MonitorSetting
                 {
-                     Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short)),
-		 Setting = (short) (managementObject.Properties["Setting"]?.Value ?? default(short))
+                     Element = (string) (managementObject.Properties["Element"]?.Value ?? default(string)),
+		 Setting = (string) (managementObject.Properties["Setting"]?.Value ?? default(string))
                 };
         }
     }

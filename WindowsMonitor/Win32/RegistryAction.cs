@@ -18,7 +18,7 @@ namespace WindowsMonitor.Win32
 		public string key { get; private set; }
 		public string Name { get; private set; }
 		public string Registry { get; private set; }
-		public short Root { get; private set; }
+		public string Root { get; private set; }
 		public string SoftwareElementID { get; private set; }
 		public ushort SoftwareElementState { get; private set; }
 		public ushort TargetOperatingSystem { get; private set; }
@@ -63,7 +63,7 @@ namespace WindowsMonitor.Win32
 		 key = (string) (managementObject.Properties["key"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Registry = (string) (managementObject.Properties["Registry"]?.Value),
-		 Root = (short) (managementObject.Properties["Root"]?.Value ?? default(short)),
+		 Root =  (managementObject.Properties["Root"]?.Value?.ToString()),
 		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),

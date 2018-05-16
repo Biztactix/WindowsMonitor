@@ -7,7 +7,7 @@ namespace WindowsMonitor.Win32.Hardware.PnP
     /// </summary>
     public sealed class PnPDevicePropertySint16Array
     {
-		public short[] Data { get; private set; }
+		public string[] Data { get; private set; }
 		public string DeviceID { get; private set; }
 		public string key { get; private set; }
 		public string KeyName { get; private set; }
@@ -43,7 +43,7 @@ namespace WindowsMonitor.Win32.Hardware.PnP
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PnPDevicePropertySint16Array
                 {
-                     Data = (short[]) (managementObject.Properties["Data"]?.Value ?? new short[0]),
+                     Data = (string[]) (managementObject.Properties["Data"]?.Value ?? new string[0]),
 		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 key = (string) (managementObject.Properties["key"]?.Value),
 		 KeyName = (string) (managementObject.Properties["KeyName"]?.Value),

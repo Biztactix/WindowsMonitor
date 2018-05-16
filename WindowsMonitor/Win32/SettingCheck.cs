@@ -9,8 +9,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class SettingCheck
     {
-		public short Check { get; private set; }
-		public short Setting { get; private set; }
+		public string Check { get; private set; }
+		public string Setting { get; private set; }
 
         public static IEnumerable<SettingCheck> Retrieve(string remote, string username, string password)
         {
@@ -40,11 +40,12 @@ namespace WindowsMonitor.Win32
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SettingCheck
-                {
-                     Check = (short) (managementObject.Properties["Check"]?.Value ?? default(short)),
-		 Setting = (short) (managementObject.Properties["Setting"]?.Value ?? default(short))
-                };
+            {
+                var check = new SettingCheck();
+                check.Check = (string) (managementObject.Properties["Check"]?.Value);
+                check.Setting = (string) (managementObject.Properties["Setting"]?.Value);
+                yield return check;
+            }
         }
     }
 }

@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ToDirectoryAction
     {
-		public short DestinationDirectory { get; private set; }
-		public short FileName { get; private set; }
+		public string DestinationDirectory { get; private set; }
+		public string FileName { get; private set; }
 
         public static IEnumerable<ToDirectoryAction> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ToDirectoryAction
                 {
-                     DestinationDirectory = (short) (managementObject.Properties["DestinationDirectory"]?.Value ?? default(short)),
-		 FileName = (short) (managementObject.Properties["FileName"]?.Value ?? default(short))
+                     DestinationDirectory =  (managementObject.Properties["DestinationDirectory"]?.Value?.ToString()),
+		 FileName =  (managementObject.Properties["FileName"]?.Value?.ToString())
                 };
         }
     }

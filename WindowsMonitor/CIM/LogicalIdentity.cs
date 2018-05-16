@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class LogicalIdentity
     {
-		public short SameElement { get; private set; }
-		public short SystemElement { get; private set; }
+		public string SameElement { get; private set; }
+		public string SystemElement { get; private set; }
 
         public static IEnumerable<LogicalIdentity> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new LogicalIdentity
                 {
-                     SameElement = (short) (managementObject.Properties["SameElement"]?.Value ?? default(short)),
-		 SystemElement = (short) (managementObject.Properties["SystemElement"]?.Value ?? default(short))
+                     SameElement =  (managementObject.Properties["SameElement"]?.Value?.ToString()),
+		 SystemElement =  (managementObject.Properties["SystemElement"]?.Value?.ToString())
                 };
         }
     }

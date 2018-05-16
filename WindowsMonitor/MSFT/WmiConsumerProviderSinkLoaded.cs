@@ -7,7 +7,7 @@ namespace WindowsMonitor.MSFT
     /// </summary>
     public sealed class WmiConsumerProviderSinkLoaded
     {
-		public short Consumer { get; private set; }
+		public string Consumer { get; private set; }
 		public string Machine { get; private set; }
 		public string Namespace { get; private set; }
 		public string ProviderName { get; private set; }
@@ -44,7 +44,7 @@ namespace WindowsMonitor.MSFT
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new WmiConsumerProviderSinkLoaded
                 {
-                     Consumer = (short) (managementObject.Properties["Consumer"]?.Value ?? default(short)),
+                     Consumer =  (managementObject.Properties["Consumer"]?.Value?.ToString()),
 		 Machine = (string) (managementObject.Properties["Machine"]?.Value),
 		 Namespace = (string) (managementObject.Properties["Namespace"]?.Value),
 		 ProviderName = (string) (managementObject.Properties["ProviderName"]?.Value),

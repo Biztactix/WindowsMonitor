@@ -9,8 +9,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class ServiceSpecificationService
     {
-		public short Check { get; private set; }
-		public short Element { get; private set; }
+		public string Check { get; private set; }
+		public string Element { get; private set; }
 
         public static IEnumerable<ServiceSpecificationService> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ServiceSpecificationService
                 {
-                     Check = (short) (managementObject.Properties["Check"]?.Value ?? default(short)),
-		 Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short))
+                     Check = (string) (managementObject.Properties["Check"]?.Value ?? default(string)),
+		 Element = (string) (managementObject.Properties["Element"]?.Value ?? default(string))
                 };
         }
     }

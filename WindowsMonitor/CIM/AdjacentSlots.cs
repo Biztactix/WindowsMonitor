@@ -11,8 +11,8 @@ namespace WindowsMonitor.CIM
     {
 		public float DistanceBetweenSlots { get; private set; }
 		public bool SharedSlots { get; private set; }
-		public short SlotA { get; private set; }
-		public short SlotB { get; private set; }
+		public string SlotA { get; private set; }
+		public string SlotB { get; private set; }
 
         public static IEnumerable<AdjacentSlots> Retrieve(string remote, string username, string password)
         {
@@ -46,8 +46,8 @@ namespace WindowsMonitor.CIM
                 {
                      DistanceBetweenSlots = (float) (managementObject.Properties["DistanceBetweenSlots"]?.Value ?? default(float)),
 		 SharedSlots = (bool) (managementObject.Properties["SharedSlots"]?.Value ?? default(bool)),
-		 SlotA = (short) (managementObject.Properties["SlotA"]?.Value ?? default(short)),
-		 SlotB = (short) (managementObject.Properties["SlotB"]?.Value ?? default(short))
+		 SlotA = (string) (managementObject.Properties["SlotA"]?.Value ?? default(string)),
+		 SlotB = (string) (managementObject.Properties["SlotB"]?.Value ?? default(string))
                 };
         }
     }

@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class DeviceConnection
     {
-		public short Antecedent { get; private set; }
-		public short Dependent { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
 		public uint NegotiatedDataWidth { get; private set; }
 		public ulong NegotiatedSpeed { get; private set; }
 
@@ -44,8 +44,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DeviceConnection
                 {
-                     Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short)),
+                     Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
+		 Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string)),
 		 NegotiatedDataWidth = (uint) (managementObject.Properties["NegotiatedDataWidth"]?.Value ?? default(uint)),
 		 NegotiatedSpeed = (ulong) (managementObject.Properties["NegotiatedSpeed"]?.Value ?? default(ulong))
                 };

@@ -9,8 +9,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class ProgramGroupContents
     {
-		public short GroupComponent { get; private set; }
-		public short PartComponent { get; private set; }
+		public string GroupComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
         public static IEnumerable<ProgramGroupContents> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ProgramGroupContents
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+                     GroupComponent = (string) (managementObject.Properties["GroupComponent"]?.Value ?? default(string)),
+		 PartComponent = (string) (managementObject.Properties["PartComponent"]?.Value ?? default(string))
                 };
         }
     }

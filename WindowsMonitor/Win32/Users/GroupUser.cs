@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Users
     /// </summary>
     public sealed class GroupUser
     {
-		public short GroupComponent { get; private set; }
-		public short PartComponent { get; private set; }
+		public string GroupComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
         public static IEnumerable<GroupUser> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Users
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new GroupUser
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+                     GroupComponent = (string) (managementObject.Properties["GroupComponent"]?.Value ?? default(string)),
+		 PartComponent = (string) (managementObject.Properties["PartComponent"]?.Value ?? default(string))
                 };
         }
     }

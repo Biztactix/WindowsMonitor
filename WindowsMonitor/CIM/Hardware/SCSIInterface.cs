@@ -8,8 +8,8 @@ namespace WindowsMonitor.CIM.Hardware
     public sealed class ScsiInterface
     {
 		public ushort AccessState { get; private set; }
-		public short Antecedent { get; private set; }
-		public short Dependent { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
 		public uint NegotiatedDataWidth { get; private set; }
 		public ulong NegotiatedSpeed { get; private set; }
 		public uint NumberOfHardResets { get; private set; }
@@ -48,8 +48,8 @@ namespace WindowsMonitor.CIM.Hardware
                 yield return new ScsiInterface
                 {
                      AccessState = (ushort) (managementObject.Properties["AccessState"]?.Value ?? default(ushort)),
-		 Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short)),
+		 Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
+		 Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string)),
 		 NegotiatedDataWidth = (uint) (managementObject.Properties["NegotiatedDataWidth"]?.Value ?? default(uint)),
 		 NegotiatedSpeed = (ulong) (managementObject.Properties["NegotiatedSpeed"]?.Value ?? default(ulong)),
 		 NumberOfHardResets = (uint) (managementObject.Properties["NumberOfHardResets"]?.Value ?? default(uint)),

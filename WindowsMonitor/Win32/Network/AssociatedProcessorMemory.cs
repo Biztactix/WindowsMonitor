@@ -7,9 +7,9 @@ namespace WindowsMonitor.Win32.Network
     /// </summary>
     public sealed class AssociatedProcessorMemory
     {
-		public short Antecedent { get; private set; }
+		public string Antecedent { get; private set; }
 		public uint BusSpeed { get; private set; }
-		public short Dependent { get; private set; }
+		public string Dependent { get; private set; }
 
         public static IEnumerable<AssociatedProcessorMemory> Retrieve(string remote, string username, string password)
         {
@@ -41,9 +41,9 @@ namespace WindowsMonitor.Win32.Network
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AssociatedProcessorMemory
                 {
-                     Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
+                     Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),
 		 BusSpeed = (uint) (managementObject.Properties["BusSpeed"]?.Value ?? default(uint)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short))
+		 Dependent =  (managementObject.Properties["Dependent"]?.Value?.ToString())
                 };
         }
     }

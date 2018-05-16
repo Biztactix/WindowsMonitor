@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,10 +7,11 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class LoadOrderGroupServiceMembers
     {
-		public short GroupComponent { get; private set; }
-		public short PartComponent { get; private set; }
+        public string GroupComponent { get; private set; }
+        public string PartComponent { get; private set; }
 
-        public static IEnumerable<LoadOrderGroupServiceMembers> Retrieve(string remote, string username, string password)
+        public static IEnumerable<LoadOrderGroupServiceMembers> Retrieve(string remote, string username,
+            string password)
         {
             var options = new ConnectionOptions
             {
@@ -42,8 +41,8 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new LoadOrderGroupServiceMembers
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+                    GroupComponent = (string) managementObject.Properties["GroupComponent"]?.Value,
+                    PartComponent = (string) managementObject.Properties["PartComponent"]?.Value
                 };
         }
     }

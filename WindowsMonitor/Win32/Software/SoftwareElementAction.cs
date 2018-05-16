@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Software
     /// </summary>
     public sealed class SoftwareElementAction
     {
-		public short Action { get; private set; }
-		public short Element { get; private set; }
+		public string Action { get; private set; }
+		public string Element { get; private set; }
 
         public static IEnumerable<SoftwareElementAction> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Software
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SoftwareElementAction
                 {
-                     Action = (short) (managementObject.Properties["Action"]?.Value ?? default(short)),
-		 Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short))
+                     Action =  (managementObject.Properties["Action"]?.Value?.ToString()),
+		 Element =  (managementObject.Properties["Element"]?.Value?.ToString())
                 };
         }
     }

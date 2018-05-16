@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class InstalledSoftwareElement
     {
-		public short Software { get; private set; }
-		public short System { get; private set; }
+		public string Software { get; private set; }
+		public string System { get; private set; }
 
         public static IEnumerable<InstalledSoftwareElement> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new InstalledSoftwareElement
                 {
-                     Software = (short) (managementObject.Properties["Software"]?.Value ?? default(short)),
-		 System = (short) (managementObject.Properties["System"]?.Value ?? default(short))
+                     Software =  (managementObject.Properties["Software"]?.Value?.ToString()),
+		 System =  (managementObject.Properties["System"]?.Value?.ToString())
                 };
         }
     }

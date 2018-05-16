@@ -9,8 +9,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class ClientApplicationSetting
     {
-		public short Application { get; private set; }
-		public short Client { get; private set; }
+		public string Application { get; private set; }
+		public string Client { get; private set; }
 
         public static IEnumerable<ClientApplicationSetting> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ClientApplicationSetting
                 {
-                     Application = (short) (managementObject.Properties["Application"]?.Value ?? default(short)),
-		 Client = (short) (managementObject.Properties["Client"]?.Value ?? default(short))
+                     Application =  (managementObject.Properties["Application"]?.Value?.ToString()),
+		 Client =  (managementObject.Properties["Client"]?.Value?.ToString())
                 };
         }
     }

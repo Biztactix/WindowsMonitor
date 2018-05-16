@@ -9,9 +9,9 @@ namespace WindowsMonitor.Win32.Hardware.DiskDrives
     {
 		public ulong DiskSpaceUsed { get; private set; }
 		public ulong Limit { get; private set; }
-		public short QuotaVolume { get; private set; }
+		public string QuotaVolume { get; private set; }
 		public uint Status { get; private set; }
-		public short User { get; private set; }
+		public string User { get; private set; }
 		public ulong WarningLimit { get; private set; }
 
         public static IEnumerable<DiskQuota> Retrieve(string remote, string username, string password)
@@ -46,9 +46,9 @@ namespace WindowsMonitor.Win32.Hardware.DiskDrives
                 {
                      DiskSpaceUsed = (ulong) (managementObject.Properties["DiskSpaceUsed"]?.Value ?? default(ulong)),
 		 Limit = (ulong) (managementObject.Properties["Limit"]?.Value ?? default(ulong)),
-		 QuotaVolume = (short) (managementObject.Properties["QuotaVolume"]?.Value ?? default(short)),
+		 QuotaVolume =  (managementObject.Properties["QuotaVolume"]?.Value?.ToString()),
 		 Status = (uint) (managementObject.Properties["Status"]?.Value ?? default(uint)),
-		 User = (short) (managementObject.Properties["User"]?.Value ?? default(short)),
+		 User =  (managementObject.Properties["User"]?.Value?.ToString()),
 		 WarningLimit = (ulong) (managementObject.Properties["WarningLimit"]?.Value ?? default(ulong))
                 };
         }

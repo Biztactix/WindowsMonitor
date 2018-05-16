@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class FromDirectorySpecification
     {
-		public short FileName { get; private set; }
-		public short SourceDirectory { get; private set; }
+		public string FileName { get; private set; }
+		public string SourceDirectory { get; private set; }
 
         public static IEnumerable<FromDirectorySpecification> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new FromDirectorySpecification
                 {
-                     FileName = (short) (managementObject.Properties["FileName"]?.Value ?? default(short)),
-		 SourceDirectory = (short) (managementObject.Properties["SourceDirectory"]?.Value ?? default(short))
+                     FileName =  (managementObject.Properties["FileName"]?.Value?.ToString()),
+		 SourceDirectory =  (managementObject.Properties["SourceDirectory"]?.Value?.ToString())
                 };
         }
     }

@@ -9,8 +9,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class ShortcutSAP
     {
-		public short Action { get; private set; }
-		public short Element { get; private set; }
+		public string Action { get; private set; }
+		public string Element { get; private set; }
 
         public static IEnumerable<ShortcutSAP> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ShortcutSAP
                 {
-                     Action = (short) (managementObject.Properties["Action"]?.Value ?? default(short)),
-		 Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short))
+                     Action = (string) (managementObject.Properties["Action"]?.Value ?? default(string)),
+		 Element = (string) (managementObject.Properties["Element"]?.Value ?? default(string))
                 };
         }
     }

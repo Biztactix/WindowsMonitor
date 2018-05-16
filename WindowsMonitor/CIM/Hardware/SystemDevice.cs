@@ -7,8 +7,8 @@ namespace WindowsMonitor.CIM.Hardware
     /// </summary>
     public sealed class SystemDevice
     {
-		public short GroupComponent { get; private set; }
-		public short PartComponent { get; private set; }
+		public string GroupComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
         public static IEnumerable<SystemDevice> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.CIM.Hardware
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SystemDevice
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+                     GroupComponent = (string) (managementObject.Properties["GroupComponent"]?.Value ?? default(string)),
+		 PartComponent = (string) (managementObject.Properties["PartComponent"]?.Value ?? default(string))
                 };
         }
     }

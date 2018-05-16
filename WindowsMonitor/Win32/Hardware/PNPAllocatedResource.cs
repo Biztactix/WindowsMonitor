@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Hardware
     /// </summary>
     public sealed class PNPAllocatedResource
     {
-		public short Antecedent { get; private set; }
-		public short Dependent { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
 
         public static IEnumerable<PNPAllocatedResource> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Hardware
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PNPAllocatedResource
                 {
-                     Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short))
+                     Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),
+		 Dependent =  (managementObject.Properties["Dependent"]?.Value?.ToString())
                 };
         }
     }

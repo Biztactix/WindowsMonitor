@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class DirectoryContainsFile
     {
-		public short GroupComponent { get; private set; }
-		public short PartComponent { get; private set; }
+		public string GroupComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
         public static IEnumerable<DirectoryContainsFile> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DirectoryContainsFile
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+                     GroupComponent = (string) (managementObject.Properties["GroupComponent"]?.Value ?? default(string)),
+		 PartComponent = (string) (managementObject.Properties["PartComponent"]?.Value ?? default(string))
                 };
         }
     }

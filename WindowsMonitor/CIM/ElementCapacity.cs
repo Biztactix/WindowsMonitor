@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ElementCapacity
     {
-		public short Capacity { get; private set; }
-		public short Element { get; private set; }
+		public string Capacity { get; private set; }
+		public string Element { get; private set; }
 
         public static IEnumerable<ElementCapacity> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ElementCapacity
                 {
-                     Capacity = (short) (managementObject.Properties["Capacity"]?.Value ?? default(short)),
-		 Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short))
+                     Capacity = (string) (managementObject.Properties["Capacity"]?.Value ?? default(string)),
+		 Element = (string) (managementObject.Properties["Element"]?.Value ?? default(string))
                 };
         }
     }

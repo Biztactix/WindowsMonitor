@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ElementConfiguration
     {
-		public short Configuration { get; private set; }
-		public short Element { get; private set; }
+		public string Configuration { get; private set; }
+		public string Element { get; private set; }
 
         public static IEnumerable<ElementConfiguration> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ElementConfiguration
                 {
-                     Configuration = (short) (managementObject.Properties["Configuration"]?.Value ?? default(short)),
-		 Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short))
+                     Configuration = (string) (managementObject.Properties["Configuration"]?.Value ?? default(string)),
+		 Element = (string) (managementObject.Properties["Element"]?.Value ?? default(string))
                 };
         }
     }

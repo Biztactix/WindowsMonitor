@@ -22,7 +22,7 @@ namespace WindowsMonitor.Win32
 		public ushort ChassisBootupState { get; private set; }
 		public string ChassisSKUNumber { get; private set; }
 		public string CreationClassName { get; private set; }
-		public short CurrentTimeZone { get; private set; }
+		public string CurrentTimeZone { get; private set; }
 		public bool DaylightInEffect { get; private set; }
 		public string Description { get; private set; }
 		public string DNSHostName { get; private set; }
@@ -57,8 +57,8 @@ namespace WindowsMonitor.Win32
 		public string PrimaryOwnerContact { get; private set; }
 		public string PrimaryOwnerName { get; private set; }
 		public ushort ResetCapability { get; private set; }
-		public short ResetCount { get; private set; }
-		public short ResetLimit { get; private set; }
+		public string ResetCount { get; private set; }
+		public string ResetLimit { get; private set; }
 		public string[] Roles { get; private set; }
 		public string Status { get; private set; }
 		public string[] SupportContactDescription { get; private set; }
@@ -117,7 +117,7 @@ namespace WindowsMonitor.Win32
 		 ChassisBootupState = (ushort) (managementObject.Properties["ChassisBootupState"]?.Value ?? default(ushort)),
 		 ChassisSKUNumber = (string) (managementObject.Properties["ChassisSKUNumber"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CurrentTimeZone = (short) (managementObject.Properties["CurrentTimeZone"]?.Value ?? default(short)),
+		 CurrentTimeZone =  (managementObject.Properties["CurrentTimeZone"]?.Value?.ToString()),
 		 DaylightInEffect = (bool) (managementObject.Properties["DaylightInEffect"]?.Value ?? default(bool)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DNSHostName = (string) (managementObject.Properties["DNSHostName"]?.Value),
@@ -152,8 +152,8 @@ namespace WindowsMonitor.Win32
 		 PrimaryOwnerContact = (string) (managementObject.Properties["PrimaryOwnerContact"]?.Value),
 		 PrimaryOwnerName = (string) (managementObject.Properties["PrimaryOwnerName"]?.Value),
 		 ResetCapability = (ushort) (managementObject.Properties["ResetCapability"]?.Value ?? default(ushort)),
-		 ResetCount = (short) (managementObject.Properties["ResetCount"]?.Value ?? default(short)),
-		 ResetLimit = (short) (managementObject.Properties["ResetLimit"]?.Value ?? default(short)),
+		 ResetCount =  (managementObject.Properties["ResetCount"]?.Value?.ToString()),
+		 ResetLimit =  (managementObject.Properties["ResetLimit"]?.Value?.ToString()),
 		 Roles = (string[]) (managementObject.Properties["Roles"]?.Value ?? new string[0]),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 SupportContactDescription = (string[]) (managementObject.Properties["SupportContactDescription"]?.Value ?? new string[0]),

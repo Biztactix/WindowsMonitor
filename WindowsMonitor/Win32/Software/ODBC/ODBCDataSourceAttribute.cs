@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Software.ODBC
     /// </summary>
     public sealed class ODBCDataSourceAttribute
     {
-		public short Check { get; private set; }
-		public short Setting { get; private set; }
+		public string Check { get; private set; }
+		public string Setting { get; private set; }
 
         public static IEnumerable<ODBCDataSourceAttribute> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Software.ODBC
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ODBCDataSourceAttribute
                 {
-                     Check = (short) (managementObject.Properties["Check"]?.Value ?? default(short)),
-		 Setting = (short) (managementObject.Properties["Setting"]?.Value ?? default(short))
+                     Check =  (managementObject.Properties["Check"]?.Value?.ToString()),
+		 Setting =  (managementObject.Properties["Setting"]?.Value?.ToString())
                 };
         }
     }

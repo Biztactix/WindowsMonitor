@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Storage
     /// </summary>
     public sealed class LogicalDiskRootDirectory
     {
-		public short GroupComponent { get; private set; }
-		public short PartComponent { get; private set; }
+		public string GroupComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
         public static IEnumerable<LogicalDiskRootDirectory> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Storage
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new LogicalDiskRootDirectory
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+                     GroupComponent =  (managementObject.Properties["GroupComponent"]?.Value?.ToString()),
+		 PartComponent =  (managementObject.Properties["PartComponent"]?.Value?.ToString())
                 };
         }
     }

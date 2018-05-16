@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class DependencyContext
     {
-		public short Context { get; private set; }
-		public short Dependency { get; private set; }
+		public string Context { get; private set; }
+		public string Dependency { get; private set; }
 
         public static IEnumerable<DependencyContext> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DependencyContext
                 {
-                     Context = (short) (managementObject.Properties["Context"]?.Value ?? default(short)),
-		 Dependency = (short) (managementObject.Properties["Dependency"]?.Value ?? default(short))
+                     Context = (string) (managementObject.Properties["Context"]?.Value ?? default(string)),
+		 Dependency = (string) (managementObject.Properties["Dependency"]?.Value ?? default(string))
                 };
         }
     }

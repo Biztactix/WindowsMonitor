@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ParticipatesInSet
     {
-		public short Element { get; private set; }
-		public short Set { get; private set; }
+		public string Element { get; private set; }
+		public string Set { get; private set; }
 
         public static IEnumerable<ParticipatesInSet> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ParticipatesInSet
                 {
-                     Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short)),
-		 Set = (short) (managementObject.Properties["Set"]?.Value ?? default(short))
+                     Element =  (managementObject.Properties["Element"]?.Value?.ToString()),
+		 Set =  (managementObject.Properties["Set"]?.Value?.ToString())
                 };
         }
     }

@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Hardware.Memory
     /// </summary>
     public sealed class MemoryDeviceLocation
     {
-		public short Antecedent { get; private set; }
-		public short Dependent { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
 
         public static IEnumerable<MemoryDeviceLocation> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Hardware.Memory
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new MemoryDeviceLocation
                 {
-                     Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short))
+                     Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),
+		 Dependent =  (managementObject.Properties["Dependent"]?.Value?.ToString())
                 };
         }
     }

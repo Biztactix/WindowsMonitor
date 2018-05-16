@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Storage.Security
     /// </summary>
     public sealed class SecuritySettingOwner
     {
-		public short Owner { get; private set; }
-		public short SecuritySetting { get; private set; }
+		public string Owner { get; private set; }
+		public string SecuritySetting { get; private set; }
 
         public static IEnumerable<SecuritySettingOwner> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Storage.Security
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SecuritySettingOwner
                 {
-                     Owner = (short) (managementObject.Properties["Owner"]?.Value ?? default(short)),
-		 SecuritySetting = (short) (managementObject.Properties["SecuritySetting"]?.Value ?? default(short))
+                     Owner =  (managementObject.Properties["Owner"]?.Value?.ToString()),
+		 SecuritySetting =  (managementObject.Properties["SecuritySetting"]?.Value?.ToString())
                 };
         }
     }

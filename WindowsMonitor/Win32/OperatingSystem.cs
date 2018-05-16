@@ -18,7 +18,7 @@ namespace WindowsMonitor.Win32
         public string CSCreationClassName { get; private set; }
         public string CSDVersion { get; private set; }
         public string CSName { get; private set; }
-        public short CurrentTimeZone { get; private set; }
+        public string CurrentTimeZone { get; private set; }
         public bool DataExecutionPrevention_32BitApplications { get; private set; }
         public bool DataExecutionPrevention_Available { get; private set; }
         public bool DataExecutionPrevention_Drivers { get; private set; }
@@ -115,7 +115,7 @@ namespace WindowsMonitor.Win32
                         (string) (managementObject.Properties["CSCreationClassName"]?.Value),
                     CSDVersion = (string) (managementObject.Properties["CSDVersion"]?.Value),
                     CSName = (string) (managementObject.Properties["CSName"]?.Value),
-                    CurrentTimeZone = (short) (managementObject.Properties["CurrentTimeZone"]?.Value ?? default(short)),
+                    CurrentTimeZone =  (managementObject.Properties["CurrentTimeZone"]?.Value?.ToString()),
                     DataExecutionPrevention_32BitApplications =
                         (bool) (managementObject.Properties["DataExecutionPrevention_32BitApplications"]?.Value ??
                                 default(bool)),

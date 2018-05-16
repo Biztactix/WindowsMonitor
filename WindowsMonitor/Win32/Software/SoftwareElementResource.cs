@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Software
     /// </summary>
     public sealed class SoftwareElementResource
     {
-		public short Element { get; private set; }
-		public short Setting { get; private set; }
+		public string Element { get; private set; }
+		public string Setting { get; private set; }
 
         public static IEnumerable<SoftwareElementResource> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Software
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SoftwareElementResource
                 {
-                     Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short)),
-		 Setting = (short) (managementObject.Properties["Setting"]?.Value ?? default(short))
+                     Element =  (managementObject.Properties["Element"]?.Value?.ToString()),
+		 Setting =  (managementObject.Properties["Setting"]?.Value?.ToString())
                 };
         }
     }

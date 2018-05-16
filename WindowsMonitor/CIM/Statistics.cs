@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class Statistics
     {
-		public short Element { get; private set; }
-		public short Stats { get; private set; }
+		public string Element { get; private set; }
+		public string Stats { get; private set; }
 
         public static IEnumerable<Statistics> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Statistics
                 {
-                     Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short)),
-		 Stats = (short) (managementObject.Properties["Stats"]?.Value ?? default(short))
+                     Element =  (managementObject.Properties["Element"]?.Value?.ToString()),
+		 Stats =  (managementObject.Properties["Stats"]?.Value?.ToString())
                 };
         }
     }

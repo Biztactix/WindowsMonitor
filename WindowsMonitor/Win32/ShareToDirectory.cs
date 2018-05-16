@@ -9,8 +9,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class ShareToDirectory
     {
-		public short Share { get; private set; }
-		public short SharedElement { get; private set; }
+		public string Share { get; private set; }
+		public string SharedElement { get; private set; }
 
         public static IEnumerable<ShareToDirectory> Retrieve(string remote, string username, string password)
         {
@@ -40,11 +40,12 @@ namespace WindowsMonitor.Win32
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ShareToDirectory
-                {
-                     Share = (short) (managementObject.Properties["Share"]?.Value ?? default(short)),
-		 SharedElement = (short) (managementObject.Properties["SharedElement"]?.Value ?? default(short))
-                };
+            {
+                var retrieve = new ShareToDirectory();
+                retrieve.Share = (string) (managementObject.Properties["Share"]?.Value ?? default(string));
+                retrieve.SharedElement = (string) (managementObject.Properties["SharedElement"]?.Value ?? default(string));
+                yield return retrieve;
+            }
         }
     }
 }

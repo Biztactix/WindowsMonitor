@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,8 +7,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class MountPoint
     {
-		public short Directory { get; private set; }
-		public short Volume { get; private set; }
+        public string Directory { get; private set; }
+        public string Volume { get; private set; }
 
         public static IEnumerable<MountPoint> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +40,8 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new MountPoint
                 {
-                     Directory = (short) (managementObject.Properties["Directory"]?.Value ?? default(short)),
-		 Volume = (short) (managementObject.Properties["Volume"]?.Value ?? default(short))
+                    Directory = (string) (managementObject.Properties["Directory"]?.Value),
+                    Volume = (string) (managementObject.Properties["Volume"]?.Value)
                 };
         }
     }

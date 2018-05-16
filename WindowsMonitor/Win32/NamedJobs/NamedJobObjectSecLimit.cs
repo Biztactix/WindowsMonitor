@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.NamedJobs
     /// </summary>
     public sealed class NamedJobObjectSecLimit
     {
-		public short Collection { get; private set; }
-		public short Setting { get; private set; }
+		public string Collection { get; private set; }
+		public string Setting { get; private set; }
 
         public static IEnumerable<NamedJobObjectSecLimit> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.NamedJobs
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NamedJobObjectSecLimit
                 {
-                     Collection = (short) (managementObject.Properties["Collection"]?.Value ?? default(short)),
-		 Setting = (short) (managementObject.Properties["Setting"]?.Value ?? default(short))
+                     Collection =  (managementObject.Properties["Collection"]?.Value?.ToString()),
+		 Setting =  (managementObject.Properties["Setting"]?.Value?.ToString())
                 };
         }
     }

@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class CollectionSetting
     {
-		public short Collection { get; private set; }
-		public short Setting { get; private set; }
+		public string Collection { get; private set; }
+		public string Setting { get; private set; }
 
         public static IEnumerable<CollectionSetting> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new CollectionSetting
                 {
-                     Collection = (short) (managementObject.Properties["Collection"]?.Value ?? default(short)),
-		 Setting = (short) (managementObject.Properties["Setting"]?.Value ?? default(short))
+                     Collection = (string) (managementObject.Properties["Collection"]?.Value ?? default(string)),
+		 Setting = (string) (managementObject.Properties["Setting"]?.Value ?? default(string))
                 };
         }
     }

@@ -9,9 +9,9 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class Export
     {
-		public short Directory { get; private set; }
+		public string Directory { get; private set; }
 		public string ExportedDirectoryName { get; private set; }
-		public short LocalFs { get; private set; }
+		public string LocalFs { get; private set; }
 
         public static IEnumerable<Export> Retrieve(string remote, string username, string password)
         {
@@ -43,9 +43,9 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Export
                 {
-                     Directory = (short) (managementObject.Properties["Directory"]?.Value ?? default(short)),
+                     Directory =  (managementObject.Properties["Directory"]?.Value?.ToString()),
 		 ExportedDirectoryName = (string) (managementObject.Properties["ExportedDirectoryName"]?.Value),
-		 LocalFs = (short) (managementObject.Properties["LocalFS"]?.Value ?? default(short))
+		 LocalFs =  (managementObject.Properties["LocalFS"]?.Value?.ToString())
                 };
         }
     }

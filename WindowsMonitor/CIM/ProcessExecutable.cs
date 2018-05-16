@@ -9,9 +9,9 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class ProcessExecutable
     {
-		public short Antecedent { get; private set; }
+		public string Antecedent { get; private set; }
 		public ulong BaseAddress { get; private set; }
-		public short Dependent { get; private set; }
+		public string Dependent { get; private set; }
 		public uint GlobalProcessCount { get; private set; }
 		public uint ModuleInstance { get; private set; }
 		public uint ProcessCount { get; private set; }
@@ -46,9 +46,9 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ProcessExecutable
                 {
-                     Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
+                     Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),
 		 BaseAddress = (ulong) (managementObject.Properties["BaseAddress"]?.Value ?? default(ulong)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short)),
+		 Dependent =  (managementObject.Properties["Dependent"]?.Value?.ToString()),
 		 GlobalProcessCount = (uint) (managementObject.Properties["GlobalProcessCount"]?.Value ?? default(uint)),
 		 ModuleInstance = (uint) (managementObject.Properties["ModuleInstance"]?.Value ?? default(uint)),
 		 ProcessCount = (uint) (managementObject.Properties["ProcessCount"]?.Value ?? default(uint))

@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Software
     /// </summary>
     public sealed class ProductResource
     {
-		public short Product { get; private set; }
-		public short Resource { get; private set; }
+		public string Product { get; private set; }
+		public string Resource { get; private set; }
 
         public static IEnumerable<ProductResource> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Software
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ProductResource
                 {
-                     Product = (short) (managementObject.Properties["Product"]?.Value ?? default(short)),
-		 Resource = (short) (managementObject.Properties["Resource"]?.Value ?? default(short))
+                     Product =  (managementObject.Properties["Product"]?.Value?.ToString()),
+		 Resource =  (managementObject.Properties["Resource"]?.Value?.ToString())
                 };
         }
     }

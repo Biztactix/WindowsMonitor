@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class SoftwareElementActions
     {
-		public short Action { get; private set; }
-		public short Element { get; private set; }
+		public string Action { get; private set; }
+		public string Element { get; private set; }
 
         public static IEnumerable<SoftwareElementActions> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SoftwareElementActions
                 {
-                     Action = (short) (managementObject.Properties["Action"]?.Value ?? default(short)),
-		 Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short))
+                     Action =  (managementObject.Properties["Action"]?.Value?.ToString()),
+		 Element =  (managementObject.Properties["Element"]?.Value?.ToString())
                 };
         }
     }

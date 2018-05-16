@@ -13,7 +13,7 @@ namespace WindowsMonitor.CIM
 		public string CreationClassName { get; private set; }
 		public string CsCreationClassName { get; private set; }
 		public string CsName { get; private set; }
-		public short CurrentTimeZone { get; private set; }
+		public string CurrentTimeZone { get; private set; }
 		public string Description { get; private set; }
 		public bool Distributed { get; private set; }
 		public ulong FreePhysicalMemory { get; private set; }
@@ -71,7 +71,7 @@ namespace WindowsMonitor.CIM
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
 		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
-		 CurrentTimeZone = (short) (managementObject.Properties["CurrentTimeZone"]?.Value ?? default(short)),
+		 CurrentTimeZone =  (managementObject.Properties["CurrentTimeZone"]?.Value?.ToString()),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Distributed = (bool) (managementObject.Properties["Distributed"]?.Value ?? default(bool)),
 		 FreePhysicalMemory = (ulong) (managementObject.Properties["FreePhysicalMemory"]?.Value ?? default(ulong)),

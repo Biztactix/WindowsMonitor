@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Hardware.OnBoard
     /// </summary>
     public sealed class SystemBIOS
     {
-		public short GroupComponent { get; private set; }
-		public short PartComponent { get; private set; }
+		public string GroupComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
         public static IEnumerable<SystemBIOS> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Hardware.OnBoard
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SystemBIOS
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+                     GroupComponent =  (managementObject.Properties["GroupComponent"]?.Value?.ToString()),
+		 PartComponent =  (managementObject.Properties["PartComponent"]?.Value?.ToString())
                 };
         }
     }

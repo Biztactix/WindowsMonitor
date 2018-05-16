@@ -9,8 +9,8 @@ namespace WindowsMonitor.CIM
     /// </summary>
     public sealed class DirectorySpecificationFile
     {
-		public short DirectorySpecification { get; private set; }
-		public short FileSpecification { get; private set; }
+		public string DirectorySpecification { get; private set; }
+		public string FileSpecification { get; private set; }
 
         public static IEnumerable<DirectorySpecificationFile> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.CIM
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DirectorySpecificationFile
                 {
-                     DirectorySpecification = (short) (managementObject.Properties["DirectorySpecification"]?.Value ?? default(short)),
-		 FileSpecification = (short) (managementObject.Properties["FileSpecification"]?.Value ?? default(short))
+                     DirectorySpecification = (string) (managementObject.Properties["DirectorySpecification"]?.Value ?? default(string)),
+		 FileSpecification = (string) (managementObject.Properties["FileSpecification"]?.Value ?? default(string))
                 };
         }
     }

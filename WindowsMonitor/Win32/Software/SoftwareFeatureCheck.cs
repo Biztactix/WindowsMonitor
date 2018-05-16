@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Software
     /// </summary>
     public sealed class SoftwareFeatureCheck
     {
-		public short Check { get; private set; }
-		public short Element { get; private set; }
+		public string Check { get; private set; }
+		public string Element { get; private set; }
 
         public static IEnumerable<SoftwareFeatureCheck> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Software
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SoftwareFeatureCheck
                 {
-                     Check = (short) (managementObject.Properties["Check"]?.Value ?? default(short)),
-		 Element = (short) (managementObject.Properties["Element"]?.Value ?? default(short))
+                     Check =  (managementObject.Properties["Check"]?.Value?.ToString()),
+		 Element =  (managementObject.Properties["Element"]?.Value?.ToString())
                 };
         }
     }

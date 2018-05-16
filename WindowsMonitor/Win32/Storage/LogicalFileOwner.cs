@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Storage
     /// </summary>
     public sealed class LogicalFileOwner
     {
-		public short Owner { get; private set; }
-		public short SecuritySetting { get; private set; }
+		public string Owner { get; private set; }
+		public string SecuritySetting { get; private set; }
 
         public static IEnumerable<LogicalFileOwner> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Storage
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new LogicalFileOwner
                 {
-                     Owner = (short) (managementObject.Properties["Owner"]?.Value ?? default(short)),
-		 SecuritySetting = (short) (managementObject.Properties["SecuritySetting"]?.Value ?? default(short))
+                     Owner =  (managementObject.Properties["Owner"]?.Value?.ToString()),
+		 SecuritySetting =  (managementObject.Properties["SecuritySetting"]?.Value?.ToString())
                 };
         }
     }

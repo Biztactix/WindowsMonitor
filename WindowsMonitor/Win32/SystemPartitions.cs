@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,8 +7,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class SystemPartitions
     {
-		public short GroupComponent { get; private set; }
-		public short PartComponent { get; private set; }
+        public string GroupComponent { get; private set; }
+        public string PartComponent { get; private set; }
 
         public static IEnumerable<SystemPartitions> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +40,8 @@ namespace WindowsMonitor.Win32
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SystemPartitions
                 {
-                     GroupComponent = (short) (managementObject.Properties["GroupComponent"]?.Value ?? default(short)),
-		 PartComponent = (short) (managementObject.Properties["PartComponent"]?.Value ?? default(short))
+                    GroupComponent = (string) (managementObject.Properties["GroupComponent"]?.Value ?? default(string)),
+                    PartComponent = (string) (managementObject.Properties["PartComponent"]?.Value ?? default(string))
                 };
         }
     }

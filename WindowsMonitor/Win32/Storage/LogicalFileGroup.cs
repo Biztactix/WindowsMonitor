@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Storage
     /// </summary>
     public sealed class LogicalFileGroup
     {
-		public short Group { get; private set; }
-		public short SecuritySetting { get; private set; }
+		public string Group { get; private set; }
+		public string SecuritySetting { get; private set; }
 
         public static IEnumerable<LogicalFileGroup> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Storage
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new LogicalFileGroup
                 {
-                     Group = (short) (managementObject.Properties["Group"]?.Value ?? default(short)),
-		 SecuritySetting = (short) (managementObject.Properties["SecuritySetting"]?.Value ?? default(short))
+                     Group =  (managementObject.Properties["Group"]?.Value?.ToString()),
+		 SecuritySetting =  (managementObject.Properties["SecuritySetting"]?.Value?.ToString())
                 };
         }
     }

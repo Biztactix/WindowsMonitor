@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Hardware.PnP
     /// </summary>
     public sealed class PnPDevice
     {
-		public short SameElement { get; private set; }
-		public short SystemElement { get; private set; }
+		public string SameElement { get; private set; }
+		public string SystemElement { get; private set; }
 
         public static IEnumerable<PnPDevice> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Hardware.PnP
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new PnPDevice
                 {
-                     SameElement = (short) (managementObject.Properties["SameElement"]?.Value ?? default(short)),
-		 SystemElement = (short) (managementObject.Properties["SystemElement"]?.Value ?? default(short))
+                     SameElement =  (managementObject.Properties["SameElement"]?.Value?.ToString()),
+		 SystemElement =  (managementObject.Properties["SystemElement"]?.Value?.ToString())
                 };
         }
     }

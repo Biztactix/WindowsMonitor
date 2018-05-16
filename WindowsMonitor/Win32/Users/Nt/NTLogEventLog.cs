@@ -7,8 +7,8 @@ namespace WindowsMonitor.Win32.Users.Nt
     /// </summary>
     public sealed class NTLogEventLog
     {
-		public short Log { get; private set; }
-		public short Record { get; private set; }
+		public string Log { get; private set; }
+		public string Record { get; private set; }
 
         public static IEnumerable<NTLogEventLog> Retrieve(string remote, string username, string password)
         {
@@ -40,8 +40,8 @@ namespace WindowsMonitor.Win32.Users.Nt
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NTLogEventLog
                 {
-                     Log = (short) (managementObject.Properties["Log"]?.Value ?? default(short)),
-		 Record = (short) (managementObject.Properties["Record"]?.Value ?? default(short))
+                     Log =  (managementObject.Properties["Log"]?.Value?.ToString()),
+		 Record =  (managementObject.Properties["Record"]?.Value?.ToString())
                 };
         }
     }

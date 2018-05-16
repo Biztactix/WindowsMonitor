@@ -8,8 +8,8 @@ namespace WindowsMonitor.CIM.Hardware
     public sealed class SerialInterface
     {
 		public ushort AccessState { get; private set; }
-		public short Antecedent { get; private set; }
-		public short Dependent { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
 		public ushort FlowControlInfo { get; private set; }
 		public uint NegotiatedDataWidth { get; private set; }
 		public ulong NegotiatedSpeed { get; private set; }
@@ -49,8 +49,8 @@ namespace WindowsMonitor.CIM.Hardware
                 yield return new SerialInterface
                 {
                      AccessState = (ushort) (managementObject.Properties["AccessState"]?.Value ?? default(ushort)),
-		 Antecedent = (short) (managementObject.Properties["Antecedent"]?.Value ?? default(short)),
-		 Dependent = (short) (managementObject.Properties["Dependent"]?.Value ?? default(short)),
+		 Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
+		 Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string)),
 		 FlowControlInfo = (ushort) (managementObject.Properties["FlowControlInfo"]?.Value ?? default(ushort)),
 		 NegotiatedDataWidth = (uint) (managementObject.Properties["NegotiatedDataWidth"]?.Value ?? default(uint)),
 		 NegotiatedSpeed = (ulong) (managementObject.Properties["NegotiatedSpeed"]?.Value ?? default(ulong)),

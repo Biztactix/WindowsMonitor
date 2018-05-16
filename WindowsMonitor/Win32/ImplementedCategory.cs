@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
@@ -9,8 +7,8 @@ namespace WindowsMonitor.Win32
     /// </summary>
     public sealed class ImplementedCategory
     {
-		public short Category { get; private set; }
-		public short Component { get; private set; }
+        public string Category { get; private set; }
+        public string Component { get; private set; }
 
         public static IEnumerable<ImplementedCategory> Retrieve(string remote, string username, string password)
         {
@@ -40,11 +38,14 @@ namespace WindowsMonitor.Win32
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ImplementedCategory
-                {
-                     Category = (short) (managementObject.Properties["Category"]?.Value ?? default(short)),
-		 Component = (short) (managementObject.Properties["Component"]?.Value ?? default(short))
-                };
+            {
+                var retrieve = new ImplementedCategory
+                    {
+                        Category = (string) (managementObject.Properties["Category"]?.Value),
+                        Component = (string) (managementObject.Properties["Component"]?.Value)
+                    };
+                yield return retrieve;
+            }
         }
     }
 }
