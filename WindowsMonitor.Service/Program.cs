@@ -4,6 +4,7 @@ using System.Linq;
 using System.Management;
 using System.Reflection;
 using WindowsMonitor.Win32.Hardware;
+using WindowsMonitor.Win32.Hardware.OnBoard;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
@@ -13,6 +14,8 @@ namespace WindowsMonitor.Service
     {
         public static void Main(string[] args)
         {
+            var ll = new WindowsMonitor.Bios.Smbios();
+
             BuildWebHost(args).Run();
         }
 
