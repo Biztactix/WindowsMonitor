@@ -7,10 +7,13 @@
     <Company />
     <Description>Total wrapper on WMI (Windows Management Instrumentation) namespaces and classes to query hardware and software installed on the system for .NET Standard</Description>
     <Copyright>Matteo Fabbri 2018</Copyright>
-    <PackageProjectUrl>https://matteofabbri.org/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/matteofabbri/WindowsMonitor</PackageProjectUrl>
     <PackageTags>wmi monitor hardware software license performance windows components Windows Management Instrumentation</PackageTags>
-    <Version>2.0.0</Version>
-    <PackageId>WindowsMonitor.Standard</PackageId>
+    <Version>2.5.0</Version>
+    <PackageId>WindowsMonitor</PackageId>
+    <AssemblyVersion>2.5.0.0</AssemblyVersion>
+    <FileVersion>2.5.0.0</FileVersion>
+    <RepositoryUrl>https://github.com/matteofabbri/WindowsMonitor</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM
+namespace WindowsMonitor.CIM.Hardware
 {
     /// <summary>
     /// </summary>
-    public sealed class AssociatedSupplyVoltageSensor
+    public sealed class PackagedComponent
     {
-		public string Antecedent { get; private set; }
-		public string Dependent { get; private set; }
-		public ushort MonitoringRange { get; private set; }
+		public string GroupComponent { get; private set; }
+		public string LocationWithinContainer { get; private set; }
+		public string PartComponent { get; private set; }
 
-        public static IEnumerable<AssociatedSupplyVoltageSensor> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PackagedComponent> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -28,24 +28,24 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<AssociatedSupplyVoltageSensor> Retrieve()
+        public static IEnumerable<PackagedComponent> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<AssociatedSupplyVoltageSensor> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PackagedComponent> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_AssociatedSupplyVoltageSensor");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_PackagedComponent");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new AssociatedSupplyVoltageSensor
+                yield return new PackagedComponent
                 {
-                     Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
-		 Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string)),
-		 MonitoringRange = (ushort) (managementObject.Properties["MonitoringRange"]?.Value ?? default(ushort))
+                     GroupComponent =  (managementObject.Properties["GroupComponent"]?.Value?.ToString()),
+		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value),
+		 PartComponent =  (managementObject.Properties["PartComponent"]?.Value?.ToString())
                 };
         }
     }

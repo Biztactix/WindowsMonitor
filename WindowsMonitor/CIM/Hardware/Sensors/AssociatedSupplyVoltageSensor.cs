@@ -1,19 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM
+namespace WindowsMonitor.CIM.Hardware.Sensors
 {
     /// <summary>
     /// </summary>
-    public sealed class AssociatedSupplyCurrentSensor
+    public sealed class AssociatedSupplyVoltageSensor
     {
 		public string Antecedent { get; private set; }
 		public string Dependent { get; private set; }
 		public ushort MonitoringRange { get; private set; }
 
-        public static IEnumerable<AssociatedSupplyCurrentSensor> Retrieve(string remote, string username, string password)
+        public static IEnumerable<AssociatedSupplyVoltageSensor> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -28,20 +26,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<AssociatedSupplyCurrentSensor> Retrieve()
+        public static IEnumerable<AssociatedSupplyVoltageSensor> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<AssociatedSupplyCurrentSensor> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<AssociatedSupplyVoltageSensor> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_AssociatedSupplyCurrentSensor");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_AssociatedSupplyVoltageSensor");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new AssociatedSupplyCurrentSensor
+                yield return new AssociatedSupplyVoltageSensor
                 {
                      Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
 		 Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string)),

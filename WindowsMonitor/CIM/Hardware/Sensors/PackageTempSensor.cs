@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM
+namespace WindowsMonitor.CIM.Hardware.Sensors
 {
     /// <summary>
     /// </summary>
-    public sealed class PackageCooling
+    public sealed class PackageTempSensor
     {
-		public string Antecedent { get; private set; }
-		public string Dependent { get; private set; }
+        public string Antecedent { get; private set; }
+        public string Dependent { get; private set; }
 
-        public static IEnumerable<PackageCooling> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PackageTempSensor> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,23 +25,23 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PackageCooling> Retrieve()
+        public static IEnumerable<PackageTempSensor> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PackageCooling> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PackageTempSensor> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_PackageCooling");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_PackageTempSensor");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PackageCooling
+                yield return new PackageTempSensor
                 {
-                     Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),
-		 Dependent =  (managementObject.Properties["Dependent"]?.Value?.ToString())
+                    Antecedent = managementObject.Properties["Antecedent"]?.Value?.ToString(),
+                    Dependent = managementObject.Properties["Dependent"]?.Value?.ToString()
                 };
         }
     }

@@ -1,18 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM
+namespace WindowsMonitor.CIM.Hardware.Sensors
 {
     /// <summary>
     /// </summary>
-    public sealed class PackageTempSensor
+    public sealed class AssociatedSupplyCurrentSensor
     {
 		public string Antecedent { get; private set; }
 		public string Dependent { get; private set; }
+		public ushort MonitoringRange { get; private set; }
 
-        public static IEnumerable<PackageTempSensor> Retrieve(string remote, string username, string password)
+        public static IEnumerable<AssociatedSupplyCurrentSensor> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,23 +26,24 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PackageTempSensor> Retrieve()
+        public static IEnumerable<AssociatedSupplyCurrentSensor> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PackageTempSensor> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<AssociatedSupplyCurrentSensor> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_PackageTempSensor");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_AssociatedSupplyCurrentSensor");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PackageTempSensor
+                yield return new AssociatedSupplyCurrentSensor
                 {
-                     Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),
-		 Dependent =  (managementObject.Properties["Dependent"]?.Value?.ToString())
+                     Antecedent = (string) (managementObject.Properties["Antecedent"]?.Value ?? default(string)),
+		 Dependent = (string) (managementObject.Properties["Dependent"]?.Value ?? default(string)),
+		 MonitoringRange = (ushort) (managementObject.Properties["MonitoringRange"]?.Value ?? default(ushort))
                 };
         }
     }

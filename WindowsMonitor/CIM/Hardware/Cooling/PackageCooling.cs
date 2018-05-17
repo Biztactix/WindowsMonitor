@@ -1,19 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM
+namespace WindowsMonitor.CIM.Hardware.Cooling
 {
     /// <summary>
     /// </summary>
-    public sealed class PackagedComponent
+    public sealed class PackageCooling
     {
-		public string GroupComponent { get; private set; }
-		public string LocationWithinContainer { get; private set; }
-		public string PartComponent { get; private set; }
+		public string Antecedent { get; private set; }
+		public string Dependent { get; private set; }
 
-        public static IEnumerable<PackagedComponent> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PackageCooling> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -28,24 +25,23 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PackagedComponent> Retrieve()
+        public static IEnumerable<PackageCooling> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<PackagedComponent> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PackageCooling> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_PackagedComponent");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_PackageCooling");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new PackagedComponent
+                yield return new PackageCooling
                 {
-                     GroupComponent =  (managementObject.Properties["GroupComponent"]?.Value?.ToString()),
-		 LocationWithinContainer = (string) (managementObject.Properties["LocationWithinContainer"]?.Value),
-		 PartComponent =  (managementObject.Properties["PartComponent"]?.Value?.ToString())
+                     Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),
+		 Dependent =  (managementObject.Properties["Dependent"]?.Value?.ToString())
                 };
         }
     }
