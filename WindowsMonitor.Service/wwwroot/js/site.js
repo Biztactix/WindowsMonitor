@@ -3,7 +3,7 @@ function toTable(data, container)
 {
     data.forEach(obj =>
     {
-        var table = $("<table>");
+        var table = $("<table class=\"table table-striped\">");
         for (var key in obj)
         {
             table.append("<tr><td>" + key + "</td><td>" + obj[key] + "</td></tr>");

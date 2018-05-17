@@ -11,9 +11,19 @@ namespace WindowsMonitor.Service.Controllers
             return Json(Win32.OperatingSystem.Retrieve());
         }
 
-        public IActionResult Fans()
+        public IActionResult Drives()
         {
-            return Json(Win32.Hardware.DiskDrives.DiskDrivePhysicalMedia.Retrieve());
+            return Json(Win32.Hardware.DiskDrives.DiskDrive.Retrieve());
+        }
+
+        public IActionResult Partitions()
+        {
+            return Json(Win32.Hardware.DiskDrives.DiskPartition.Retrieve());
+        }
+
+        public IActionResult Quotas()
+        {
+            return Json(Win32.Hardware.DiskDrives.DiskQuota.Retrieve());
         }
     }
 }
