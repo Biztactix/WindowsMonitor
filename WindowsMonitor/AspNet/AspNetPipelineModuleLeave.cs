@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.WMI.AspNet
+namespace WindowsMonitor.AspNet
 {
     /// <summary>
     /// </summary>
