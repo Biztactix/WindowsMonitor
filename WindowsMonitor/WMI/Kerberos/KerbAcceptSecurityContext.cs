@@ -7,14 +7,15 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class KerbLogonUser_End
+    public sealed class KerbAcceptSecurityContext
     {
-		public string LogonDomain { get; private set; }
-		public string LogonType { get; private set; }
+		public string CredSource { get; private set; }
+		public string DomainName { get; private set; }
 		public uint Status { get; private set; }
+		public string Target { get; private set; }
 		public string UserName { get; private set; }
 
-        public static IEnumerable<KerbLogonUser_End> Retrieve(string remote, string username, string password)
+        public static IEnumerable<KerbAcceptSecurityContext> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -29,24 +30,25 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<KerbLogonUser_End> Retrieve()
+        public static IEnumerable<KerbAcceptSecurityContext> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<KerbLogonUser_End> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<KerbAcceptSecurityContext> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM KerbLogonUser_End");
+            var objectQuery = new ObjectQuery("SELECT * FROM KerbAcceptSecurityContext_End");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new KerbLogonUser_End
+                yield return new KerbAcceptSecurityContext
                 {
-                     LogonDomain = (string) (managementObject.Properties["LogonDomain"]?.Value ?? default(string)),
-		 LogonType = (string) (managementObject.Properties["LogonType"]?.Value ?? default(string)),
+                     CredSource = (string) (managementObject.Properties["CredSource"]?.Value ?? default(string)),
+		 DomainName = (string) (managementObject.Properties["DomainName"]?.Value ?? default(string)),
 		 Status = (uint) (managementObject.Properties["Status"]?.Value ?? default(uint)),
+		 Target = (string) (managementObject.Properties["Target"]?.Value ?? default(string)),
 		 UserName = (string) (managementObject.Properties["UserName"]?.Value ?? default(string))
                 };
         }

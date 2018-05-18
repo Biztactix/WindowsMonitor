@@ -7,7 +7,7 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class KerbInitSecurityContext_End
+    public sealed class KerbInitSecurityContext
     {
 		public string CredSource { get; private set; }
 		public string DomainName { get; private set; }
@@ -17,7 +17,7 @@ namespace WindowsMonitor.WMI
 		public string Target { get; private set; }
 		public string UserName { get; private set; }
 
-        public static IEnumerable<KerbInitSecurityContext_End> Retrieve(string remote, string username, string password)
+        public static IEnumerable<KerbInitSecurityContext> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -32,20 +32,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<KerbInitSecurityContext_End> Retrieve()
+        public static IEnumerable<KerbInitSecurityContext> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<KerbInitSecurityContext_End> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<KerbInitSecurityContext> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM KerbInitSecurityContext_End");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new KerbInitSecurityContext_End
+                yield return new KerbInitSecurityContext
                 {
                      CredSource = (string) (managementObject.Properties["CredSource"]?.Value ?? default(string)),
 		 DomainName = (string) (managementObject.Properties["DomainName"]?.Value ?? default(string)),

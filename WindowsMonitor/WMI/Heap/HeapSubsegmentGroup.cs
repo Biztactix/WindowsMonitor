@@ -7,14 +7,14 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class Heap_SubsegmentGroup
+    public sealed class HeapSubsegmentGroup
     {
 		public dynamic BlockSize { get; private set; }
 		public uint HeapHandle { get; private set; }
 		public uint SubSegment { get; private set; }
 		public dynamic SubSegmentSize { get; private set; }
 
-        public static IEnumerable<Heap_SubsegmentGroup> Retrieve(string remote, string username, string password)
+        public static IEnumerable<HeapSubsegmentGroup> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -29,20 +29,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Heap_SubsegmentGroup> Retrieve()
+        public static IEnumerable<HeapSubsegmentGroup> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Heap_SubsegmentGroup> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<HeapSubsegmentGroup> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Heap_SubsegmentGroup");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Heap_SubsegmentGroup
+                yield return new HeapSubsegmentGroup
                 {
                      BlockSize = (dynamic) (managementObject.Properties["BlockSize"]?.Value ?? default(dynamic)),
 		 HeapHandle = (uint) (managementObject.Properties["HeapHandle"]?.Value ?? default(uint)),
