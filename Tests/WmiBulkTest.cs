@@ -13,7 +13,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void BulkTest()
         {
-            var types = typeof(Processor).Assembly.GetTypes();
+            var types = typeof(Win32Processor).Assembly.GetTypes();
 
             foreach (var type in types)
             {

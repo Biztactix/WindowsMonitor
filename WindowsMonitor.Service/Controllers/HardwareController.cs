@@ -7,7 +7,7 @@ namespace WindowsMonitor.Service.Controllers
     {
         public IActionResult Index()
         {
-            return Json(Win32.OperatingSystem.Retrieve());
+            return Json(Win32.Win32OperatingSystem.Retrieve());
         }
     }
 }
