@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM
+namespace WindowsMonitor.CIM.OS
 {
     /// <summary>
     /// </summary>
-    public sealed class InstModification
+    public sealed class InstIndication
     {
 		public string[] CorrelatedIndications { get; private set; }
 		public string IndicationFilterName { get; private set; }
@@ -15,14 +14,13 @@ namespace WindowsMonitor.CIM
 		public DateTime IndicationTime { get; private set; }
 		public string OtherSeverity { get; private set; }
 		public ushort PerceivedSeverity { get; private set; }
-		public dynamic PreviousInstance { get; private set; }
 		public string SequenceContext { get; private set; }
 		public long SequenceNumber { get; private set; }
 		public dynamic SourceInstance { get; private set; }
 		public string SourceInstanceHost { get; private set; }
 		public string SourceInstanceModelPath { get; private set; }
 
-        public static IEnumerable<InstModification> Retrieve(string remote, string username, string password)
+        public static IEnumerable<InstIndication> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -37,20 +35,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<InstModification> Retrieve()
+        public static IEnumerable<InstIndication> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<InstModification> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<InstIndication> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_InstModification");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_InstIndication");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new InstModification
+                yield return new InstIndication
                 {
                      CorrelatedIndications = (string[]) (managementObject.Properties["CorrelatedIndications"]?.Value ?? new string[0]),
 		 IndicationFilterName = (string) (managementObject.Properties["IndicationFilterName"]?.Value),
@@ -58,7 +56,6 @@ namespace WindowsMonitor.CIM
 		 IndicationTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["IndicationTime"]?.Value as string ?? "00010102000000.000000+060"),
 		 OtherSeverity = (string) (managementObject.Properties["OtherSeverity"]?.Value),
 		 PerceivedSeverity = (ushort) (managementObject.Properties["PerceivedSeverity"]?.Value ?? default(ushort)),
-		 PreviousInstance = (dynamic) (managementObject.Properties["PreviousInstance"]?.Value ?? default(dynamic)),
 		 SequenceContext = (string) (managementObject.Properties["SequenceContext"]?.Value),
 		 SequenceNumber = (long) (managementObject.Properties["SequenceNumber"]?.Value ?? default(long)),
 		 SourceInstance = (dynamic) (managementObject.Properties["SourceInstance"]?.Value ?? default(dynamic)),

@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM
+namespace WindowsMonitor.CIM.OS
 {
     /// <summary>
     /// </summary>
-    public sealed class InstIndication
+    public sealed class InstCreation
     {
 		public string[] CorrelatedIndications { get; private set; }
 		public string IndicationFilterName { get; private set; }
@@ -21,7 +20,7 @@ namespace WindowsMonitor.CIM
 		public string SourceInstanceHost { get; private set; }
 		public string SourceInstanceModelPath { get; private set; }
 
-        public static IEnumerable<InstIndication> Retrieve(string remote, string username, string password)
+        public static IEnumerable<InstCreation> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -36,20 +35,20 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<InstIndication> Retrieve()
+        public static IEnumerable<InstCreation> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<InstIndication> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<InstCreation> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_InstIndication");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_InstCreation");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new InstIndication
+                yield return new InstCreation
                 {
                      CorrelatedIndications = (string[]) (managementObject.Properties["CorrelatedIndications"]?.Value ?? new string[0]),
 		 IndicationFilterName = (string) (managementObject.Properties["IndicationFilterName"]?.Value),

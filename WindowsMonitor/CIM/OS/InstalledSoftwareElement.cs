@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM
+namespace WindowsMonitor.CIM.OS
 {
     /// <summary>
     /// </summary>
-    public sealed class ElementConfiguration
+    public sealed class InstalledSoftwareElement
     {
-		public string Configuration { get; private set; }
-		public string Element { get; private set; }
+		public string Software { get; private set; }
+		public string System { get; private set; }
 
-        public static IEnumerable<ElementConfiguration> Retrieve(string remote, string username, string password)
+        public static IEnumerable<InstalledSoftwareElement> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,23 +25,23 @@ namespace WindowsMonitor.CIM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ElementConfiguration> Retrieve()
+        public static IEnumerable<InstalledSoftwareElement> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ElementConfiguration> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<InstalledSoftwareElement> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_ElementConfiguration");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_InstalledSoftwareElement");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ElementConfiguration
+                yield return new InstalledSoftwareElement
                 {
-                     Configuration = (string) (managementObject.Properties["Configuration"]?.Value ?? default(string)),
-		 Element = (string) (managementObject.Properties["Element"]?.Value ?? default(string))
+                     Software =  (managementObject.Properties["Software"]?.Value?.ToString()),
+		 System =  (managementObject.Properties["System"]?.Value?.ToString())
                 };
         }
     }
