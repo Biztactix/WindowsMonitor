@@ -7,14 +7,14 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class NtlmServerAccept_End
+    public sealed class NtlmLogonUserEnd
     {
-		public uint InContext { get; private set; }
-		public uint OutContext { get; private set; }
-		public uint StageHint { get; private set; }
+		public string DomainName { get; private set; }
+		public uint LogonType { get; private set; }
 		public uint Status { get; private set; }
+		public string UserName { get; private set; }
 
-        public static IEnumerable<NtlmServerAccept_End> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NtlmLogonUserEnd> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -29,25 +29,25 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmServerAccept_End> Retrieve()
+        public static IEnumerable<NtlmLogonUserEnd> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmServerAccept_End> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NtlmLogonUserEnd> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM NtlmServerAccept_End");
+            var objectQuery = new ObjectQuery("SELECT * FROM NtlmLogonUser_End");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NtlmServerAccept_End
+                yield return new NtlmLogonUserEnd
                 {
-                     InContext = (uint) (managementObject.Properties["InContext"]?.Value ?? default(uint)),
-		 OutContext = (uint) (managementObject.Properties["OutContext"]?.Value ?? default(uint)),
-		 StageHint = (uint) (managementObject.Properties["StageHint"]?.Value ?? default(uint)),
-		 Status = (uint) (managementObject.Properties["Status"]?.Value ?? default(uint))
+                     DomainName = (string) (managementObject.Properties["DomainName"]?.Value ?? default(string)),
+		 LogonType = (uint) (managementObject.Properties["LogonType"]?.Value ?? default(uint)),
+		 Status = (uint) (managementObject.Properties["Status"]?.Value ?? default(uint)),
+		 UserName = (string) (managementObject.Properties["UserName"]?.Value ?? default(string))
                 };
         }
     }

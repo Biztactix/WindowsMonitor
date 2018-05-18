@@ -7,7 +7,7 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class MSStorageDriver_ScsiRequestBlock
+    public sealed class ScsiRequestBlock
     {
 		public byte[] cdb { get; private set; }
 		public byte cdbLength { get; private set; }
@@ -32,7 +32,7 @@ namespace WindowsMonitor.WMI
 		public byte targetID { get; private set; }
 		public uint timeOutValue { get; private set; }
 
-        public static IEnumerable<MSStorageDriver_ScsiRequestBlock> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ScsiRequestBlock> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -47,20 +47,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_ScsiRequestBlock> Retrieve()
+        public static IEnumerable<ScsiRequestBlock> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_ScsiRequestBlock> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ScsiRequestBlock> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSStorageDriver_ScsiRequestBlock");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSStorageDriver_ScsiRequestBlock
+                yield return new ScsiRequestBlock
                 {
                      cdb = (byte[]) (managementObject.Properties["cdb"]?.Value ?? new byte[0]),
 		 cdbLength = (byte) (managementObject.Properties["cdbLength"]?.Value ?? default(byte)),

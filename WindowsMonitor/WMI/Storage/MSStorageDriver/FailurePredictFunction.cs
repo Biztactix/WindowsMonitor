@@ -7,14 +7,12 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class MSStorageDriver_FailurePredictData
+    public sealed class FailurePredictFunction
     {
 		public bool Active { get; private set; }
 		public string InstanceName { get; private set; }
-		public uint Length { get; private set; }
-		public byte[] VendorSpecific { get; private set; }
 
-        public static IEnumerable<MSStorageDriver_FailurePredictData> Retrieve(string remote, string username, string password)
+        public static IEnumerable<FailurePredictFunction> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -29,25 +27,23 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_FailurePredictData> Retrieve()
+        public static IEnumerable<FailurePredictFunction> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_FailurePredictData> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<FailurePredictFunction> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM MSStorageDriver_FailurePredictData");
+            var objectQuery = new ObjectQuery("SELECT * FROM MSStorageDriver_FailurePredictFunction");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSStorageDriver_FailurePredictData
+                yield return new FailurePredictFunction
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
-		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
-		 Length = (uint) (managementObject.Properties["Length"]?.Value ?? default(uint)),
-		 VendorSpecific = (byte[]) (managementObject.Properties["VendorSpecific"]?.Value ?? new byte[0])
+		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string))
                 };
         }
     }

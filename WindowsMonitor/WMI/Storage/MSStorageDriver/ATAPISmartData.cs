@@ -7,7 +7,7 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class MSStorageDriver_ATAPISmartData
+    public sealed class ATAPISmartData
     {
 		public bool Active { get; private set; }
 		public byte Checksum { get; private set; }
@@ -27,7 +27,7 @@ namespace WindowsMonitor.WMI
 		public byte VendorSpecific3 { get; private set; }
 		public byte[] VendorSpecific4 { get; private set; }
 
-        public static IEnumerable<MSStorageDriver_ATAPISmartData> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ATAPISmartData> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -42,20 +42,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_ATAPISmartData> Retrieve()
+        public static IEnumerable<ATAPISmartData> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_ATAPISmartData> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ATAPISmartData> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSStorageDriver_ATAPISmartData");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSStorageDriver_ATAPISmartData
+                yield return new ATAPISmartData
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 Checksum = (byte) (managementObject.Properties["Checksum"]?.Value ?? default(byte)),

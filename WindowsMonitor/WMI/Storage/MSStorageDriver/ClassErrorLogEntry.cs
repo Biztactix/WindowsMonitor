@@ -7,7 +7,7 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class MSStorageDriver_ClassErrorLogEntry
+    public sealed class ClassErrorLogEntry
     {
 		public bool errorPaging { get; private set; }
 		public byte errorReserved { get; private set; }
@@ -20,7 +20,7 @@ namespace WindowsMonitor.WMI
 		public dynamic srb { get; private set; }
 		public ulong tickCount { get; private set; }
 
-        public static IEnumerable<MSStorageDriver_ClassErrorLogEntry> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ClassErrorLogEntry> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -35,20 +35,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_ClassErrorLogEntry> Retrieve()
+        public static IEnumerable<ClassErrorLogEntry> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_ClassErrorLogEntry> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ClassErrorLogEntry> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSStorageDriver_ClassErrorLogEntry");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSStorageDriver_ClassErrorLogEntry
+                yield return new ClassErrorLogEntry
                 {
                      errorPaging = (bool) (managementObject.Properties["errorPaging"]?.Value ?? default(bool)),
 		 errorReserved = (byte) (managementObject.Properties["errorReserved"]?.Value ?? default(byte)),

@@ -9,7 +9,10 @@ namespace WindowsMonitor.WMI
     /// </summary>
     public sealed class NtlmClientInitialize
     {
-		
+		public uint InContext { get; private set; }
+		public uint OutContext { get; private set; }
+		public uint StageHint { get; private set; }
+		public uint Status { get; private set; }
 
         public static IEnumerable<NtlmClientInitialize> Retrieve(string remote, string username, string password)
         {
@@ -34,14 +37,17 @@ namespace WindowsMonitor.WMI
 
         public static IEnumerable<NtlmClientInitialize> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM NtlmClientInitialize");
+            var objectQuery = new ObjectQuery("SELECT * FROM NtlmClientInitialize_End");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NtlmClientInitialize
                 {
-                    
+                     InContext = (uint) (managementObject.Properties["InContext"]?.Value ?? default(uint)),
+		 OutContext = (uint) (managementObject.Properties["OutContext"]?.Value ?? default(uint)),
+		 StageHint = (uint) (managementObject.Properties["StageHint"]?.Value ?? default(uint)),
+		 Status = (uint) (managementObject.Properties["Status"]?.Value ?? default(uint))
                 };
         }
     }

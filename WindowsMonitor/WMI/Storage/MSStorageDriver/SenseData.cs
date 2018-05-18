@@ -7,7 +7,7 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class MSStorageDriver_SenseData
+    public sealed class SenseData
     {
 		public byte additionalSenseCode { get; private set; }
 		public byte additionalSenseCodeQualifier { get; private set; }
@@ -25,7 +25,7 @@ namespace WindowsMonitor.WMI
 		public byte[] senseKeySpecific { get; private set; }
 		public bool valid { get; private set; }
 
-        public static IEnumerable<MSStorageDriver_SenseData> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SenseData> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -40,20 +40,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_SenseData> Retrieve()
+        public static IEnumerable<SenseData> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSStorageDriver_SenseData> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SenseData> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSStorageDriver_SenseData");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSStorageDriver_SenseData
+                yield return new SenseData
                 {
                      additionalSenseCode = (byte) (managementObject.Properties["additionalSenseCode"]?.Value ?? default(byte)),
 		 additionalSenseCodeQualifier = (byte) (managementObject.Properties["additionalSenseCodeQualifier"]?.Value ?? default(byte)),

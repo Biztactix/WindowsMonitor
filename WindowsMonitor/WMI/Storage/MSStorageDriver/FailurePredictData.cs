@@ -7,12 +7,14 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class NtlmClientInitialize_Start
+    public sealed class FailurePredictData
     {
-		public uint InContext { get; private set; }
-		public uint StageHint { get; private set; }
+		public bool Active { get; private set; }
+		public string InstanceName { get; private set; }
+		public uint Length { get; private set; }
+		public byte[] VendorSpecific { get; private set; }
 
-        public static IEnumerable<NtlmClientInitialize_Start> Retrieve(string remote, string username, string password)
+        public static IEnumerable<FailurePredictData> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,23 +29,25 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmClientInitialize_Start> Retrieve()
+        public static IEnumerable<FailurePredictData> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmClientInitialize_Start> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<FailurePredictData> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM NtlmClientInitialize_Start");
+            var objectQuery = new ObjectQuery("SELECT * FROM MSStorageDriver_FailurePredictData");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NtlmClientInitialize_Start
+                yield return new FailurePredictData
                 {
-                     InContext = (uint) (managementObject.Properties["InContext"]?.Value ?? default(uint)),
-		 StageHint = (uint) (managementObject.Properties["StageHint"]?.Value ?? default(uint))
+                     Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
+		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
+		 Length = (uint) (managementObject.Properties["Length"]?.Value ?? default(uint)),
+		 VendorSpecific = (byte[]) (managementObject.Properties["VendorSpecific"]?.Value ?? new byte[0])
                 };
         }
     }

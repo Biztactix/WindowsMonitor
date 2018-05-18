@@ -7,11 +7,12 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class NtlmValidateUser_Start
+    public sealed class NtlmServerAcceptStart
     {
-		
+		public uint InContext { get; private set; }
+		public uint StageHint { get; private set; }
 
-        public static IEnumerable<NtlmValidateUser_Start> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NtlmServerAcceptStart> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -26,22 +27,23 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmValidateUser_Start> Retrieve()
+        public static IEnumerable<NtlmServerAcceptStart> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmValidateUser_Start> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NtlmServerAcceptStart> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM NtlmValidateUser_Start");
+            var objectQuery = new ObjectQuery("SELECT * FROM NtlmServerAccept_Start");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NtlmValidateUser_Start
+                yield return new NtlmServerAcceptStart
                 {
-                    
+                     InContext = (uint) (managementObject.Properties["InContext"]?.Value ?? default(uint)),
+		 StageHint = (uint) (managementObject.Properties["StageHint"]?.Value ?? default(uint))
                 };
         }
     }

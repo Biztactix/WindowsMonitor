@@ -7,15 +7,17 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class NtlmValidateUser_End
+    public sealed class NtlmServerAcceptInfo
     {
-		public string LogonDomain { get; private set; }
-		public string LogonServer { get; private set; }
-		public uint Success { get; private set; }
+		public string DomainName { get; private set; }
+		public uint Flags { get; private set; }
+		public uint InContext { get; private set; }
+		public uint OutContext { get; private set; }
+		public uint StageHint { get; private set; }
 		public string UserName { get; private set; }
 		public string Workstation { get; private set; }
 
-        public static IEnumerable<NtlmValidateUser_End> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NtlmServerAcceptInfo> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,24 +32,26 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmValidateUser_End> Retrieve()
+        public static IEnumerable<NtlmServerAcceptInfo> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmValidateUser_End> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NtlmServerAcceptInfo> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM NtlmValidateUser_End");
+            var objectQuery = new ObjectQuery("SELECT * FROM NtlmServerAccept_Info");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NtlmValidateUser_End
+                yield return new NtlmServerAcceptInfo
                 {
-                     LogonDomain = (string) (managementObject.Properties["LogonDomain"]?.Value ?? default(string)),
-		 LogonServer = (string) (managementObject.Properties["LogonServer"]?.Value ?? default(string)),
-		 Success = (uint) (managementObject.Properties["Success"]?.Value ?? default(uint)),
+                     DomainName = (string) (managementObject.Properties["DomainName"]?.Value ?? default(string)),
+		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
+		 InContext = (uint) (managementObject.Properties["InContext"]?.Value ?? default(uint)),
+		 OutContext = (uint) (managementObject.Properties["OutContext"]?.Value ?? default(uint)),
+		 StageHint = (uint) (managementObject.Properties["StageHint"]?.Value ?? default(uint)),
 		 UserName = (string) (managementObject.Properties["UserName"]?.Value ?? default(string)),
 		 Workstation = (string) (managementObject.Properties["Workstation"]?.Value ?? default(string))
                 };

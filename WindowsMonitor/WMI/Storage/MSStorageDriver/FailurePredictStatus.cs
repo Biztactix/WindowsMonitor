@@ -7,11 +7,14 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class NtlmLogonUser
+    public sealed class FailurePredictStatus
     {
-		
+		public bool Active { get; private set; }
+		public string InstanceName { get; private set; }
+		public bool PredictFailure { get; private set; }
+		public uint Reason { get; private set; }
 
-        public static IEnumerable<NtlmLogonUser> Retrieve(string remote, string username, string password)
+        public static IEnumerable<FailurePredictStatus> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -26,22 +29,25 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmLogonUser> Retrieve()
+        public static IEnumerable<FailurePredictStatus> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmLogonUser> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<FailurePredictStatus> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM NtlmLogonUser");
+            var objectQuery = new ObjectQuery("SELECT * FROM MSStorageDriver_FailurePredictStatus");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NtlmLogonUser
+                yield return new FailurePredictStatus
                 {
-                    
+                     Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
+		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
+		 PredictFailure = (bool) (managementObject.Properties["PredictFailure"]?.Value ?? default(bool)),
+		 Reason = (uint) (managementObject.Properties["Reason"]?.Value ?? default(uint))
                 };
         }
     }

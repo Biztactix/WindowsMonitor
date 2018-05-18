@@ -7,14 +7,13 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class NtlmClientInitialize_End
+    public sealed class FailurePredictThresholds
     {
-		public uint InContext { get; private set; }
-		public uint OutContext { get; private set; }
-		public uint StageHint { get; private set; }
-		public uint Status { get; private set; }
+		public bool Active { get; private set; }
+		public string InstanceName { get; private set; }
+		public byte[] VendorSpecific { get; private set; }
 
-        public static IEnumerable<NtlmClientInitialize_End> Retrieve(string remote, string username, string password)
+        public static IEnumerable<FailurePredictThresholds> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -29,25 +28,24 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmClientInitialize_End> Retrieve()
+        public static IEnumerable<FailurePredictThresholds> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NtlmClientInitialize_End> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<FailurePredictThresholds> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM NtlmClientInitialize_End");
+            var objectQuery = new ObjectQuery("SELECT * FROM MSStorageDriver_FailurePredictThresholds");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NtlmClientInitialize_End
+                yield return new FailurePredictThresholds
                 {
-                     InContext = (uint) (managementObject.Properties["InContext"]?.Value ?? default(uint)),
-		 OutContext = (uint) (managementObject.Properties["OutContext"]?.Value ?? default(uint)),
-		 StageHint = (uint) (managementObject.Properties["StageHint"]?.Value ?? default(uint)),
-		 Status = (uint) (managementObject.Properties["Status"]?.Value ?? default(uint))
+                     Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
+		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
+		 VendorSpecific = (byte[]) (managementObject.Properties["VendorSpecific"]?.Value ?? new byte[0])
                 };
         }
     }
