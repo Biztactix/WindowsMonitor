@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.WMI
+namespace WindowsMonitor.Hardware.Audio.HdAudio
 {
     /// <summary>
     /// </summary>
-    public sealed class HDAudioErrorStatus
+    public sealed class HdAudioErrorStatus
     {
 		public bool Active { get; private set; }
 		public dynamic ControllerErrorStatus { get; private set; }
@@ -15,7 +13,7 @@ namespace WindowsMonitor.WMI
 		public string InstanceName { get; private set; }
 		public uint NumEngines { get; private set; }
 
-        public static IEnumerable<HDAudioErrorStatus> Retrieve(string remote, string username, string password)
+        public static IEnumerable<HdAudioErrorStatus> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,20 +28,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HDAudioErrorStatus> Retrieve()
+        public static IEnumerable<HdAudioErrorStatus> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HDAudioErrorStatus> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<HdAudioErrorStatus> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM HDAudioErrorStatus");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new HDAudioErrorStatus
+                yield return new HdAudioErrorStatus
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 ControllerErrorStatus = (dynamic) (managementObject.Properties["ControllerErrorStatus"]?.Value ?? default(dynamic)),

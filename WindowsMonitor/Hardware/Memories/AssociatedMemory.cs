@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM.Hardware.Memories
+namespace WindowsMonitor.Hardware.Memories
 {
     /// <summary>
     /// </summary>

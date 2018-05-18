@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.WMI
+namespace WindowsMonitor.Hardware.Audio.HdAudio
 {
     /// <summary>
     /// </summary>
-    public sealed class HDAudioBusEvent
+    public sealed class HdAudioBusEvent
     {
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
-        public static IEnumerable<HDAudioBusEvent> Retrieve(string remote, string username, string password)
+        public static IEnumerable<HdAudioBusEvent> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,23 +25,23 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HDAudioBusEvent> Retrieve()
+        public static IEnumerable<HdAudioBusEvent> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HDAudioBusEvent> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<HdAudioBusEvent> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM HDAudioBusEvent");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new HDAudioBusEvent
+                yield return new HdAudioBusEvent
                 {
-                     SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+                     SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

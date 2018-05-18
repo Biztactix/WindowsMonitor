@@ -1,19 +1,18 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.WMI
+namespace WindowsMonitor.Hardware.Keyboards
 {
     /// <summary>
     /// </summary>
-    public sealed class MSKeyboard_ClassInformation
+    public sealed class KeyboardExtendedID
     {
 		public bool Active { get; private set; }
-		public ulong DeviceId { get; private set; }
 		public string InstanceName { get; private set; }
+		public uint Subtype { get; private set; }
+		public uint Type { get; private set; }
 
-        public static IEnumerable<MSKeyboard_ClassInformation> Retrieve(string remote, string username, string password)
+        public static IEnumerable<KeyboardExtendedID> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -28,24 +27,25 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSKeyboard_ClassInformation> Retrieve()
+        public static IEnumerable<KeyboardExtendedID> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSKeyboard_ClassInformation> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<KeyboardExtendedID> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM MSKeyboard_ClassInformation");
+            var objectQuery = new ObjectQuery("SELECT * FROM MSKeyboard_ExtendedID");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSKeyboard_ClassInformation
+                yield return new KeyboardExtendedID
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
-		 DeviceId = (ulong) (managementObject.Properties["DeviceId"]?.Value ?? default(ulong)),
-		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string))
+		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
+		 Subtype = (uint) (managementObject.Properties["Subtype"]?.Value ?? default(uint)),
+		 Type = (uint) (managementObject.Properties["Type"]?.Value ?? default(uint))
                 };
         }
     }

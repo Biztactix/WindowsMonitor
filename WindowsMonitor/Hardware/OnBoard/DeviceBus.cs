@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Hardware.OnBoard
+namespace WindowsMonitor.Hardware.OnBoard
 {
     /// <summary>
     /// </summary>

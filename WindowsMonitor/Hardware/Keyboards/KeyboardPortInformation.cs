@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.WMI
+namespace WindowsMonitor.Hardware.Keyboards
 {
     /// <summary>
     /// </summary>
-    public sealed class MSKeyboard_PortInformation
+    public sealed class KeyboardPortInformation
     {
 		public bool Active { get; private set; }
 		public uint ConnectorType { get; private set; }
@@ -17,7 +15,7 @@ namespace WindowsMonitor.WMI
 		public uint Indicators { get; private set; }
 		public string InstanceName { get; private set; }
 
-        public static IEnumerable<MSKeyboard_PortInformation> Retrieve(string remote, string username, string password)
+        public static IEnumerable<KeyboardPortInformation> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -32,20 +30,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSKeyboard_PortInformation> Retrieve()
+        public static IEnumerable<KeyboardPortInformation> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSKeyboard_PortInformation> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<KeyboardPortInformation> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSKeyboard_PortInformation");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSKeyboard_PortInformation
+                yield return new KeyboardPortInformation
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 ConnectorType = (uint) (managementObject.Properties["ConnectorType"]?.Value ?? default(uint)),

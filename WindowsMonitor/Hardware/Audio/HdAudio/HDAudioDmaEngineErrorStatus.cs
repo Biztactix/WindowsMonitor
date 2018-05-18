@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.WMI
+namespace WindowsMonitor.Hardware.Audio.HdAudio
 {
     /// <summary>
     /// </summary>
-    public sealed class HDAudioDmaEngineErrorStatus
+    public sealed class HdAudioDmaEngineErrorStatus
     {
 		public uint DescriptorError { get; private set; }
 		public uint FifoError { get; private set; }
 
-        public static IEnumerable<HDAudioDmaEngineErrorStatus> Retrieve(string remote, string username, string password)
+        public static IEnumerable<HdAudioDmaEngineErrorStatus> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +25,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HDAudioDmaEngineErrorStatus> Retrieve()
+        public static IEnumerable<HdAudioDmaEngineErrorStatus> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HDAudioDmaEngineErrorStatus> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<HdAudioDmaEngineErrorStatus> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM HDAudioDmaEngineErrorStatus");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new HDAudioDmaEngineErrorStatus
+                yield return new HdAudioDmaEngineErrorStatus
                 {
                      DescriptorError = (uint) (managementObject.Properties["DescriptorError"]?.Value ?? default(uint)),
 		 FifoError = (uint) (managementObject.Properties["FifoError"]?.Value ?? default(uint))

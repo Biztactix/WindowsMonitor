@@ -1,22 +1,20 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.WMI
+namespace WindowsMonitor.Hardware.Audio.HdAudio
 {
     /// <summary>
     /// </summary>
-    public sealed class HDAudioBus_Enum
+    public sealed class HdAudioBusEnum
     {
 		public bool Active { get; private set; }
 		public string InstanceName { get; private set; }
 		public byte NewDeviceState { get; private set; }
 		public byte OldDeviceState { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
-        public static IEnumerable<HDAudioBus_Enum> Retrieve(string remote, string username, string password)
+        public static IEnumerable<HdAudioBusEnum> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -31,27 +29,27 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HDAudioBus_Enum> Retrieve()
+        public static IEnumerable<HdAudioBusEnum> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<HDAudioBus_Enum> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<HdAudioBusEnum> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM HDAudioBus_Enum");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new HDAudioBus_Enum
+                yield return new HdAudioBusEnum
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
 		 NewDeviceState = (byte) (managementObject.Properties["NewDeviceState"]?.Value ?? default(byte)),
 		 OldDeviceState = (byte) (managementObject.Properties["OldDeviceState"]?.Value ?? default(byte)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Hardware.DiskDrives
+namespace WindowsMonitor.Hardware.Drives.DiskDrives
 {
     /// <summary>
     /// </summary>
