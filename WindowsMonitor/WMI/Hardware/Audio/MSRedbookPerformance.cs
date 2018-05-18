@@ -7,7 +7,7 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class MSRedbook_Performance
+    public sealed class MSRedbookPerformance
     {
 		public bool Active { get; private set; }
 		public long DataProcessed { get; private set; }
@@ -18,7 +18,7 @@ namespace WindowsMonitor.WMI
 		public long TimeStreamDelay { get; private set; }
 		public long TimeStreaming { get; private set; }
 
-        public static IEnumerable<MSRedbook_Performance> Retrieve(string remote, string username, string password)
+        public static IEnumerable<MSRedbookPerformance> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -33,20 +33,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSRedbook_Performance> Retrieve()
+        public static IEnumerable<MSRedbookPerformance> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSRedbook_Performance> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<MSRedbookPerformance> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSRedbook_Performance");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSRedbook_Performance
+                yield return new MSRedbookPerformance
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 DataProcessed = (long) (managementObject.Properties["DataProcessed"]?.Value ?? default(long)),

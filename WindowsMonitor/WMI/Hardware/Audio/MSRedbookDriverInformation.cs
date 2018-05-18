@@ -7,7 +7,7 @@ namespace WindowsMonitor.WMI
 {
     /// <summary>
     /// </summary>
-    public sealed class MSRedbook_DriverInformation
+    public sealed class MSRedbookDriverInformation
     {
 		public bool Active { get; private set; }
 		public bool CDDAAccurate { get; private set; }
@@ -20,7 +20,7 @@ namespace WindowsMonitor.WMI
 		public uint SectorsPerRead { get; private set; }
 		public uint SectorsPerReadMask { get; private set; }
 
-        public static IEnumerable<MSRedbook_DriverInformation> Retrieve(string remote, string username, string password)
+        public static IEnumerable<MSRedbookDriverInformation> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -35,20 +35,20 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSRedbook_DriverInformation> Retrieve()
+        public static IEnumerable<MSRedbookDriverInformation> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSRedbook_DriverInformation> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<MSRedbookDriverInformation> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSRedbook_DriverInformation");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSRedbook_DriverInformation
+                yield return new MSRedbookDriverInformation
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 CDDAAccurate = (bool) (managementObject.Properties["CDDAAccurate"]?.Value ?? default(bool)),
