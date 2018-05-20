@@ -10,7 +10,7 @@ namespace WindowsMonitor.Storage.Security
 		public string Caption { get; private set; }
 		public uint ControlFlags { get; private set; }
 		public string Description { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 
         public static IEnumerable<SecuritySetting> Retrieve(string remote, string username, string password)
         {
@@ -45,7 +45,7 @@ namespace WindowsMonitor.Storage.Security
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ControlFlags = (uint) (managementObject.Properties["ControlFlags"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

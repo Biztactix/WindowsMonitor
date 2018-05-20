@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Hardware.Ports
+namespace WindowsMonitor.Hardware.SerialPort
 {
     /// <summary>
     /// </summary>

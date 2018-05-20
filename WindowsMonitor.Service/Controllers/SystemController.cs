@@ -1,4 +1,5 @@
 ﻿using WindowsMonitor.Hardware.Drives.DiskDrives;
+using WindowsMonitor.Windows;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WindowsMonitor.Service.Controllers
@@ -9,7 +10,7 @@ namespace WindowsMonitor.Service.Controllers
     {
         public IActionResult Index()
         {
-            return Json(Win32.Win32OperatingSystem.Retrieve());
+            return Json(Win32OperatingSystem.Retrieve());
         }
 
         public IActionResult Drives()

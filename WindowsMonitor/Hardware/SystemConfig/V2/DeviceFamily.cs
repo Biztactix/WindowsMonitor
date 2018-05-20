@@ -7,7 +7,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
     /// </summary>
     public sealed class DeviceFamily
     {
-		public uint DeviceFamily { get; private set; }
+		public uint Family { get; private set; }
 		public uint DeviceForm { get; private set; }
 		public uint Flags { get; private set; }
 		public ulong UAPInfo { get; private set; }
@@ -42,7 +42,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new DeviceFamily
                 {
-                     DeviceFamily = (uint) (managementObject.Properties["DeviceFamily"]?.Value ?? default(uint)),
+                     Family = (uint) (managementObject.Properties["DeviceFamily"]?.Value ?? default(uint)),
 		 DeviceForm = (uint) (managementObject.Properties["DeviceForm"]?.Value ?? default(uint)),
 		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
 		 UAPInfo = (ulong) (managementObject.Properties["UAPInfo"]?.Value ?? default(ulong))

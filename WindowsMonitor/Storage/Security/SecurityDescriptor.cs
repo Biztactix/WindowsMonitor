@@ -8,11 +8,11 @@ namespace WindowsMonitor.Storage.Security
     public sealed class SecurityDescriptor
     {
 		public uint ControlFlags { get; private set; }
-		public dynamic[] DACL { get; private set; }
+		public dynamic[] Dacl { get; private set; }
 		public dynamic Group { get; private set; }
 		public dynamic Owner { get; private set; }
-		public dynamic[] SACL { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public dynamic[] Sacl { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<SecurityDescriptor> Retrieve(string remote, string username, string password)
         {
@@ -45,11 +45,11 @@ namespace WindowsMonitor.Storage.Security
                 yield return new SecurityDescriptor
                 {
                      ControlFlags = (uint) (managementObject.Properties["ControlFlags"]?.Value ?? default(uint)),
-		 DACL = (dynamic[]) (managementObject.Properties["DACL"]?.Value ?? new dynamic[0]),
+		 Dacl = (dynamic[]) (managementObject.Properties["DACL"]?.Value ?? new dynamic[0]),
 		 Group = (dynamic) (managementObject.Properties["Group"]?.Value ?? default(dynamic)),
 		 Owner = (dynamic) (managementObject.Properties["Owner"]?.Value ?? default(dynamic)),
-		 SACL = (dynamic[]) (managementObject.Properties["SACL"]?.Value ?? new dynamic[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 Sacl = (dynamic[]) (managementObject.Properties["SACL"]?.Value ?? new dynamic[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

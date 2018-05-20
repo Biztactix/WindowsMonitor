@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Window.Jobs
+namespace WindowsMonitor.Windows.Jobs
 {
     /// <summary>
     /// </summary>
