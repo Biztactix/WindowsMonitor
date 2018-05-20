@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Raw.Counters
+namespace WindowsMonitor.Performance.Raw.Counters
 {
     /// <summary>
     /// </summary>

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Raw.RemoteDesktop
+namespace WindowsMonitor.Performance.Raw.RemoteDesktop
 {
     /// <summary>
     /// </summary>

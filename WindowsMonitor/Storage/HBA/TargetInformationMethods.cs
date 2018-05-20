@@ -1,19 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.WMI
+namespace WindowsMonitor.Storage.HBA
 {
     /// <summary>
     /// </summary>
-    public sealed class MSSerial_PortName
+    public sealed class TargetInformationMethods
     {
 		public bool Active { get; private set; }
 		public string InstanceName { get; private set; }
-		public string PortName { get; private set; }
 
-        public static IEnumerable<MSSerial_PortName> Retrieve(string remote, string username, string password)
+        public static IEnumerable<TargetInformationMethods> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -28,24 +25,23 @@ namespace WindowsMonitor.WMI
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSSerial_PortName> Retrieve()
+        public static IEnumerable<TargetInformationMethods> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSSerial_PortName> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<TargetInformationMethods> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM MSSerial_PortName");
+            var objectQuery = new ObjectQuery("SELECT * FROM MS_SM_TargetInformationMethods");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSSerial_PortName
+                yield return new TargetInformationMethods
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
-		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
-		 PortName = (string) (managementObject.Properties["PortName"]?.Value ?? default(string))
+		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string))
                 };
         }
     }

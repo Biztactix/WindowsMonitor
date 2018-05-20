@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Raw.Network.Teredo
+namespace WindowsMonitor.Performance.Raw.Network.Teredo
 {
     /// <summary>
     /// </summary>

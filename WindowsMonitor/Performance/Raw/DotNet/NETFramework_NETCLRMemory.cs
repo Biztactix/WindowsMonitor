@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Raw.DotNet
+namespace WindowsMonitor.Performance.Raw.DotNet
 {
     /// <summary>
     /// </summary>

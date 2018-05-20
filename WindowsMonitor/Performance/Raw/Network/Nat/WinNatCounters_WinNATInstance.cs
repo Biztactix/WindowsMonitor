@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Raw.Network.Nat
+namespace WindowsMonitor.Performance.Raw.Network.Nat
 {
     /// <summary>
     /// </summary>

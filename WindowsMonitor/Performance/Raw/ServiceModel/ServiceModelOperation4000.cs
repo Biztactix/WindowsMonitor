@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Raw.ServiceModel
+namespace WindowsMonitor.Performance.Raw.ServiceModel
 {
     /// <summary>
     /// </summary>

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Raw.PerfOs
+namespace WindowsMonitor.Performance.Raw.PerfOs
 {
     /// <summary>
     /// </summary>

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Performance.Raw.PowerMeter
+namespace WindowsMonitor.Performance.Raw.PowerMeter
 {
     /// <summary>
     /// </summary>
