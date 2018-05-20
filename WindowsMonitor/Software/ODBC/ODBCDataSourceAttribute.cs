@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Software.ODBC
+namespace WindowsMonitor.Software.ODBC
 {
     /// <summary>
     /// </summary>

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM.Services
+namespace WindowsMonitor.Window.Services.Services
 {
     /// <summary>
     /// </summary>

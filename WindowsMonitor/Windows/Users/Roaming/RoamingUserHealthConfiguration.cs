@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Users.Roaming
+namespace WindowsMonitor.Windows.Users.Roaming
 {
     /// <summary>
     /// </summary>

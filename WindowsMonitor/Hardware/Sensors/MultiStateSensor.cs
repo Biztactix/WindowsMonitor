@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM.Sensors
+namespace WindowsMonitor.Hardware.Sensors
 {
     /// <summary>
     /// </summary>

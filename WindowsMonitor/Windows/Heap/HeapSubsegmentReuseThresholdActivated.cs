@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.WMI
+namespace WindowsMonitor.Windows.Heap
 {
     /// <summary>
     /// </summary>

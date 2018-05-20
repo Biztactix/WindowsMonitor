@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Storage.ShadowCopy
+namespace WindowsMonitor.Storage.ShadowCopy
 {
     /// <summary>
     /// </summary>

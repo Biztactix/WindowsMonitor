@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Hardware.Power
+namespace WindowsMonitor.Hardware.Power
 {
     /// <summary>
     /// </summary>

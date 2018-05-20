@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.NamedJobs
+namespace WindowsMonitor.Window.Jobs.NamedJobs
 {
     /// <summary>
     /// </summary>

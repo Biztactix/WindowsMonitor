@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Software.DCOM
+namespace WindowsMonitor.Software.DCOM
 {
     /// <summary>
     /// </summary>

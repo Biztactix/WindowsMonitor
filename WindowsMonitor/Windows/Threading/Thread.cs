@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Threading
+namespace WindowsMonitor.Windows.Threading
 {
     /// <summary>
     /// </summary>

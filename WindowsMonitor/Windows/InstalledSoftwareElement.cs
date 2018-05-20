@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.CIM.OS
+namespace WindowsMonitor.Windows.OS
 {
     /// <summary>
     /// </summary>

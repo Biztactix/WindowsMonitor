@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Users
+namespace WindowsMonitor.Windows.Users
 {
     /// <summary>
     /// </summary>

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Hardware.Video
+namespace WindowsMonitor.Hardware.Video
 {
     /// <summary>
     /// </summary>

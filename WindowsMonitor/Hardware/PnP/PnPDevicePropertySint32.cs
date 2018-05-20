@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Hardware.PnP
+namespace WindowsMonitor.Hardware.PnP
 {
     /// <summary>
     /// </summary>

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Win32Reg
+namespace WindowsMonitor.Windows.Win32Reg
 {
     /// <summary>
     /// </summary>

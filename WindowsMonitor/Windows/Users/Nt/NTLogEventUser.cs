@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Win32.Users.Nt
+namespace WindowsMonitor.Windows.Users.Nt
 {
     /// <summary>
     /// </summary>
