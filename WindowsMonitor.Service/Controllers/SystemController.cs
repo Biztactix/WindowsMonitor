@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using WindowsMonitor.Hardware.Drives.DiskDrives;
+using WindowsMonitor.Windows;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WindowsMonitor.Service.Controllers
 {
@@ -8,22 +10,22 @@ namespace WindowsMonitor.Service.Controllers
     {
         public IActionResult Index()
         {
-            return Json(Win32.OperatingSystem.Retrieve());
+            return Json(Win32OperatingSystem.Retrieve());
         }
 
         public IActionResult Drives()
         {
-            return Json(Win32.Hardware.DiskDrives.DiskDrive.Retrieve());
+            return Json(Win32DiskDrive.Retrieve());
         }
 
         public IActionResult Partitions()
         {
-            return Json(Win32.Hardware.DiskDrives.DiskPartition.Retrieve());
+            return Json(Win32DiskPartition.Retrieve());
         }
 
         public IActionResult Quotas()
         {
-            return Json(Win32.Hardware.DiskDrives.DiskQuota.Retrieve());
+            return Json(Win32DiskQuota.Retrieve());
         }
     }
 }

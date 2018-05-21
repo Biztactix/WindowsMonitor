@@ -3,9 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Management;
 using System.Reflection;
-using WindowsMonitor.Win32.Hardware;
-using WindowsMonitor.Win32.Hardware.OnBoard;
-using WindowsMonitor.WMI;
+using WindowsMonitor.Hardware;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
