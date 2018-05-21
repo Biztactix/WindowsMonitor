@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.Modems
 {
     /// <summary>
     /// </summary>
-    public sealed class Win32POTSModemToSerialPort
+    public sealed class Win32PotsModemToSerialPort
     {
 		public ushort AccessState { get; private set; }
 		public string Antecedent { get; private set; }
@@ -15,7 +15,7 @@ namespace WindowsMonitor.Hardware.Modems
 		public uint NumberOfHardResets { get; private set; }
 		public uint NumberOfSoftResets { get; private set; }
 
-        public static IEnumerable<Win32POTSModemToSerialPort> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Win32PotsModemToSerialPort> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,20 +30,20 @@ namespace WindowsMonitor.Hardware.Modems
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32POTSModemToSerialPort> Retrieve()
+        public static IEnumerable<Win32PotsModemToSerialPort> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32POTSModemToSerialPort> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Win32PotsModemToSerialPort> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_POTSModemToSerialPort");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Win32POTSModemToSerialPort
+                yield return new Win32PotsModemToSerialPort
                 {
                      AccessState = (ushort) (managementObject.Properties["AccessState"]?.Value ?? default(ushort)),
 		 Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),

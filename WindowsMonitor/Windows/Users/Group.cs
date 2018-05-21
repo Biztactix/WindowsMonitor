@@ -14,8 +14,8 @@ namespace WindowsMonitor.Windows.Users
 		public DateTime InstallDate { get; private set; }
 		public bool LocalAccount { get; private set; }
 		public string Name { get; private set; }
-		public string SID { get; private set; }
-		public byte SIDType { get; private set; }
+		public string Sid { get; private set; }
+		public byte SidType { get; private set; }
 		public string Status { get; private set; }
 
         public static IEnumerable<Group> Retrieve(string remote, string username, string password)
@@ -54,8 +54,8 @@ namespace WindowsMonitor.Windows.Users
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 LocalAccount = (bool) (managementObject.Properties["LocalAccount"]?.Value ?? default(bool)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 SID = (string) (managementObject.Properties["SID"]?.Value),
-		 SIDType = (byte) (managementObject.Properties["SIDType"]?.Value ?? default(byte)),
+		 Sid = (string) (managementObject.Properties["SID"]?.Value),
+		 SidType = (byte) (managementObject.Properties["SIDType"]?.Value ?? default(byte)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }

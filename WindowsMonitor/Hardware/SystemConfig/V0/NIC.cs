@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V0
 {
     /// <summary>
     /// </summary>
-    public sealed class NIC
+    public sealed class Nic
     {
 		public uint Data { get; private set; }
 		public int DhcpServer { get; private set; }
@@ -17,7 +17,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V0
 		public int Gateway { get; private set; }
 		public uint Index { get; private set; }
 		public int IpAddress { get; private set; }
-		public char[] NICName { get; private set; }
+		public char[] NicName { get; private set; }
 		public char[] PhysicalAddr { get; private set; }
 		public uint PhysicalAddrLen { get; private set; }
 		public int PrimaryWinsServer { get; private set; }
@@ -25,7 +25,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V0
 		public uint Size { get; private set; }
 		public int SubnetMask { get; private set; }
 
-        public static IEnumerable<NIC> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Nic> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -40,20 +40,20 @@ namespace WindowsMonitor.Hardware.SystemConfig.V0
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NIC> Retrieve()
+        public static IEnumerable<Nic> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NIC> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Nic> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM SystemConfig_V0_NIC");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NIC
+                yield return new Nic
                 {
                      Data = (uint) (managementObject.Properties["Data"]?.Value ?? default(uint)),
 		 DhcpServer = (int) (managementObject.Properties["DhcpServer"]?.Value ?? default(int)),
@@ -65,7 +65,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V0
 		 Gateway = (int) (managementObject.Properties["Gateway"]?.Value ?? default(int)),
 		 Index = (uint) (managementObject.Properties["Index"]?.Value ?? default(uint)),
 		 IpAddress = (int) (managementObject.Properties["IpAddress"]?.Value ?? default(int)),
-		 NICName = (char[]) (managementObject.Properties["NICName"]?.Value ?? new char[0]),
+		 NicName = (char[]) (managementObject.Properties["NICName"]?.Value ?? new char[0]),
 		 PhysicalAddr = (char[]) (managementObject.Properties["PhysicalAddr"]?.Value ?? new char[0]),
 		 PhysicalAddrLen = (uint) (managementObject.Properties["PhysicalAddrLen"]?.Value ?? default(uint)),
 		 PrimaryWinsServer = (int) (managementObject.Properties["PrimaryWinsServer"]?.Value ?? default(int)),

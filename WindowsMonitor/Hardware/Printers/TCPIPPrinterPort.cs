@@ -6,7 +6,7 @@ namespace WindowsMonitor.Hardware.Printers
 {
     /// <summary>
     /// </summary>
-    public sealed class TCPIPPrinterPort
+    public sealed class TcpipPrinterPort
     {
 		public bool ByteCount { get; private set; }
 		public string Caption { get; private set; }
@@ -18,15 +18,15 @@ namespace WindowsMonitor.Hardware.Printers
 		public uint PortNumber { get; private set; }
 		public uint Protocol { get; private set; }
 		public string Queue { get; private set; }
-		public string SNMPCommunity { get; private set; }
-		public uint SNMPDevIndex { get; private set; }
-		public bool SNMPEnabled { get; private set; }
+		public string SnmpCommunity { get; private set; }
+		public uint SnmpDevIndex { get; private set; }
+		public bool SnmpEnabled { get; private set; }
 		public string Status { get; private set; }
 		public string SystemCreationClassName { get; private set; }
 		public string SystemName { get; private set; }
 		public uint Type { get; private set; }
 
-        public static IEnumerable<TCPIPPrinterPort> Retrieve(string remote, string username, string password)
+        public static IEnumerable<TcpipPrinterPort> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -41,20 +41,20 @@ namespace WindowsMonitor.Hardware.Printers
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TCPIPPrinterPort> Retrieve()
+        public static IEnumerable<TcpipPrinterPort> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<TCPIPPrinterPort> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<TcpipPrinterPort> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_TCPIPPrinterPort");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new TCPIPPrinterPort
+                yield return new TcpipPrinterPort
                 {
                      ByteCount = (bool) (managementObject.Properties["ByteCount"]?.Value ?? default(bool)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
@@ -66,9 +66,9 @@ namespace WindowsMonitor.Hardware.Printers
 		 PortNumber = (uint) (managementObject.Properties["PortNumber"]?.Value ?? default(uint)),
 		 Protocol = (uint) (managementObject.Properties["Protocol"]?.Value ?? default(uint)),
 		 Queue = (string) (managementObject.Properties["Queue"]?.Value),
-		 SNMPCommunity = (string) (managementObject.Properties["SNMPCommunity"]?.Value),
-		 SNMPDevIndex = (uint) (managementObject.Properties["SNMPDevIndex"]?.Value ?? default(uint)),
-		 SNMPEnabled = (bool) (managementObject.Properties["SNMPEnabled"]?.Value ?? default(bool)),
+		 SnmpCommunity = (string) (managementObject.Properties["SNMPCommunity"]?.Value),
+		 SnmpDevIndex = (uint) (managementObject.Properties["SNMPDevIndex"]?.Value ?? default(uint)),
+		 SnmpEnabled = (bool) (managementObject.Properties["SNMPEnabled"]?.Value ?? default(bool)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),

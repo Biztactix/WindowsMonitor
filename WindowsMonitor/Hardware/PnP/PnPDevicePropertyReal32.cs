@@ -8,8 +8,8 @@ namespace WindowsMonitor.Hardware.PnP
     public sealed class PnPDevicePropertyReal32
     {
 		public float Data { get; private set; }
-		public string DeviceID { get; private set; }
-		public string key { get; private set; }
+		public string DeviceId { get; private set; }
+		public string Key { get; private set; }
 		public string KeyName { get; private set; }
 		public uint Type { get; private set; }
 
@@ -44,8 +44,8 @@ namespace WindowsMonitor.Hardware.PnP
                 yield return new PnPDevicePropertyReal32
                 {
                      Data = (float) (managementObject.Properties["Data"]?.Value ?? default(float)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
-		 key = (string) (managementObject.Properties["key"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 Key = (string) (managementObject.Properties["key"]?.Value),
 		 KeyName = (string) (managementObject.Properties["KeyName"]?.Value),
 		 Type = (uint) (managementObject.Properties["Type"]?.Value ?? default(uint))
                 };

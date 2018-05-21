@@ -9,11 +9,11 @@ namespace WindowsMonitor.Hardware.SystemConfig.V1
     {
 		public uint DescriptionLength { get; private set; }
 		public string DeviceDescription { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public uint Flags { get; private set; }
 		public string FriendlyName { get; private set; }
 		public uint FriendlyNameLength { get; private set; }
-		public uint IDLength { get; private set; }
+		public uint IdLength { get; private set; }
 
         public static IEnumerable<PnP> Retrieve(string remote, string username, string password)
         {
@@ -47,11 +47,11 @@ namespace WindowsMonitor.Hardware.SystemConfig.V1
                 {
                      DescriptionLength = (uint) (managementObject.Properties["DescriptionLength"]?.Value ?? default(uint)),
 		 DeviceDescription = (string) (managementObject.Properties["DeviceDescription"]?.Value ?? default(string)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
 		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
 		 FriendlyName = (string) (managementObject.Properties["FriendlyName"]?.Value ?? default(string)),
 		 FriendlyNameLength = (uint) (managementObject.Properties["FriendlyNameLength"]?.Value ?? default(uint)),
-		 IDLength = (uint) (managementObject.Properties["IDLength"]?.Value ?? default(uint))
+		 IdLength = (uint) (managementObject.Properties["IDLength"]?.Value ?? default(uint))
                 };
         }
     }

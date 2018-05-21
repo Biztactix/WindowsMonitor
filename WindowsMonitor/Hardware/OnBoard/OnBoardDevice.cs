@@ -24,7 +24,7 @@ namespace WindowsMonitor.Hardware.OnBoard
 		public bool Removable { get; private set; }
 		public bool Replaceable { get; private set; }
 		public string SerialNumber { get; private set; }
-		public string SKU { get; private set; }
+		public string Sku { get; private set; }
 		public string Status { get; private set; }
 		public string Tag { get; private set; }
 		public string Version { get; private set; }
@@ -75,7 +75,7 @@ namespace WindowsMonitor.Hardware.OnBoard
 		 Removable = (bool) (managementObject.Properties["Removable"]?.Value ?? default(bool)),
 		 Replaceable = (bool) (managementObject.Properties["Replaceable"]?.Value ?? default(bool)),
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Tag = (string) (managementObject.Properties["Tag"]?.Value),
 		 Version = (string) (managementObject.Properties["Version"]?.Value)

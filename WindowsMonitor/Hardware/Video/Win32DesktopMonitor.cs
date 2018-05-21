@@ -15,7 +15,7 @@ namespace WindowsMonitor.Hardware.Video
 		public bool ConfigManagerUserConfig { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public ushort DisplayType { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
@@ -27,7 +27,7 @@ namespace WindowsMonitor.Hardware.Video
 		public string Name { get; private set; }
 		public uint PixelsPerXLogicalInch { get; private set; }
 		public uint PixelsPerYLogicalInch { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public uint ScreenHeight { get; private set; }
@@ -74,7 +74,7 @@ namespace WindowsMonitor.Hardware.Video
 		 ConfigManagerUserConfig = (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 DisplayType = (ushort) (managementObject.Properties["DisplayType"]?.Value ?? default(ushort)),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
@@ -86,7 +86,7 @@ namespace WindowsMonitor.Hardware.Video
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 PixelsPerXLogicalInch = (uint) (managementObject.Properties["PixelsPerXLogicalInch"]?.Value ?? default(uint)),
 		 PixelsPerYLogicalInch = (uint) (managementObject.Properties["PixelsPerYLogicalInch"]?.Value ?? default(uint)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 ScreenHeight = (uint) (managementObject.Properties["ScreenHeight"]?.Value ?? default(uint)),

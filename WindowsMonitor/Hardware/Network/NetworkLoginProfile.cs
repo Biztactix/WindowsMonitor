@@ -34,7 +34,7 @@ namespace WindowsMonitor.Hardware.Network
 		public uint Privileges { get; private set; }
 		public string Profile { get; private set; }
 		public string ScriptPath { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public uint UnitsPerWeek { get; private set; }
 		public string UserComment { get; private set; }
 		public uint UserId { get; private set; }
@@ -97,7 +97,7 @@ namespace WindowsMonitor.Hardware.Network
 		 Privileges = (uint) (managementObject.Properties["Privileges"]?.Value ?? default(uint)),
 		 Profile = (string) (managementObject.Properties["Profile"]?.Value),
 		 ScriptPath = (string) (managementObject.Properties["ScriptPath"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 UnitsPerWeek = (uint) (managementObject.Properties["UnitsPerWeek"]?.Value ?? default(uint)),
 		 UserComment = (string) (managementObject.Properties["UserComment"]?.Value),
 		 UserId = (uint) (managementObject.Properties["UserId"]?.Value ?? default(uint)),

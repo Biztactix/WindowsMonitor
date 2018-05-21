@@ -7,7 +7,7 @@ namespace WindowsMonitor.Hardware.Bios
     /// </summary>
     public sealed class SmBiosSysid1394
     {
-		public byte[] x1394 { get; private set; }
+		public byte[] X1394 { get; private set; }
 
         public static IEnumerable<SmBiosSysid1394> Retrieve(string remote, string username, string password)
         {
@@ -39,7 +39,7 @@ namespace WindowsMonitor.Hardware.Bios
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SmBiosSysid1394
                 {
-                     x1394 = (byte[]) (managementObject.Properties["x1394"]?.Value ?? new byte[0])
+                     X1394 = (byte[]) (managementObject.Properties["x1394"]?.Value ?? new byte[0])
                 };
         }
     }

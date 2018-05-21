@@ -8,7 +8,7 @@ namespace WindowsMonitor.Hardware.Acpi
     public sealed class AcpiGenAddr
     {
 		public ulong Address { get; private set; }
-		public uint AddressSpaceID { get; private set; }
+		public uint AddressSpaceId { get; private set; }
 		public uint BitOffset { get; private set; }
 		public uint BitWidth { get; private set; }
 		public uint Reserved { get; private set; }
@@ -44,7 +44,7 @@ namespace WindowsMonitor.Hardware.Acpi
                 yield return new AcpiGenAddr
                 {
                      Address = (ulong) (managementObject.Properties["Address"]?.Value ?? default(ulong)),
-		 AddressSpaceID = (uint) (managementObject.Properties["AddressSpaceID"]?.Value ?? default(uint)),
+		 AddressSpaceId = (uint) (managementObject.Properties["AddressSpaceID"]?.Value ?? default(uint)),
 		 BitOffset = (uint) (managementObject.Properties["BitOffset"]?.Value ?? default(uint)),
 		 BitWidth = (uint) (managementObject.Properties["BitWidth"]?.Value ?? default(uint)),
 		 Reserved = (uint) (managementObject.Properties["Reserved"]?.Value ?? default(uint))

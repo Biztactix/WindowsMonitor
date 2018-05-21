@@ -6,7 +6,7 @@ namespace WindowsMonitor.Windows.Users.Nt
 {
     /// <summary>
     /// </summary>
-    public sealed class NTDomain
+    public sealed class NtDomain
     {
 		public string Caption { get; private set; }
 		public string ClientSiteName { get; private set; }
@@ -19,15 +19,15 @@ namespace WindowsMonitor.Windows.Users.Nt
 		public string DomainControllerName { get; private set; }
 		public string DomainGuid { get; private set; }
 		public string DomainName { get; private set; }
-		public bool DSDirectoryServiceFlag { get; private set; }
-		public bool DSDnsControllerFlag { get; private set; }
-		public bool DSDnsDomainFlag { get; private set; }
-		public bool DSDnsForestFlag { get; private set; }
-		public bool DSGlobalCatalogFlag { get; private set; }
-		public bool DSKerberosDistributionCenterFlag { get; private set; }
-		public bool DSPrimaryDomainControllerFlag { get; private set; }
-		public bool DSTimeServiceFlag { get; private set; }
-		public bool DSWritableFlag { get; private set; }
+		public bool DsDirectoryServiceFlag { get; private set; }
+		public bool DsDnsControllerFlag { get; private set; }
+		public bool DsDnsDomainFlag { get; private set; }
+		public bool DsDnsForestFlag { get; private set; }
+		public bool DsGlobalCatalogFlag { get; private set; }
+		public bool DsKerberosDistributionCenterFlag { get; private set; }
+		public bool DsPrimaryDomainControllerFlag { get; private set; }
+		public bool DsTimeServiceFlag { get; private set; }
+		public bool DsWritableFlag { get; private set; }
 		public DateTime InstallDate { get; private set; }
 		public string Name { get; private set; }
 		public string NameFormat { get; private set; }
@@ -36,7 +36,7 @@ namespace WindowsMonitor.Windows.Users.Nt
 		public string[] Roles { get; private set; }
 		public string Status { get; private set; }
 
-        public static IEnumerable<NTDomain> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NtDomain> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -51,20 +51,20 @@ namespace WindowsMonitor.Windows.Users.Nt
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NTDomain> Retrieve()
+        public static IEnumerable<NtDomain> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NTDomain> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NtDomain> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_NTDomain");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NTDomain
+                yield return new NtDomain
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ClientSiteName = (string) (managementObject.Properties["ClientSiteName"]?.Value),
@@ -77,15 +77,15 @@ namespace WindowsMonitor.Windows.Users.Nt
 		 DomainControllerName = (string) (managementObject.Properties["DomainControllerName"]?.Value),
 		 DomainGuid = (string) (managementObject.Properties["DomainGuid"]?.Value),
 		 DomainName = (string) (managementObject.Properties["DomainName"]?.Value),
-		 DSDirectoryServiceFlag = (bool) (managementObject.Properties["DSDirectoryServiceFlag"]?.Value ?? default(bool)),
-		 DSDnsControllerFlag = (bool) (managementObject.Properties["DSDnsControllerFlag"]?.Value ?? default(bool)),
-		 DSDnsDomainFlag = (bool) (managementObject.Properties["DSDnsDomainFlag"]?.Value ?? default(bool)),
-		 DSDnsForestFlag = (bool) (managementObject.Properties["DSDnsForestFlag"]?.Value ?? default(bool)),
-		 DSGlobalCatalogFlag = (bool) (managementObject.Properties["DSGlobalCatalogFlag"]?.Value ?? default(bool)),
-		 DSKerberosDistributionCenterFlag = (bool) (managementObject.Properties["DSKerberosDistributionCenterFlag"]?.Value ?? default(bool)),
-		 DSPrimaryDomainControllerFlag = (bool) (managementObject.Properties["DSPrimaryDomainControllerFlag"]?.Value ?? default(bool)),
-		 DSTimeServiceFlag = (bool) (managementObject.Properties["DSTimeServiceFlag"]?.Value ?? default(bool)),
-		 DSWritableFlag = (bool) (managementObject.Properties["DSWritableFlag"]?.Value ?? default(bool)),
+		 DsDirectoryServiceFlag = (bool) (managementObject.Properties["DSDirectoryServiceFlag"]?.Value ?? default(bool)),
+		 DsDnsControllerFlag = (bool) (managementObject.Properties["DSDnsControllerFlag"]?.Value ?? default(bool)),
+		 DsDnsDomainFlag = (bool) (managementObject.Properties["DSDnsDomainFlag"]?.Value ?? default(bool)),
+		 DsDnsForestFlag = (bool) (managementObject.Properties["DSDnsForestFlag"]?.Value ?? default(bool)),
+		 DsGlobalCatalogFlag = (bool) (managementObject.Properties["DSGlobalCatalogFlag"]?.Value ?? default(bool)),
+		 DsKerberosDistributionCenterFlag = (bool) (managementObject.Properties["DSKerberosDistributionCenterFlag"]?.Value ?? default(bool)),
+		 DsPrimaryDomainControllerFlag = (bool) (managementObject.Properties["DSPrimaryDomainControllerFlag"]?.Value ?? default(bool)),
+		 DsTimeServiceFlag = (bool) (managementObject.Properties["DSTimeServiceFlag"]?.Value ?? default(bool)),
+		 DsWritableFlag = (bool) (managementObject.Properties["DSWritableFlag"]?.Value ?? default(bool)),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NameFormat = (string) (managementObject.Properties["NameFormat"]?.Value),

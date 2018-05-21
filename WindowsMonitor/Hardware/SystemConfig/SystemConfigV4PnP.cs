@@ -9,7 +9,7 @@ namespace WindowsMonitor.Hardware.SystemConfig
     {
 		public dynamic ClassGuid { get; private set; }
 		public string DeviceDescription { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public uint Flags { get; private set; }
 		public string FriendlyName { get; private set; }
 		public string[] LowerFilters { get; private set; }
@@ -51,7 +51,7 @@ namespace WindowsMonitor.Hardware.SystemConfig
                 {
                      ClassGuid = (dynamic) (managementObject.Properties["ClassGuid"]?.Value ?? default(dynamic)),
 		 DeviceDescription = (string) (managementObject.Properties["DeviceDescription"]?.Value ?? default(string)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value ?? default(string)),
 		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
 		 FriendlyName = (string) (managementObject.Properties["FriendlyName"]?.Value ?? default(string)),
 		 LowerFilters = (string[]) (managementObject.Properties["LowerFilters"]?.Value ?? new string[0]),

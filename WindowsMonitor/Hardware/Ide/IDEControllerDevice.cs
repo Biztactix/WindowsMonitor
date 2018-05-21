@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.Ide
 {
     /// <summary>
     /// </summary>
-    public sealed class IDEControllerDevice
+    public sealed class IdeControllerDevice
     {
 		public ushort AccessState { get; private set; }
 		public string Antecedent { get; private set; }
@@ -15,7 +15,7 @@ namespace WindowsMonitor.Hardware.Ide
 		public uint NumberOfHardResets { get; private set; }
 		public uint NumberOfSoftResets { get; private set; }
 
-        public static IEnumerable<IDEControllerDevice> Retrieve(string remote, string username, string password)
+        public static IEnumerable<IdeControllerDevice> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,20 +30,20 @@ namespace WindowsMonitor.Hardware.Ide
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IDEControllerDevice> Retrieve()
+        public static IEnumerable<IdeControllerDevice> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IDEControllerDevice> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<IdeControllerDevice> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_IDEControllerDevice");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new IDEControllerDevice
+                yield return new IdeControllerDevice
                 {
                      AccessState = (ushort) (managementObject.Properties["AccessState"]?.Value ?? default(ushort)),
 		 Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),

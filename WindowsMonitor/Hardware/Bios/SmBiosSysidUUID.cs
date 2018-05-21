@@ -5,11 +5,11 @@ namespace WindowsMonitor.Hardware.Bios
 {
     /// <summary>
     /// </summary>
-    public sealed class SmBiosSysidUUID
+    public sealed class SmBiosSysidUuid
     {
 		public byte[] Uuid { get; private set; }
 
-        public static IEnumerable<SmBiosSysidUUID> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SmBiosSysidUuid> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -24,20 +24,20 @@ namespace WindowsMonitor.Hardware.Bios
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SmBiosSysidUUID> Retrieve()
+        public static IEnumerable<SmBiosSysidUuid> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SmBiosSysidUUID> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SmBiosSysidUuid> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSSmBios_SysidUUID");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SmBiosSysidUUID
+                yield return new SmBiosSysidUuid
                 {
                      Uuid = (byte[]) (managementObject.Properties["Uuid"]?.Value ?? new byte[0])
                 };

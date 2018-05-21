@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 {
     /// <summary>
     /// </summary>
-    public sealed class IDEChannel
+    public sealed class IdeChannel
     {
 		public uint DeviceTimingMode { get; private set; }
 		public uint DeviceType { get; private set; }
@@ -14,7 +14,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 		public uint LocationInformationLen { get; private set; }
 		public uint TargetId { get; private set; }
 
-        public static IEnumerable<IDEChannel> Retrieve(string remote, string username, string password)
+        public static IEnumerable<IdeChannel> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -29,20 +29,20 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IDEChannel> Retrieve()
+        public static IEnumerable<IdeChannel> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IDEChannel> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<IdeChannel> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM SystemConfig_V2_IDEChannel");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new IDEChannel
+                yield return new IdeChannel
                 {
                      DeviceTimingMode = (uint) (managementObject.Properties["DeviceTimingMode"]?.Value ?? default(uint)),
 		 DeviceType = (uint) (managementObject.Properties["DeviceType"]?.Value ?? default(uint)),

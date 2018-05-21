@@ -25,13 +25,13 @@ namespace WindowsMonitor.Software
 		public string PackageCache { get; private set; }
 		public string PackageCode { get; private set; }
 		public string PackageName { get; private set; }
-		public string ProductID { get; private set; }
+		public string ProductId { get; private set; }
 		public string RegCompany { get; private set; }
 		public string RegOwner { get; private set; }
-		public string SKUNumber { get; private set; }
+		public string SkuNumber { get; private set; }
 		public string Transforms { get; private set; }
-		public string URLInfoAbout { get; private set; }
-		public string URLUpdateInfo { get; private set; }
+		public string UrlInfoAbout { get; private set; }
+		public string UrlUpdateInfo { get; private set; }
 		public string Vendor { get; private set; }
 		public string Version { get; private set; }
 		public uint WordCount { get; private set; }
@@ -83,13 +83,13 @@ namespace WindowsMonitor.Software
 		 PackageCache = (string) (managementObject.Properties["PackageCache"]?.Value),
 		 PackageCode = (string) (managementObject.Properties["PackageCode"]?.Value),
 		 PackageName = (string) (managementObject.Properties["PackageName"]?.Value),
-		 ProductID = (string) (managementObject.Properties["ProductID"]?.Value),
+		 ProductId = (string) (managementObject.Properties["ProductID"]?.Value),
 		 RegCompany = (string) (managementObject.Properties["RegCompany"]?.Value),
 		 RegOwner = (string) (managementObject.Properties["RegOwner"]?.Value),
-		 SKUNumber = (string) (managementObject.Properties["SKUNumber"]?.Value),
+		 SkuNumber = (string) (managementObject.Properties["SKUNumber"]?.Value),
 		 Transforms = (string) (managementObject.Properties["Transforms"]?.Value),
-		 URLInfoAbout = (string) (managementObject.Properties["URLInfoAbout"]?.Value),
-		 URLUpdateInfo = (string) (managementObject.Properties["URLUpdateInfo"]?.Value),
+		 UrlInfoAbout = (string) (managementObject.Properties["URLInfoAbout"]?.Value),
+		 UrlUpdateInfo = (string) (managementObject.Properties["URLUpdateInfo"]?.Value),
 		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value),
 		 Version = (string) (managementObject.Properties["Version"]?.Value),
 		 WordCount = (uint) (managementObject.Properties["WordCount"]?.Value ?? default(uint))

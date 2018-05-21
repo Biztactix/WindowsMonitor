@@ -8,8 +8,8 @@ namespace WindowsMonitor.Windows
     public sealed class ComputerShutdownEvent
     {
 		public string MachineName { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 		public uint Type { get; private set; }
 
         public static IEnumerable<ComputerShutdownEvent> Retrieve(string remote, string username, string password)
@@ -43,8 +43,8 @@ namespace WindowsMonitor.Windows
                 yield return new ComputerShutdownEvent
                 {
                      MachineName = (string) (managementObject.Properties["MachineName"]?.Value),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
 		 Type = (uint) (managementObject.Properties["Type"]?.Value ?? default(uint))
                 };
         }

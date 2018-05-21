@@ -5,12 +5,12 @@ namespace WindowsMonitor.Windows.Users
 {
     /// <summary>
     /// </summary>
-    public sealed class AccountSID
+    public sealed class AccountSid
     {
 		public string Element { get; private set; }
 		public string Setting { get; private set; }
 
-        public static IEnumerable<AccountSID> Retrieve(string remote, string username, string password)
+        public static IEnumerable<AccountSid> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,20 +25,20 @@ namespace WindowsMonitor.Windows.Users
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<AccountSID> Retrieve()
+        public static IEnumerable<AccountSid> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<AccountSID> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<AccountSid> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_AccountSID");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new AccountSID
+                yield return new AccountSid
                 {
                      Element =  (managementObject.Properties["Element"]?.Value?.ToString()),
 		 Setting =  (managementObject.Properties["Setting"]?.Value?.ToString())

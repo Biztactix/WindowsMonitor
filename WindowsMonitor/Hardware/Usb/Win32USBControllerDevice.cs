@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.Usb
 {
     /// <summary>
     /// </summary>
-    public sealed class Win32USBControllerDevice
+    public sealed class Win32UsbControllerDevice
     {
 		public ushort AccessState { get; private set; }
 		public string Antecedent { get; private set; }
@@ -15,7 +15,7 @@ namespace WindowsMonitor.Hardware.Usb
 		public uint NumberOfHardResets { get; private set; }
 		public uint NumberOfSoftResets { get; private set; }
 
-        public static IEnumerable<Win32USBControllerDevice> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Win32UsbControllerDevice> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,20 +30,20 @@ namespace WindowsMonitor.Hardware.Usb
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32USBControllerDevice> Retrieve()
+        public static IEnumerable<Win32UsbControllerDevice> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32USBControllerDevice> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Win32UsbControllerDevice> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_USBControllerDevice");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Win32USBControllerDevice
+                yield return new Win32UsbControllerDevice
                 {
                      AccessState = (ushort) (managementObject.Properties["AccessState"]?.Value ?? default(ushort)),
 		 Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),

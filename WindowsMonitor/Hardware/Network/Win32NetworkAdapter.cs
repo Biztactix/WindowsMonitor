@@ -17,27 +17,27 @@ namespace WindowsMonitor.Hardware.Network
 		public bool ConfigManagerUserConfig { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
-		public string GUID { get; private set; }
+		public string Guid { get; private set; }
 		public uint Index { get; private set; }
 		public DateTime InstallDate { get; private set; }
 		public bool Installed { get; private set; }
 		public uint InterfaceIndex { get; private set; }
 		public uint LastErrorCode { get; private set; }
-		public string MACAddress { get; private set; }
+		public string MacAddress { get; private set; }
 		public string Manufacturer { get; private set; }
 		public uint MaxNumberControlled { get; private set; }
 		public ulong MaxSpeed { get; private set; }
 		public string Name { get; private set; }
-		public string NetConnectionID { get; private set; }
+		public string NetConnectionId { get; private set; }
 		public ushort NetConnectionStatus { get; private set; }
 		public bool NetEnabled { get; private set; }
 		public string[] NetworkAddresses { get; private set; }
 		public string PermanentAddress { get; private set; }
 		public bool PhysicalAdapter { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public string ProductName { get; private set; }
@@ -88,27 +88,27 @@ namespace WindowsMonitor.Hardware.Network
 		 ConfigManagerUserConfig = (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
-		 GUID = (string) (managementObject.Properties["GUID"]?.Value),
+		 Guid = (string) (managementObject.Properties["GUID"]?.Value),
 		 Index = (uint) (managementObject.Properties["Index"]?.Value ?? default(uint)),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 Installed = (bool) (managementObject.Properties["Installed"]?.Value ?? default(bool)),
 		 InterfaceIndex = (uint) (managementObject.Properties["InterfaceIndex"]?.Value ?? default(uint)),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
-		 MACAddress = (string) (managementObject.Properties["MACAddress"]?.Value),
+		 MacAddress = (string) (managementObject.Properties["MACAddress"]?.Value),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 MaxNumberControlled = (uint) (managementObject.Properties["MaxNumberControlled"]?.Value ?? default(uint)),
 		 MaxSpeed = (ulong) (managementObject.Properties["MaxSpeed"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 NetConnectionID = (string) (managementObject.Properties["NetConnectionID"]?.Value),
+		 NetConnectionId = (string) (managementObject.Properties["NetConnectionID"]?.Value),
 		 NetConnectionStatus = (ushort) (managementObject.Properties["NetConnectionStatus"]?.Value ?? default(ushort)),
 		 NetEnabled = (bool) (managementObject.Properties["NetEnabled"]?.Value ?? default(bool)),
 		 NetworkAddresses = (string[]) (managementObject.Properties["NetworkAddresses"]?.Value ?? new string[0]),
 		 PermanentAddress = (string) (managementObject.Properties["PermanentAddress"]?.Value),
 		 PhysicalAdapter = (bool) (managementObject.Properties["PhysicalAdapter"]?.Value ?? default(bool)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 ProductName = (string) (managementObject.Properties["ProductName"]?.Value),

@@ -8,18 +8,18 @@ namespace WindowsMonitor.Windows.Services
     public sealed class ServiceSpecification
     {
 		public string Caption { get; private set; }
-		public string CheckID { get; private set; }
+		public string CheckId { get; private set; }
 		public bool CheckMode { get; private set; }
 		public string Dependencies { get; private set; }
 		public string Description { get; private set; }
 		public string DisplayName { get; private set; }
 		public int ErrorControl { get; private set; }
-		public string ID { get; private set; }
+		public string Id { get; private set; }
 		public string LoadOrderGroup { get; private set; }
 		public string Name { get; private set; }
 		public string Password { get; private set; }
 		public int ServiceType { get; private set; }
-		public string SoftwareElementID { get; private set; }
+		public string SoftwareElementId { get; private set; }
 		public ushort SoftwareElementState { get; private set; }
 		public string StartName { get; private set; }
 		public int StartType { get; private set; }
@@ -57,18 +57,18 @@ namespace WindowsMonitor.Windows.Services
                 yield return new ServiceSpecification
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
-		 CheckID = (string) (managementObject.Properties["CheckID"]?.Value),
+		 CheckId = (string) (managementObject.Properties["CheckID"]?.Value),
 		 CheckMode = (bool) (managementObject.Properties["CheckMode"]?.Value ?? default(bool)),
 		 Dependencies = (string) (managementObject.Properties["Dependencies"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DisplayName = (string) (managementObject.Properties["DisplayName"]?.Value),
 		 ErrorControl = (int) (managementObject.Properties["ErrorControl"]?.Value ?? default(int)),
-		 ID = (string) (managementObject.Properties["ID"]?.Value),
+		 Id = (string) (managementObject.Properties["ID"]?.Value),
 		 LoadOrderGroup = (string) (managementObject.Properties["LoadOrderGroup"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Password = (string) (managementObject.Properties["Password"]?.Value),
 		 ServiceType = (int) (managementObject.Properties["ServiceType"]?.Value ?? default(int)),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
+		 SoftwareElementId = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 StartName = (string) (managementObject.Properties["StartName"]?.Value),
 		 StartType = (int) (managementObject.Properties["StartType"]?.Value ?? default(int)),

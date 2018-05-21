@@ -5,12 +5,12 @@ namespace WindowsMonitor.Hardware.Video.WmiMonitor
 {
     /// <summary>
     /// </summary>
-    public sealed class WmiMonitorColorXYZinCIE
+    public sealed class WmiMonitorColorXyZinCie
     {
 		public ushort X { get; private set; }
 		public ushort Y { get; private set; }
 
-        public static IEnumerable<WmiMonitorColorXYZinCIE> Retrieve(string remote, string username, string password)
+        public static IEnumerable<WmiMonitorColorXyZinCie> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,20 +25,20 @@ namespace WindowsMonitor.Hardware.Video.WmiMonitor
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<WmiMonitorColorXYZinCIE> Retrieve()
+        public static IEnumerable<WmiMonitorColorXyZinCie> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<WmiMonitorColorXYZinCIE> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<WmiMonitorColorXyZinCie> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM WmiMonitorColorXYZinCIE");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new WmiMonitorColorXYZinCIE
+                yield return new WmiMonitorColorXyZinCie
                 {
                      X = (ushort) (managementObject.Properties["X"]?.Value ?? default(ushort)),
 		 Y = (ushort) (managementObject.Properties["Y"]?.Value ?? default(ushort))

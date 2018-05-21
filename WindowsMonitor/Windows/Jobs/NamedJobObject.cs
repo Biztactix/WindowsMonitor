@@ -7,9 +7,9 @@ namespace WindowsMonitor.Windows.Jobs
     /// </summary>
     public sealed class NamedJobObject
     {
-		public uint BasicUIRestrictions { get; private set; }
+		public uint BasicUiRestrictions { get; private set; }
 		public string Caption { get; private set; }
-		public string CollectionID { get; private set; }
+		public string CollectionId { get; private set; }
 		public string Description { get; private set; }
 
         public static IEnumerable<NamedJobObject> Retrieve(string remote, string username, string password)
@@ -42,9 +42,9 @@ namespace WindowsMonitor.Windows.Jobs
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new NamedJobObject
                 {
-                     BasicUIRestrictions = (uint) (managementObject.Properties["BasicUIRestrictions"]?.Value ?? default(uint)),
+                     BasicUiRestrictions = (uint) (managementObject.Properties["BasicUIRestrictions"]?.Value ?? default(uint)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
-		 CollectionID = (string) (managementObject.Properties["CollectionID"]?.Value),
+		 CollectionId = (string) (managementObject.Properties["CollectionID"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value)
                 };
         }

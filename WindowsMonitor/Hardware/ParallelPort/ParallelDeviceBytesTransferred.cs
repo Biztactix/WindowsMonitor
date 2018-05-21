@@ -20,7 +20,7 @@ namespace WindowsMonitor.Hardware.ParallelPort
 		public long HwEppWriteCount { get; private set; }
 		public string InstanceName { get; private set; }
 		public long NibbleReadCount { get; private set; }
-		public uint[] spare { get; private set; }
+		public uint[] Spare { get; private set; }
 		public long SppWriteCount { get; private set; }
 		public long SwEcpReadCount { get; private set; }
 		public long SwEcpWriteCount { get; private set; }
@@ -70,7 +70,7 @@ namespace WindowsMonitor.Hardware.ParallelPort
 		 HwEppWriteCount = (long) (managementObject.Properties["HwEppWriteCount"]?.Value ?? default(long)),
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
 		 NibbleReadCount = (long) (managementObject.Properties["NibbleReadCount"]?.Value ?? default(long)),
-		 spare = (uint[]) (managementObject.Properties["spare"]?.Value ?? new uint[0]),
+		 Spare = (uint[]) (managementObject.Properties["spare"]?.Value ?? new uint[0]),
 		 SppWriteCount = (long) (managementObject.Properties["SppWriteCount"]?.Value ?? default(long)),
 		 SwEcpReadCount = (long) (managementObject.Properties["SwEcpReadCount"]?.Value ?? default(long)),
 		 SwEcpWriteCount = (long) (managementObject.Properties["SwEcpWriteCount"]?.Value ?? default(long)),

@@ -12,7 +12,7 @@ namespace WindowsMonitor
 		public uint ActiveTime { get; private set; }
 		public string Caption { get; private set; }
 		public string ComputerName { get; private set; }
-		public uint ConnectionID { get; private set; }
+		public uint ConnectionId { get; private set; }
 		public string Description { get; private set; }
 		public DateTime InstallDate { get; private set; }
 		public string Name { get; private set; }
@@ -55,7 +55,7 @@ namespace WindowsMonitor
                      ActiveTime = (uint) (managementObject.Properties["ActiveTime"]?.Value ?? default(uint)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ComputerName = (string) (managementObject.Properties["ComputerName"]?.Value),
-		 ConnectionID = (uint) (managementObject.Properties["ConnectionID"]?.Value ?? default(uint)),
+		 ConnectionId = (uint) (managementObject.Properties["ConnectionID"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),

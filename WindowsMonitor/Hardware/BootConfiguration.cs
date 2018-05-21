@@ -14,7 +14,7 @@ namespace WindowsMonitor.Hardware
 		public string LastDrive { get; private set; }
 		public string Name { get; private set; }
 		public string ScratchDirectory { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public string TempDirectory { get; private set; }
 
         public static IEnumerable<BootConfiguration> Retrieve(string remote, string username, string password)
@@ -54,7 +54,7 @@ namespace WindowsMonitor.Hardware
 		 LastDrive = (string) (managementObject.Properties["LastDrive"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ScratchDirectory = (string) (managementObject.Properties["ScratchDirectory"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 TempDirectory = (string) (managementObject.Properties["TempDirectory"]?.Value)
                 };
         }

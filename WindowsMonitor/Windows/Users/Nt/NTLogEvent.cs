@@ -6,7 +6,7 @@ namespace WindowsMonitor.Windows.Users.Nt
 {
     /// <summary>
     /// </summary>
-    public sealed class NTLogEvent
+    public sealed class NtLogEvent
     {
 		public ushort Category { get; private set; }
 		public string CategoryString { get; private set; }
@@ -25,7 +25,7 @@ namespace WindowsMonitor.Windows.Users.Nt
 		public string Type { get; private set; }
 		public string User { get; private set; }
 
-        public static IEnumerable<NTLogEvent> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NtLogEvent> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -40,20 +40,20 @@ namespace WindowsMonitor.Windows.Users.Nt
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NTLogEvent> Retrieve()
+        public static IEnumerable<NtLogEvent> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NTLogEvent> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NtLogEvent> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_NTLogEvent");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NTLogEvent
+                yield return new NtLogEvent
                 {
                      Category = (ushort) (managementObject.Properties["Category"]?.Value ?? default(ushort)),
 		 CategoryString = (string) (managementObject.Properties["CategoryString"]?.Value),

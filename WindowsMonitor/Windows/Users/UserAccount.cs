@@ -21,8 +21,8 @@ namespace WindowsMonitor.Windows.Users
 		public bool PasswordChangeable { get; private set; }
 		public bool PasswordExpires { get; private set; }
 		public bool PasswordRequired { get; private set; }
-		public string SID { get; private set; }
-		public byte SIDType { get; private set; }
+		public string Sid { get; private set; }
+		public byte SidType { get; private set; }
 		public string Status { get; private set; }
 
         public static IEnumerable<UserAccount> Retrieve(string remote, string username, string password)
@@ -68,8 +68,8 @@ namespace WindowsMonitor.Windows.Users
 		 PasswordChangeable = (bool) (managementObject.Properties["PasswordChangeable"]?.Value ?? default(bool)),
 		 PasswordExpires = (bool) (managementObject.Properties["PasswordExpires"]?.Value ?? default(bool)),
 		 PasswordRequired = (bool) (managementObject.Properties["PasswordRequired"]?.Value ?? default(bool)),
-		 SID = (string) (managementObject.Properties["SID"]?.Value),
-		 SIDType = (byte) (managementObject.Properties["SIDType"]?.Value ?? default(byte)),
+		 Sid = (string) (managementObject.Properties["SID"]?.Value),
+		 SidType = (byte) (managementObject.Properties["SIDType"]?.Value ?? default(byte)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value)
                 };
         }

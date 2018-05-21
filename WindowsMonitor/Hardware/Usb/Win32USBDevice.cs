@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.Usb
 {
     /// <summary>
     /// </summary>
-    public sealed class Win32USBDevice
+    public sealed class Win32UsbDevice
     {
 		public string Caption { get; private set; }
 		public string ClassGuid { get; private set; }
@@ -13,16 +13,16 @@ namespace WindowsMonitor.Hardware.Usb
 		public bool ConfigManagerUserConfig { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public string Manufacturer { get; private set; }
 		public string Name { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public string Service { get; private set; }
 		public string Status { get; private set; }
 		public string SystemCreationClassName { get; private set; }
 		public string SystemName { get; private set; }
 
-        public static IEnumerable<Win32USBDevice> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Win32UsbDevice> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -37,20 +37,20 @@ namespace WindowsMonitor.Hardware.Usb
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32USBDevice> Retrieve()
+        public static IEnumerable<Win32UsbDevice> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32USBDevice> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Win32UsbDevice> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_USBDevice");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Win32USBDevice
+                yield return new Win32UsbDevice
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ClassGuid = (string) (managementObject.Properties["ClassGuid"]?.Value),
@@ -58,10 +58,10 @@ namespace WindowsMonitor.Hardware.Usb
 		 ConfigManagerUserConfig = (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 Service = (string) (managementObject.Properties["Service"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),

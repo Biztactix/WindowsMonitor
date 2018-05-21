@@ -5,13 +5,13 @@ namespace WindowsMonitor.Windows.Registry
 {
     /// <summary>
     /// </summary>
-    public sealed class SMSGuestVirtualMachine64
+    public sealed class SmsGuestVirtualMachine64
     {
 		public string InstanceKey { get; private set; }
 		public string PhysicalHostName { get; private set; }
 		public string PhysicalHostNameFullyQualified { get; private set; }
 
-        public static IEnumerable<SMSGuestVirtualMachine64> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SmsGuestVirtualMachine64> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -26,20 +26,20 @@ namespace WindowsMonitor.Windows.Registry
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMSGuestVirtualMachine64> Retrieve()
+        public static IEnumerable<SmsGuestVirtualMachine64> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMSGuestVirtualMachine64> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SmsGuestVirtualMachine64> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32Reg_SMSGuestVirtualMachine64");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SMSGuestVirtualMachine64
+                yield return new SmsGuestVirtualMachine64
                 {
                      InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value),
 		 PhysicalHostName = (string) (managementObject.Properties["PhysicalHostName"]?.Value),

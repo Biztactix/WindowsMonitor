@@ -24,7 +24,7 @@ namespace WindowsMonitor.Windows.Users
 		public string ScreenSaverExecutable { get; private set; }
 		public bool ScreenSaverSecure { get; private set; }
 		public uint ScreenSaverTimeout { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public string Wallpaper { get; private set; }
 		public bool WallpaperStretched { get; private set; }
 		public bool WallpaperTiled { get; private set; }
@@ -76,7 +76,7 @@ namespace WindowsMonitor.Windows.Users
 		 ScreenSaverExecutable = (string) (managementObject.Properties["ScreenSaverExecutable"]?.Value),
 		 ScreenSaverSecure = (bool) (managementObject.Properties["ScreenSaverSecure"]?.Value ?? default(bool)),
 		 ScreenSaverTimeout = (uint) (managementObject.Properties["ScreenSaverTimeout"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 Wallpaper = (string) (managementObject.Properties["Wallpaper"]?.Value),
 		 WallpaperStretched = (bool) (managementObject.Properties["WallpaperStretched"]?.Value ?? default(bool)),
 		 WallpaperTiled = (bool) (managementObject.Properties["WallpaperTiled"]?.Value ?? default(bool))

@@ -13,10 +13,10 @@ namespace WindowsMonitor.Windows.Kernel
 		public string InstanceName { get; private set; }
 		public uint Latency { get; private set; }
 		public ulong Processors { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
 		public uint Speed { get; private set; }
 		public uint State { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<KernelPerfStateDomainChange> Retrieve(string remote, string username, string password)
         {
@@ -52,10 +52,10 @@ namespace WindowsMonitor.Windows.Kernel
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
 		 Latency = (uint) (managementObject.Properties["Latency"]?.Value ?? default(uint)),
 		 Processors = (ulong) (managementObject.Properties["Processors"]?.Value ?? default(ulong)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 Speed = (uint) (managementObject.Properties["Speed"]?.Value ?? default(uint)),
 		 State = (uint) (managementObject.Properties["State"]?.Value ?? default(uint)),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

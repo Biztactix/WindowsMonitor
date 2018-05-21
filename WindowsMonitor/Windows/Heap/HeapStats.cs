@@ -11,7 +11,7 @@ namespace WindowsMonitor.Windows.Heap
     {
 		public ulong FinalizationPromotedCount { get; private set; }
 		public ulong FinalizationPromotedSize { get; private set; }
-		public uint GCHandleCount { get; private set; }
+		public uint GcHandleCount { get; private set; }
 		public ulong GenerationSize0 { get; private set; }
 		public ulong GenerationSize1 { get; private set; }
 		public ulong GenerationSize2 { get; private set; }
@@ -55,7 +55,7 @@ namespace WindowsMonitor.Windows.Heap
                 {
                      FinalizationPromotedCount = (ulong) (managementObject.Properties["FinalizationPromotedCount"]?.Value ?? default(ulong)),
 		 FinalizationPromotedSize = (ulong) (managementObject.Properties["FinalizationPromotedSize"]?.Value ?? default(ulong)),
-		 GCHandleCount = (uint) (managementObject.Properties["GCHandleCount"]?.Value ?? default(uint)),
+		 GcHandleCount = (uint) (managementObject.Properties["GCHandleCount"]?.Value ?? default(uint)),
 		 GenerationSize0 = (ulong) (managementObject.Properties["GenerationSize0"]?.Value ?? default(ulong)),
 		 GenerationSize1 = (ulong) (managementObject.Properties["GenerationSize1"]?.Value ?? default(ulong)),
 		 GenerationSize2 = (ulong) (managementObject.Properties["GenerationSize2"]?.Value ?? default(ulong)),

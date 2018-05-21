@@ -43,9 +43,9 @@ namespace WindowsMonitor.Bios
             byte minorVersion = 0;
             try
             {
-                foreach (var mo in SmBiosRawSMBiosTables.Retrieve())
+                foreach (var mo in SmBiosRawSmBiosTables.Retrieve())
                 {
-                    _raw = mo.SMBiosData;
+                    _raw = mo.SmBiosData;
                     majorVersion = mo.SmbiosMajorVersion;
                     minorVersion = mo.SmbiosMinorVersion;
                     break;

@@ -5,12 +5,12 @@ namespace WindowsMonitor.Software.DCOM
 {
     /// <summary>
     /// </summary>
-    public sealed class DCOMApplicationLaunchAllowedSetting
+    public sealed class DcomApplicationLaunchAllowedSetting
     {
 		public string Element { get; private set; }
 		public string Setting { get; private set; }
 
-        public static IEnumerable<DCOMApplicationLaunchAllowedSetting> Retrieve(string remote, string username, string password)
+        public static IEnumerable<DcomApplicationLaunchAllowedSetting> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,20 +25,20 @@ namespace WindowsMonitor.Software.DCOM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DCOMApplicationLaunchAllowedSetting> Retrieve()
+        public static IEnumerable<DcomApplicationLaunchAllowedSetting> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DCOMApplicationLaunchAllowedSetting> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<DcomApplicationLaunchAllowedSetting> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_DCOMApplicationLaunchAllowedSetting");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new DCOMApplicationLaunchAllowedSetting
+                yield return new DcomApplicationLaunchAllowedSetting
                 {
                      Element =  (managementObject.Properties["Element"]?.Value?.ToString()),
 		 Setting =  (managementObject.Properties["Setting"]?.Value?.ToString())

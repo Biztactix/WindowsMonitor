@@ -10,8 +10,8 @@ namespace WindowsMonitor.Hardware.Video
     {
 		public ushort[] AcceleratorCapabilities { get; private set; }
 		public string AdapterCompatibility { get; private set; }
-		public string AdapterDACType { get; private set; }
-		public uint AdapterRAM { get; private set; }
+		public string AdapterDacType { get; private set; }
+		public uint AdapterRam { get; private set; }
 		public ushort Availability { get; private set; }
 		public string[] CapabilityDescriptions { get; private set; }
 		public string Caption { get; private set; }
@@ -28,15 +28,15 @@ namespace WindowsMonitor.Hardware.Video
 		public ushort CurrentScanMode { get; private set; }
 		public uint CurrentVerticalResolution { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public uint DeviceSpecificPens { get; private set; }
 		public uint DitherType { get; private set; }
 		public DateTime DriverDate { get; private set; }
 		public string DriverVersion { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
-		public uint ICMIntent { get; private set; }
-		public uint ICMMethod { get; private set; }
+		public uint IcmIntent { get; private set; }
+		public uint IcmMethod { get; private set; }
 		public string InfFilename { get; private set; }
 		public string InfSection { get; private set; }
 		public DateTime InstallDate { get; private set; }
@@ -50,7 +50,7 @@ namespace WindowsMonitor.Hardware.Video
 		public string Name { get; private set; }
 		public ushort NumberOfColorPlanes { get; private set; }
 		public uint NumberOfVideoPages { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public ushort ProtocolSupported { get; private set; }
@@ -100,8 +100,8 @@ namespace WindowsMonitor.Hardware.Video
                 {
                      AcceleratorCapabilities = (ushort[]) (managementObject.Properties["AcceleratorCapabilities"]?.Value ?? new ushort[0]),
 		 AdapterCompatibility = (string) (managementObject.Properties["AdapterCompatibility"]?.Value),
-		 AdapterDACType = (string) (managementObject.Properties["AdapterDACType"]?.Value),
-		 AdapterRAM = (uint) (managementObject.Properties["AdapterRAM"]?.Value ?? default(uint)),
+		 AdapterDacType = (string) (managementObject.Properties["AdapterDACType"]?.Value),
+		 AdapterRam = (uint) (managementObject.Properties["AdapterRAM"]?.Value ?? default(uint)),
 		 Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
 		 CapabilityDescriptions = (string[]) (managementObject.Properties["CapabilityDescriptions"]?.Value ?? new string[0]),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
@@ -118,15 +118,15 @@ namespace WindowsMonitor.Hardware.Video
 		 CurrentScanMode = (ushort) (managementObject.Properties["CurrentScanMode"]?.Value ?? default(ushort)),
 		 CurrentVerticalResolution = (uint) (managementObject.Properties["CurrentVerticalResolution"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 DeviceSpecificPens = (uint) (managementObject.Properties["DeviceSpecificPens"]?.Value ?? default(uint)),
 		 DitherType = (uint) (managementObject.Properties["DitherType"]?.Value ?? default(uint)),
 		 DriverDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["DriverDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 DriverVersion = (string) (managementObject.Properties["DriverVersion"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
-		 ICMIntent = (uint) (managementObject.Properties["ICMIntent"]?.Value ?? default(uint)),
-		 ICMMethod = (uint) (managementObject.Properties["ICMMethod"]?.Value ?? default(uint)),
+		 IcmIntent = (uint) (managementObject.Properties["ICMIntent"]?.Value ?? default(uint)),
+		 IcmMethod = (uint) (managementObject.Properties["ICMMethod"]?.Value ?? default(uint)),
 		 InfFilename = (string) (managementObject.Properties["InfFilename"]?.Value),
 		 InfSection = (string) (managementObject.Properties["InfSection"]?.Value),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
@@ -140,7 +140,7 @@ namespace WindowsMonitor.Hardware.Video
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfColorPlanes = (ushort) (managementObject.Properties["NumberOfColorPlanes"]?.Value ?? default(ushort)),
 		 NumberOfVideoPages = (uint) (managementObject.Properties["NumberOfVideoPages"]?.Value ?? default(uint)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 ProtocolSupported = (ushort) (managementObject.Properties["ProtocolSupported"]?.Value ?? default(ushort)),

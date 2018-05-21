@@ -29,8 +29,8 @@ namespace WindowsMonitor.Windows.Kernel
 		public ulong TargetProcessors { get; private set; }
 		public uint ThermalConstraint { get; private set; }
 		public uint TimerInterval { get; private set; }
-		public uint TStateContext { get; private set; }
-		public uint TStateHandler { get; private set; }
+		public uint StateContext { get; private set; }
+		public uint StateHandler { get; private set; }
 		public byte Type { get; private set; }
 
         public static IEnumerable<KernelPerfStates> Retrieve(string remote, string username, string password)
@@ -83,8 +83,8 @@ namespace WindowsMonitor.Windows.Kernel
 		 TargetProcessors = (ulong) (managementObject.Properties["TargetProcessors"]?.Value ?? default(ulong)),
 		 ThermalConstraint = (uint) (managementObject.Properties["ThermalConstraint"]?.Value ?? default(uint)),
 		 TimerInterval = (uint) (managementObject.Properties["TimerInterval"]?.Value ?? default(uint)),
-		 TStateContext = (uint) (managementObject.Properties["TStateContext"]?.Value ?? default(uint)),
-		 TStateHandler = (uint) (managementObject.Properties["TStateHandler"]?.Value ?? default(uint)),
+		 StateContext = (uint) (managementObject.Properties["TStateContext"]?.Value ?? default(uint)),
+		 StateHandler = (uint) (managementObject.Properties["TStateHandler"]?.Value ?? default(uint)),
 		 Type = (byte) (managementObject.Properties["Type"]?.Value ?? default(byte))
                 };
         }

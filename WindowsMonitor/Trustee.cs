@@ -11,10 +11,10 @@ namespace WindowsMonitor
     {
 		public string Domain { get; private set; }
 		public string Name { get; private set; }
-		public byte[] SID { get; private set; }
+		public byte[] Sid { get; private set; }
 		public uint SidLength { get; private set; }
-		public string SIDString { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public string SidString { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<Trustee> Retrieve(string remote, string username, string password)
         {
@@ -48,10 +48,10 @@ namespace WindowsMonitor
                 {
                      Domain = (string) (managementObject.Properties["Domain"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 SID = (byte[]) (managementObject.Properties["SID"]?.Value ?? new byte[0]),
+		 Sid = (byte[]) (managementObject.Properties["SID"]?.Value ?? new byte[0]),
 		 SidLength = (uint) (managementObject.Properties["SidLength"]?.Value ?? default(uint)),
-		 SIDString = (string) (managementObject.Properties["SIDString"]?.Value),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 SidString = (string) (managementObject.Properties["SIDString"]?.Value),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

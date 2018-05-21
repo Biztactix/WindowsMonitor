@@ -8,9 +8,9 @@ namespace WindowsMonitor.Hardware.Power
     public sealed class PowerManagementEvent
     {
 		public ushort EventType { get; private set; }
-		public ushort OEMEventCode { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public ushort OemEventCode { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<PowerManagementEvent> Retrieve(string remote, string username, string password)
         {
@@ -43,9 +43,9 @@ namespace WindowsMonitor.Hardware.Power
                 yield return new PowerManagementEvent
                 {
                      EventType = (ushort) (managementObject.Properties["EventType"]?.Value ?? default(ushort)),
-		 OEMEventCode = (ushort) (managementObject.Properties["OEMEventCode"]?.Value ?? default(ushort)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 OemEventCode = (ushort) (managementObject.Properties["OEMEventCode"]?.Value ?? default(ushort)),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

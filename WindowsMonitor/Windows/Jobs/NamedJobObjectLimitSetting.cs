@@ -20,7 +20,7 @@ namespace WindowsMonitor.Windows.Jobs
 		public uint PriorityClass { get; private set; }
 		public uint ProcessMemoryLimit { get; private set; }
 		public uint SchedulingClass { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 
         public static IEnumerable<NamedJobObjectLimitSetting> Retrieve(string remote, string username, string password)
         {
@@ -65,7 +65,7 @@ namespace WindowsMonitor.Windows.Jobs
 		 PriorityClass = (uint) (managementObject.Properties["PriorityClass"]?.Value ?? default(uint)),
 		 ProcessMemoryLimit = (uint) (managementObject.Properties["ProcessMemoryLimit"]?.Value ?? default(uint)),
 		 SchedulingClass = (uint) (managementObject.Properties["SchedulingClass"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value)
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value)
                 };
         }
     }

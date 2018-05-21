@@ -7,7 +7,7 @@ namespace WindowsMonitor
 {
     /// <summary>
     /// </summary>
-    public sealed class UTCTime
+    public sealed class UtcTime
     {
 		public uint Day { get; private set; }
 		public uint DayOfWeek { get; private set; }
@@ -20,7 +20,7 @@ namespace WindowsMonitor
 		public uint WeekInMonth { get; private set; }
 		public uint Year { get; private set; }
 
-        public static IEnumerable<UTCTime> Retrieve(string remote, string username, string password)
+        public static IEnumerable<UtcTime> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -35,20 +35,20 @@ namespace WindowsMonitor
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<UTCTime> Retrieve()
+        public static IEnumerable<UtcTime> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<UTCTime> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<UtcTime> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_UTCTime");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new UTCTime
+                yield return new UtcTime
                 {
                      Day = (uint) (managementObject.Properties["Day"]?.Value ?? default(uint)),
 		 DayOfWeek = (uint) (managementObject.Properties["DayOfWeek"]?.Value ?? default(uint)),

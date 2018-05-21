@@ -7,7 +7,7 @@ namespace WindowsMonitor.AspNet
     /// </summary>
     public sealed class AspNetWebEventRaiseStart
     {
-		public ulong ConnID { get; private set; }
+		public ulong ConnId { get; private set; }
 		public dynamic ContextId { get; private set; }
 		public string EventClassName { get; private set; }
 		public string EventCode { get; private set; }
@@ -45,7 +45,7 @@ namespace WindowsMonitor.AspNet
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AspNetWebEventRaiseStart
                 {
-                     ConnID = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
+                     ConnId = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
 		 ContextId = (dynamic) (managementObject.Properties["ContextId"]?.Value ?? default(dynamic)),
 		 EventClassName = (string) (managementObject.Properties["EventClassName"]?.Value ?? default(string)),
 		 EventCode = (string) (managementObject.Properties["EventCode"]?.Value ?? default(string)),

@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.Scsi
 {
     /// <summary>
     /// </summary>
-    public sealed class Win32SCSIControllerDevice
+    public sealed class Win32ScsiControllerDevice
     {
 		public ushort AccessState { get; private set; }
 		public string Antecedent { get; private set; }
@@ -15,7 +15,7 @@ namespace WindowsMonitor.Hardware.Scsi
 		public uint NumberOfHardResets { get; private set; }
 		public uint NumberOfSoftResets { get; private set; }
 
-        public static IEnumerable<Win32SCSIControllerDevice> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Win32ScsiControllerDevice> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,20 +30,20 @@ namespace WindowsMonitor.Hardware.Scsi
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32SCSIControllerDevice> Retrieve()
+        public static IEnumerable<Win32ScsiControllerDevice> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32SCSIControllerDevice> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Win32ScsiControllerDevice> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_SCSIControllerDevice");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Win32SCSIControllerDevice
+                yield return new Win32ScsiControllerDevice
                 {
                      AccessState = (ushort) (managementObject.Properties["AccessState"]?.Value ?? default(ushort)),
 		 Antecedent =  (managementObject.Properties["Antecedent"]?.Value?.ToString()),

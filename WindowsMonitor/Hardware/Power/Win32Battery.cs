@@ -19,7 +19,7 @@ namespace WindowsMonitor.Hardware.Power
 		public string Description { get; private set; }
 		public uint DesignCapacity { get; private set; }
 		public ulong DesignVoltage { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public ushort EstimatedChargeRemaining { get; private set; }
@@ -31,7 +31,7 @@ namespace WindowsMonitor.Hardware.Power
 		public uint LastErrorCode { get; private set; }
 		public uint MaxRechargeTime { get; private set; }
 		public string Name { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public string SmartBatteryVersion { get; private set; }
@@ -83,7 +83,7 @@ namespace WindowsMonitor.Hardware.Power
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DesignCapacity = (uint) (managementObject.Properties["DesignCapacity"]?.Value ?? default(uint)),
 		 DesignVoltage = (ulong) (managementObject.Properties["DesignVoltage"]?.Value ?? default(ulong)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 EstimatedChargeRemaining = (ushort) (managementObject.Properties["EstimatedChargeRemaining"]?.Value ?? default(ushort)),
@@ -95,7 +95,7 @@ namespace WindowsMonitor.Hardware.Power
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 MaxRechargeTime = (uint) (managementObject.Properties["MaxRechargeTime"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 SmartBatteryVersion = (string) (managementObject.Properties["SmartBatteryVersion"]?.Value),

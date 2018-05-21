@@ -5,12 +5,12 @@ namespace WindowsMonitor.Software.COM
 {
     /// <summary>
     /// </summary>
-    public sealed class COMApplicationSettings
+    public sealed class ComApplicationSettings
     {
 		public string Element { get; private set; }
 		public string Setting { get; private set; }
 
-        public static IEnumerable<COMApplicationSettings> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ComApplicationSettings> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,20 +25,20 @@ namespace WindowsMonitor.Software.COM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<COMApplicationSettings> Retrieve()
+        public static IEnumerable<ComApplicationSettings> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<COMApplicationSettings> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ComApplicationSettings> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_COMApplicationSettings");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new COMApplicationSettings
+                yield return new ComApplicationSettings
                 {
                      Element =  (managementObject.Properties["Element"]?.Value?.ToString()),
 		 Setting =  (managementObject.Properties["Setting"]?.Value?.ToString())

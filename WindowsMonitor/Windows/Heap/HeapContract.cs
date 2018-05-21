@@ -15,7 +15,7 @@ namespace WindowsMonitor.Windows.Heap
 		public dynamic DeCommittedSize { get; private set; }
 		public dynamic FreeSpace { get; private set; }
 		public uint HeapHandle { get; private set; }
-		public uint NoOfUCRs { get; private set; }
+		public uint NoOfUcRs { get; private set; }
 		public dynamic ReservedSpace { get; private set; }
 
         public static IEnumerable<HeapContract> Retrieve(string remote, string username, string password)
@@ -54,7 +54,7 @@ namespace WindowsMonitor.Windows.Heap
 		 DeCommittedSize = (dynamic) (managementObject.Properties["DeCommittedSize"]?.Value ?? default(dynamic)),
 		 FreeSpace = (dynamic) (managementObject.Properties["FreeSpace"]?.Value ?? default(dynamic)),
 		 HeapHandle = (uint) (managementObject.Properties["HeapHandle"]?.Value ?? default(uint)),
-		 NoOfUCRs = (uint) (managementObject.Properties["NoOfUCRs"]?.Value ?? default(uint)),
+		 NoOfUcRs = (uint) (managementObject.Properties["NoOfUCRs"]?.Value ?? default(uint)),
 		 ReservedSpace = (dynamic) (managementObject.Properties["ReservedSpace"]?.Value ?? default(dynamic))
                 };
         }

@@ -36,11 +36,11 @@ namespace WindowsMonitor.Hardware.Printers
 		public uint DefaultPriority { get; private set; }
 		public string Description { get; private set; }
 		public ushort DetectedErrorState { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool Direct { get; private set; }
 		public bool DoCompleteFirst { get; private set; }
 		public string DriverName { get; private set; }
-		public bool EnableBIDI { get; private set; }
+		public bool EnableBidi { get; private set; }
 		public bool EnableDevQueryPrint { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
@@ -67,7 +67,7 @@ namespace WindowsMonitor.Hardware.Printers
 		public ushort[] PaperSizesSupported { get; private set; }
 		public string[] PaperTypesAvailable { get; private set; }
 		public string Parameters { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public string PortName { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
@@ -153,11 +153,11 @@ namespace WindowsMonitor.Hardware.Printers
 		 DefaultPriority = (uint) (managementObject.Properties["DefaultPriority"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DetectedErrorState = (ushort) (managementObject.Properties["DetectedErrorState"]?.Value ?? default(ushort)),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 Direct = (bool) (managementObject.Properties["Direct"]?.Value ?? default(bool)),
 		 DoCompleteFirst = (bool) (managementObject.Properties["DoCompleteFirst"]?.Value ?? default(bool)),
 		 DriverName = (string) (managementObject.Properties["DriverName"]?.Value),
-		 EnableBIDI = (bool) (managementObject.Properties["EnableBIDI"]?.Value ?? default(bool)),
+		 EnableBidi = (bool) (managementObject.Properties["EnableBIDI"]?.Value ?? default(bool)),
 		 EnableDevQueryPrint = (bool) (managementObject.Properties["EnableDevQueryPrint"]?.Value ?? default(bool)),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
@@ -184,7 +184,7 @@ namespace WindowsMonitor.Hardware.Printers
 		 PaperSizesSupported = (ushort[]) (managementObject.Properties["PaperSizesSupported"]?.Value ?? new ushort[0]),
 		 PaperTypesAvailable = (string[]) (managementObject.Properties["PaperTypesAvailable"]?.Value ?? new string[0]),
 		 Parameters = (string) (managementObject.Properties["Parameters"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PortName = (string) (managementObject.Properties["PortName"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),

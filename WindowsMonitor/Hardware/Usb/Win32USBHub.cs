@@ -6,7 +6,7 @@ namespace WindowsMonitor.Hardware.Usb
 {
     /// <summary>
     /// </summary>
-    public sealed class Win32USBHub
+    public sealed class Win32UsbHub
     {
 		public ushort Availability { get; private set; }
 		public string Caption { get; private set; }
@@ -17,7 +17,7 @@ namespace WindowsMonitor.Hardware.Usb
 		public byte[] CurrentAlternateSettings { get; private set; }
 		public byte CurrentConfigValue { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public bool GangSwitched { get; private set; }
@@ -26,7 +26,7 @@ namespace WindowsMonitor.Hardware.Usb
 		public string Name { get; private set; }
 		public byte NumberOfConfigs { get; private set; }
 		public byte NumberOfPorts { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public byte ProtocolCode { get; private set; }
@@ -35,9 +35,9 @@ namespace WindowsMonitor.Hardware.Usb
 		public byte SubclassCode { get; private set; }
 		public string SystemCreationClassName { get; private set; }
 		public string SystemName { get; private set; }
-		public ushort USBVersion { get; private set; }
+		public ushort UsbVersion { get; private set; }
 
-        public static IEnumerable<Win32USBHub> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Win32UsbHub> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -52,20 +52,20 @@ namespace WindowsMonitor.Hardware.Usb
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32USBHub> Retrieve()
+        public static IEnumerable<Win32UsbHub> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32USBHub> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Win32UsbHub> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_USBHub");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Win32USBHub
+                yield return new Win32UsbHub
                 {
                      Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
@@ -76,7 +76,7 @@ namespace WindowsMonitor.Hardware.Usb
 		 CurrentAlternateSettings = (byte[]) (managementObject.Properties["CurrentAlternateSettings"]?.Value ?? new byte[0]),
 		 CurrentConfigValue = (byte) (managementObject.Properties["CurrentConfigValue"]?.Value ?? default(byte)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 GangSwitched = (bool) (managementObject.Properties["GangSwitched"]?.Value ?? default(bool)),
@@ -85,7 +85,7 @@ namespace WindowsMonitor.Hardware.Usb
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfConfigs = (byte) (managementObject.Properties["NumberOfConfigs"]?.Value ?? default(byte)),
 		 NumberOfPorts = (byte) (managementObject.Properties["NumberOfPorts"]?.Value ?? default(byte)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 ProtocolCode = (byte) (managementObject.Properties["ProtocolCode"]?.Value ?? default(byte)),
@@ -94,7 +94,7 @@ namespace WindowsMonitor.Hardware.Usb
 		 SubclassCode = (byte) (managementObject.Properties["SubclassCode"]?.Value ?? default(byte)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
-		 USBVersion = (ushort) (managementObject.Properties["USBVersion"]?.Value ?? default(ushort))
+		 UsbVersion = (ushort) (managementObject.Properties["USBVersion"]?.Value ?? default(ushort))
                 };
         }
     }

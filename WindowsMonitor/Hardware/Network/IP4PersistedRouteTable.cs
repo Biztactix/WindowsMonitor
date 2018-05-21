@@ -6,7 +6,7 @@ namespace WindowsMonitor.Hardware.Network
 {
     /// <summary>
     /// </summary>
-    public sealed class IP4PersistedRouteTable
+    public sealed class Ip4PersistedRouteTable
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
@@ -18,7 +18,7 @@ namespace WindowsMonitor.Hardware.Network
 		public string NextHop { get; private set; }
 		public string Status { get; private set; }
 
-        public static IEnumerable<IP4PersistedRouteTable> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Ip4PersistedRouteTable> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -33,20 +33,20 @@ namespace WindowsMonitor.Hardware.Network
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IP4PersistedRouteTable> Retrieve()
+        public static IEnumerable<Ip4PersistedRouteTable> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IP4PersistedRouteTable> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Ip4PersistedRouteTable> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_IP4PersistedRouteTable");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new IP4PersistedRouteTable
+                yield return new Ip4PersistedRouteTable
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),

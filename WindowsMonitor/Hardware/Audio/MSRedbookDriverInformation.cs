@@ -5,11 +5,11 @@ namespace WindowsMonitor.Hardware.Audio
 {
     /// <summary>
     /// </summary>
-    public sealed class MSRedbookDriverInformation
+    public sealed class MsRedbookDriverInformation
     {
 		public bool Active { get; private set; }
-		public bool CDDAAccurate { get; private set; }
-		public bool CDDASupported { get; private set; }
+		public bool CddaAccurate { get; private set; }
+		public bool CddaSupported { get; private set; }
 		public string InstanceName { get; private set; }
 		public uint MaximumSectorsPerRead { get; private set; }
 		public uint NumberOfBuffers { get; private set; }
@@ -18,7 +18,7 @@ namespace WindowsMonitor.Hardware.Audio
 		public uint SectorsPerRead { get; private set; }
 		public uint SectorsPerReadMask { get; private set; }
 
-        public static IEnumerable<MSRedbookDriverInformation> Retrieve(string remote, string username, string password)
+        public static IEnumerable<MsRedbookDriverInformation> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -33,24 +33,24 @@ namespace WindowsMonitor.Hardware.Audio
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSRedbookDriverInformation> Retrieve()
+        public static IEnumerable<MsRedbookDriverInformation> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSRedbookDriverInformation> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<MsRedbookDriverInformation> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSRedbook_DriverInformation");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSRedbookDriverInformation
+                yield return new MsRedbookDriverInformation
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
-		 CDDAAccurate = (bool) (managementObject.Properties["CDDAAccurate"]?.Value ?? default(bool)),
-		 CDDASupported = (bool) (managementObject.Properties["CDDASupported"]?.Value ?? default(bool)),
+		 CddaAccurate = (bool) (managementObject.Properties["CDDAAccurate"]?.Value ?? default(bool)),
+		 CddaSupported = (bool) (managementObject.Properties["CDDASupported"]?.Value ?? default(bool)),
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
 		 MaximumSectorsPerRead = (uint) (managementObject.Properties["MaximumSectorsPerRead"]?.Value ?? default(uint)),
 		 NumberOfBuffers = (uint) (managementObject.Properties["NumberOfBuffers"]?.Value ?? default(uint)),

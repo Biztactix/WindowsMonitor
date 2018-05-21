@@ -28,13 +28,13 @@ namespace WindowsMonitor.Windows
 		public ushort Number { get; private set; }
 		public string OtherIdentifyingInfo { get; private set; }
 		public string PartNumber { get; private set; }
-		public bool PMESignal { get; private set; }
+		public bool PmeSignal { get; private set; }
 		public bool PoweredOn { get; private set; }
 		public string PurposeDescription { get; private set; }
 		public uint SegmentGroupNumber { get; private set; }
 		public string SerialNumber { get; private set; }
 		public bool Shared { get; private set; }
-		public string SKU { get; private set; }
+		public string Sku { get; private set; }
 		public string SlotDesignation { get; private set; }
 		public bool SpecialPurpose { get; private set; }
 		public string Status { get; private set; }
@@ -94,13 +94,13 @@ namespace WindowsMonitor.Windows
 		 Number = (ushort) (managementObject.Properties["Number"]?.Value ?? default(ushort)),
 		 OtherIdentifyingInfo = (string) (managementObject.Properties["OtherIdentifyingInfo"]?.Value),
 		 PartNumber = (string) (managementObject.Properties["PartNumber"]?.Value),
-		 PMESignal = (bool) (managementObject.Properties["PMESignal"]?.Value ?? default(bool)),
+		 PmeSignal = (bool) (managementObject.Properties["PMESignal"]?.Value ?? default(bool)),
 		 PoweredOn = (bool) (managementObject.Properties["PoweredOn"]?.Value ?? default(bool)),
 		 PurposeDescription = (string) (managementObject.Properties["PurposeDescription"]?.Value),
 		 SegmentGroupNumber = (uint) (managementObject.Properties["SegmentGroupNumber"]?.Value ?? default(uint)),
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
 		 Shared = (bool) (managementObject.Properties["Shared"]?.Value ?? default(bool)),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
 		 SlotDesignation = (string) (managementObject.Properties["SlotDesignation"]?.Value),
 		 SpecialPurpose = (bool) (managementObject.Properties["SpecialPurpose"]?.Value ?? default(bool)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),

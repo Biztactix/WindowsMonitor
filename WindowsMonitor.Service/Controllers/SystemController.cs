@@ -15,17 +15,17 @@ namespace WindowsMonitor.Service.Controllers
 
         public IActionResult Drives()
         {
-            return Json(DiskDrive.Retrieve());
+            return Json(Win32DiskDrive.Retrieve());
         }
 
         public IActionResult Partitions()
         {
-            return Json(DiskPartition.Retrieve());
+            return Json(Win32DiskPartition.Retrieve());
         }
 
         public IActionResult Quotas()
         {
-            return Json(DiskQuota.Retrieve());
+            return Json(Win32DiskQuota.Retrieve());
         }
     }
 }

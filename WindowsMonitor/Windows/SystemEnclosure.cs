@@ -37,8 +37,8 @@ namespace WindowsMonitor.Windows
 		public string SerialNumber { get; private set; }
 		public string[] ServiceDescriptions { get; private set; }
 		public ushort[] ServicePhilosophy { get; private set; }
-		public string SKU { get; private set; }
-		public string SMBIOSAssetTag { get; private set; }
+		public string Sku { get; private set; }
+		public string SmbiosAssetTag { get; private set; }
 		public string Status { get; private set; }
 		public string Tag { get; private set; }
 		public string[] TypeDescriptions { get; private set; }
@@ -105,8 +105,8 @@ namespace WindowsMonitor.Windows
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
 		 ServiceDescriptions = (string[]) (managementObject.Properties["ServiceDescriptions"]?.Value ?? new string[0]),
 		 ServicePhilosophy = (ushort[]) (managementObject.Properties["ServicePhilosophy"]?.Value ?? new ushort[0]),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
-		 SMBIOSAssetTag = (string) (managementObject.Properties["SMBIOSAssetTag"]?.Value),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
+		 SmbiosAssetTag = (string) (managementObject.Properties["SMBIOSAssetTag"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Tag = (string) (managementObject.Properties["Tag"]?.Value),
 		 TypeDescriptions = (string[]) (managementObject.Properties["TypeDescriptions"]?.Value ?? new string[0]),

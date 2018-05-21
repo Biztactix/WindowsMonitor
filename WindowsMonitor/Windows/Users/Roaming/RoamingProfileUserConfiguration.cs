@@ -9,7 +9,7 @@ namespace WindowsMonitor.Windows.Users.Roaming
     {
 		public string[] DirectoriesToSyncAtLogonLogoff { get; private set; }
 		public string[] ExcludedProfileDirs { get; private set; }
-		public bool IsConfiguredByWMI { get; private set; }
+		public bool IsConfiguredByWmi { get; private set; }
 
         public static IEnumerable<RoamingProfileUserConfiguration> Retrieve(string remote, string username, string password)
         {
@@ -43,7 +43,7 @@ namespace WindowsMonitor.Windows.Users.Roaming
                 {
                      DirectoriesToSyncAtLogonLogoff = (string[]) (managementObject.Properties["DirectoriesToSyncAtLogonLogoff"]?.Value ?? new string[0]),
 		 ExcludedProfileDirs = (string[]) (managementObject.Properties["ExcludedProfileDirs"]?.Value ?? new string[0]),
-		 IsConfiguredByWMI = (bool) (managementObject.Properties["IsConfiguredByWMI"]?.Value ?? default(bool))
+		 IsConfiguredByWmi = (bool) (managementObject.Properties["IsConfiguredByWMI"]?.Value ?? default(bool))
                 };
         }
     }

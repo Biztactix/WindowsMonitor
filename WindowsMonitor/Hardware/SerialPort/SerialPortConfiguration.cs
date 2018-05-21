@@ -13,13 +13,13 @@ namespace WindowsMonitor.Hardware.SerialPort
 		public uint BitsPerByte { get; private set; }
 		public string Caption { get; private set; }
 		public bool ContinueXMitOnXOff { get; private set; }
-		public bool CTSOutflowControl { get; private set; }
+		public bool CtsOutflowControl { get; private set; }
 		public string Description { get; private set; }
-		public bool DiscardNULLBytes { get; private set; }
-		public bool DSROutflowControl { get; private set; }
-		public bool DSRSensitivity { get; private set; }
-		public string DTRFlowControlType { get; private set; }
-		public uint EOFCharacter { get; private set; }
+		public bool DiscardNullBytes { get; private set; }
+		public bool DsrOutflowControl { get; private set; }
+		public bool DsrSensitivity { get; private set; }
+		public string DtrFlowControlType { get; private set; }
+		public uint EofCharacter { get; private set; }
 		public uint ErrorReplaceCharacter { get; private set; }
 		public bool ErrorReplacementEnabled { get; private set; }
 		public uint EventCharacter { get; private set; }
@@ -27,15 +27,15 @@ namespace WindowsMonitor.Hardware.SerialPort
 		public string Name { get; private set; }
 		public string Parity { get; private set; }
 		public bool ParityCheckEnabled { get; private set; }
-		public string RTSFlowControlType { get; private set; }
-		public string SettingID { get; private set; }
+		public string RtsFlowControlType { get; private set; }
+		public string SettingId { get; private set; }
 		public string StopBits { get; private set; }
 		public uint XOffCharacter { get; private set; }
 		public uint XOffXMitThreshold { get; private set; }
 		public uint XOnCharacter { get; private set; }
-		public uint XOnXMitThreshold { get; private set; }
-		public uint XOnXOffInFlowControl { get; private set; }
-		public uint XOnXOffOutFlowControl { get; private set; }
+		public uint XonXMitThreshold { get; private set; }
+		public uint XonXOffInFlowControl { get; private set; }
+		public uint XonXOffOutFlowControl { get; private set; }
 
         public static IEnumerable<SerialPortConfiguration> Retrieve(string remote, string username, string password)
         {
@@ -73,13 +73,13 @@ namespace WindowsMonitor.Hardware.SerialPort
 		 BitsPerByte = (uint) (managementObject.Properties["BitsPerByte"]?.Value ?? default(uint)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ContinueXMitOnXOff = (bool) (managementObject.Properties["ContinueXMitOnXOff"]?.Value ?? default(bool)),
-		 CTSOutflowControl = (bool) (managementObject.Properties["CTSOutflowControl"]?.Value ?? default(bool)),
+		 CtsOutflowControl = (bool) (managementObject.Properties["CTSOutflowControl"]?.Value ?? default(bool)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DiscardNULLBytes = (bool) (managementObject.Properties["DiscardNULLBytes"]?.Value ?? default(bool)),
-		 DSROutflowControl = (bool) (managementObject.Properties["DSROutflowControl"]?.Value ?? default(bool)),
-		 DSRSensitivity = (bool) (managementObject.Properties["DSRSensitivity"]?.Value ?? default(bool)),
-		 DTRFlowControlType = (string) (managementObject.Properties["DTRFlowControlType"]?.Value),
-		 EOFCharacter = (uint) (managementObject.Properties["EOFCharacter"]?.Value ?? default(uint)),
+		 DiscardNullBytes = (bool) (managementObject.Properties["DiscardNULLBytes"]?.Value ?? default(bool)),
+		 DsrOutflowControl = (bool) (managementObject.Properties["DSROutflowControl"]?.Value ?? default(bool)),
+		 DsrSensitivity = (bool) (managementObject.Properties["DSRSensitivity"]?.Value ?? default(bool)),
+		 DtrFlowControlType = (string) (managementObject.Properties["DTRFlowControlType"]?.Value),
+		 EofCharacter = (uint) (managementObject.Properties["EOFCharacter"]?.Value ?? default(uint)),
 		 ErrorReplaceCharacter = (uint) (managementObject.Properties["ErrorReplaceCharacter"]?.Value ?? default(uint)),
 		 ErrorReplacementEnabled = (bool) (managementObject.Properties["ErrorReplacementEnabled"]?.Value ?? default(bool)),
 		 EventCharacter = (uint) (managementObject.Properties["EventCharacter"]?.Value ?? default(uint)),
@@ -87,15 +87,15 @@ namespace WindowsMonitor.Hardware.SerialPort
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 Parity = (string) (managementObject.Properties["Parity"]?.Value),
 		 ParityCheckEnabled = (bool) (managementObject.Properties["ParityCheckEnabled"]?.Value ?? default(bool)),
-		 RTSFlowControlType = (string) (managementObject.Properties["RTSFlowControlType"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 RtsFlowControlType = (string) (managementObject.Properties["RTSFlowControlType"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 StopBits = (string) (managementObject.Properties["StopBits"]?.Value),
 		 XOffCharacter = (uint) (managementObject.Properties["XOffCharacter"]?.Value ?? default(uint)),
 		 XOffXMitThreshold = (uint) (managementObject.Properties["XOffXMitThreshold"]?.Value ?? default(uint)),
 		 XOnCharacter = (uint) (managementObject.Properties["XOnCharacter"]?.Value ?? default(uint)),
-		 XOnXMitThreshold = (uint) (managementObject.Properties["XOnXMitThreshold"]?.Value ?? default(uint)),
-		 XOnXOffInFlowControl = (uint) (managementObject.Properties["XOnXOffInFlowControl"]?.Value ?? default(uint)),
-		 XOnXOffOutFlowControl = (uint) (managementObject.Properties["XOnXOffOutFlowControl"]?.Value ?? default(uint))
+		 XonXMitThreshold = (uint) (managementObject.Properties["XOnXMitThreshold"]?.Value ?? default(uint)),
+		 XonXOffInFlowControl = (uint) (managementObject.Properties["XOnXOffInFlowControl"]?.Value ?? default(uint)),
+		 XonXOffOutFlowControl = (uint) (managementObject.Properties["XOnXOffOutFlowControl"]?.Value ?? default(uint))
                 };
         }
     }

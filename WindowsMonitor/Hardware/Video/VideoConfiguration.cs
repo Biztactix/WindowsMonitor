@@ -11,9 +11,9 @@ namespace WindowsMonitor.Hardware.Video
 		public uint ActualColorResolution { get; private set; }
 		public string AdapterChipType { get; private set; }
 		public string AdapterCompatibility { get; private set; }
-		public string AdapterDACType { get; private set; }
+		public string AdapterDacType { get; private set; }
 		public string AdapterDescription { get; private set; }
-		public uint AdapterRAM { get; private set; }
+		public uint AdapterRam { get; private set; }
 		public string AdapterType { get; private set; }
 		public uint BitsPerPixel { get; private set; }
 		public string Caption { get; private set; }
@@ -35,7 +35,7 @@ namespace WindowsMonitor.Hardware.Video
 		public string ScanMode { get; private set; }
 		public uint ScreenHeight { get; private set; }
 		public uint ScreenWidth { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public uint SystemPaletteEntries { get; private set; }
 		public uint VerticalResolution { get; private set; }
 
@@ -72,9 +72,9 @@ namespace WindowsMonitor.Hardware.Video
                      ActualColorResolution = (uint) (managementObject.Properties["ActualColorResolution"]?.Value ?? default(uint)),
 		 AdapterChipType = (string) (managementObject.Properties["AdapterChipType"]?.Value),
 		 AdapterCompatibility = (string) (managementObject.Properties["AdapterCompatibility"]?.Value),
-		 AdapterDACType = (string) (managementObject.Properties["AdapterDACType"]?.Value),
+		 AdapterDacType = (string) (managementObject.Properties["AdapterDACType"]?.Value),
 		 AdapterDescription = (string) (managementObject.Properties["AdapterDescription"]?.Value),
-		 AdapterRAM = (uint) (managementObject.Properties["AdapterRAM"]?.Value ?? default(uint)),
+		 AdapterRam = (uint) (managementObject.Properties["AdapterRAM"]?.Value ?? default(uint)),
 		 AdapterType = (string) (managementObject.Properties["AdapterType"]?.Value),
 		 BitsPerPixel = (uint) (managementObject.Properties["BitsPerPixel"]?.Value ?? default(uint)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
@@ -96,7 +96,7 @@ namespace WindowsMonitor.Hardware.Video
 		 ScanMode = (string) (managementObject.Properties["ScanMode"]?.Value),
 		 ScreenHeight = (uint) (managementObject.Properties["ScreenHeight"]?.Value ?? default(uint)),
 		 ScreenWidth = (uint) (managementObject.Properties["ScreenWidth"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 SystemPaletteEntries = (uint) (managementObject.Properties["SystemPaletteEntries"]?.Value ?? default(uint)),
 		 VerticalResolution = (uint) (managementObject.Properties["VerticalResolution"]?.Value ?? default(uint))
                 };

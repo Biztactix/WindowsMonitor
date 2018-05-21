@@ -8,14 +8,14 @@ namespace WindowsMonitor.Software
     /// </summary>
     public sealed class SoftwareLicensingProduct
     {
-		public string ADActivationCsvlkPid { get; private set; }
-		public string ADActivationCsvlkSkuId { get; private set; }
-		public string ADActivationObjectDN { get; private set; }
-		public string ADActivationObjectName { get; private set; }
-		public string ApplicationID { get; private set; }
-		public string AutomaticVMActivationHostDigitalPid2 { get; private set; }
-		public string AutomaticVMActivationHostMachineName { get; private set; }
-		public DateTime AutomaticVMActivationLastActivationTime { get; private set; }
+		public string AdActivationCsvlkPid { get; private set; }
+		public string AdActivationCsvlkSkuId { get; private set; }
+		public string AdActivationObjectDn { get; private set; }
+		public string AdActivationObjectName { get; private set; }
+		public string ApplicationId { get; private set; }
+		public string AutomaticVmActivationHostDigitalPid2 { get; private set; }
+		public string AutomaticVmActivationHostMachineName { get; private set; }
+		public DateTime AutomaticVmActivationLastActivationTime { get; private set; }
 		public string Description { get; private set; }
 		public string DiscoveredKeyManagementServiceMachineIpAddress { get; private set; }
 		public string DiscoveredKeyManagementServiceMachineName { get; private set; }
@@ -24,8 +24,8 @@ namespace WindowsMonitor.Software
 		public uint ExtendedGrace { get; private set; }
 		public uint GenuineStatus { get; private set; }
 		public uint GracePeriodRemaining { get; private set; }
-		public string IAID { get; private set; }
-		public string ID { get; private set; }
+		public string Iaid { get; private set; }
+		public string Id { get; private set; }
 		public uint IsKeyManagementServiceMachine { get; private set; }
 		public uint KeyManagementServiceCurrentCount { get; private set; }
 		public uint KeyManagementServiceFailedRequests { get; private set; }
@@ -34,10 +34,10 @@ namespace WindowsMonitor.Software
 		public string KeyManagementServiceMachine { get; private set; }
 		public uint KeyManagementServiceNonGenuineGraceRequests { get; private set; }
 		public uint KeyManagementServiceNotificationRequests { get; private set; }
-		public uint KeyManagementServiceOOBGraceRequests { get; private set; }
-		public uint KeyManagementServiceOOTGraceRequests { get; private set; }
+		public uint KeyManagementServiceOobGraceRequests { get; private set; }
+		public uint KeyManagementServiceOotGraceRequests { get; private set; }
 		public uint KeyManagementServicePort { get; private set; }
-		public string KeyManagementServiceProductKeyID { get; private set; }
+		public string KeyManagementServiceProductKeyId { get; private set; }
 		public uint KeyManagementServiceTotalRequests { get; private set; }
 		public uint KeyManagementServiceUnlicensedRequests { get; private set; }
 		public string LicenseDependsOn { get; private set; }
@@ -45,30 +45,30 @@ namespace WindowsMonitor.Software
 		public bool LicenseIsAddon { get; private set; }
 		public uint LicenseStatus { get; private set; }
 		public uint LicenseStatusReason { get; private set; }
-		public string MachineURL { get; private set; }
+		public string MachineUrl { get; private set; }
 		public string Name { get; private set; }
 		public string OfflineInstallationId { get; private set; }
 		public string PartialProductKey { get; private set; }
-		public string ProcessorURL { get; private set; }
+		public string ProcessorUrl { get; private set; }
 		public string ProductKeyChannel { get; private set; }
-		public string ProductKeyID { get; private set; }
-		public string ProductKeyID2 { get; private set; }
-		public string ProductKeyURL { get; private set; }
+		public string ProductKeyId { get; private set; }
+		public string ProductKeyId2 { get; private set; }
+		public string ProductKeyUrl { get; private set; }
 		public uint RemainingAppReArmCount { get; private set; }
 		public uint RemainingSkuReArmCount { get; private set; }
 		public uint RequiredClientCount { get; private set; }
 		public string TokenActivationAdditionalInfo { get; private set; }
 		public string TokenActivationCertificateThumbprint { get; private set; }
 		public uint TokenActivationGrantNumber { get; private set; }
-		public string TokenActivationILID { get; private set; }
-		public uint TokenActivationILVID { get; private set; }
+		public string TokenActivationIlid { get; private set; }
+		public uint TokenActivationIlvid { get; private set; }
 		public DateTime TrustedTime { get; private set; }
-		public string UseLicenseURL { get; private set; }
-		public string ValidationURL { get; private set; }
-		public uint VLActivationInterval { get; private set; }
-		public uint VLActivationType { get; private set; }
-		public uint VLActivationTypeEnabled { get; private set; }
-		public uint VLRenewalInterval { get; private set; }
+		public string UseLicenseUrl { get; private set; }
+		public string ValidationUrl { get; private set; }
+		public uint VlActivationInterval { get; private set; }
+		public uint VlActivationType { get; private set; }
+		public uint VlActivationTypeEnabled { get; private set; }
+		public uint VlRenewalInterval { get; private set; }
 
         public static IEnumerable<SoftwareLicensingProduct> Retrieve(string remote, string username, string password)
         {
@@ -100,14 +100,14 @@ namespace WindowsMonitor.Software
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new SoftwareLicensingProduct
                 {
-                     ADActivationCsvlkPid = (string) (managementObject.Properties["ADActivationCsvlkPid"]?.Value),
-		 ADActivationCsvlkSkuId = (string) (managementObject.Properties["ADActivationCsvlkSkuId"]?.Value),
-		 ADActivationObjectDN = (string) (managementObject.Properties["ADActivationObjectDN"]?.Value),
-		 ADActivationObjectName = (string) (managementObject.Properties["ADActivationObjectName"]?.Value),
-		 ApplicationID = (string) (managementObject.Properties["ApplicationID"]?.Value),
-		 AutomaticVMActivationHostDigitalPid2 = (string) (managementObject.Properties["AutomaticVMActivationHostDigitalPid2"]?.Value),
-		 AutomaticVMActivationHostMachineName = (string) (managementObject.Properties["AutomaticVMActivationHostMachineName"]?.Value),
-		 AutomaticVMActivationLastActivationTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["AutomaticVMActivationLastActivationTime"]?.Value as string ?? "00010102000000.000000+060"),
+                     AdActivationCsvlkPid = (string) (managementObject.Properties["ADActivationCsvlkPid"]?.Value),
+		 AdActivationCsvlkSkuId = (string) (managementObject.Properties["ADActivationCsvlkSkuId"]?.Value),
+		 AdActivationObjectDn = (string) (managementObject.Properties["ADActivationObjectDN"]?.Value),
+		 AdActivationObjectName = (string) (managementObject.Properties["ADActivationObjectName"]?.Value),
+		 ApplicationId = (string) (managementObject.Properties["ApplicationID"]?.Value),
+		 AutomaticVmActivationHostDigitalPid2 = (string) (managementObject.Properties["AutomaticVMActivationHostDigitalPid2"]?.Value),
+		 AutomaticVmActivationHostMachineName = (string) (managementObject.Properties["AutomaticVMActivationHostMachineName"]?.Value),
+		 AutomaticVmActivationLastActivationTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["AutomaticVMActivationLastActivationTime"]?.Value as string ?? "00010102000000.000000+060"),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DiscoveredKeyManagementServiceMachineIpAddress = (string) (managementObject.Properties["DiscoveredKeyManagementServiceMachineIpAddress"]?.Value),
 		 DiscoveredKeyManagementServiceMachineName = (string) (managementObject.Properties["DiscoveredKeyManagementServiceMachineName"]?.Value),
@@ -116,8 +116,8 @@ namespace WindowsMonitor.Software
 		 ExtendedGrace = (uint) (managementObject.Properties["ExtendedGrace"]?.Value ?? default(uint)),
 		 GenuineStatus = (uint) (managementObject.Properties["GenuineStatus"]?.Value ?? default(uint)),
 		 GracePeriodRemaining = (uint) (managementObject.Properties["GracePeriodRemaining"]?.Value ?? default(uint)),
-		 IAID = (string) (managementObject.Properties["IAID"]?.Value),
-		 ID = (string) (managementObject.Properties["ID"]?.Value),
+		 Iaid = (string) (managementObject.Properties["IAID"]?.Value),
+		 Id = (string) (managementObject.Properties["ID"]?.Value),
 		 IsKeyManagementServiceMachine = (uint) (managementObject.Properties["IsKeyManagementServiceMachine"]?.Value ?? default(uint)),
 		 KeyManagementServiceCurrentCount = (uint) (managementObject.Properties["KeyManagementServiceCurrentCount"]?.Value ?? default(uint)),
 		 KeyManagementServiceFailedRequests = (uint) (managementObject.Properties["KeyManagementServiceFailedRequests"]?.Value ?? default(uint)),
@@ -126,10 +126,10 @@ namespace WindowsMonitor.Software
 		 KeyManagementServiceMachine = (string) (managementObject.Properties["KeyManagementServiceMachine"]?.Value),
 		 KeyManagementServiceNonGenuineGraceRequests = (uint) (managementObject.Properties["KeyManagementServiceNonGenuineGraceRequests"]?.Value ?? default(uint)),
 		 KeyManagementServiceNotificationRequests = (uint) (managementObject.Properties["KeyManagementServiceNotificationRequests"]?.Value ?? default(uint)),
-		 KeyManagementServiceOOBGraceRequests = (uint) (managementObject.Properties["KeyManagementServiceOOBGraceRequests"]?.Value ?? default(uint)),
-		 KeyManagementServiceOOTGraceRequests = (uint) (managementObject.Properties["KeyManagementServiceOOTGraceRequests"]?.Value ?? default(uint)),
+		 KeyManagementServiceOobGraceRequests = (uint) (managementObject.Properties["KeyManagementServiceOOBGraceRequests"]?.Value ?? default(uint)),
+		 KeyManagementServiceOotGraceRequests = (uint) (managementObject.Properties["KeyManagementServiceOOTGraceRequests"]?.Value ?? default(uint)),
 		 KeyManagementServicePort = (uint) (managementObject.Properties["KeyManagementServicePort"]?.Value ?? default(uint)),
-		 KeyManagementServiceProductKeyID = (string) (managementObject.Properties["KeyManagementServiceProductKeyID"]?.Value),
+		 KeyManagementServiceProductKeyId = (string) (managementObject.Properties["KeyManagementServiceProductKeyID"]?.Value),
 		 KeyManagementServiceTotalRequests = (uint) (managementObject.Properties["KeyManagementServiceTotalRequests"]?.Value ?? default(uint)),
 		 KeyManagementServiceUnlicensedRequests = (uint) (managementObject.Properties["KeyManagementServiceUnlicensedRequests"]?.Value ?? default(uint)),
 		 LicenseDependsOn = (string) (managementObject.Properties["LicenseDependsOn"]?.Value),
@@ -137,30 +137,30 @@ namespace WindowsMonitor.Software
 		 LicenseIsAddon = (bool) (managementObject.Properties["LicenseIsAddon"]?.Value ?? default(bool)),
 		 LicenseStatus = (uint) (managementObject.Properties["LicenseStatus"]?.Value ?? default(uint)),
 		 LicenseStatusReason = (uint) (managementObject.Properties["LicenseStatusReason"]?.Value ?? default(uint)),
-		 MachineURL = (string) (managementObject.Properties["MachineURL"]?.Value),
+		 MachineUrl = (string) (managementObject.Properties["MachineURL"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 OfflineInstallationId = (string) (managementObject.Properties["OfflineInstallationId"]?.Value),
 		 PartialProductKey = (string) (managementObject.Properties["PartialProductKey"]?.Value),
-		 ProcessorURL = (string) (managementObject.Properties["ProcessorURL"]?.Value),
+		 ProcessorUrl = (string) (managementObject.Properties["ProcessorURL"]?.Value),
 		 ProductKeyChannel = (string) (managementObject.Properties["ProductKeyChannel"]?.Value),
-		 ProductKeyID = (string) (managementObject.Properties["ProductKeyID"]?.Value),
-		 ProductKeyID2 = (string) (managementObject.Properties["ProductKeyID2"]?.Value),
-		 ProductKeyURL = (string) (managementObject.Properties["ProductKeyURL"]?.Value),
+		 ProductKeyId = (string) (managementObject.Properties["ProductKeyID"]?.Value),
+		 ProductKeyId2 = (string) (managementObject.Properties["ProductKeyID2"]?.Value),
+		 ProductKeyUrl = (string) (managementObject.Properties["ProductKeyURL"]?.Value),
 		 RemainingAppReArmCount = (uint) (managementObject.Properties["RemainingAppReArmCount"]?.Value ?? default(uint)),
 		 RemainingSkuReArmCount = (uint) (managementObject.Properties["RemainingSkuReArmCount"]?.Value ?? default(uint)),
 		 RequiredClientCount = (uint) (managementObject.Properties["RequiredClientCount"]?.Value ?? default(uint)),
 		 TokenActivationAdditionalInfo = (string) (managementObject.Properties["TokenActivationAdditionalInfo"]?.Value),
 		 TokenActivationCertificateThumbprint = (string) (managementObject.Properties["TokenActivationCertificateThumbprint"]?.Value),
 		 TokenActivationGrantNumber = (uint) (managementObject.Properties["TokenActivationGrantNumber"]?.Value ?? default(uint)),
-		 TokenActivationILID = (string) (managementObject.Properties["TokenActivationILID"]?.Value),
-		 TokenActivationILVID = (uint) (managementObject.Properties["TokenActivationILVID"]?.Value ?? default(uint)),
+		 TokenActivationIlid = (string) (managementObject.Properties["TokenActivationILID"]?.Value),
+		 TokenActivationIlvid = (uint) (managementObject.Properties["TokenActivationILVID"]?.Value ?? default(uint)),
 		 TrustedTime = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TrustedTime"]?.Value as string ?? "00010102000000.000000+060"),
-		 UseLicenseURL = (string) (managementObject.Properties["UseLicenseURL"]?.Value),
-		 ValidationURL = (string) (managementObject.Properties["ValidationURL"]?.Value),
-		 VLActivationInterval = (uint) (managementObject.Properties["VLActivationInterval"]?.Value ?? default(uint)),
-		 VLActivationType = (uint) (managementObject.Properties["VLActivationType"]?.Value ?? default(uint)),
-		 VLActivationTypeEnabled = (uint) (managementObject.Properties["VLActivationTypeEnabled"]?.Value ?? default(uint)),
-		 VLRenewalInterval = (uint) (managementObject.Properties["VLRenewalInterval"]?.Value ?? default(uint))
+		 UseLicenseUrl = (string) (managementObject.Properties["UseLicenseURL"]?.Value),
+		 ValidationUrl = (string) (managementObject.Properties["ValidationURL"]?.Value),
+		 VlActivationInterval = (uint) (managementObject.Properties["VLActivationInterval"]?.Value ?? default(uint)),
+		 VlActivationType = (uint) (managementObject.Properties["VLActivationType"]?.Value ?? default(uint)),
+		 VlActivationTypeEnabled = (uint) (managementObject.Properties["VLActivationTypeEnabled"]?.Value ?? default(uint)),
+		 VlRenewalInterval = (uint) (managementObject.Properties["VLRenewalInterval"]?.Value ?? default(uint))
                 };
         }
     }

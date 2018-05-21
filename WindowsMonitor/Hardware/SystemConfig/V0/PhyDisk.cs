@@ -15,10 +15,10 @@ namespace WindowsMonitor.Hardware.SystemConfig.V0
 		public char[] Manufacturer { get; private set; }
 		public byte Pad { get; private set; }
 		public uint PartitionCount { get; private set; }
-		public uint SCSILun { get; private set; }
-		public uint SCSIPath { get; private set; }
-		public uint SCSIPort { get; private set; }
-		public uint SCSITarget { get; private set; }
+		public uint ScsiLun { get; private set; }
+		public uint ScsiPath { get; private set; }
+		public uint ScsiPort { get; private set; }
+		public uint ScsiTarget { get; private set; }
 		public uint SectorsPerTrack { get; private set; }
 		public char[] Spare { get; private set; }
 		public uint TracksPerCylinder { get; private set; }
@@ -62,10 +62,10 @@ namespace WindowsMonitor.Hardware.SystemConfig.V0
 		 Manufacturer = (char[]) (managementObject.Properties["Manufacturer"]?.Value ?? new char[0]),
 		 Pad = (byte) (managementObject.Properties["Pad"]?.Value ?? default(byte)),
 		 PartitionCount = (uint) (managementObject.Properties["PartitionCount"]?.Value ?? default(uint)),
-		 SCSILun = (uint) (managementObject.Properties["SCSILun"]?.Value ?? default(uint)),
-		 SCSIPath = (uint) (managementObject.Properties["SCSIPath"]?.Value ?? default(uint)),
-		 SCSIPort = (uint) (managementObject.Properties["SCSIPort"]?.Value ?? default(uint)),
-		 SCSITarget = (uint) (managementObject.Properties["SCSITarget"]?.Value ?? default(uint)),
+		 ScsiLun = (uint) (managementObject.Properties["SCSILun"]?.Value ?? default(uint)),
+		 ScsiPath = (uint) (managementObject.Properties["SCSIPath"]?.Value ?? default(uint)),
+		 ScsiPort = (uint) (managementObject.Properties["SCSIPort"]?.Value ?? default(uint)),
+		 ScsiTarget = (uint) (managementObject.Properties["SCSITarget"]?.Value ?? default(uint)),
 		 SectorsPerTrack = (uint) (managementObject.Properties["SectorsPerTrack"]?.Value ?? default(uint)),
 		 Spare = (char[]) (managementObject.Properties["Spare"]?.Value ?? new char[0]),
 		 TracksPerCylinder = (uint) (managementObject.Properties["TracksPerCylinder"]?.Value ?? default(uint)),

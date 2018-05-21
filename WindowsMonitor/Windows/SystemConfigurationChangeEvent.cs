@@ -10,8 +10,8 @@ namespace WindowsMonitor.Windows
     public sealed class SystemConfigurationChangeEvent
     {
 		public ushort EventType { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<SystemConfigurationChangeEvent> Retrieve(string remote, string username, string password)
         {
@@ -44,8 +44,8 @@ namespace WindowsMonitor.Windows
                 yield return new SystemConfigurationChangeEvent
                 {
                      EventType = (ushort) (managementObject.Properties["EventType"]?.Value ?? default(ushort)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

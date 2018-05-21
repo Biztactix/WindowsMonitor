@@ -21,8 +21,8 @@ namespace WindowsMonitor.Hardware.Printers
 		public bool Duplex { get; private set; }
 		public string FormName { get; private set; }
 		public uint HorizontalResolution { get; private set; }
-		public uint ICMIntent { get; private set; }
-		public uint ICMMethod { get; private set; }
+		public uint IcmIntent { get; private set; }
+		public uint IcmMethod { get; private set; }
 		public uint LogPixels { get; private set; }
 		public uint MediaType { get; private set; }
 		public string Name { get; private set; }
@@ -34,9 +34,9 @@ namespace WindowsMonitor.Hardware.Printers
 		public uint PelsWidth { get; private set; }
 		public uint PrintQuality { get; private set; }
 		public uint Scale { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public uint SpecificationVersion { get; private set; }
-		public uint TTOption { get; private set; }
+		public uint TtOption { get; private set; }
 		public uint VerticalResolution { get; private set; }
 		public uint XResolution { get; private set; }
 		public uint YResolution { get; private set; }
@@ -85,8 +85,8 @@ namespace WindowsMonitor.Hardware.Printers
 		 Duplex = (bool) (managementObject.Properties["Duplex"]?.Value ?? default(bool)),
 		 FormName = (string) (managementObject.Properties["FormName"]?.Value),
 		 HorizontalResolution = (uint) (managementObject.Properties["HorizontalResolution"]?.Value ?? default(uint)),
-		 ICMIntent = (uint) (managementObject.Properties["ICMIntent"]?.Value ?? default(uint)),
-		 ICMMethod = (uint) (managementObject.Properties["ICMMethod"]?.Value ?? default(uint)),
+		 IcmIntent = (uint) (managementObject.Properties["ICMIntent"]?.Value ?? default(uint)),
+		 IcmMethod = (uint) (managementObject.Properties["ICMMethod"]?.Value ?? default(uint)),
 		 LogPixels = (uint) (managementObject.Properties["LogPixels"]?.Value ?? default(uint)),
 		 MediaType = (uint) (managementObject.Properties["MediaType"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
@@ -98,9 +98,9 @@ namespace WindowsMonitor.Hardware.Printers
 		 PelsWidth = (uint) (managementObject.Properties["PelsWidth"]?.Value ?? default(uint)),
 		 PrintQuality = (uint) (managementObject.Properties["PrintQuality"]?.Value ?? default(uint)),
 		 Scale = (uint) (managementObject.Properties["Scale"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 SpecificationVersion = (uint) (managementObject.Properties["SpecificationVersion"]?.Value ?? default(uint)),
-		 TTOption = (uint) (managementObject.Properties["TTOption"]?.Value ?? default(uint)),
+		 TtOption = (uint) (managementObject.Properties["TTOption"]?.Value ?? default(uint)),
 		 VerticalResolution = (uint) (managementObject.Properties["VerticalResolution"]?.Value ?? default(uint)),
 		 XResolution = (uint) (managementObject.Properties["XResolution"]?.Value ?? default(uint)),
 		 YResolution = (uint) (managementObject.Properties["YResolution"]?.Value ?? default(uint))

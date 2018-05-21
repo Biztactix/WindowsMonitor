@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Hardware.Network
+namespace WindowsMonitor.Hardware
 {
     /// <summary>
     /// </summary>
@@ -11,8 +11,8 @@ namespace WindowsMonitor.Hardware.Network
 		public string Description { get; private set; }
 		public string IdentifyingNumber { get; private set; }
 		public string Name { get; private set; }
-		public string SKUNumber { get; private set; }
-		public string UUID { get; private set; }
+		public string SkuNumber { get; private set; }
+		public string Uuid { get; private set; }
 		public string Vendor { get; private set; }
 		public string Version { get; private set; }
 
@@ -50,8 +50,8 @@ namespace WindowsMonitor.Hardware.Network
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 IdentifyingNumber = (string) (managementObject.Properties["IdentifyingNumber"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 SKUNumber = (string) (managementObject.Properties["SKUNumber"]?.Value),
-		 UUID = (string) (managementObject.Properties["UUID"]?.Value),
+		 SkuNumber = (string) (managementObject.Properties["SKUNumber"]?.Value),
+		 Uuid = (string) (managementObject.Properties["UUID"]?.Value),
 		 Vendor = (string) (managementObject.Properties["Vendor"]?.Value),
 		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };

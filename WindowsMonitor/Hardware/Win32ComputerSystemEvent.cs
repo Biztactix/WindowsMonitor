@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Hardware.Network
+namespace WindowsMonitor.Hardware
 {
     /// <summary>
     /// </summary>
     public sealed class Win32ComputerSystemEvent
     {
 		public string MachineName { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<Win32ComputerSystemEvent> Retrieve(string remote, string username, string password)
         {
@@ -42,8 +42,8 @@ namespace WindowsMonitor.Hardware.Network
                 yield return new Win32ComputerSystemEvent
                 {
                      MachineName = (string) (managementObject.Properties["MachineName"]?.Value),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

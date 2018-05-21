@@ -6,7 +6,7 @@ namespace WindowsMonitor.Software.COM
 {
     /// <summary>
     /// </summary>
-    public sealed class COMClass
+    public sealed class ComClass
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
@@ -14,7 +14,7 @@ namespace WindowsMonitor.Software.COM
 		public string Name { get; private set; }
 		public string Status { get; private set; }
 
-        public static IEnumerable<COMClass> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ComClass> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -29,20 +29,20 @@ namespace WindowsMonitor.Software.COM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<COMClass> Retrieve()
+        public static IEnumerable<ComClass> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<COMClass> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ComClass> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_COMClass");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new COMClass
+                yield return new ComClass
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),

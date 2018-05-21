@@ -5,13 +5,13 @@ namespace WindowsMonitor.Software.ODBC
 {
     /// <summary>
     /// </summary>
-    public sealed class ODBCDriverSoftwareElement
+    public sealed class OdbcDriverSoftwareElement
     {
 		public string Check { get; private set; }
 		public string Element { get; private set; }
 		public ushort Phase { get; private set; }
 
-        public static IEnumerable<ODBCDriverSoftwareElement> Retrieve(string remote, string username, string password)
+        public static IEnumerable<OdbcDriverSoftwareElement> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -26,20 +26,20 @@ namespace WindowsMonitor.Software.ODBC
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ODBCDriverSoftwareElement> Retrieve()
+        public static IEnumerable<OdbcDriverSoftwareElement> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ODBCDriverSoftwareElement> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<OdbcDriverSoftwareElement> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_ODBCDriverSoftwareElement");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ODBCDriverSoftwareElement
+                yield return new OdbcDriverSoftwareElement
                 {
                      Check =  (managementObject.Properties["Check"]?.Value?.ToString()),
 		 Element =  (managementObject.Properties["Element"]?.Value?.ToString()),

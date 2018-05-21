@@ -5,13 +5,13 @@ namespace WindowsMonitor.Windows.Registry
 {
     /// <summary>
     /// </summary>
-    public sealed class SMSAdvancedClientPorts
+    public sealed class SmsAdvancedClientPorts
     {
 		public uint HttpsPortName { get; private set; }
 		public string InstanceKey { get; private set; }
 		public uint PortName { get; private set; }
 
-        public static IEnumerable<SMSAdvancedClientPorts> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SmsAdvancedClientPorts> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -26,20 +26,20 @@ namespace WindowsMonitor.Windows.Registry
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMSAdvancedClientPorts> Retrieve()
+        public static IEnumerable<SmsAdvancedClientPorts> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SMSAdvancedClientPorts> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SmsAdvancedClientPorts> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32Reg_SMSAdvancedClientPorts");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SMSAdvancedClientPorts
+                yield return new SmsAdvancedClientPorts
                 {
                      HttpsPortName = (uint) (managementObject.Properties["HttpsPortName"]?.Value ?? default(uint)),
 		 InstanceKey = (string) (managementObject.Properties["InstanceKey"]?.Value),

@@ -10,8 +10,8 @@ namespace WindowsMonitor.Hardware
     {
 		public string Caption { get; private set; }
 		public string CreationClassName { get; private set; }
-		public string CSCreationClassName { get; private set; }
-		public string CSName { get; private set; }
+		public string CsCreationClassName { get; private set; }
+		public string CsName { get; private set; }
 		public string Description { get; private set; }
 		public ulong EndingAddress { get; private set; }
 		public DateTime InstallDate { get; private set; }
@@ -52,8 +52,8 @@ namespace WindowsMonitor.Hardware
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 EndingAddress = (ulong) (managementObject.Properties["EndingAddress"]?.Value ?? default(ulong)),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),

@@ -12,8 +12,8 @@ namespace WindowsMonitor.Software
 		public string CommandLine { get; private set; }
 		public string CreationClassName { get; private set; }
 		public DateTime CreationDate { get; private set; }
-		public string CSCreationClassName { get; private set; }
-		public string CSName { get; private set; }
+		public string CsCreationClassName { get; private set; }
+		public string CsName { get; private set; }
 		public string Description { get; private set; }
 		public string ExecutablePath { get; private set; }
 		public ushort ExecutionState { get; private set; }
@@ -24,8 +24,8 @@ namespace WindowsMonitor.Software
 		public uint MaximumWorkingSetSize { get; private set; }
 		public uint MinimumWorkingSetSize { get; private set; }
 		public string Name { get; private set; }
-		public string OSCreationClassName { get; private set; }
-		public string OSName { get; private set; }
+		public string OsCreationClassName { get; private set; }
+		public string OsName { get; private set; }
 		public ulong OtherOperationCount { get; private set; }
 		public ulong OtherTransferCount { get; private set; }
 		public uint PageFaults { get; private set; }
@@ -88,8 +88,8 @@ namespace WindowsMonitor.Software
 		 CommandLine = (string) (managementObject.Properties["CommandLine"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 CreationDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["CreationDate"]?.Value as string ?? "00010102000000.000000+060"),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 ExecutablePath = (string) (managementObject.Properties["ExecutablePath"]?.Value),
 		 ExecutionState = (ushort) (managementObject.Properties["ExecutionState"]?.Value ?? default(ushort)),
@@ -100,8 +100,8 @@ namespace WindowsMonitor.Software
 		 MaximumWorkingSetSize = (uint) (managementObject.Properties["MaximumWorkingSetSize"]?.Value ?? default(uint)),
 		 MinimumWorkingSetSize = (uint) (managementObject.Properties["MinimumWorkingSetSize"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 OSCreationClassName = (string) (managementObject.Properties["OSCreationClassName"]?.Value),
-		 OSName = (string) (managementObject.Properties["OSName"]?.Value),
+		 OsCreationClassName = (string) (managementObject.Properties["OSCreationClassName"]?.Value),
+		 OsName = (string) (managementObject.Properties["OSName"]?.Value),
 		 OtherOperationCount = (ulong) (managementObject.Properties["OtherOperationCount"]?.Value ?? default(ulong)),
 		 OtherTransferCount = (ulong) (managementObject.Properties["OtherTransferCount"]?.Value ?? default(ulong)),
 		 PageFaults = (uint) (managementObject.Properties["PageFaults"]?.Value ?? default(uint)),

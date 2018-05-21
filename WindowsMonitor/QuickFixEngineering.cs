@@ -10,10 +10,10 @@ namespace WindowsMonitor
     public sealed class QuickFixEngineering
     {
 		public string Caption { get; private set; }
-		public string CSName { get; private set; }
+		public string CsName { get; private set; }
 		public string Description { get; private set; }
 		public string FixComments { get; private set; }
-		public string HotFixID { get; private set; }
+		public string HotFixId { get; private set; }
 		public DateTime InstallDate { get; private set; }
 		public string InstalledBy { get; private set; }
 		public string InstalledOn { get; private set; }
@@ -52,10 +52,10 @@ namespace WindowsMonitor
                 yield return new QuickFixEngineering
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 FixComments = (string) (managementObject.Properties["FixComments"]?.Value),
-		 HotFixID = (string) (managementObject.Properties["HotFixID"]?.Value),
+		 HotFixId = (string) (managementObject.Properties["HotFixID"]?.Value),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 InstalledBy = (string) (managementObject.Properties["InstalledBy"]?.Value),
 		 InstalledOn = (string) (managementObject.Properties["InstalledOn"]?.Value),

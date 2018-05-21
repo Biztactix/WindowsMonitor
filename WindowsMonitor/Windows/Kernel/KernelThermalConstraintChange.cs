@@ -12,9 +12,9 @@ namespace WindowsMonitor.Windows.Kernel
 		public bool Active { get; private set; }
 		public string InstanceName { get; private set; }
 		public ulong Processors { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
 		public uint ThermalConstraint { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<KernelThermalConstraintChange> Retrieve(string remote, string username, string password)
         {
@@ -49,9 +49,9 @@ namespace WindowsMonitor.Windows.Kernel
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
 		 Processors = (ulong) (managementObject.Properties["Processors"]?.Value ?? default(ulong)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
 		 ThermalConstraint = (uint) (managementObject.Properties["ThermalConstraint"]?.Value ?? default(uint)),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

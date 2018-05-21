@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.Ide
 {
     /// <summary>
     /// </summary>
-    public sealed class IDEPortDeviceInfo
+    public sealed class IdePortDeviceInfo
     {
 		public bool Active { get; private set; }
 		public byte Bus { get; private set; }
@@ -13,7 +13,7 @@ namespace WindowsMonitor.Hardware.Ide
 		public byte Lun { get; private set; }
 		public byte Target { get; private set; }
 
-        public static IEnumerable<IDEPortDeviceInfo> Retrieve(string remote, string username, string password)
+        public static IEnumerable<IdePortDeviceInfo> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -28,20 +28,20 @@ namespace WindowsMonitor.Hardware.Ide
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IDEPortDeviceInfo> Retrieve()
+        public static IEnumerable<IdePortDeviceInfo> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IDEPortDeviceInfo> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<IdePortDeviceInfo> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSIde_PortDeviceInfo");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new IDEPortDeviceInfo
+                yield return new IdePortDeviceInfo
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 Bus = (byte) (managementObject.Properties["Bus"]?.Value ?? default(byte)),

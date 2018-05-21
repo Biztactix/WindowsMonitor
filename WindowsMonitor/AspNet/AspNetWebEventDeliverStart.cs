@@ -7,7 +7,7 @@ namespace WindowsMonitor.AspNet
     /// </summary>
     public sealed class AspNetWebEventDeliverStart
     {
-		public ulong ConnID { get; private set; }
+		public ulong ConnId { get; private set; }
 		public dynamic ContextId { get; private set; }
 		public string EventGroupName { get; private set; }
 		public uint Flags { get; private set; }
@@ -45,7 +45,7 @@ namespace WindowsMonitor.AspNet
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AspNetWebEventDeliverStart
                 {
-                     ConnID = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
+                     ConnId = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
 		 ContextId = (dynamic) (managementObject.Properties["ContextId"]?.Value ?? default(dynamic)),
 		 EventGroupName = (string) (managementObject.Properties["EventGroupName"]?.Value ?? default(string)),
 		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),

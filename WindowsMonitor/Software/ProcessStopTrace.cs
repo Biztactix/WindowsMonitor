@@ -8,13 +8,13 @@ namespace WindowsMonitor.Software
     public sealed class ProcessStopTrace
     {
 		public uint ExitStatus { get; private set; }
-		public uint ParentProcessID { get; private set; }
-		public uint ProcessID { get; private set; }
+		public uint ParentProcessId { get; private set; }
+		public uint ProcessId { get; private set; }
 		public string ProcessName { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public uint SessionID { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public uint SessionId { get; private set; }
 		public byte[] Sid { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<ProcessStopTrace> Retrieve(string remote, string username, string password)
         {
@@ -47,13 +47,13 @@ namespace WindowsMonitor.Software
                 yield return new ProcessStopTrace
                 {
                      ExitStatus = (uint) (managementObject.Properties["ExitStatus"]?.Value ?? default(uint)),
-		 ParentProcessID = (uint) (managementObject.Properties["ParentProcessID"]?.Value ?? default(uint)),
-		 ProcessID = (uint) (managementObject.Properties["ProcessID"]?.Value ?? default(uint)),
+		 ParentProcessId = (uint) (managementObject.Properties["ParentProcessID"]?.Value ?? default(uint)),
+		 ProcessId = (uint) (managementObject.Properties["ProcessID"]?.Value ?? default(uint)),
 		 ProcessName = (string) (managementObject.Properties["ProcessName"]?.Value),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 SessionID = (uint) (managementObject.Properties["SessionID"]?.Value ?? default(uint)),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 SessionId = (uint) (managementObject.Properties["SessionID"]?.Value ?? default(uint)),
 		 Sid = (byte[]) (managementObject.Properties["Sid"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

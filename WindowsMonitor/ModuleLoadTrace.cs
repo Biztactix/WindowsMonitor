@@ -14,9 +14,9 @@ namespace WindowsMonitor
 		public ulong ImageBase { get; private set; }
 		public uint ImageChecksum { get; private set; }
 		public ulong ImageSize { get; private set; }
-		public uint ProcessID { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public uint ProcessId { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 		public uint TimeDateStamp { get; private set; }
 
         public static IEnumerable<ModuleLoadTrace> Retrieve(string remote, string username, string password)
@@ -54,9 +54,9 @@ namespace WindowsMonitor
 		 ImageBase = (ulong) (managementObject.Properties["ImageBase"]?.Value ?? default(ulong)),
 		 ImageChecksum = (uint) (managementObject.Properties["ImageChecksum"]?.Value ?? default(uint)),
 		 ImageSize = (ulong) (managementObject.Properties["ImageSize"]?.Value ?? default(ulong)),
-		 ProcessID = (uint) (managementObject.Properties["ProcessID"]?.Value ?? default(uint)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
+		 ProcessId = (uint) (managementObject.Properties["ProcessID"]?.Value ?? default(uint)),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong)),
 		 TimeDateStamp = (uint) (managementObject.Properties["TimeDateStamp"]?.Value ?? default(uint))
                 };
         }

@@ -14,17 +14,17 @@ namespace WindowsMonitor.Hardware.Network
 		public bool AutomaticResetCapability { get; private set; }
 		public ushort BootOptionOnLimit { get; private set; }
 		public ushort BootOptionOnWatchDog { get; private set; }
-		public bool BootROMSupported { get; private set; }
+		public bool BootRomSupported { get; private set; }
 		public ushort[] BootStatus { get; private set; }
 		public string BootupState { get; private set; }
 		public string Caption { get; private set; }
 		public ushort ChassisBootupState { get; private set; }
-		public string ChassisSKUNumber { get; private set; }
+		public string ChassisSkuNumber { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string CurrentTimeZone { get; private set; }
 		public bool DaylightInEffect { get; private set; }
 		public string Description { get; private set; }
-		public string DNSHostName { get; private set; }
+		public string DnsHostName { get; private set; }
 		public string Domain { get; private set; }
 		public ushort DomainRole { get; private set; }
 		public bool EnableDaylightSavingsTime { get; private set; }
@@ -42,12 +42,12 @@ namespace WindowsMonitor.Hardware.Network
 		public bool NetworkServerModeEnabled { get; private set; }
 		public uint NumberOfLogicalProcessors { get; private set; }
 		public uint NumberOfProcessors { get; private set; }
-		public byte[] OEMLogoBitmap { get; private set; }
-		public string[] OEMStringArray { get; private set; }
+		public byte[] OemLogoBitmap { get; private set; }
+		public string[] OemStringArray { get; private set; }
 		public bool PartOfDomain { get; private set; }
 		public long PauseAfterReset { get; private set; }
-		public ushort PCSystemType { get; private set; }
-		public ushort PCSystemTypeEx { get; private set; }
+		public ushort PcSystemType { get; private set; }
+		public ushort PcSystemTypeEx { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public ushort PowerOnPasswordStatus { get; private set; }
@@ -62,7 +62,7 @@ namespace WindowsMonitor.Hardware.Network
 		public string Status { get; private set; }
 		public string[] SupportContactDescription { get; private set; }
 		public string SystemFamily { get; private set; }
-		public string SystemSKUNumber { get; private set; }
+		public string SystemSkuNumber { get; private set; }
 		public ushort SystemStartupDelay { get; private set; }
 		public string[] SystemStartupOptions { get; private set; }
 		public byte SystemStartupSetting { get; private set; }
@@ -109,17 +109,17 @@ namespace WindowsMonitor.Hardware.Network
 		 AutomaticResetCapability = (bool) (managementObject.Properties["AutomaticResetCapability"]?.Value ?? default(bool)),
 		 BootOptionOnLimit = (ushort) (managementObject.Properties["BootOptionOnLimit"]?.Value ?? default(ushort)),
 		 BootOptionOnWatchDog = (ushort) (managementObject.Properties["BootOptionOnWatchDog"]?.Value ?? default(ushort)),
-		 BootROMSupported = (bool) (managementObject.Properties["BootROMSupported"]?.Value ?? default(bool)),
+		 BootRomSupported = (bool) (managementObject.Properties["BootROMSupported"]?.Value ?? default(bool)),
 		 BootStatus = (ushort[]) (managementObject.Properties["BootStatus"]?.Value ?? new ushort[0]),
 		 BootupState = (string) (managementObject.Properties["BootupState"]?.Value),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ChassisBootupState = (ushort) (managementObject.Properties["ChassisBootupState"]?.Value ?? default(ushort)),
-		 ChassisSKUNumber = (string) (managementObject.Properties["ChassisSKUNumber"]?.Value),
+		 ChassisSkuNumber = (string) (managementObject.Properties["ChassisSKUNumber"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 CurrentTimeZone =  (managementObject.Properties["CurrentTimeZone"]?.Value?.ToString()),
 		 DaylightInEffect = (bool) (managementObject.Properties["DaylightInEffect"]?.Value ?? default(bool)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DNSHostName = (string) (managementObject.Properties["DNSHostName"]?.Value),
+		 DnsHostName = (string) (managementObject.Properties["DNSHostName"]?.Value),
 		 Domain = (string) (managementObject.Properties["Domain"]?.Value),
 		 DomainRole = (ushort) (managementObject.Properties["DomainRole"]?.Value ?? default(ushort)),
 		 EnableDaylightSavingsTime = (bool) (managementObject.Properties["EnableDaylightSavingsTime"]?.Value ?? default(bool)),
@@ -137,12 +137,12 @@ namespace WindowsMonitor.Hardware.Network
 		 NetworkServerModeEnabled = (bool) (managementObject.Properties["NetworkServerModeEnabled"]?.Value ?? default(bool)),
 		 NumberOfLogicalProcessors = (uint) (managementObject.Properties["NumberOfLogicalProcessors"]?.Value ?? default(uint)),
 		 NumberOfProcessors = (uint) (managementObject.Properties["NumberOfProcessors"]?.Value ?? default(uint)),
-		 OEMLogoBitmap = (byte[]) (managementObject.Properties["OEMLogoBitmap"]?.Value ?? new byte[0]),
-		 OEMStringArray = (string[]) (managementObject.Properties["OEMStringArray"]?.Value ?? new string[0]),
+		 OemLogoBitmap = (byte[]) (managementObject.Properties["OEMLogoBitmap"]?.Value ?? new byte[0]),
+		 OemStringArray = (string[]) (managementObject.Properties["OEMStringArray"]?.Value ?? new string[0]),
 		 PartOfDomain = (bool) (managementObject.Properties["PartOfDomain"]?.Value ?? default(bool)),
 		 PauseAfterReset = (long) (managementObject.Properties["PauseAfterReset"]?.Value ?? default(long)),
-		 PCSystemType = (ushort) (managementObject.Properties["PCSystemType"]?.Value ?? default(ushort)),
-		 PCSystemTypeEx = (ushort) (managementObject.Properties["PCSystemTypeEx"]?.Value ?? default(ushort)),
+		 PcSystemType = (ushort) (managementObject.Properties["PCSystemType"]?.Value ?? default(ushort)),
+		 PcSystemTypeEx = (ushort) (managementObject.Properties["PCSystemTypeEx"]?.Value ?? default(ushort)),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 PowerOnPasswordStatus = (ushort) (managementObject.Properties["PowerOnPasswordStatus"]?.Value ?? default(ushort)),
@@ -157,7 +157,7 @@ namespace WindowsMonitor.Hardware.Network
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 SupportContactDescription = (string[]) (managementObject.Properties["SupportContactDescription"]?.Value ?? new string[0]),
 		 SystemFamily = (string) (managementObject.Properties["SystemFamily"]?.Value),
-		 SystemSKUNumber = (string) (managementObject.Properties["SystemSKUNumber"]?.Value),
+		 SystemSkuNumber = (string) (managementObject.Properties["SystemSKUNumber"]?.Value),
 		 SystemStartupDelay = (ushort) (managementObject.Properties["SystemStartupDelay"]?.Value ?? default(ushort)),
 		 SystemStartupOptions = (string[]) (managementObject.Properties["SystemStartupOptions"]?.Value ?? new string[0]),
 		 SystemStartupSetting = (byte) (managementObject.Properties["SystemStartupSetting"]?.Value ?? default(byte)),

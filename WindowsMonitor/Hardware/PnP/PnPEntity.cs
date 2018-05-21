@@ -11,21 +11,21 @@ namespace WindowsMonitor.Hardware.PnP
 		public ushort Availability { get; private set; }
 		public string Caption { get; private set; }
 		public string ClassGuid { get; private set; }
-		public string[] CompatibleID { get; private set; }
+		public string[] CompatibleId { get; private set; }
 		public uint ConfigManagerErrorCode { get; private set; }
 		public bool ConfigManagerUserConfig { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
-		public string[] HardwareID { get; private set; }
+		public string[] HardwareId { get; private set; }
 		public DateTime InstallDate { get; private set; }
 		public uint LastErrorCode { get; private set; }
 		public string Manufacturer { get; private set; }
 		public string Name { get; private set; }
-		public string PNPClass { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpClass { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public bool Present { get; private set; }
@@ -68,21 +68,21 @@ namespace WindowsMonitor.Hardware.PnP
                      Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ClassGuid = (string) (managementObject.Properties["ClassGuid"]?.Value),
-		 CompatibleID = (string[]) (managementObject.Properties["CompatibleID"]?.Value ?? new string[0]),
+		 CompatibleId = (string[]) (managementObject.Properties["CompatibleID"]?.Value ?? new string[0]),
 		 ConfigManagerErrorCode = (uint) (managementObject.Properties["ConfigManagerErrorCode"]?.Value ?? default(uint)),
 		 ConfigManagerUserConfig = (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
-		 HardwareID = (string[]) (managementObject.Properties["HardwareID"]?.Value ?? new string[0]),
+		 HardwareId = (string[]) (managementObject.Properties["HardwareID"]?.Value ?? new string[0]),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 LastErrorCode = (uint) (managementObject.Properties["LastErrorCode"]?.Value ?? default(uint)),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 PNPClass = (string) (managementObject.Properties["PNPClass"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpClass = (string) (managementObject.Properties["PNPClass"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 Present = (bool) (managementObject.Properties["Present"]?.Value ?? default(bool)),

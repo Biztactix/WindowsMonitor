@@ -10,7 +10,7 @@ namespace WindowsMonitor.HyperVisor
 		public ulong LpIndex { get; private set; }
 		public ulong PStateCap { get; private set; }
 		public ulong ThermalCap { get; private set; }
-		public ulong TStateCap { get; private set; }
+		public ulong StateCap { get; private set; }
 
         public static IEnumerable<HvPpmCapEvent> Retrieve(string remote, string username, string password)
         {
@@ -45,7 +45,7 @@ namespace WindowsMonitor.HyperVisor
                      LpIndex = (ulong) (managementObject.Properties["LpIndex"]?.Value ?? default(ulong)),
 		 PStateCap = (ulong) (managementObject.Properties["PStateCap"]?.Value ?? default(ulong)),
 		 ThermalCap = (ulong) (managementObject.Properties["ThermalCap"]?.Value ?? default(ulong)),
-		 TStateCap = (ulong) (managementObject.Properties["TStateCap"]?.Value ?? default(ulong))
+		 StateCap = (ulong) (managementObject.Properties["TStateCap"]?.Value ?? default(ulong))
                 };
         }
     }

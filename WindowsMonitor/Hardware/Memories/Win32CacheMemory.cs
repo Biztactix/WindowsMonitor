@@ -20,9 +20,9 @@ namespace WindowsMonitor.Hardware.Memories
 		public bool ConfigManagerUserConfig { get; private set; }
 		public bool CorrectableError { get; private set; }
 		public string CreationClassName { get; private set; }
-		public ushort[] CurrentSRAM { get; private set; }
+		public ushort[] CurrentSram { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public ulong EndingAddress { get; private set; }
 		public ushort ErrorAccess { get; private set; }
 		public ulong ErrorAddress { get; private set; }
@@ -47,7 +47,7 @@ namespace WindowsMonitor.Hardware.Memories
 		public string Name { get; private set; }
 		public ulong NumberOfBlocks { get; private set; }
 		public string OtherErrorDescription { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public string Purpose { get; private set; }
@@ -56,7 +56,7 @@ namespace WindowsMonitor.Hardware.Memories
 		public ulong StartingAddress { get; private set; }
 		public string Status { get; private set; }
 		public ushort StatusInfo { get; private set; }
-		public ushort[] SupportedSRAM { get; private set; }
+		public ushort[] SupportedSram { get; private set; }
 		public string SystemCreationClassName { get; private set; }
 		public bool SystemLevelAddress { get; private set; }
 		public string SystemName { get; private set; }
@@ -104,9 +104,9 @@ namespace WindowsMonitor.Hardware.Memories
 		 ConfigManagerUserConfig = (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
 		 CorrectableError = (bool) (managementObject.Properties["CorrectableError"]?.Value ?? default(bool)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CurrentSRAM = (ushort[]) (managementObject.Properties["CurrentSRAM"]?.Value ?? new ushort[0]),
+		 CurrentSram = (ushort[]) (managementObject.Properties["CurrentSRAM"]?.Value ?? new ushort[0]),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 EndingAddress = (ulong) (managementObject.Properties["EndingAddress"]?.Value ?? default(ulong)),
 		 ErrorAccess = (ushort) (managementObject.Properties["ErrorAccess"]?.Value ?? default(ushort)),
 		 ErrorAddress = (ulong) (managementObject.Properties["ErrorAddress"]?.Value ?? default(ulong)),
@@ -131,7 +131,7 @@ namespace WindowsMonitor.Hardware.Memories
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 NumberOfBlocks = (ulong) (managementObject.Properties["NumberOfBlocks"]?.Value ?? default(ulong)),
 		 OtherErrorDescription = (string) (managementObject.Properties["OtherErrorDescription"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 Purpose = (string) (managementObject.Properties["Purpose"]?.Value),
@@ -140,7 +140,7 @@ namespace WindowsMonitor.Hardware.Memories
 		 StartingAddress = (ulong) (managementObject.Properties["StartingAddress"]?.Value ?? default(ulong)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 StatusInfo = (ushort) (managementObject.Properties["StatusInfo"]?.Value ?? default(ushort)),
-		 SupportedSRAM = (ushort[]) (managementObject.Properties["SupportedSRAM"]?.Value ?? new ushort[0]),
+		 SupportedSram = (ushort[]) (managementObject.Properties["SupportedSRAM"]?.Value ?? new ushort[0]),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemLevelAddress = (bool) (managementObject.Properties["SystemLevelAddress"]?.Value ?? default(bool)),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),

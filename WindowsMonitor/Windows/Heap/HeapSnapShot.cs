@@ -15,10 +15,10 @@ namespace WindowsMonitor.Windows.Heap
 		public dynamic FreeSpace { get; private set; }
 		public uint HeapFlags { get; private set; }
 		public uint HeapHandle { get; private set; }
-		public dynamic LargeUCRSpace { get; private set; }
+		public dynamic LargeUcrSpace { get; private set; }
 		public uint ProcessId { get; private set; }
 		public dynamic ReservedSpace { get; private set; }
-		public uint UCRLength { get; private set; }
+		public uint UcrLength { get; private set; }
 
         public static IEnumerable<HeapSnapShot> Retrieve(string remote, string username, string password)
         {
@@ -56,10 +56,10 @@ namespace WindowsMonitor.Windows.Heap
 		 FreeSpace = (dynamic) (managementObject.Properties["FreeSpace"]?.Value ?? default(dynamic)),
 		 HeapFlags = (uint) (managementObject.Properties["HeapFlags"]?.Value ?? default(uint)),
 		 HeapHandle = (uint) (managementObject.Properties["HeapHandle"]?.Value ?? default(uint)),
-		 LargeUCRSpace = (dynamic) (managementObject.Properties["LargeUCRSpace"]?.Value ?? default(dynamic)),
+		 LargeUcrSpace = (dynamic) (managementObject.Properties["LargeUCRSpace"]?.Value ?? default(dynamic)),
 		 ProcessId = (uint) (managementObject.Properties["ProcessId"]?.Value ?? default(uint)),
 		 ReservedSpace = (dynamic) (managementObject.Properties["ReservedSpace"]?.Value ?? default(dynamic)),
-		 UCRLength = (uint) (managementObject.Properties["UCRLength"]?.Value ?? default(uint))
+		 UcrLength = (uint) (managementObject.Properties["UCRLength"]?.Value ?? default(uint))
                 };
         }
     }

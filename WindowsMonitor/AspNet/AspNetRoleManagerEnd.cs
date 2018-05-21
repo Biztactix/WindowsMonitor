@@ -7,11 +7,11 @@ namespace WindowsMonitor.AspNet
     /// </summary>
     public sealed class AspNetRoleManagerEnd
     {
-		public ulong ConnID { get; private set; }
+		public ulong ConnId { get; private set; }
 		public dynamic ContextId { get; private set; }
 		public uint Flags { get; private set; }
 		public uint Level { get; private set; }
-		public string provider { get; private set; }
+		public string Provider { get; private set; }
 		public string User { get; private set; }
 
         public static IEnumerable<AspNetRoleManagerEnd> Retrieve(string remote, string username, string password)
@@ -44,11 +44,11 @@ namespace WindowsMonitor.AspNet
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AspNetRoleManagerEnd
                 {
-                     ConnID = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
+                     ConnId = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
 		 ContextId = (dynamic) (managementObject.Properties["ContextId"]?.Value ?? default(dynamic)),
 		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
 		 Level = (uint) (managementObject.Properties["Level"]?.Value ?? default(uint)),
-		 provider = (string) (managementObject.Properties["provider"]?.Value ?? default(string)),
+		 Provider = (string) (managementObject.Properties["provider"]?.Value ?? default(string)),
 		 User = (string) (managementObject.Properties["User"]?.Value ?? default(string))
                 };
         }

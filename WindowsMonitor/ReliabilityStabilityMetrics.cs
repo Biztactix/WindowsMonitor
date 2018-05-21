@@ -10,7 +10,7 @@ namespace WindowsMonitor
     public sealed class ReliabilityStabilityMetrics
     {
 		public DateTime EndMeasurementDate { get; private set; }
-		public string RelID { get; private set; }
+		public string RelId { get; private set; }
 		public DateTime StartMeasurementDate { get; private set; }
 		public double SystemStabilityIndex { get; private set; }
 		public DateTime TimeGenerated { get; private set; }
@@ -46,7 +46,7 @@ namespace WindowsMonitor
                 yield return new ReliabilityStabilityMetrics
                 {
                      EndMeasurementDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["EndMeasurementDate"]?.Value as string ?? "00010102000000.000000+060"),
-		 RelID = (string) (managementObject.Properties["RelID"]?.Value),
+		 RelId = (string) (managementObject.Properties["RelID"]?.Value),
 		 StartMeasurementDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["StartMeasurementDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 SystemStabilityIndex = (double) (managementObject.Properties["SystemStabilityIndex"]?.Value ?? default(double)),
 		 TimeGenerated = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeGenerated"]?.Value as string ?? "00010102000000.000000+060")

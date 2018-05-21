@@ -5,9 +5,9 @@ namespace WindowsMonitor.Software.COM
 {
     /// <summary>
     /// </summary>
-    public sealed class ClassicCOMClassSetting
+    public sealed class ClassicComClassSetting
     {
-		public string AppID { get; private set; }
+		public string AppId { get; private set; }
 		public string AutoConvertToClsid { get; private set; }
 		public string AutoTreatAsClsid { get; private set; }
 		public string Caption { get; private set; }
@@ -25,7 +25,7 @@ namespace WindowsMonitor.Software.COM
 		public string LocalServer32 { get; private set; }
 		public string LongDisplayName { get; private set; }
 		public string ProgId { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public string ShortDisplayName { get; private set; }
 		public string ThreadingModel { get; private set; }
 		public string ToolBoxBitmap32 { get; private set; }
@@ -34,7 +34,7 @@ namespace WindowsMonitor.Software.COM
 		public string Version { get; private set; }
 		public string VersionIndependentProgId { get; private set; }
 
-        public static IEnumerable<ClassicCOMClassSetting> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ClassicComClassSetting> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -49,22 +49,22 @@ namespace WindowsMonitor.Software.COM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ClassicCOMClassSetting> Retrieve()
+        public static IEnumerable<ClassicComClassSetting> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ClassicCOMClassSetting> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ClassicComClassSetting> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_ClassicCOMClassSetting");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ClassicCOMClassSetting
+                yield return new ClassicComClassSetting
                 {
-                     AppID = (string) (managementObject.Properties["AppID"]?.Value),
+                     AppId = (string) (managementObject.Properties["AppID"]?.Value),
 		 AutoConvertToClsid = (string) (managementObject.Properties["AutoConvertToClsid"]?.Value),
 		 AutoTreatAsClsid = (string) (managementObject.Properties["AutoTreatAsClsid"]?.Value),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
@@ -82,7 +82,7 @@ namespace WindowsMonitor.Software.COM
 		 LocalServer32 = (string) (managementObject.Properties["LocalServer32"]?.Value),
 		 LongDisplayName = (string) (managementObject.Properties["LongDisplayName"]?.Value),
 		 ProgId = (string) (managementObject.Properties["ProgId"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 ShortDisplayName = (string) (managementObject.Properties["ShortDisplayName"]?.Value),
 		 ThreadingModel = (string) (managementObject.Properties["ThreadingModel"]?.Value),
 		 ToolBoxBitmap32 = (string) (managementObject.Properties["ToolBoxBitmap32"]?.Value),

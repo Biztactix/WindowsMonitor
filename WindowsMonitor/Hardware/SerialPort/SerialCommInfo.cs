@@ -25,10 +25,10 @@ namespace WindowsMonitor.Hardware.SerialPort
         public bool SettableStopBits { get; private set; }
         public uint StopBits { get; private set; }
         public bool Support16BitMode { get; private set; }
-        public bool SupportDTRDSR { get; private set; }
+        public bool SupportDtrdsr { get; private set; }
         public bool SupportIntervalTimeouts { get; private set; }
         public bool SupportParityCheck { get; private set; }
-        public bool SupportRTSCTS { get; private set; }
+        public bool SupportRtscts { get; private set; }
         public bool SupportXonXoff { get; private set; }
         public uint XoffCharacter { get; private set; }
         public uint XoffXmitThreshold { get; private set; }
@@ -88,12 +88,12 @@ namespace WindowsMonitor.Hardware.SerialPort
                     SettableStopBits = (bool) (managementObject.Properties["SettableStopBits"]?.Value ?? default(bool)),
                     StopBits = (uint) (managementObject.Properties["StopBits"]?.Value ?? default(uint)),
                     Support16BitMode = (bool) (managementObject.Properties["Support16BitMode"]?.Value ?? default(bool)),
-                    SupportDTRDSR = (bool) (managementObject.Properties["SupportDTRDSR"]?.Value ?? default(bool)),
+                    SupportDtrdsr = (bool) (managementObject.Properties["SupportDTRDSR"]?.Value ?? default(bool)),
                     SupportIntervalTimeouts =
                         (bool) (managementObject.Properties["SupportIntervalTimeouts"]?.Value ?? default(bool)),
                     SupportParityCheck =
                         (bool) (managementObject.Properties["SupportParityCheck"]?.Value ?? default(bool)),
-                    SupportRTSCTS = (bool) (managementObject.Properties["SupportRTSCTS"]?.Value ?? default(bool)),
+                    SupportRtscts = (bool) (managementObject.Properties["SupportRTSCTS"]?.Value ?? default(bool)),
                     SupportXonXoff = (bool) (managementObject.Properties["SupportXonXoff"]?.Value ?? default(bool)),
                     XoffCharacter = (uint) (managementObject.Properties["XoffCharacter"]?.Value ?? default(uint)),
                     XoffXmitThreshold =

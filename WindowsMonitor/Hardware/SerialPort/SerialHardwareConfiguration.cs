@@ -8,7 +8,7 @@ namespace WindowsMonitor.Hardware.SerialPort
     public sealed class SerialHardwareConfiguration
     {
         public bool Active { get; private set; }
-        public ulong BaseIOAddress { get; private set; }
+        public ulong BaseIoAddress { get; private set; }
         public string InstanceName { get; private set; }
         public uint InterruptType { get; private set; }
         public ulong IrqAffinityMask { get; private set; }
@@ -47,7 +47,7 @@ namespace WindowsMonitor.Hardware.SerialPort
                 yield return new SerialHardwareConfiguration
                 {
                     Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
-                    BaseIOAddress = (ulong) (managementObject.Properties["BaseIOAddress"]?.Value ?? default(ulong)),
+                    BaseIoAddress = (ulong) (managementObject.Properties["BaseIOAddress"]?.Value ?? default(ulong)),
                     InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
                     InterruptType = (uint) (managementObject.Properties["InterruptType"]?.Value ?? default(uint)),
                     IrqAffinityMask = (ulong) (managementObject.Properties["IrqAffinityMask"]?.Value ?? default(ulong)),

@@ -22,7 +22,7 @@ namespace WindowsMonitor
 		public uint DaylightSecond { get; private set; }
 		public uint DaylightYear { get; private set; }
 		public string Description { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public uint StandardBias { get; private set; }
 		public uint StandardDay { get; private set; }
 		public byte StandardDayOfWeek { get; private set; }
@@ -77,7 +77,7 @@ namespace WindowsMonitor
 		 DaylightSecond = (uint) (managementObject.Properties["DaylightSecond"]?.Value ?? default(uint)),
 		 DaylightYear = (uint) (managementObject.Properties["DaylightYear"]?.Value ?? default(uint)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 StandardBias = (uint) (managementObject.Properties["StandardBias"]?.Value ?? default(uint)),
 		 StandardDay = (uint) (managementObject.Properties["StandardDay"]?.Value ?? default(uint)),
 		 StandardDayOfWeek = (byte) (managementObject.Properties["StandardDayOfWeek"]?.Value ?? default(byte)),

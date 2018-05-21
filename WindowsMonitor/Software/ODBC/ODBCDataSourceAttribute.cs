@@ -5,12 +5,12 @@ namespace WindowsMonitor.Software.ODBC
 {
     /// <summary>
     /// </summary>
-    public sealed class ODBCDataSourceAttribute
+    public sealed class OdbcDataSourceAttribute
     {
 		public string Check { get; private set; }
 		public string Setting { get; private set; }
 
-        public static IEnumerable<ODBCDataSourceAttribute> Retrieve(string remote, string username, string password)
+        public static IEnumerable<OdbcDataSourceAttribute> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,20 +25,20 @@ namespace WindowsMonitor.Software.ODBC
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ODBCDataSourceAttribute> Retrieve()
+        public static IEnumerable<OdbcDataSourceAttribute> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<ODBCDataSourceAttribute> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<OdbcDataSourceAttribute> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_ODBCDataSourceAttribute");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new ODBCDataSourceAttribute
+                yield return new OdbcDataSourceAttribute
                 {
                      Check =  (managementObject.Properties["Check"]?.Value?.ToString()),
 		 Setting =  (managementObject.Properties["Setting"]?.Value?.ToString())

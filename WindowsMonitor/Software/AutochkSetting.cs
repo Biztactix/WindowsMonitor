@@ -9,7 +9,7 @@ namespace WindowsMonitor.Software
     {
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public uint UserInputDelay { get; private set; }
 
         public static IEnumerable<AutochkSetting> Retrieve(string remote, string username, string password)
@@ -44,7 +44,7 @@ namespace WindowsMonitor.Software
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 UserInputDelay = (uint) (managementObject.Properties["UserInputDelay"]?.Value ?? default(uint))
                 };
         }

@@ -5,12 +5,12 @@ namespace WindowsMonitor.Hardware.Network
 {
     /// <summary>
     /// </summary>
-    public sealed class IP4RouteTableEvent
+    public sealed class Ip4RouteTableEvent
     {
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
-        public static IEnumerable<IP4RouteTableEvent> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Ip4RouteTableEvent> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,23 +25,23 @@ namespace WindowsMonitor.Hardware.Network
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IP4RouteTableEvent> Retrieve()
+        public static IEnumerable<Ip4RouteTableEvent> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IP4RouteTableEvent> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Ip4RouteTableEvent> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_IP4RouteTableEvent");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new IP4RouteTableEvent
+                yield return new Ip4RouteTableEvent
                 {
-                     SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+                     SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

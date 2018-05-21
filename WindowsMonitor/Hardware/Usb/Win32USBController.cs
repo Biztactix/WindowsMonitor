@@ -6,7 +6,7 @@ namespace WindowsMonitor.Hardware.Usb
 {
     /// <summary>
     /// </summary>
-    public sealed class Win32USBController
+    public sealed class Win32UsbController
     {
 		public ushort Availability { get; private set; }
 		public string Caption { get; private set; }
@@ -14,7 +14,7 @@ namespace WindowsMonitor.Hardware.Usb
 		public bool ConfigManagerUserConfig { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public DateTime InstallDate { get; private set; }
@@ -22,7 +22,7 @@ namespace WindowsMonitor.Hardware.Usb
 		public string Manufacturer { get; private set; }
 		public uint MaxNumberControlled { get; private set; }
 		public string Name { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public ushort ProtocolSupported { get; private set; }
@@ -32,7 +32,7 @@ namespace WindowsMonitor.Hardware.Usb
 		public string SystemName { get; private set; }
 		public DateTime TimeOfLastReset { get; private set; }
 
-        public static IEnumerable<Win32USBController> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Win32UsbController> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -47,20 +47,20 @@ namespace WindowsMonitor.Hardware.Usb
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32USBController> Retrieve()
+        public static IEnumerable<Win32UsbController> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32USBController> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Win32UsbController> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_USBController");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Win32USBController
+                yield return new Win32UsbController
                 {
                      Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
@@ -68,7 +68,7 @@ namespace WindowsMonitor.Hardware.Usb
 		 ConfigManagerUserConfig = (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
@@ -76,7 +76,7 @@ namespace WindowsMonitor.Hardware.Usb
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 MaxNumberControlled = (uint) (managementObject.Properties["MaxNumberControlled"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 ProtocolSupported = (ushort) (managementObject.Properties["ProtocolSupported"]?.Value ?? default(ushort)),

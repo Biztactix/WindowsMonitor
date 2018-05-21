@@ -7,7 +7,7 @@ namespace WindowsMonitor.AspNet
     /// </summary>
     public sealed class AspNetCompileLeave
     {
-		public ulong ConnID { get; private set; }
+		public ulong ConnId { get; private set; }
 		public dynamic ContextId { get; private set; }
 		public string Files { get; private set; }
 		public uint Flags { get; private set; }
@@ -44,7 +44,7 @@ namespace WindowsMonitor.AspNet
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AspNetCompileLeave
                 {
-                     ConnID = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
+                     ConnId = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
 		 ContextId = (dynamic) (managementObject.Properties["ContextId"]?.Value ?? default(dynamic)),
 		 Files = (string) (managementObject.Properties["Files"]?.Value ?? default(string)),
 		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),

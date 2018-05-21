@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 {
     /// <summary>
     /// </summary>
-    public sealed class CPU
+    public sealed class Cpu
     {
 		public uint AllocationGranularity { get; private set; }
 		public char[] ComputerName { get; private set; }
@@ -17,7 +17,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 		public uint NumberOfProcessors { get; private set; }
 		public uint PageSize { get; private set; }
 
-        public static IEnumerable<CPU> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Cpu> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -32,20 +32,20 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CPU> Retrieve()
+        public static IEnumerable<Cpu> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<CPU> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Cpu> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM SystemConfig_V2_CPU");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new CPU
+                yield return new Cpu
                 {
                      AllocationGranularity = (uint) (managementObject.Properties["AllocationGranularity"]?.Value ?? default(uint)),
 		 ComputerName = (char[]) (managementObject.Properties["ComputerName"]?.Value ?? new char[0]),

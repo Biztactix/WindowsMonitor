@@ -17,7 +17,7 @@ namespace WindowsMonitor.Hardware.Video
 		public string Name { get; private set; }
 		public int RefreshRate { get; private set; }
 		public uint ReservedSystemPaletteEntries { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public uint SystemPaletteEntries { get; private set; }
 		public uint VerticalResolution { get; private set; }
 		public string VideoMode { get; private set; }
@@ -62,7 +62,7 @@ namespace WindowsMonitor.Hardware.Video
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 RefreshRate = (int) (managementObject.Properties["RefreshRate"]?.Value ?? default(int)),
 		 ReservedSystemPaletteEntries = (uint) (managementObject.Properties["ReservedSystemPaletteEntries"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 SystemPaletteEntries = (uint) (managementObject.Properties["SystemPaletteEntries"]?.Value ?? default(uint)),
 		 VerticalResolution = (uint) (managementObject.Properties["VerticalResolution"]?.Value ?? default(uint)),
 		 VideoMode = (string) (managementObject.Properties["VideoMode"]?.Value)

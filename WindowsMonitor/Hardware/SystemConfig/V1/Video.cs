@@ -11,7 +11,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V1
 		public char[] BiosString { get; private set; }
 		public uint BitsPerPixel { get; private set; }
 		public char[] ChipType { get; private set; }
-		public char[] DACType { get; private set; }
+		public char[] DacType { get; private set; }
 		public char[] DeviceId { get; private set; }
 		public uint Flags { get; private set; }
 		public uint MemorySize { get; private set; }
@@ -54,7 +54,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V1
 		 BiosString = (char[]) (managementObject.Properties["BiosString"]?.Value ?? new char[0]),
 		 BitsPerPixel = (uint) (managementObject.Properties["BitsPerPixel"]?.Value ?? default(uint)),
 		 ChipType = (char[]) (managementObject.Properties["ChipType"]?.Value ?? new char[0]),
-		 DACType = (char[]) (managementObject.Properties["DACType"]?.Value ?? new char[0]),
+		 DacType = (char[]) (managementObject.Properties["DACType"]?.Value ?? new char[0]),
 		 DeviceId = (char[]) (managementObject.Properties["DeviceId"]?.Value ?? new char[0]),
 		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
 		 MemorySize = (uint) (managementObject.Properties["MemorySize"]?.Value ?? default(uint)),

@@ -9,7 +9,7 @@ namespace WindowsMonitor.Windows.Registry
     {
 		public string DisplayName { get; private set; }
 		public string InstallDate { get; private set; }
-		public string ProdID { get; private set; }
+		public string ProdId { get; private set; }
 		public string Publisher { get; private set; }
 		public string Version { get; private set; }
 
@@ -45,7 +45,7 @@ namespace WindowsMonitor.Windows.Registry
                 {
                      DisplayName = (string) (managementObject.Properties["DisplayName"]?.Value),
 		 InstallDate = (string) (managementObject.Properties["InstallDate"]?.Value),
-		 ProdID = (string) (managementObject.Properties["ProdID"]?.Value),
+		 ProdId = (string) (managementObject.Properties["ProdID"]?.Value),
 		 Publisher = (string) (managementObject.Properties["Publisher"]?.Value),
 		 Version = (string) (managementObject.Properties["Version"]?.Value)
                 };

@@ -12,9 +12,9 @@ namespace WindowsMonitor.Software
 		public string Description { get; private set; }
 		public string Location { get; private set; }
 		public string Name { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public string User { get; private set; }
-		public string UserSID { get; private set; }
+		public string UserSid { get; private set; }
 
         public static IEnumerable<StartupCommand> Retrieve(string remote, string username, string password)
         {
@@ -51,9 +51,9 @@ namespace WindowsMonitor.Software
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Location = (string) (managementObject.Properties["Location"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 User = (string) (managementObject.Properties["User"]?.Value),
-		 UserSID = (string) (managementObject.Properties["UserSID"]?.Value)
+		 UserSid = (string) (managementObject.Properties["UserSID"]?.Value)
                 };
         }
     }

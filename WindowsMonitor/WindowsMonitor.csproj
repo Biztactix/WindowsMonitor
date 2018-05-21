@@ -20,9 +20,4 @@
     <PackageReference Include="System.Management" Version="4.5.0-preview2-26406-04" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Hardware\Probes\" />
-    <Folder Include="Network\" />
-  </ItemGroup>
-
 </Project>

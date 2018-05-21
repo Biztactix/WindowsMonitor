@@ -9,7 +9,7 @@ namespace WindowsMonitor.Hardware.Video.WmiMonitor
     {
 		public bool Active { get; private set; }
 		public string InstanceName { get; private set; }
-		public bool IsDFP1xCompatible { get; private set; }
+		public bool IsDfp1XCompatible { get; private set; }
 
         public static IEnumerable<WmiMonitorDigitalVideoInputParams> Retrieve(string remote, string username, string password)
         {
@@ -43,7 +43,7 @@ namespace WindowsMonitor.Hardware.Video.WmiMonitor
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
-		 IsDFP1xCompatible = (bool) (managementObject.Properties["IsDFP1xCompatible"]?.Value ?? default(bool))
+		 IsDfp1XCompatible = (bool) (managementObject.Properties["IsDFP1xCompatible"]?.Value ?? default(bool))
                 };
         }
     }

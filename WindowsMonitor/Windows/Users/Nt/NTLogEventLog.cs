@@ -5,12 +5,12 @@ namespace WindowsMonitor.Windows.Users.Nt
 {
     /// <summary>
     /// </summary>
-    public sealed class NTLogEventLog
+    public sealed class NtLogEventLog
     {
 		public string Log { get; private set; }
 		public string Record { get; private set; }
 
-        public static IEnumerable<NTLogEventLog> Retrieve(string remote, string username, string password)
+        public static IEnumerable<NtLogEventLog> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,20 +25,20 @@ namespace WindowsMonitor.Windows.Users.Nt
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NTLogEventLog> Retrieve()
+        public static IEnumerable<NtLogEventLog> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<NTLogEventLog> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<NtLogEventLog> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_NTLogEventLog");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new NTLogEventLog
+                yield return new NtLogEventLog
                 {
                      Log =  (managementObject.Properties["Log"]?.Value?.ToString()),
 		 Record =  (managementObject.Properties["Record"]?.Value?.ToString())

@@ -21,8 +21,8 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 		public string ModelName { get; private set; }
 		public string RadioHardwareRevision { get; private set; }
 		public string RadioSoftwareRevision { get; private set; }
-		public string ROMVersion { get; private set; }
-		public string SOCVersion { get; private set; }
+		public string RomVersion { get; private set; }
+		public string SocVersion { get; private set; }
 
         public static IEnumerable<MobilePlatform> Retrieve(string remote, string username, string password)
         {
@@ -68,8 +68,8 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 		 ModelName = (string) (managementObject.Properties["ModelName"]?.Value ?? default(string)),
 		 RadioHardwareRevision = (string) (managementObject.Properties["RadioHardwareRevision"]?.Value ?? default(string)),
 		 RadioSoftwareRevision = (string) (managementObject.Properties["RadioSoftwareRevision"]?.Value ?? default(string)),
-		 ROMVersion = (string) (managementObject.Properties["ROMVersion"]?.Value ?? default(string)),
-		 SOCVersion = (string) (managementObject.Properties["SOCVersion"]?.Value ?? default(string))
+		 RomVersion = (string) (managementObject.Properties["ROMVersion"]?.Value ?? default(string)),
+		 SocVersion = (string) (managementObject.Properties["SOCVersion"]?.Value ?? default(string))
                 };
         }
     }

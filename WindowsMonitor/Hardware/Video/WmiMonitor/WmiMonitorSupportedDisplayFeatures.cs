@@ -9,9 +9,9 @@ namespace WindowsMonitor.Hardware.Video.WmiMonitor
     {
 		public bool ActiveOffSupported { get; private set; }
 		public byte DisplayType { get; private set; }
-		public bool GTFSupported { get; private set; }
+		public bool GtfSupported { get; private set; }
 		public bool HasPreferredTimingMode { get; private set; }
-		public bool sRGBSupported { get; private set; }
+		public bool SRgbSupported { get; private set; }
 		public bool StandbySupported { get; private set; }
 		public bool SuspendSupported { get; private set; }
 
@@ -47,9 +47,9 @@ namespace WindowsMonitor.Hardware.Video.WmiMonitor
                 {
                      ActiveOffSupported = (bool) (managementObject.Properties["ActiveOffSupported"]?.Value ?? default(bool)),
 		 DisplayType = (byte) (managementObject.Properties["DisplayType"]?.Value ?? default(byte)),
-		 GTFSupported = (bool) (managementObject.Properties["GTFSupported"]?.Value ?? default(bool)),
+		 GtfSupported = (bool) (managementObject.Properties["GTFSupported"]?.Value ?? default(bool)),
 		 HasPreferredTimingMode = (bool) (managementObject.Properties["HasPreferredTimingMode"]?.Value ?? default(bool)),
-		 sRGBSupported = (bool) (managementObject.Properties["sRGBSupported"]?.Value ?? default(bool)),
+		 SRgbSupported = (bool) (managementObject.Properties["sRGBSupported"]?.Value ?? default(bool)),
 		 StandbySupported = (bool) (managementObject.Properties["StandbySupported"]?.Value ?? default(bool)),
 		 SuspendSupported = (bool) (managementObject.Properties["SuspendSupported"]?.Value ?? default(bool))
                 };

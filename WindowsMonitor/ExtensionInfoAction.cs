@@ -9,19 +9,19 @@ namespace WindowsMonitor
     /// </summary>
     public sealed class ExtensionInfoAction
     {
-		public string ActionID { get; private set; }
+		public string ActionId { get; private set; }
 		public string Argument { get; private set; }
 		public string Caption { get; private set; }
 		public string Command { get; private set; }
 		public string Description { get; private set; }
 		public ushort Direction { get; private set; }
 		public string Extension { get; private set; }
-		public string MIME { get; private set; }
+		public string Mime { get; private set; }
 		public string Name { get; private set; }
-		public string ProgID { get; private set; }
+		public string ProgId { get; private set; }
 		public string ShellNew { get; private set; }
 		public string ShellNewValue { get; private set; }
-		public string SoftwareElementID { get; private set; }
+		public string SoftwareElementId { get; private set; }
 		public ushort SoftwareElementState { get; private set; }
 		public ushort TargetOperatingSystem { get; private set; }
 		public string Verb { get; private set; }
@@ -57,19 +57,19 @@ namespace WindowsMonitor
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new ExtensionInfoAction
                 {
-                     ActionID = (string) (managementObject.Properties["ActionID"]?.Value),
+                     ActionId = (string) (managementObject.Properties["ActionID"]?.Value),
 		 Argument = (string) (managementObject.Properties["Argument"]?.Value),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Command = (string) (managementObject.Properties["Command"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Direction = (ushort) (managementObject.Properties["Direction"]?.Value ?? default(ushort)),
 		 Extension = (string) (managementObject.Properties["Extension"]?.Value),
-		 MIME = (string) (managementObject.Properties["MIME"]?.Value),
+		 Mime = (string) (managementObject.Properties["MIME"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 ProgID = (string) (managementObject.Properties["ProgID"]?.Value),
+		 ProgId = (string) (managementObject.Properties["ProgID"]?.Value),
 		 ShellNew = (string) (managementObject.Properties["ShellNew"]?.Value),
 		 ShellNewValue = (string) (managementObject.Properties["ShellNewValue"]?.Value),
-		 SoftwareElementID = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
+		 SoftwareElementId = (string) (managementObject.Properties["SoftwareElementID"]?.Value),
 		 SoftwareElementState = (ushort) (managementObject.Properties["SoftwareElementState"]?.Value ?? default(ushort)),
 		 TargetOperatingSystem = (ushort) (managementObject.Properties["TargetOperatingSystem"]?.Value ?? default(ushort)),
 		 Verb = (string) (managementObject.Properties["Verb"]?.Value),

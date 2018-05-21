@@ -36,8 +36,8 @@ namespace WindowsMonitor.Hardware.Memories
 		public bool Removable { get; private set; }
 		public bool Replaceable { get; private set; }
 		public string SerialNumber { get; private set; }
-		public string SKU { get; private set; }
-		public uint SMBIOSMemoryType { get; private set; }
+		public string Sku { get; private set; }
+		public uint SmbiosMemoryType { get; private set; }
 		public uint Speed { get; private set; }
 		public string Status { get; private set; }
 		public string Tag { get; private set; }
@@ -103,8 +103,8 @@ namespace WindowsMonitor.Hardware.Memories
 		 Removable = (bool) (managementObject.Properties["Removable"]?.Value ?? default(bool)),
 		 Replaceable = (bool) (managementObject.Properties["Replaceable"]?.Value ?? default(bool)),
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
-		 SMBIOSMemoryType = (uint) (managementObject.Properties["SMBIOSMemoryType"]?.Value ?? default(uint)),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
+		 SmbiosMemoryType = (uint) (managementObject.Properties["SMBIOSMemoryType"]?.Value ?? default(uint)),
 		 Speed = (uint) (managementObject.Properties["Speed"]?.Value ?? default(uint)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 Tag = (string) (managementObject.Properties["Tag"]?.Value),

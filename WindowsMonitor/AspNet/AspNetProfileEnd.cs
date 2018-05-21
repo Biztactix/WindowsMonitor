@@ -7,7 +7,7 @@ namespace WindowsMonitor.AspNet
     /// </summary>
     public sealed class AspNetProfileEnd
     {
-		public ulong ConnID { get; private set; }
+		public ulong ConnId { get; private set; }
 		public dynamic ContextId { get; private set; }
 		public uint Flags { get; private set; }
 		public uint Level { get; private set; }
@@ -43,7 +43,7 @@ namespace WindowsMonitor.AspNet
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new AspNetProfileEnd
                 {
-                     ConnID = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
+                     ConnId = (ulong) (managementObject.Properties["ConnID"]?.Value ?? default(ulong)),
 		 ContextId = (dynamic) (managementObject.Properties["ContextId"]?.Value ?? default(dynamic)),
 		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
 		 Level = (uint) (managementObject.Properties["Level"]?.Value ?? default(uint)),

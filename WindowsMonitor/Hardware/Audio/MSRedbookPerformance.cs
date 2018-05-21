@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.Audio
 {
     /// <summary>
     /// </summary>
-    public sealed class MSRedbookPerformance
+    public sealed class MsRedbookPerformance
     {
 		public bool Active { get; private set; }
 		public long DataProcessed { get; private set; }
@@ -16,7 +16,7 @@ namespace WindowsMonitor.Hardware.Audio
 		public long TimeStreamDelay { get; private set; }
 		public long TimeStreaming { get; private set; }
 
-        public static IEnumerable<MSRedbookPerformance> Retrieve(string remote, string username, string password)
+        public static IEnumerable<MsRedbookPerformance> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -31,20 +31,20 @@ namespace WindowsMonitor.Hardware.Audio
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSRedbookPerformance> Retrieve()
+        public static IEnumerable<MsRedbookPerformance> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSRedbookPerformance> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<MsRedbookPerformance> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSRedbook_Performance");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSRedbookPerformance
+                yield return new MsRedbookPerformance
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 DataProcessed = (long) (managementObject.Properties["DataProcessed"]?.Value ?? default(long)),

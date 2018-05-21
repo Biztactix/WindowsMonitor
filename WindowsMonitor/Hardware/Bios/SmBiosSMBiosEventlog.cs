@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.Bios
 {
     /// <summary>
     /// </summary>
-    public sealed class SmBiosSMBiosEventlog
+    public sealed class SmBiosSmBiosEventlog
     {
 		public byte AccessMethod { get; private set; }
 		public uint AccessMethodAddress { get; private set; }
@@ -25,7 +25,7 @@ namespace WindowsMonitor.Hardware.Bios
 		public byte NumberLogTypeDesc { get; private set; }
 		public byte Reserved { get; private set; }
 
-        public static IEnumerable<SmBiosSMBiosEventlog> Retrieve(string remote, string username, string password)
+        public static IEnumerable<SmBiosSmBiosEventlog> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -40,20 +40,20 @@ namespace WindowsMonitor.Hardware.Bios
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SmBiosSMBiosEventlog> Retrieve()
+        public static IEnumerable<SmBiosSmBiosEventlog> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<SmBiosSMBiosEventlog> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<SmBiosSmBiosEventlog> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSSmBios_SMBiosEventlog");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new SmBiosSMBiosEventlog
+                yield return new SmBiosSmBiosEventlog
                 {
                      AccessMethod = (byte) (managementObject.Properties["AccessMethod"]?.Value ?? default(byte)),
 		 AccessMethodAddress = (uint) (managementObject.Properties["AccessMethodAddress"]?.Value ?? default(uint)),

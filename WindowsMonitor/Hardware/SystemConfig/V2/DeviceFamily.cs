@@ -10,7 +10,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 		public uint Family { get; private set; }
 		public uint DeviceForm { get; private set; }
 		public uint Flags { get; private set; }
-		public ulong UAPInfo { get; private set; }
+		public ulong UapInfo { get; private set; }
 
         public static IEnumerable<DeviceFamily> Retrieve(string remote, string username, string password)
         {
@@ -45,7 +45,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
                      Family = (uint) (managementObject.Properties["DeviceFamily"]?.Value ?? default(uint)),
 		 DeviceForm = (uint) (managementObject.Properties["DeviceForm"]?.Value ?? default(uint)),
 		 Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
-		 UAPInfo = (ulong) (managementObject.Properties["UAPInfo"]?.Value ?? default(ulong))
+		 UapInfo = (ulong) (managementObject.Properties["UAPInfo"]?.Value ?? default(ulong))
                 };
         }
     }

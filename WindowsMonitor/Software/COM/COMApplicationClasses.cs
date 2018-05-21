@@ -5,12 +5,12 @@ namespace WindowsMonitor.Software.COM
 {
     /// <summary>
     /// </summary>
-    public sealed class COMApplicationClasses
+    public sealed class ComApplicationClasses
     {
 		public string GroupComponent { get; private set; }
 		public string PartComponent { get; private set; }
 
-        public static IEnumerable<COMApplicationClasses> Retrieve(string remote, string username, string password)
+        public static IEnumerable<ComApplicationClasses> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,20 +25,20 @@ namespace WindowsMonitor.Software.COM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<COMApplicationClasses> Retrieve()
+        public static IEnumerable<ComApplicationClasses> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<COMApplicationClasses> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<ComApplicationClasses> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_COMApplicationClasses");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new COMApplicationClasses
+                yield return new ComApplicationClasses
                 {
                      GroupComponent =  (managementObject.Properties["GroupComponent"]?.Value?.ToString()),
 		 PartComponent =  (managementObject.Properties["PartComponent"]?.Value?.ToString())

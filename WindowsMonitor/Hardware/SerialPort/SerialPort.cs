@@ -17,7 +17,7 @@ namespace WindowsMonitor.Hardware.SerialPort
 		public bool ConfigManagerUserConfig { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public DateTime InstallDate { get; private set; }
@@ -27,8 +27,8 @@ namespace WindowsMonitor.Hardware.SerialPort
 		public uint MaximumOutputBufferSize { get; private set; }
 		public uint MaxNumberControlled { get; private set; }
 		public string Name { get; private set; }
-		public bool OSAutoDiscovered { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public bool OsAutoDiscovered { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public ushort ProtocolSupported { get; private set; }
@@ -38,20 +38,20 @@ namespace WindowsMonitor.Hardware.SerialPort
 		public bool SettableFlowControl { get; private set; }
 		public bool SettableParity { get; private set; }
 		public bool SettableParityCheck { get; private set; }
-		public bool SettableRLSD { get; private set; }
+		public bool SettableRlsd { get; private set; }
 		public bool SettableStopBits { get; private set; }
 		public string Status { get; private set; }
 		public ushort StatusInfo { get; private set; }
 		public bool Supports16BitMode { get; private set; }
-		public bool SupportsDTRDSR { get; private set; }
+		public bool SupportsDtrdsr { get; private set; }
 		public bool SupportsElapsedTimeouts { get; private set; }
 		public bool SupportsIntTimeouts { get; private set; }
 		public bool SupportsParityCheck { get; private set; }
-		public bool SupportsRLSD { get; private set; }
-		public bool SupportsRTSCTS { get; private set; }
+		public bool SupportsRlsd { get; private set; }
+		public bool SupportsRtscts { get; private set; }
 		public bool SupportsSpecialCharacters { get; private set; }
-		public bool SupportsXOnXOff { get; private set; }
-		public bool SupportsXOnXOffSet { get; private set; }
+		public bool SupportsXonXOff { get; private set; }
+		public bool SupportsXonXOffSet { get; private set; }
 		public string SystemCreationClassName { get; private set; }
 		public string SystemName { get; private set; }
 		public DateTime TimeOfLastReset { get; private set; }
@@ -95,7 +95,7 @@ namespace WindowsMonitor.Hardware.SerialPort
 		 ConfigManagerUserConfig = (bool) (managementObject.Properties["ConfigManagerUserConfig"]?.Value ?? default(bool)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
@@ -105,8 +105,8 @@ namespace WindowsMonitor.Hardware.SerialPort
 		 MaximumOutputBufferSize = (uint) (managementObject.Properties["MaximumOutputBufferSize"]?.Value ?? default(uint)),
 		 MaxNumberControlled = (uint) (managementObject.Properties["MaxNumberControlled"]?.Value ?? default(uint)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 OSAutoDiscovered = (bool) (managementObject.Properties["OSAutoDiscovered"]?.Value ?? default(bool)),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 OsAutoDiscovered = (bool) (managementObject.Properties["OSAutoDiscovered"]?.Value ?? default(bool)),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 ProtocolSupported = (ushort) (managementObject.Properties["ProtocolSupported"]?.Value ?? default(ushort)),
@@ -116,20 +116,20 @@ namespace WindowsMonitor.Hardware.SerialPort
 		 SettableFlowControl = (bool) (managementObject.Properties["SettableFlowControl"]?.Value ?? default(bool)),
 		 SettableParity = (bool) (managementObject.Properties["SettableParity"]?.Value ?? default(bool)),
 		 SettableParityCheck = (bool) (managementObject.Properties["SettableParityCheck"]?.Value ?? default(bool)),
-		 SettableRLSD = (bool) (managementObject.Properties["SettableRLSD"]?.Value ?? default(bool)),
+		 SettableRlsd = (bool) (managementObject.Properties["SettableRLSD"]?.Value ?? default(bool)),
 		 SettableStopBits = (bool) (managementObject.Properties["SettableStopBits"]?.Value ?? default(bool)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),
 		 StatusInfo = (ushort) (managementObject.Properties["StatusInfo"]?.Value ?? default(ushort)),
 		 Supports16BitMode = (bool) (managementObject.Properties["Supports16BitMode"]?.Value ?? default(bool)),
-		 SupportsDTRDSR = (bool) (managementObject.Properties["SupportsDTRDSR"]?.Value ?? default(bool)),
+		 SupportsDtrdsr = (bool) (managementObject.Properties["SupportsDTRDSR"]?.Value ?? default(bool)),
 		 SupportsElapsedTimeouts = (bool) (managementObject.Properties["SupportsElapsedTimeouts"]?.Value ?? default(bool)),
 		 SupportsIntTimeouts = (bool) (managementObject.Properties["SupportsIntTimeouts"]?.Value ?? default(bool)),
 		 SupportsParityCheck = (bool) (managementObject.Properties["SupportsParityCheck"]?.Value ?? default(bool)),
-		 SupportsRLSD = (bool) (managementObject.Properties["SupportsRLSD"]?.Value ?? default(bool)),
-		 SupportsRTSCTS = (bool) (managementObject.Properties["SupportsRTSCTS"]?.Value ?? default(bool)),
+		 SupportsRlsd = (bool) (managementObject.Properties["SupportsRLSD"]?.Value ?? default(bool)),
+		 SupportsRtscts = (bool) (managementObject.Properties["SupportsRTSCTS"]?.Value ?? default(bool)),
 		 SupportsSpecialCharacters = (bool) (managementObject.Properties["SupportsSpecialCharacters"]?.Value ?? default(bool)),
-		 SupportsXOnXOff = (bool) (managementObject.Properties["SupportsXOnXOff"]?.Value ?? default(bool)),
-		 SupportsXOnXOffSet = (bool) (managementObject.Properties["SupportsXOnXOffSet"]?.Value ?? default(bool)),
+		 SupportsXonXOff = (bool) (managementObject.Properties["SupportsXOnXOff"]?.Value ?? default(bool)),
+		 SupportsXonXOffSet = (bool) (managementObject.Properties["SupportsXOnXOffSet"]?.Value ?? default(bool)),
 		 SystemCreationClassName = (string) (managementObject.Properties["SystemCreationClassName"]?.Value),
 		 SystemName = (string) (managementObject.Properties["SystemName"]?.Value),
 		 TimeOfLastReset = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["TimeOfLastReset"]?.Value as string ?? "00010102000000.000000+060")

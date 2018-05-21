@@ -14,8 +14,8 @@ namespace WindowsMonitor.Windows.Kernel
 		public uint NewState { get; private set; }
 		public uint OldState { get; private set; }
 		public ulong Processors { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<KernelIdleStateChange> Retrieve(string remote, string username, string password)
         {
@@ -52,8 +52,8 @@ namespace WindowsMonitor.Windows.Kernel
 		 NewState = (uint) (managementObject.Properties["NewState"]?.Value ?? default(uint)),
 		 OldState = (uint) (managementObject.Properties["OldState"]?.Value ?? default(uint)),
 		 Processors = (ulong) (managementObject.Properties["Processors"]?.Value ?? default(ulong)),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

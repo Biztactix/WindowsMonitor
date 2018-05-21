@@ -10,7 +10,7 @@ namespace WindowsMonitor.Windows.Kerberos
 		public string CredSource { get; private set; }
 		public string DomainName { get; private set; }
 		public uint ExtError { get; private set; }
-		public uint klininfo { get; private set; }
+		public uint Klininfo { get; private set; }
 		public uint Status { get; private set; }
 		public string Target { get; private set; }
 		public string UserName { get; private set; }
@@ -48,7 +48,7 @@ namespace WindowsMonitor.Windows.Kerberos
                      CredSource = (string) (managementObject.Properties["CredSource"]?.Value ?? default(string)),
 		 DomainName = (string) (managementObject.Properties["DomainName"]?.Value ?? default(string)),
 		 ExtError = (uint) (managementObject.Properties["ExtError"]?.Value ?? default(uint)),
-		 klininfo = (uint) (managementObject.Properties["klininfo"]?.Value ?? default(uint)),
+		 Klininfo = (uint) (managementObject.Properties["klininfo"]?.Value ?? default(uint)),
 		 Status = (uint) (managementObject.Properties["Status"]?.Value ?? default(uint)),
 		 Target = (string) (managementObject.Properties["Target"]?.Value ?? default(string)),
 		 UserName = (string) (managementObject.Properties["UserName"]?.Value ?? default(string))

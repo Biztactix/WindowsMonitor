@@ -13,16 +13,16 @@ namespace WindowsMonitor.Hardware.OnBoard
 		public string BaseBoardVersion { get; private set; }
 		public byte BiosMajorRelease { get; private set; }
 		public byte BiosMinorRelease { get; private set; }
-		public string BIOSReleaseDate { get; private set; }
-		public string BIOSVendor { get; private set; }
-		public string BIOSVersion { get; private set; }
-		public byte ECFirmwareMajorRelease { get; private set; }
-		public byte ECFirmwareMinorRelease { get; private set; }
+		public string BiosReleaseDate { get; private set; }
+		public string BiosVendor { get; private set; }
+		public string BiosVersion { get; private set; }
+		public byte EcFirmwareMajorRelease { get; private set; }
+		public byte EcFirmwareMinorRelease { get; private set; }
 		public string InstanceName { get; private set; }
 		public string SystemFamily { get; private set; }
 		public string SystemManufacturer { get; private set; }
 		public string SystemProductName { get; private set; }
-		public string SystemSKU { get; private set; }
+		public string SystemSku { get; private set; }
 		public string SystemVersion { get; private set; }
 
         public static IEnumerable<SystemInformation> Retrieve(string remote, string username, string password)
@@ -61,16 +61,16 @@ namespace WindowsMonitor.Hardware.OnBoard
 		 BaseBoardVersion = (string) (managementObject.Properties["BaseBoardVersion"]?.Value ?? default(string)),
 		 BiosMajorRelease = (byte) (managementObject.Properties["BiosMajorRelease"]?.Value ?? default(byte)),
 		 BiosMinorRelease = (byte) (managementObject.Properties["BiosMinorRelease"]?.Value ?? default(byte)),
-		 BIOSReleaseDate = (string) (managementObject.Properties["BIOSReleaseDate"]?.Value ?? default(string)),
-		 BIOSVendor = (string) (managementObject.Properties["BIOSVendor"]?.Value ?? default(string)),
-		 BIOSVersion = (string) (managementObject.Properties["BIOSVersion"]?.Value ?? default(string)),
-		 ECFirmwareMajorRelease = (byte) (managementObject.Properties["ECFirmwareMajorRelease"]?.Value ?? default(byte)),
-		 ECFirmwareMinorRelease = (byte) (managementObject.Properties["ECFirmwareMinorRelease"]?.Value ?? default(byte)),
+		 BiosReleaseDate = (string) (managementObject.Properties["BIOSReleaseDate"]?.Value ?? default(string)),
+		 BiosVendor = (string) (managementObject.Properties["BIOSVendor"]?.Value ?? default(string)),
+		 BiosVersion = (string) (managementObject.Properties["BIOSVersion"]?.Value ?? default(string)),
+		 EcFirmwareMajorRelease = (byte) (managementObject.Properties["ECFirmwareMajorRelease"]?.Value ?? default(byte)),
+		 EcFirmwareMinorRelease = (byte) (managementObject.Properties["ECFirmwareMinorRelease"]?.Value ?? default(byte)),
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
 		 SystemFamily = (string) (managementObject.Properties["SystemFamily"]?.Value ?? default(string)),
 		 SystemManufacturer = (string) (managementObject.Properties["SystemManufacturer"]?.Value ?? default(string)),
 		 SystemProductName = (string) (managementObject.Properties["SystemProductName"]?.Value ?? default(string)),
-		 SystemSKU = (string) (managementObject.Properties["SystemSKU"]?.Value ?? default(string)),
+		 SystemSku = (string) (managementObject.Properties["SystemSKU"]?.Value ?? default(string)),
 		 SystemVersion = (string) (managementObject.Properties["SystemVersion"]?.Value ?? default(string))
                 };
         }

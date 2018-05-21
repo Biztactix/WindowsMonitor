@@ -29,7 +29,7 @@ namespace WindowsMonitor.Hardware.OnBoard
 		public string RequirementsDescription { get; private set; }
 		public bool RequiresDaughterBoard { get; private set; }
 		public string SerialNumber { get; private set; }
-		public string SKU { get; private set; }
+		public string Sku { get; private set; }
 		public string SlotLayout { get; private set; }
 		public bool SpecialRequirements { get; private set; }
 		public string Status { get; private set; }
@@ -89,7 +89,7 @@ namespace WindowsMonitor.Hardware.OnBoard
 		 RequirementsDescription = (string) (managementObject.Properties["RequirementsDescription"]?.Value),
 		 RequiresDaughterBoard = (bool) (managementObject.Properties["RequiresDaughterBoard"]?.Value ?? default(bool)),
 		 SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
-		 SKU = (string) (managementObject.Properties["SKU"]?.Value),
+		 Sku = (string) (managementObject.Properties["SKU"]?.Value),
 		 SlotLayout = (string) (managementObject.Properties["SlotLayout"]?.Value),
 		 SpecialRequirements = (bool) (managementObject.Properties["SpecialRequirements"]?.Value ?? default(bool)),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),

@@ -11,10 +11,10 @@ namespace WindowsMonitor.Windows.Services
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
 		public string Event { get; private set; }
-		public string ID { get; private set; }
+		public string Id { get; private set; }
 		public string Name { get; private set; }
 		public string ProductCode { get; private set; }
-		public string SettingID { get; private set; }
+		public string SettingId { get; private set; }
 		public ushort Wait { get; private set; }
 
         public static IEnumerable<ServiceControl> Retrieve(string remote, string username, string password)
@@ -51,10 +51,10 @@ namespace WindowsMonitor.Windows.Services
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Event = (string) (managementObject.Properties["Event"]?.Value),
-		 ID = (string) (managementObject.Properties["ID"]?.Value),
+		 Id = (string) (managementObject.Properties["ID"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
 		 ProductCode = (string) (managementObject.Properties["ProductCode"]?.Value),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
 		 Wait = (ushort) (managementObject.Properties["Wait"]?.Value ?? default(ushort))
                 };
         }

@@ -32,7 +32,7 @@ namespace WindowsMonitor.Windows.Users
 		public bool RoamingPreference { get; private set; }
 		public dynamic SavedGames { get; private set; }
 		public dynamic Searches { get; private set; }
-		public string SID { get; private set; }
+		public string Sid { get; private set; }
 		public bool Special { get; private set; }
 		public dynamic StartMenu { get; private set; }
 		public uint Status { get; private set; }
@@ -92,7 +92,7 @@ namespace WindowsMonitor.Windows.Users
 		 RoamingPreference = (bool) (managementObject.Properties["RoamingPreference"]?.Value ?? default(bool)),
 		 SavedGames = (dynamic) (managementObject.Properties["SavedGames"]?.Value ?? default(dynamic)),
 		 Searches = (dynamic) (managementObject.Properties["Searches"]?.Value ?? default(dynamic)),
-		 SID = (string) (managementObject.Properties["SID"]?.Value),
+		 Sid = (string) (managementObject.Properties["SID"]?.Value),
 		 Special = (bool) (managementObject.Properties["Special"]?.Value ?? default(bool)),
 		 StartMenu = (dynamic) (managementObject.Properties["StartMenu"]?.Value ?? default(dynamic)),
 		 Status = (uint) (managementObject.Properties["Status"]?.Value ?? default(uint)),

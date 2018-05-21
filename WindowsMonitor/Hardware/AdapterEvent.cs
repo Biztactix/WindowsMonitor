@@ -10,9 +10,9 @@ namespace WindowsMonitor.Hardware
 		public bool Active { get; private set; }
 		public uint EventType { get; private set; }
 		public string InstanceName { get; private set; }
-		public byte[] PortWWN { get; private set; }
-		public byte[] SECURITY_DESCRIPTOR { get; private set; }
-		public ulong TIME_CREATED { get; private set; }
+		public byte[] PortWwn { get; private set; }
+		public byte[] SecurityDescriptor { get; private set; }
+		public ulong TimeCreated { get; private set; }
 
         public static IEnumerable<AdapterEvent> Retrieve(string remote, string username, string password)
         {
@@ -47,9 +47,9 @@ namespace WindowsMonitor.Hardware
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 EventType = (uint) (managementObject.Properties["EventType"]?.Value ?? default(uint)),
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
-		 PortWWN = (byte[]) (managementObject.Properties["PortWWN"]?.Value ?? new byte[0]),
-		 SECURITY_DESCRIPTOR = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
-		 TIME_CREATED = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
+		 PortWwn = (byte[]) (managementObject.Properties["PortWWN"]?.Value ?? new byte[0]),
+		 SecurityDescriptor = (byte[]) (managementObject.Properties["SECURITY_DESCRIPTOR"]?.Value ?? new byte[0]),
+		 TimeCreated = (ulong) (managementObject.Properties["TIME_CREATED"]?.Value ?? default(ulong))
                 };
         }
     }

@@ -5,14 +5,14 @@ namespace WindowsMonitor.Hardware.Keyboards
 {
     /// <summary>
     /// </summary>
-    public sealed class KeyboardExtendedID
+    public sealed class KeyboardExtendedId
     {
 		public bool Active { get; private set; }
 		public string InstanceName { get; private set; }
 		public uint Subtype { get; private set; }
 		public uint Type { get; private set; }
 
-        public static IEnumerable<KeyboardExtendedID> Retrieve(string remote, string username, string password)
+        public static IEnumerable<KeyboardExtendedId> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -27,20 +27,20 @@ namespace WindowsMonitor.Hardware.Keyboards
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<KeyboardExtendedID> Retrieve()
+        public static IEnumerable<KeyboardExtendedId> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<KeyboardExtendedID> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<KeyboardExtendedId> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSKeyboard_ExtendedID");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new KeyboardExtendedID
+                yield return new KeyboardExtendedId
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),

@@ -6,16 +6,16 @@ namespace WindowsMonitor.Software.DCOM
 {
     /// <summary>
     /// </summary>
-    public sealed class DCOMApplication
+    public sealed class DcomApplication
     {
-		public string AppID { get; private set; }
+		public string AppId { get; private set; }
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
 		public DateTime InstallDate { get; private set; }
 		public string Name { get; private set; }
 		public string Status { get; private set; }
 
-        public static IEnumerable<DCOMApplication> Retrieve(string remote, string username, string password)
+        public static IEnumerable<DcomApplication> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,22 +30,22 @@ namespace WindowsMonitor.Software.DCOM
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DCOMApplication> Retrieve()
+        public static IEnumerable<DcomApplication> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DCOMApplication> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<DcomApplication> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_DCOMApplication");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new DCOMApplication
+                yield return new DcomApplication
                 {
-                     AppID = (string) (managementObject.Properties["AppID"]?.Value),
+                     AppId = (string) (managementObject.Properties["AppID"]?.Value),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),

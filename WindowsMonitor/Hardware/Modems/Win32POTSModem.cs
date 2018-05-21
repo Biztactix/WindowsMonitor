@@ -6,7 +6,7 @@ namespace WindowsMonitor.Hardware.Modems
 {
     /// <summary>
     /// </summary>
-    public sealed class Win32POTSModem
+    public sealed class Win32PotsModem
     {
 		public ushort AnswerMode { get; private set; }
 		public string AttachedTo { get; private set; }
@@ -25,10 +25,10 @@ namespace WindowsMonitor.Hardware.Modems
 		public string CountrySelected { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string[] CurrentPasswords { get; private set; }
-		public byte[] DCB { get; private set; }
+		public byte[] Dcb { get; private set; }
 		public byte[] Default { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public string DeviceLoader { get; private set; }
 		public string DeviceType { get; private set; }
 		public ushort DialType { get; private set; }
@@ -55,10 +55,10 @@ namespace WindowsMonitor.Hardware.Modems
 		public string ModemInfPath { get; private set; }
 		public string ModemInfSection { get; private set; }
 		public string ModulationBell { get; private set; }
-		public string ModulationCCITT { get; private set; }
+		public string ModulationCcitt { get; private set; }
 		public ushort ModulationScheme { get; private set; }
 		public string Name { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public string PortSubClass { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
@@ -89,7 +89,7 @@ namespace WindowsMonitor.Hardware.Modems
 		public string Tone { get; private set; }
 		public string VoiceSwitchFeature { get; private set; }
 
-        public static IEnumerable<Win32POTSModem> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Win32PotsModem> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -104,20 +104,20 @@ namespace WindowsMonitor.Hardware.Modems
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32POTSModem> Retrieve()
+        public static IEnumerable<Win32PotsModem> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32POTSModem> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Win32PotsModem> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_POTSModem");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Win32POTSModem
+                yield return new Win32PotsModem
                 {
                      AnswerMode = (ushort) (managementObject.Properties["AnswerMode"]?.Value ?? default(ushort)),
 		 AttachedTo = (string) (managementObject.Properties["AttachedTo"]?.Value),
@@ -136,10 +136,10 @@ namespace WindowsMonitor.Hardware.Modems
 		 CountrySelected = (string) (managementObject.Properties["CountrySelected"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 CurrentPasswords = (string[]) (managementObject.Properties["CurrentPasswords"]?.Value ?? new string[0]),
-		 DCB = (byte[]) (managementObject.Properties["DCB"]?.Value ?? new byte[0]),
+		 Dcb = (byte[]) (managementObject.Properties["DCB"]?.Value ?? new byte[0]),
 		 Default = (byte[]) (managementObject.Properties["Default"]?.Value ?? new byte[0]),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 DeviceLoader = (string) (managementObject.Properties["DeviceLoader"]?.Value),
 		 DeviceType = (string) (managementObject.Properties["DeviceType"]?.Value),
 		 DialType = (ushort) (managementObject.Properties["DialType"]?.Value ?? default(ushort)),
@@ -166,10 +166,10 @@ namespace WindowsMonitor.Hardware.Modems
 		 ModemInfPath = (string) (managementObject.Properties["ModemInfPath"]?.Value),
 		 ModemInfSection = (string) (managementObject.Properties["ModemInfSection"]?.Value),
 		 ModulationBell = (string) (managementObject.Properties["ModulationBell"]?.Value),
-		 ModulationCCITT = (string) (managementObject.Properties["ModulationCCITT"]?.Value),
+		 ModulationCcitt = (string) (managementObject.Properties["ModulationCCITT"]?.Value),
 		 ModulationScheme = (ushort) (managementObject.Properties["ModulationScheme"]?.Value ?? default(ushort)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PortSubClass = (string) (managementObject.Properties["PortSubClass"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),

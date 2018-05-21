@@ -10,11 +10,11 @@ namespace WindowsMonitor.Hardware.PnP
     {
 		public string Caption { get; private set; }
 		public string ClassGuid { get; private set; }
-		public string CompatID { get; private set; }
+		public string CompatId { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string Description { get; private set; }
 		public string DeviceClass { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public string DeviceName { get; private set; }
 		public string DevLoader { get; private set; }
 		public DateTime DriverDate { get; private set; }
@@ -22,14 +22,14 @@ namespace WindowsMonitor.Hardware.PnP
 		public string DriverProviderName { get; private set; }
 		public string DriverVersion { get; private set; }
 		public string FriendlyName { get; private set; }
-		public string HardWareID { get; private set; }
+		public string HardWareId { get; private set; }
 		public string InfName { get; private set; }
 		public DateTime InstallDate { get; private set; }
 		public bool IsSigned { get; private set; }
 		public string Location { get; private set; }
 		public string Manufacturer { get; private set; }
 		public string Name { get; private set; }
-		public string PDO { get; private set; }
+		public string Pdo { get; private set; }
 		public string Signer { get; private set; }
 		public bool Started { get; private set; }
 		public string StartMode { get; private set; }
@@ -69,11 +69,11 @@ namespace WindowsMonitor.Hardware.PnP
                 {
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ClassGuid = (string) (managementObject.Properties["ClassGuid"]?.Value),
-		 CompatID = (string) (managementObject.Properties["CompatID"]?.Value),
+		 CompatId = (string) (managementObject.Properties["CompatID"]?.Value),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 DeviceClass = (string) (managementObject.Properties["DeviceClass"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 DeviceName = (string) (managementObject.Properties["DeviceName"]?.Value),
 		 DevLoader = (string) (managementObject.Properties["DevLoader"]?.Value),
 		 DriverDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["DriverDate"]?.Value as string ?? "00010102000000.000000+060"),
@@ -81,14 +81,14 @@ namespace WindowsMonitor.Hardware.PnP
 		 DriverProviderName = (string) (managementObject.Properties["DriverProviderName"]?.Value),
 		 DriverVersion = (string) (managementObject.Properties["DriverVersion"]?.Value),
 		 FriendlyName = (string) (managementObject.Properties["FriendlyName"]?.Value),
-		 HardWareID = (string) (managementObject.Properties["HardWareID"]?.Value),
+		 HardWareId = (string) (managementObject.Properties["HardWareID"]?.Value),
 		 InfName = (string) (managementObject.Properties["InfName"]?.Value),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 IsSigned = (bool) (managementObject.Properties["IsSigned"]?.Value ?? default(bool)),
 		 Location = (string) (managementObject.Properties["Location"]?.Value),
 		 Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 PDO = (string) (managementObject.Properties["PDO"]?.Value),
+		 Pdo = (string) (managementObject.Properties["PDO"]?.Value),
 		 Signer = (string) (managementObject.Properties["Signer"]?.Value),
 		 Started = (bool) (managementObject.Properties["Started"]?.Value ?? default(bool)),
 		 StartMode = (string) (managementObject.Properties["StartMode"]?.Value),

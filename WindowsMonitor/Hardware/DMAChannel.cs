@@ -6,7 +6,7 @@ namespace WindowsMonitor.Hardware
 {
     /// <summary>
     /// </summary>
-    public sealed class DMAChannel
+    public sealed class DmaChannel
     {
 		public ushort AddressSize { get; private set; }
 		public ushort Availability { get; private set; }
@@ -15,8 +15,8 @@ namespace WindowsMonitor.Hardware
 		public string Caption { get; private set; }
 		public ushort ChannelTiming { get; private set; }
 		public string CreationClassName { get; private set; }
-		public string CSCreationClassName { get; private set; }
-		public string CSName { get; private set; }
+		public string CsCreationClassName { get; private set; }
+		public string CsName { get; private set; }
 		public string Description { get; private set; }
 		public uint Channel { get; private set; }
 		public DateTime InstallDate { get; private set; }
@@ -28,7 +28,7 @@ namespace WindowsMonitor.Hardware
 		public ushort TypeCTiming { get; private set; }
 		public ushort WordMode { get; private set; }
 
-        public static IEnumerable<DMAChannel> Retrieve(string remote, string username, string password)
+        public static IEnumerable<DmaChannel> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -43,20 +43,20 @@ namespace WindowsMonitor.Hardware
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DMAChannel> Retrieve()
+        public static IEnumerable<DmaChannel> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DMAChannel> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<DmaChannel> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_DMAChannel");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new DMAChannel
+                yield return new DmaChannel
                 {
                      AddressSize = (ushort) (managementObject.Properties["AddressSize"]?.Value ?? default(ushort)),
 		 Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
@@ -65,8 +65,8 @@ namespace WindowsMonitor.Hardware
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 ChannelTiming = (ushort) (managementObject.Properties["ChannelTiming"]?.Value ?? default(ushort)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
-		 CSCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-		 CSName = (string) (managementObject.Properties["CSName"]?.Value),
+		 CsCreationClassName = (string) (managementObject.Properties["CSCreationClassName"]?.Value),
+		 CsName = (string) (managementObject.Properties["CSName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 Channel = (uint) (managementObject.Properties["DMAChannel"]?.Value ?? default(uint)),
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),

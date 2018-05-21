@@ -11,7 +11,7 @@ namespace WindowsMonitor.Windows
     {
 		public string GroupComponent { get; private set; }
 		public string PartComponent { get; private set; }
-		public bool PrimaryOS { get; private set; }
+		public bool PrimaryOs { get; private set; }
 
         public static IEnumerable<SystemOperatingSystem> Retrieve(string remote, string username, string password)
         {
@@ -45,7 +45,7 @@ namespace WindowsMonitor.Windows
                 {
                      GroupComponent = (string) (managementObject.Properties["GroupComponent"]?.Value ?? default(string)),
 		 PartComponent = (string) (managementObject.Properties["PartComponent"]?.Value ?? default(string)),
-		 PrimaryOS = (bool) (managementObject.Properties["PrimaryOS"]?.Value ?? default(bool))
+		 PrimaryOs = (bool) (managementObject.Properties["PrimaryOS"]?.Value ?? default(bool))
                 };
         }
     }

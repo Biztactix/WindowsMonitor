@@ -5,7 +5,7 @@ namespace WindowsMonitor.Hardware.PointingDevices
 {
     /// <summary>
     /// </summary>
-    public sealed class MSMouse_PortInformation
+    public sealed class MsMousePortInformation
     {
 		public bool Active { get; private set; }
 		public uint Buttons { get; private set; }
@@ -15,7 +15,7 @@ namespace WindowsMonitor.Hardware.PointingDevices
 		public uint HardwareType { get; private set; }
 		public string InstanceName { get; private set; }
 
-        public static IEnumerable<MSMouse_PortInformation> Retrieve(string remote, string username, string password)
+        public static IEnumerable<MsMousePortInformation> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -30,20 +30,20 @@ namespace WindowsMonitor.Hardware.PointingDevices
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSMouse_PortInformation> Retrieve()
+        public static IEnumerable<MsMousePortInformation> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<MSMouse_PortInformation> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<MsMousePortInformation> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM MSMouse_PortInformation");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new MSMouse_PortInformation
+                yield return new MsMousePortInformation
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 Buttons = (uint) (managementObject.Properties["Buttons"]?.Value ?? default(uint)),

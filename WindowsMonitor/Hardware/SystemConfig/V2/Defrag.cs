@@ -21,7 +21,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 		public uint FragmentedSpace { get; private set; }
 		public ulong FreeSpaceCount { get; private set; }
 		public uint HardwareIssue { get; private set; }
-		public uint InUseMFTRecords { get; private set; }
+		public uint InUseMftRecords { get; private set; }
 		public uint InUseSlabs { get; private set; }
 		public ulong LargestFreeSpaceSize { get; private set; }
 		public ulong LastRunActualPurgeClusters { get; private set; }
@@ -37,11 +37,11 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 		public uint LastRunTrimmedSlabs { get; private set; }
 		public uint LastRunUnknownEvictFailSlabs { get; private set; }
 		public uint LastRunVolsnapPinnedSlabs { get; private set; }
-		public uint MFTFragmentCount { get; private set; }
-		public ulong MFTSize { get; private set; }
+		public uint MftFragmentCount { get; private set; }
+		public ulong MftSize { get; private set; }
 		public uint MovableFiles { get; private set; }
 		public ulong TotalClusters { get; private set; }
-		public uint TotalMFTRecords { get; private set; }
+		public uint TotalMftRecords { get; private set; }
 		public uint TotalSlabs { get; private set; }
 		public ulong TotalUsedClusters { get; private set; }
 		public uint UnmovableFiles { get; private set; }
@@ -92,7 +92,7 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 		 FragmentedSpace = (uint) (managementObject.Properties["FragmentedSpace"]?.Value ?? default(uint)),
 		 FreeSpaceCount = (ulong) (managementObject.Properties["FreeSpaceCount"]?.Value ?? default(ulong)),
 		 HardwareIssue = (uint) (managementObject.Properties["HardwareIssue"]?.Value ?? default(uint)),
-		 InUseMFTRecords = (uint) (managementObject.Properties["InUseMFTRecords"]?.Value ?? default(uint)),
+		 InUseMftRecords = (uint) (managementObject.Properties["InUseMFTRecords"]?.Value ?? default(uint)),
 		 InUseSlabs = (uint) (managementObject.Properties["InUseSlabs"]?.Value ?? default(uint)),
 		 LargestFreeSpaceSize = (ulong) (managementObject.Properties["LargestFreeSpaceSize"]?.Value ?? default(ulong)),
 		 LastRunActualPurgeClusters = (ulong) (managementObject.Properties["LastRunActualPurgeClusters"]?.Value ?? default(ulong)),
@@ -108,11 +108,11 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 		 LastRunTrimmedSlabs = (uint) (managementObject.Properties["LastRunTrimmedSlabs"]?.Value ?? default(uint)),
 		 LastRunUnknownEvictFailSlabs = (uint) (managementObject.Properties["LastRunUnknownEvictFailSlabs"]?.Value ?? default(uint)),
 		 LastRunVolsnapPinnedSlabs = (uint) (managementObject.Properties["LastRunVolsnapPinnedSlabs"]?.Value ?? default(uint)),
-		 MFTFragmentCount = (uint) (managementObject.Properties["MFTFragmentCount"]?.Value ?? default(uint)),
-		 MFTSize = (ulong) (managementObject.Properties["MFTSize"]?.Value ?? default(ulong)),
+		 MftFragmentCount = (uint) (managementObject.Properties["MFTFragmentCount"]?.Value ?? default(uint)),
+		 MftSize = (ulong) (managementObject.Properties["MFTSize"]?.Value ?? default(ulong)),
 		 MovableFiles = (uint) (managementObject.Properties["MovableFiles"]?.Value ?? default(uint)),
 		 TotalClusters = (ulong) (managementObject.Properties["TotalClusters"]?.Value ?? default(ulong)),
-		 TotalMFTRecords = (uint) (managementObject.Properties["TotalMFTRecords"]?.Value ?? default(uint)),
+		 TotalMftRecords = (uint) (managementObject.Properties["TotalMFTRecords"]?.Value ?? default(uint)),
 		 TotalSlabs = (uint) (managementObject.Properties["TotalSlabs"]?.Value ?? default(uint)),
 		 TotalUsedClusters = (ulong) (managementObject.Properties["TotalUsedClusters"]?.Value ?? default(ulong)),
 		 UnmovableFiles = (uint) (managementObject.Properties["UnmovableFiles"]?.Value ?? default(uint)),

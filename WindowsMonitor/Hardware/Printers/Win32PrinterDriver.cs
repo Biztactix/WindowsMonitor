@@ -22,7 +22,7 @@ namespace WindowsMonitor.Hardware.Printers
 		public DateTime InstallDate { get; private set; }
 		public string MonitorName { get; private set; }
 		public string Name { get; private set; }
-		public string OEMUrl { get; private set; }
+		public string OemUrl { get; private set; }
 		public bool Started { get; private set; }
 		public string StartMode { get; private set; }
 		public string Status { get; private set; }
@@ -75,7 +75,7 @@ namespace WindowsMonitor.Hardware.Printers
 		 InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
 		 MonitorName = (string) (managementObject.Properties["MonitorName"]?.Value),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 OEMUrl = (string) (managementObject.Properties["OEMUrl"]?.Value),
+		 OemUrl = (string) (managementObject.Properties["OEMUrl"]?.Value),
 		 Started = (bool) (managementObject.Properties["Started"]?.Value ?? default(bool)),
 		 StartMode = (string) (managementObject.Properties["StartMode"]?.Value),
 		 Status = (string) (managementObject.Properties["Status"]?.Value),

@@ -10,10 +10,10 @@ namespace WindowsMonitor.Windows.Jobs
 		public string Caption { get; private set; }
 		public string Description { get; private set; }
 		public dynamic PrivilegesToDelete { get; private set; }
-		public dynamic RestrictedSIDs { get; private set; }
+		public dynamic RestrictedSiDs { get; private set; }
 		public uint SecurityLimitFlags { get; private set; }
-		public string SettingID { get; private set; }
-		public dynamic SIDsToDisable { get; private set; }
+		public string SettingId { get; private set; }
+		public dynamic SiDsToDisable { get; private set; }
 
         public static IEnumerable<NamedJobObjectSecLimitSetting> Retrieve(string remote, string username, string password)
         {
@@ -48,10 +48,10 @@ namespace WindowsMonitor.Windows.Jobs
                      Caption = (string) (managementObject.Properties["Caption"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
 		 PrivilegesToDelete = (dynamic) (managementObject.Properties["PrivilegesToDelete"]?.Value ?? default(dynamic)),
-		 RestrictedSIDs = (dynamic) (managementObject.Properties["RestrictedSIDs"]?.Value ?? default(dynamic)),
+		 RestrictedSiDs = (dynamic) (managementObject.Properties["RestrictedSIDs"]?.Value ?? default(dynamic)),
 		 SecurityLimitFlags = (uint) (managementObject.Properties["SecurityLimitFlags"]?.Value ?? default(uint)),
-		 SettingID = (string) (managementObject.Properties["SettingID"]?.Value),
-		 SIDsToDisable = (dynamic) (managementObject.Properties["SIDsToDisable"]?.Value ?? default(dynamic))
+		 SettingId = (string) (managementObject.Properties["SettingID"]?.Value),
+		 SiDsToDisable = (dynamic) (managementObject.Properties["SIDsToDisable"]?.Value ?? default(dynamic))
                 };
         }
     }

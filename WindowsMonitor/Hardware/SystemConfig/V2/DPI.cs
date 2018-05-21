@@ -5,13 +5,13 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
 {
     /// <summary>
     /// </summary>
-    public sealed class DPI
+    public sealed class Dpi
     {
 		public uint Flags { get; private set; }
-		public uint MachineDPI { get; private set; }
-		public uint UserDPI { get; private set; }
+		public uint MachineDpi { get; private set; }
+		public uint UserDpi { get; private set; }
 
-        public static IEnumerable<DPI> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Dpi> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -26,24 +26,24 @@ namespace WindowsMonitor.Hardware.SystemConfig.V2
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DPI> Retrieve()
+        public static IEnumerable<Dpi> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\wmi"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<DPI> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Dpi> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM SystemConfig_V2_DPI");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new DPI
+                yield return new Dpi
                 {
                      Flags = (uint) (managementObject.Properties["Flags"]?.Value ?? default(uint)),
-		 MachineDPI = (uint) (managementObject.Properties["MachineDPI"]?.Value ?? default(uint)),
-		 UserDPI = (uint) (managementObject.Properties["UserDPI"]?.Value ?? default(uint))
+		 MachineDpi = (uint) (managementObject.Properties["MachineDPI"]?.Value ?? default(uint)),
+		 UserDpi = (uint) (managementObject.Properties["UserDPI"]?.Value ?? default(uint))
                 };
         }
     }

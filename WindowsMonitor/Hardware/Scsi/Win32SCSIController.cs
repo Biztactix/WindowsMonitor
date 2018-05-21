@@ -6,7 +6,7 @@ namespace WindowsMonitor.Hardware.Scsi
 {
     /// <summary>
     /// </summary>
-    public sealed class Win32SCSIController
+    public sealed class Win32ScsiController
     {
 		public ushort Availability { get; private set; }
 		public string Caption { get; private set; }
@@ -15,7 +15,7 @@ namespace WindowsMonitor.Hardware.Scsi
 		public uint ControllerTimeouts { get; private set; }
 		public string CreationClassName { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public string DeviceMap { get; private set; }
 		public string DriverName { get; private set; }
 		public bool ErrorCleared { get; private set; }
@@ -29,7 +29,7 @@ namespace WindowsMonitor.Hardware.Scsi
 		public uint MaxNumberControlled { get; private set; }
 		public ulong MaxTransferRate { get; private set; }
 		public string Name { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public ushort ProtectionManagement { get; private set; }
@@ -40,7 +40,7 @@ namespace WindowsMonitor.Hardware.Scsi
 		public string SystemName { get; private set; }
 		public DateTime TimeOfLastReset { get; private set; }
 
-        public static IEnumerable<Win32SCSIController> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Win32ScsiController> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -55,20 +55,20 @@ namespace WindowsMonitor.Hardware.Scsi
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32SCSIController> Retrieve()
+        public static IEnumerable<Win32ScsiController> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<Win32SCSIController> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Win32ScsiController> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_SCSIController");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new Win32SCSIController
+                yield return new Win32ScsiController
                 {
                      Availability = (ushort) (managementObject.Properties["Availability"]?.Value ?? default(ushort)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),
@@ -77,7 +77,7 @@ namespace WindowsMonitor.Hardware.Scsi
 		 ControllerTimeouts = (uint) (managementObject.Properties["ControllerTimeouts"]?.Value ?? default(uint)),
 		 CreationClassName = (string) (managementObject.Properties["CreationClassName"]?.Value),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 DeviceMap = (string) (managementObject.Properties["DeviceMap"]?.Value),
 		 DriverName = (string) (managementObject.Properties["DriverName"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
@@ -91,7 +91,7 @@ namespace WindowsMonitor.Hardware.Scsi
 		 MaxNumberControlled = (uint) (managementObject.Properties["MaxNumberControlled"]?.Value ?? default(uint)),
 		 MaxTransferRate = (ulong) (managementObject.Properties["MaxTransferRate"]?.Value ?? default(ulong)),
 		 Name = (string) (managementObject.Properties["Name"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 ProtectionManagement = (ushort) (managementObject.Properties["ProtectionManagement"]?.Value ?? default(ushort)),

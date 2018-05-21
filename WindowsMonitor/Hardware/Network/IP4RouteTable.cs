@@ -6,7 +6,7 @@ namespace WindowsMonitor.Hardware.Network
 {
     /// <summary>
     /// </summary>
-    public sealed class IP4RouteTable
+    public sealed class Ip4RouteTable
     {
 		public uint Age { get; private set; }
 		public string Caption { get; private set; }
@@ -27,7 +27,7 @@ namespace WindowsMonitor.Hardware.Network
 		public string Status { get; private set; }
 		public uint Type { get; private set; }
 
-        public static IEnumerable<IP4RouteTable> Retrieve(string remote, string username, string password)
+        public static IEnumerable<Ip4RouteTable> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -42,20 +42,20 @@ namespace WindowsMonitor.Hardware.Network
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IP4RouteTable> Retrieve()
+        public static IEnumerable<Ip4RouteTable> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<IP4RouteTable> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<Ip4RouteTable> Retrieve(ManagementScope managementScope)
         {
             var objectQuery = new ObjectQuery("SELECT * FROM Win32_IP4RouteTable");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new IP4RouteTable
+                yield return new Ip4RouteTable
                 {
                      Age = (uint) (managementObject.Properties["Age"]?.Value ?? default(uint)),
 		 Caption = (string) (managementObject.Properties["Caption"]?.Value),

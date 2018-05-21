@@ -15,14 +15,14 @@ namespace WindowsMonitor.Windows
         public string CodeSet { get; private set; }
         public string CountryCode { get; private set; }
         public string CreationClassName { get; private set; }
-        public string CSCreationClassName { get; private set; }
-        public string CSDVersion { get; private set; }
-        public string CSName { get; private set; }
+        public string CsCreationClassName { get; private set; }
+        public string CsdVersion { get; private set; }
+        public string CsName { get; private set; }
         public string CurrentTimeZone { get; private set; }
-        public bool DataExecutionPrevention_32BitApplications { get; private set; }
-        public bool DataExecutionPrevention_Available { get; private set; }
-        public bool DataExecutionPrevention_Drivers { get; private set; }
-        public byte DataExecutionPrevention_SupportPolicy { get; private set; }
+        public bool DataExecutionPrevention32BitApplications { get; private set; }
+        public bool DataExecutionPreventionAvailable { get; private set; }
+        public bool DataExecutionPreventionDrivers { get; private set; }
+        public byte DataExecutionPreventionSupportPolicy { get; private set; }
         public bool Debug { get; private set; }
         public string Description { get; private set; }
         public bool Distributed { get; private set; }
@@ -39,20 +39,20 @@ namespace WindowsMonitor.Windows
         public string Manufacturer { get; private set; }
         public uint MaxNumberOfProcesses { get; private set; }
         public ulong MaxProcessMemorySize { get; private set; }
-        public string[] MUILanguages { get; private set; }
+        public string[] MuiLanguages { get; private set; }
         public string Name { get; private set; }
         public uint NumberOfLicensedUsers { get; private set; }
         public uint NumberOfProcesses { get; private set; }
         public uint NumberOfUsers { get; private set; }
-        public uint OperatingSystemSKU { get; private set; }
+        public uint OperatingSystemSku { get; private set; }
         public string Organization { get; private set; }
-        public string OSArchitecture { get; private set; }
-        public uint OSLanguage { get; private set; }
-        public uint OSProductSuite { get; private set; }
-        public ushort OSType { get; private set; }
+        public string OsArchitecture { get; private set; }
+        public uint OsLanguage { get; private set; }
+        public uint OsProductSuite { get; private set; }
+        public ushort OsType { get; private set; }
         public string OtherTypeDescription { get; private set; }
-        public bool PAEEnabled { get; private set; }
-        public string PlusProductID { get; private set; }
+        public bool PaeEnabled { get; private set; }
+        public string PlusProductId { get; private set; }
         public string PlusVersionNumber { get; private set; }
         public bool PortableOperatingSystem { get; private set; }
         public bool Primary { get; private set; }
@@ -111,20 +111,20 @@ namespace WindowsMonitor.Windows
                     CountryCode = (string) (managementObject.Properties["CountryCode"]?.Value),
                     CreationClassName =
                         (string) (managementObject.Properties["CreationClassName"]?.Value),
-                    CSCreationClassName =
+                    CsCreationClassName =
                         (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-                    CSDVersion = (string) (managementObject.Properties["CSDVersion"]?.Value),
-                    CSName = (string) (managementObject.Properties["CSName"]?.Value),
+                    CsdVersion = (string) (managementObject.Properties["CSDVersion"]?.Value),
+                    CsName = (string) (managementObject.Properties["CSName"]?.Value),
                     CurrentTimeZone =  (managementObject.Properties["CurrentTimeZone"]?.Value?.ToString()),
-                    DataExecutionPrevention_32BitApplications =
+                    DataExecutionPrevention32BitApplications =
                         (bool) (managementObject.Properties["DataExecutionPrevention_32BitApplications"]?.Value ??
                                 default(bool)),
-                    DataExecutionPrevention_Available =
+                    DataExecutionPreventionAvailable =
                         (bool) (managementObject.Properties["DataExecutionPrevention_Available"]?.Value ??
                                 default(bool)),
-                    DataExecutionPrevention_Drivers =
+                    DataExecutionPreventionDrivers =
                         (bool) (managementObject.Properties["DataExecutionPrevention_Drivers"]?.Value ?? default(bool)),
-                    DataExecutionPrevention_SupportPolicy =
+                    DataExecutionPreventionSupportPolicy =
                         (byte) (managementObject.Properties["DataExecutionPrevention_SupportPolicy"]?.Value ??
                                 default(byte)),
                     Debug = (bool) (managementObject.Properties["Debug"]?.Value ?? default(bool)),
@@ -151,24 +151,24 @@ namespace WindowsMonitor.Windows
                         (uint) (managementObject.Properties["MaxNumberOfProcesses"]?.Value ?? default(uint)),
                     MaxProcessMemorySize =
                         (ulong) (managementObject.Properties["MaxProcessMemorySize"]?.Value ?? default(ulong)),
-                    MUILanguages = (string[]) (managementObject.Properties["MUILanguages"]?.Value ?? new string[0]),
+                    MuiLanguages = (string[]) (managementObject.Properties["MUILanguages"]?.Value ?? new string[0]),
                     Name = (string) (managementObject.Properties["Name"]?.Value),
                     NumberOfLicensedUsers =
                         (uint) (managementObject.Properties["NumberOfLicensedUsers"]?.Value ?? default(uint)),
                     NumberOfProcesses =
                         (uint) (managementObject.Properties["NumberOfProcesses"]?.Value ?? default(uint)),
                     NumberOfUsers = (uint) (managementObject.Properties["NumberOfUsers"]?.Value ?? default(uint)),
-                    OperatingSystemSKU =
+                    OperatingSystemSku =
                         (uint) (managementObject.Properties["OperatingSystemSKU"]?.Value ?? default(uint)),
                     Organization = (string) (managementObject.Properties["Organization"]?.Value),
-                    OSArchitecture = (string) (managementObject.Properties["OSArchitecture"]?.Value),
-                    OSLanguage = (uint) (managementObject.Properties["OSLanguage"]?.Value ?? default(uint)),
-                    OSProductSuite = (uint) (managementObject.Properties["OSProductSuite"]?.Value ?? default(uint)),
-                    OSType = (ushort) (managementObject.Properties["OSType"]?.Value ?? default(ushort)),
+                    OsArchitecture = (string) (managementObject.Properties["OSArchitecture"]?.Value),
+                    OsLanguage = (uint) (managementObject.Properties["OSLanguage"]?.Value ?? default(uint)),
+                    OsProductSuite = (uint) (managementObject.Properties["OSProductSuite"]?.Value ?? default(uint)),
+                    OsType = (ushort) (managementObject.Properties["OSType"]?.Value ?? default(ushort)),
                     OtherTypeDescription =
                         (string) (managementObject.Properties["OtherTypeDescription"]?.Value),
-                    PAEEnabled = (bool) (managementObject.Properties["PAEEnabled"]?.Value ?? default(bool)),
-                    PlusProductID = (string) (managementObject.Properties["PlusProductID"]?.Value),
+                    PaeEnabled = (bool) (managementObject.Properties["PAEEnabled"]?.Value ?? default(bool)),
+                    PlusProductId = (string) (managementObject.Properties["PlusProductID"]?.Value),
                     PlusVersionNumber =
                         (string) (managementObject.Properties["PlusVersionNumber"]?.Value),
                     PortableOperatingSystem =
