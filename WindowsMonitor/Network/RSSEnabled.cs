@@ -11,7 +11,7 @@ namespace WindowsMonitor.WMI
     {
 		public bool Active { get; private set; }
 		public string InstanceName { get; private set; }
-		public bool RssEnabled { get; private set; }
+		public bool Enabled { get; private set; }
 
         public static IEnumerable<RssEnabled> Retrieve(string remote, string username, string password)
         {
@@ -45,7 +45,7 @@ namespace WindowsMonitor.WMI
                 {
                      Active = (bool) (managementObject.Properties["Active"]?.Value ?? default(bool)),
 		 InstanceName = (string) (managementObject.Properties["InstanceName"]?.Value ?? default(string)),
-		 RssEnabled = (bool) (managementObject.Properties["RSSEnabled"]?.Value ?? default(bool))
+		 Enabled = (bool) (managementObject.Properties["RSSEnabled"]?.Value ?? default(bool))
                 };
         }
     }

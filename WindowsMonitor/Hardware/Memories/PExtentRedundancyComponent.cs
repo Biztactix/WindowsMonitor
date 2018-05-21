@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Storage.FileSystem
+namespace WindowsMonitor.Hardware.Memories
 {
     /// <summary>
     /// </summary>
-    public sealed class FromDirectorySpecification
+    public sealed class PExtentRedundancyComponent
     {
-		public string FileName { get; private set; }
-		public string SourceDirectory { get; private set; }
+		public string GroupComponent { get; private set; }
+		public string PartComponent { get; private set; }
 
-        public static IEnumerable<FromDirectorySpecification> Retrieve(string remote, string username, string password)
+        public static IEnumerable<PExtentRedundancyComponent> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,23 +25,23 @@ namespace WindowsMonitor.Storage.FileSystem
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FromDirectorySpecification> Retrieve()
+        public static IEnumerable<PExtentRedundancyComponent> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FromDirectorySpecification> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<PExtentRedundancyComponent> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_FromDirectorySpecification");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_PExtentRedundancyComponent");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new FromDirectorySpecification
+                yield return new PExtentRedundancyComponent
                 {
-                     FileName =  (managementObject.Properties["FileName"]?.Value?.ToString()),
-		 SourceDirectory =  (managementObject.Properties["SourceDirectory"]?.Value?.ToString())
+                     GroupComponent =  (managementObject.Properties["GroupComponent"]?.Value?.ToString()),
+		 PartComponent =  (managementObject.Properties["PartComponent"]?.Value?.ToString())
                 };
         }
     }

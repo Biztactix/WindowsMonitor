@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Storage.FileSystem
+namespace WindowsMonitor.Software.COM
 {
     /// <summary>
     /// </summary>
-    public sealed class FromDirectoryAction
+    public sealed class CompatibleProduct
     {
-		public string FileName { get; private set; }
-		public string SourceDirectory { get; private set; }
+		public string CompatibilityDescription { get; private set; }
+		public string Name { get; private set; }
+		public string Product { get; private set; }
 
-        public static IEnumerable<FromDirectoryAction> Retrieve(string remote, string username, string password)
+        public static IEnumerable<CompatibleProduct> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -25,23 +26,24 @@ namespace WindowsMonitor.Storage.FileSystem
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FromDirectoryAction> Retrieve()
+        public static IEnumerable<CompatibleProduct> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<FromDirectoryAction> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<CompatibleProduct> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_FromDirectoryAction");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_CompatibleProduct");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new FromDirectoryAction
+                yield return new CompatibleProduct
                 {
-                     FileName =  (managementObject.Properties["FileName"]?.Value?.ToString()),
-		 SourceDirectory =  (managementObject.Properties["SourceDirectory"]?.Value?.ToString())
+                     CompatibilityDescription = (string) (managementObject.Properties["CompatibilityDescription"]?.Value),
+		 Name = (string) (managementObject.Properties["CompatibleProduct"]?.Value ?? default(string)),
+		 Product = (string) (managementObject.Properties["Product"]?.Value ?? default(string))
                 };
         }
     }

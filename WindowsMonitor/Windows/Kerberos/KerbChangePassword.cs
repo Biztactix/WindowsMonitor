@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Window.Kerberos
+namespace WindowsMonitor.Windows.Kerberos
 {
     /// <summary>
     /// </summary>

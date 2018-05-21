@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Storage.FileSystem
+namespace WindowsMonitor.Storage
 {
     /// <summary>
     /// </summary>
-    public sealed class RemoteFileSystem
+    public sealed class FileSystem
     {
 		public ulong AvailableSpace { get; private set; }
 		public ulong BlockSize { get; private set; }
@@ -28,7 +28,7 @@ namespace WindowsMonitor.Storage.FileSystem
 		public string Root { get; private set; }
 		public string Status { get; private set; }
 
-        public static IEnumerable<RemoteFileSystem> Retrieve(string remote, string username, string password)
+        public static IEnumerable<FileSystem> Retrieve(string remote, string username, string password)
         {
             var options = new ConnectionOptions
             {
@@ -43,20 +43,20 @@ namespace WindowsMonitor.Storage.FileSystem
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<RemoteFileSystem> Retrieve()
+        public static IEnumerable<FileSystem> Retrieve()
         {
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
 
-        public static IEnumerable<RemoteFileSystem> Retrieve(ManagementScope managementScope)
+        public static IEnumerable<FileSystem> Retrieve(ManagementScope managementScope)
         {
-            var objectQuery = new ObjectQuery("SELECT * FROM CIM_RemoteFileSystem");
+            var objectQuery = new ObjectQuery("SELECT * FROM CIM_FileSystem");
             var objectSearcher = new ManagementObjectSearcher(managementScope, objectQuery);
             var objectCollection = objectSearcher.Get();
 
             foreach (ManagementObject managementObject in objectCollection)
-                yield return new RemoteFileSystem
+                yield return new FileSystem
                 {
                      AvailableSpace = (ulong) (managementObject.Properties["AvailableSpace"]?.Value ?? default(ulong)),
 		 BlockSize = (ulong) (managementObject.Properties["BlockSize"]?.Value ?? default(ulong)),
