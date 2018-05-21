@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Hardware
+namespace WindowsMonitor.Hardware.Scsi
 {
     /// <summary>
     /// </summary>

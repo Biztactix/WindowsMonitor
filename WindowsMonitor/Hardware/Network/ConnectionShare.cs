@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace WindowsMonitor.Network
+namespace WindowsMonitor.Hardware.Network
 {
     /// <summary>
     /// </summary>
