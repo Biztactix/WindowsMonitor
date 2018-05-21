@@ -22,7 +22,7 @@ namespace WindowsMonitor.Hardware.Processors
 		public ushort CurrentVoltage { get; private set; }
 		public ushort DataWidth { get; private set; }
 		public string Description { get; private set; }
-		public string DeviceID { get; private set; }
+		public string DeviceId { get; private set; }
 		public bool ErrorCleared { get; private set; }
 		public string ErrorDescription { get; private set; }
 		public uint ExtClock { get; private set; }
@@ -43,7 +43,7 @@ namespace WindowsMonitor.Hardware.Processors
 		public uint NumberOfLogicalProcessors { get; private set; }
 		public string OtherFamilyDescription { get; private set; }
 		public string PartNumber { get; private set; }
-		public string PNPDeviceID { get; private set; }
+		public string PnpDeviceId { get; private set; }
 		public ushort[] PowerManagementCapabilities { get; private set; }
 		public bool PowerManagementSupported { get; private set; }
 		public string ProcessorId { get; private set; }
@@ -63,7 +63,7 @@ namespace WindowsMonitor.Hardware.Processors
 		public ushort UpgradeMethod { get; private set; }
 		public string Version { get; private set; }
 		public bool VirtualizationFirmwareEnabled { get; private set; }
-		public bool VMMonitorModeExtensions { get; private set; }
+		public bool VmMonitorModeExtensions { get; private set; }
 		public uint VoltageCaps { get; private set; }
 
         public static IEnumerable<Win32Processor> Retrieve(string remote, string username, string password)
@@ -110,7 +110,7 @@ namespace WindowsMonitor.Hardware.Processors
 		 CurrentVoltage = (ushort) (managementObject.Properties["CurrentVoltage"]?.Value ?? default(ushort)),
 		 DataWidth = (ushort) (managementObject.Properties["DataWidth"]?.Value ?? default(ushort)),
 		 Description = (string) (managementObject.Properties["Description"]?.Value),
-		 DeviceID = (string) (managementObject.Properties["DeviceID"]?.Value),
+		 DeviceId = (string) (managementObject.Properties["DeviceID"]?.Value),
 		 ErrorCleared = (bool) (managementObject.Properties["ErrorCleared"]?.Value ?? default(bool)),
 		 ErrorDescription = (string) (managementObject.Properties["ErrorDescription"]?.Value),
 		 ExtClock = (uint) (managementObject.Properties["ExtClock"]?.Value ?? default(uint)),
@@ -131,7 +131,7 @@ namespace WindowsMonitor.Hardware.Processors
 		 NumberOfLogicalProcessors = (uint) (managementObject.Properties["NumberOfLogicalProcessors"]?.Value ?? default(uint)),
 		 OtherFamilyDescription = (string) (managementObject.Properties["OtherFamilyDescription"]?.Value),
 		 PartNumber = (string) (managementObject.Properties["PartNumber"]?.Value),
-		 PNPDeviceID = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
+		 PnpDeviceId = (string) (managementObject.Properties["PNPDeviceID"]?.Value),
 		 PowerManagementCapabilities = (ushort[]) (managementObject.Properties["PowerManagementCapabilities"]?.Value ?? new ushort[0]),
 		 PowerManagementSupported = (bool) (managementObject.Properties["PowerManagementSupported"]?.Value ?? default(bool)),
 		 ProcessorId = (string) (managementObject.Properties["ProcessorId"]?.Value),
@@ -151,7 +151,7 @@ namespace WindowsMonitor.Hardware.Processors
 		 UpgradeMethod = (ushort) (managementObject.Properties["UpgradeMethod"]?.Value ?? default(ushort)),
 		 Version = (string) (managementObject.Properties["Version"]?.Value),
 		 VirtualizationFirmwareEnabled = (bool) (managementObject.Properties["VirtualizationFirmwareEnabled"]?.Value ?? default(bool)),
-		 VMMonitorModeExtensions = (bool) (managementObject.Properties["VMMonitorModeExtensions"]?.Value ?? default(bool)),
+		 VmMonitorModeExtensions = (bool) (managementObject.Properties["VMMonitorModeExtensions"]?.Value ?? default(bool)),
 		 VoltageCaps = (uint) (managementObject.Properties["VoltageCaps"]?.Value ?? default(uint))
                 };
         }

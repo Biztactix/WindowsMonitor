@@ -4,7 +4,6 @@ using System.Linq;
 using System.Management;
 using System.Reflection;
 using WindowsMonitor.Hardware;
-using WindowsMonitor.WMI;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 

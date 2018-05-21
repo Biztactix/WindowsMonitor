@@ -12,7 +12,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WindowsMonitor.Hardware.Bios;
-using WindowsMonitor.WMI;
 
 namespace WindowsMonitor.Bios
 {

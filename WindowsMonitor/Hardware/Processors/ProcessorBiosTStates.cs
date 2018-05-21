@@ -18,7 +18,7 @@ namespace WindowsMonitor.Hardware.Processors
 		public ulong Reserved3 { get; private set; }
 		public uint Tpc { get; private set; }
 		public dynamic Tss { get; private set; }
-		public uint TStateVersionInUse { get; private set; }
+		public uint StateVersionInUse { get; private set; }
 
         public static IEnumerable<ProcessorBiosTStates> Retrieve(string remote, string username, string password)
         {
@@ -61,7 +61,7 @@ namespace WindowsMonitor.Hardware.Processors
 		 Reserved3 = (ulong) (managementObject.Properties["Reserved3"]?.Value ?? default(ulong)),
 		 Tpc = (uint) (managementObject.Properties["Tpc"]?.Value ?? default(uint)),
 		 Tss = (dynamic) (managementObject.Properties["Tss"]?.Value ?? default(dynamic)),
-		 TStateVersionInUse = (uint) (managementObject.Properties["TStateVersionInUse"]?.Value ?? default(uint))
+		 StateVersionInUse = (uint) (managementObject.Properties["TStateVersionInUse"]?.Value ?? default(uint))
                 };
         }
     }
