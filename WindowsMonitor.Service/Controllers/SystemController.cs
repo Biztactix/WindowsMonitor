@@ -1,4 +1,5 @@
-﻿using WindowsMonitor.Hardware.Drives.DiskDrives;
+﻿
+using WindowsMonitor.Hardware.Drives.Win32DiskDrives;
 using WindowsMonitor.Windows;
 using Microsoft.AspNetCore.Mvc;
 
