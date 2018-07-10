@@ -9,7 +9,7 @@
     <Copyright>Matteo Fabbri 2018</Copyright>
     <PackageProjectUrl>https://github.com/matteofabbri/WindowsMonitor</PackageProjectUrl>
     <PackageTags>wmi monitor hardware software license performance windows components Windows Management Instrumentation</PackageTags>
-    <Version>4.1.0</Version>
+    <Version>4.2.0</Version>
     <PackageId>WindowsMonitor.Standard</PackageId>
     <AssemblyVersion>4.1.0.0</AssemblyVersion>
     <FileVersion>4.1.0.0</FileVersion>
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Management" Version="4.5.0-rc1" />
+    <PackageReference Include="System.Management" Version="4.5.0" />
   </ItemGroup>
 
 </Project>
