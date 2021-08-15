@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Management;
 
@@ -93,6 +93,28 @@ namespace WindowsMonitor.Windows
             var managementScope = new ManagementScope(new ManagementPath("root\\cimv2"));
             return Retrieve(managementScope);
         }
+        public static T ReturnDetail<T>(String Name, ManagementObject obj, T DefaultObj)
+        {
+            try
+            {
+                if (obj.Properties[Name] != null)
+                {
+                    if (obj.Properties[Name].Value != null)
+                    {
+                        return (T)(obj.Properties[Name].Value);
+                    }
+                    else
+                    {
+                        return DefaultObj;
+                    }
+                }
+                else
+                {
+                    return DefaultObj;
+                }
+            }
+            catch { return DefaultObj; }
+        }
 
         public static IEnumerable<Win32OperatingSystem> Retrieve(ManagementScope managementScope)
         {
@@ -103,101 +125,70 @@ namespace WindowsMonitor.Windows
             foreach (ManagementObject managementObject in objectCollection)
                 yield return new Win32OperatingSystem
                 {
-                    BootDevice = (string) (managementObject.Properties["BootDevice"]?.Value),
-                    BuildNumber = (string) (managementObject.Properties["BuildNumber"]?.Value),
-                    BuildType = (string) (managementObject.Properties["BuildType"]?.Value),
-                    Caption = (string) (managementObject.Properties["Caption"]?.Value),
-                    CodeSet = (string) (managementObject.Properties["CodeSet"]?.Value),
-                    CountryCode = (string) (managementObject.Properties["CountryCode"]?.Value),
-                    CreationClassName =
-                        (string) (managementObject.Properties["CreationClassName"]?.Value),
-                    CsCreationClassName =
-                        (string) (managementObject.Properties["CSCreationClassName"]?.Value),
-                    CsdVersion = (string) (managementObject.Properties["CSDVersion"]?.Value),
-                    CsName = (string) (managementObject.Properties["CSName"]?.Value),
-                    CurrentTimeZone =  (managementObject.Properties["CurrentTimeZone"]?.Value?.ToString()),
-                    DataExecutionPrevention32BitApplications =
-                        (bool) (managementObject.Properties["DataExecutionPrevention_32BitApplications"]?.Value ??
-                                default(bool)),
-                    DataExecutionPreventionAvailable =
-                        (bool) (managementObject.Properties["DataExecutionPrevention_Available"]?.Value ??
-                                default(bool)),
-                    DataExecutionPreventionDrivers =
-                        (bool) (managementObject.Properties["DataExecutionPrevention_Drivers"]?.Value ?? default(bool)),
-                    DataExecutionPreventionSupportPolicy =
-                        (byte) (managementObject.Properties["DataExecutionPrevention_SupportPolicy"]?.Value ??
-                                default(byte)),
-                    Debug = (bool) (managementObject.Properties["Debug"]?.Value ?? default(bool)),
-                    Description = (string) (managementObject.Properties["Description"]?.Value),
-                    Distributed = (bool) (managementObject.Properties["Distributed"]?.Value ?? default(bool)),
-                    EncryptionLevel = (uint) (managementObject.Properties["EncryptionLevel"]?.Value ?? default(uint)),
-                    ForegroundApplicationBoost =
-                        (byte) (managementObject.Properties["ForegroundApplicationBoost"]?.Value ?? default(byte)),
-                    FreePhysicalMemory =
-                        (ulong) (managementObject.Properties["FreePhysicalMemory"]?.Value ?? default(ulong)),
-                    FreeSpaceInPagingFiles =
-                        (ulong) (managementObject.Properties["FreeSpaceInPagingFiles"]?.Value ?? default(ulong)),
-                    FreeVirtualMemory =
-                        (ulong) (managementObject.Properties["FreeVirtualMemory"]?.Value ?? default(ulong)),
-                    InstallDate = ManagementDateTimeConverter.ToDateTime (managementObject.Properties["InstallDate"]?.Value as string ?? "00010102000000.000000+060"),
-                    LargeSystemCache = (uint) (managementObject.Properties["LargeSystemCache"]?.Value ?? default(uint)),
-                    LastBootUpTime =
-                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LastBootUpTime"]?.Value as string ?? "00010102000000.000000+060"),
-                    LocalDateTime =
-                        ManagementDateTimeConverter.ToDateTime (managementObject.Properties["LocalDateTime"]?.Value as string ?? "00010102000000.000000+060"),
-                    Locale = (string) (managementObject.Properties["Locale"]?.Value),
-                    Manufacturer = (string) (managementObject.Properties["Manufacturer"]?.Value),
-                    MaxNumberOfProcesses =
-                        (uint) (managementObject.Properties["MaxNumberOfProcesses"]?.Value ?? default(uint)),
-                    MaxProcessMemorySize =
-                        (ulong) (managementObject.Properties["MaxProcessMemorySize"]?.Value ?? default(ulong)),
-                    MuiLanguages = (string[]) (managementObject.Properties["MUILanguages"]?.Value ?? new string[0]),
-                    Name = (string) (managementObject.Properties["Name"]?.Value),
-                    NumberOfLicensedUsers =
-                        (uint) (managementObject.Properties["NumberOfLicensedUsers"]?.Value ?? default(uint)),
-                    NumberOfProcesses =
-                        (uint) (managementObject.Properties["NumberOfProcesses"]?.Value ?? default(uint)),
-                    NumberOfUsers = (uint) (managementObject.Properties["NumberOfUsers"]?.Value ?? default(uint)),
-                    OperatingSystemSku =
-                        (uint) (managementObject.Properties["OperatingSystemSKU"]?.Value ?? default(uint)),
-                    Organization = (string) (managementObject.Properties["Organization"]?.Value),
-                    OsArchitecture = (string) (managementObject.Properties["OSArchitecture"]?.Value),
-                    OsLanguage = (uint) (managementObject.Properties["OSLanguage"]?.Value ?? default(uint)),
-                    OsProductSuite = (uint) (managementObject.Properties["OSProductSuite"]?.Value ?? default(uint)),
-                    OsType = (ushort) (managementObject.Properties["OSType"]?.Value ?? default(ushort)),
-                    OtherTypeDescription =
-                        (string) (managementObject.Properties["OtherTypeDescription"]?.Value),
-                    PaeEnabled = (bool) (managementObject.Properties["PAEEnabled"]?.Value ?? default(bool)),
-                    PlusProductId = (string) (managementObject.Properties["PlusProductID"]?.Value),
-                    PlusVersionNumber =
-                        (string) (managementObject.Properties["PlusVersionNumber"]?.Value),
-                    PortableOperatingSystem =
-                        (bool) (managementObject.Properties["PortableOperatingSystem"]?.Value ?? default(bool)),
-                    Primary = (bool) (managementObject.Properties["Primary"]?.Value ?? default(bool)),
-                    ProductType = (uint) (managementObject.Properties["ProductType"]?.Value ?? default(uint)),
-                    RegisteredUser = (string) (managementObject.Properties["RegisteredUser"]?.Value),
-                    SerialNumber = (string) (managementObject.Properties["SerialNumber"]?.Value),
-                    ServicePackMajorVersion =
-                        (ushort) (managementObject.Properties["ServicePackMajorVersion"]?.Value ?? default(ushort)),
-                    ServicePackMinorVersion =
-                        (ushort) (managementObject.Properties["ServicePackMinorVersion"]?.Value ?? default(ushort)),
-                    SizeStoredInPagingFiles =
-                        (ulong) (managementObject.Properties["SizeStoredInPagingFiles"]?.Value ?? default(ulong)),
-                    Status = (string) (managementObject.Properties["Status"]?.Value),
-                    SuiteMask = (uint) (managementObject.Properties["SuiteMask"]?.Value ?? default(uint)),
-                    SystemDevice = (string) (managementObject.Properties["SystemDevice"]?.Value),
-                    SystemDirectory =
-                        (string) (managementObject.Properties["SystemDirectory"]?.Value),
-                    SystemDrive = (string) (managementObject.Properties["SystemDrive"]?.Value),
-                    TotalSwapSpaceSize =
-                        (ulong) (managementObject.Properties["TotalSwapSpaceSize"]?.Value ?? default(ulong)),
-                    TotalVirtualMemorySize =
-                        (ulong) (managementObject.Properties["TotalVirtualMemorySize"]?.Value ?? default(ulong)),
-                    TotalVisibleMemorySize =
-                        (ulong) (managementObject.Properties["TotalVisibleMemorySize"]?.Value ?? default(ulong)),
-                    Version = (string) (managementObject.Properties["Version"]?.Value),
-                    WindowsDirectory =
-                        (string) (managementObject.Properties["WindowsDirectory"]?.Value)
+                    BootDevice = ReturnDetail<string>("BootDevice", managementObject, ""),
+                    BuildNumber = ReturnDetail<string>("BuildNumber", managementObject, ""),
+                    BuildType = ReturnDetail<string>("BuildType", managementObject, ""),
+                    Caption = ReturnDetail<string>("Caption", managementObject, ""),
+                    CodeSet = ReturnDetail<string>("CodeSet", managementObject, ""),
+                    CountryCode = ReturnDetail<string>("CountryCode", managementObject, ""),
+                    CreationClassName = ReturnDetail<string>("CreationClassName", managementObject, ""),
+                    CsCreationClassName = ReturnDetail<string>("CSCreationClassName", managementObject, ""),
+                    CsdVersion = ReturnDetail<string>("CSDVersion", managementObject, ""),
+                    CsName = ReturnDetail<string>("CSName", managementObject, ""),
+                    CurrentTimeZone = ReturnDetail<string>("CurrentTimeZone", managementObject, ""),
+                    DataExecutionPrevention32BitApplications = ReturnDetail<bool>("DataExecutionPrevention_32BitApplications", managementObject, default(bool)),
+                    DataExecutionPreventionAvailable = ReturnDetail<bool>("DataExecutionPrevention_Available", managementObject, default(bool)),
+                    DataExecutionPreventionDrivers = ReturnDetail<bool>("DataExecutionPrevention_Drivers", managementObject, default(bool)),
+                    DataExecutionPreventionSupportPolicy = ReturnDetail<byte>("DataExecutionPrevention_SupportPolicy", managementObject, default(byte)),
+                    Debug = ReturnDetail<bool>("Debug", managementObject, default(bool)),
+                    Description = ReturnDetail<string>("Description", managementObject, ""),
+                    Distributed = ReturnDetail<bool>("Distributed", managementObject, default(bool)),
+                    EncryptionLevel = ReturnDetail<uint>("EncryptionLevel", managementObject, default(uint)),
+                    ForegroundApplicationBoost = ReturnDetail<byte>("ForegroundApplicationBoost", managementObject, default(byte)),
+                    FreePhysicalMemory = ReturnDetail<ulong>("FreePhysicalMemory", managementObject, default(ulong)),
+                    FreeSpaceInPagingFiles = ReturnDetail<ulong>("FreeSpaceInPagingFiles", managementObject, default(ulong)),
+                    FreeVirtualMemory = ReturnDetail<ulong>("FreeVirtualMemory", managementObject, default(ulong)),
+                    InstallDate = ManagementDateTimeConverter.ToDateTime(ReturnDetail<string>("InstallDate", managementObject, "00010102000000.000000+060")),
+                    LargeSystemCache = ReturnDetail<uint>("LargeSystemCache", managementObject, default(uint)),
+                    LastBootUpTime = ManagementDateTimeConverter.ToDateTime(ReturnDetail<string>("LastBootUpTime", managementObject, "00010102000000.000000+060")),
+                    LocalDateTime = ManagementDateTimeConverter.ToDateTime(ReturnDetail<string>("LocalDateTime", managementObject, "00010102000000.000000+060")),
+                    Locale = ReturnDetail<string>("Locale", managementObject, ""),
+                    Manufacturer = ReturnDetail<string>("Manufacturer", managementObject, ""),
+                    MaxNumberOfProcesses = ReturnDetail<uint>("MaxNumberOfProcesses", managementObject, default(uint)),
+                    MaxProcessMemorySize = ReturnDetail<ulong>("MaxProcessMemorySize", managementObject, default(ulong)),
+                    MuiLanguages = ReturnDetail<string[]>("MUILanguages", managementObject, new string[0]),
+                    Name = ReturnDetail<string>("Name", managementObject, ""),
+                    NumberOfLicensedUsers = ReturnDetail<uint>("NumberOfLicensedUsers", managementObject, default(uint)),
+                    NumberOfProcesses = ReturnDetail<uint>("NumberOfProcesses", managementObject, default(uint)),
+                    NumberOfUsers = ReturnDetail<uint>("NumberOfUsers", managementObject, default(uint)),
+                    OperatingSystemSku = ReturnDetail<uint>("OperatingSystemSKU", managementObject, default(uint)),
+                    Organization = ReturnDetail<string>("Organization", managementObject, ""),
+                    OsArchitecture = ReturnDetail<string>("OSArchitecture", managementObject, ""),
+                    OsLanguage = ReturnDetail<uint>("OSLanguage", managementObject, default(uint)),
+                    OsProductSuite = ReturnDetail<uint>("OSProductSuite", managementObject, default(uint)),
+                    OsType = ReturnDetail<ushort>("OSType", managementObject, default(ushort)),
+                    OtherTypeDescription = ReturnDetail<string>("OtherTypeDescription", managementObject, ""),
+                    PaeEnabled = ReturnDetail<bool>("PAEEnabled", managementObject, default(bool)),
+                    PlusProductId = ReturnDetail<string>("PlusProductID", managementObject, ""),
+                    PlusVersionNumber = ReturnDetail<string>("PlusVersionNumber", managementObject, ""),
+                    PortableOperatingSystem = ReturnDetail<bool>("PortableOperatingSystem", managementObject, default(bool)),
+                    Primary = ReturnDetail<bool>("Primary", managementObject, default(bool)),
+                    ProductType = ReturnDetail<uint>("ProductType", managementObject, default(uint)),
+                    RegisteredUser = ReturnDetail<string>("RegisteredUser", managementObject, ""),
+                    SerialNumber = ReturnDetail<string>("SerialNumber", managementObject, ""),
+                    ServicePackMajorVersion = ReturnDetail<ushort>("ServicePackMajorVersion", managementObject, default(ushort)),
+                    ServicePackMinorVersion = ReturnDetail<ushort>("ServicePackMinorVersion", managementObject, default(ushort)),
+                    SizeStoredInPagingFiles = ReturnDetail<ulong>("SizeStoredInPagingFiles", managementObject, default(ulong)),
+                    Status = ReturnDetail<string>("Status", managementObject, ""),
+                    SuiteMask = ReturnDetail<uint>("SuiteMask", managementObject, default(uint)),
+                    SystemDevice = ReturnDetail<string>("SystemDevice", managementObject, ""),
+                    SystemDirectory = ReturnDetail<string>("SystemDirectory", managementObject, ""),
+                    SystemDrive = ReturnDetail<string>("SystemDrive", managementObject, ""),
+                    TotalSwapSpaceSize = ReturnDetail<ulong>("TotalSwapSpaceSize", managementObject, default(ulong)),
+                    TotalVirtualMemorySize = ReturnDetail<ulong>("TotalVirtualMemorySize", managementObject, default(ulong)),
+                    TotalVisibleMemorySize = ReturnDetail<ulong>("TotalVisibleMemorySize", managementObject, default(ulong)),
+                    Version = ReturnDetail<string>("Version", managementObject, ""),
+                    WindowsDirectory = ReturnDetail<string>("WindowsDirectory", managementObject, "")
                 };
         }
     }
